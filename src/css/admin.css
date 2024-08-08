@@ -1,0 +1,295 @@
+.adminHeader1 {
+    border-bottom: 2px solid #eeeeee;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: white;
+    position: fixed;
+
+}
+.adminHeader {
+    display: flex;
+    flex-direction: row;
+    padding: 2px 10px;
+    max-width: 1900px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    .logoContainer {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+        .logoText {
+            margin: 0;
+        }
+    }
+    .profilepic {
+        background-color: #d3eaff;
+        width: 40px;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        border-radius: 500px;
+        font-size: 15px;
+        font-weight: 500;
+        cursor: pointer;
+
+    }
+    
+
+}
+.profilePop {
+    margin-right: 10px;
+    width: 250px;
+    padding: 15px 0;
+    .username {
+        font-size: 14.5px;
+        padding: 0 15px;
+    }
+    .email {
+        font-size: 13px;
+        color: grey;
+        margin-top: -3px;
+        padding: 0 15px;
+
+    }
+
+    .option {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        padding: 5px 10px;
+        margin: 0 5px;
+        border-radius: 3px;
+        cursor: pointer;
+
+        svg {
+            width: 15px;
+            height: 15px;
+        }
+        &:hover {
+            background-color: #f3f3f3;
+        }
+    }
+
+    .title {
+        font-size: 13px;
+        padding: 0px 15px;
+        margin-top: 10px;
+        font-weight: 500;
+    }
+    .profile {
+        padding: 5px 10px;
+        margin: 0 5px;        display: flex;
+        flex-direction: row;
+        align-items: center;
+        cursor: pointer;
+        gap: 10px;
+        font-size: 13px;
+        .name {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1; /* Number of lines to display */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: left;
+        }
+        &:hover {
+            background-color: #f3f3f3;
+        }
+        .profilePic {
+            background-color: #d3eaff;
+            width: 30px;
+            height: 30px;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            border-radius: 500px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+    }
+}
+.profileSheet {
+    max-width: 650px;
+    width: 100%;
+    overflow-y: scroll;
+    .profileHeader {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 15px;
+        margin-top: 20px;
+
+        .profilepic {
+            background-color: #d3eaff;
+            width: 75px;
+            height: 75px;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            border-radius: 500px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .profileName {
+            font-weight: 500;
+            font-size: 17px;
+        }
+    }
+    .section {
+        margin: 20px 0;
+        padding-top: 5px;
+        border-top: 1px solid #dfdfdf;
+    }
+    .sectionHeader {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        font-size: 15px;
+        svg {
+            width: 15px;
+            height: 15px;
+        }
+    }
+    .form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+        width: 100%;
+    }
+    .label {
+        font-weight: 500;
+        font-size: 14px;
+    }
+    .loginInput {
+        border: 1px solid #e2e2e2;
+        border-radius: 5px;
+        height: 35px;
+        width: 100%;
+        outline: none;
+        padding: 5px;
+        font-size: 14px;
+
+    }
+    .inputRow {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        svg {
+            height: 35px;
+            width: 35px;
+            margin-left: 5px;
+            cursor: pointer;
+            background-color: #e2e2e2;
+            padding: 8px;
+            border-radius: 5px;
+            color: grey;
+            &:hover {
+                color: black;
+            }
+        }
+    }
+    .buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        margin-left: 5px;
+        font-size: 14px;
+    }
+    .cancel {
+        color: grey;
+        cursor: pointer;
+        &:hover {
+            color: black;
+        }
+    }
+    .save {
+        background-color: black;
+        padding: 2px 7px;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+    .passwordButtons {
+        display: flex;
+        flex-direction: row;
+        margin-top: 15px;
+        gap: 10px;
+        font-size: 14px;
+        div:first-child {
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+        div {
+            flex: 1;
+            text-align: center;
+            padding: 5px;
+        }
+    }
+    .loginButton {
+        margin-top: 20px;
+        background-color: rgba(235, 153, 1, 0.863);
+        width: 100px;
+        text-align: center;
+        color: white;
+        height: 33px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        
+    }
+    .errors {
+        color: #e70000;
+        margin-top: 15px;
+        font-size: 14px;
+    }
+}
+.adminBody {
+    max-width: 1900px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    height: calc(100vh);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-top: 56px;
+    position: relative;
+    
+    .body {
+        flex: 1;
+        width: 100%;
+        height:  100%;
+        background: white;
+        margin-left: 215px;
+
+        @media screen and (width < 695px) {
+            margin-left: 0;
+        }
+
+    }
+}

@@ -1,0 +1,9 @@
+.feesContainer {
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    background-color: white;
+    padding: 10px 20px;
+}
+.feesTitle {
+    color: green;
+}

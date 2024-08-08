@@ -1,0 +1,67 @@
+.adminGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: stretch;
+    @media screen and (width < 550px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media screen and (width < 440px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .gridItem {
+        background-color: white;
+        box-shadow: 0px 0px 10px rgba(151, 151, 151, 0.308);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
+    }
+    .title {
+        font-size: 14.5px;
+        font-weight: 500;
+        color: grey;
+        margin-bottom: 20px;
+    }
+    .gridValue {
+        font-size: 35px;
+        font-weight: 500;
+        margin-top: -15px;
+        align-self: center;
+    }
+    .subordinates {
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        box-shadow: 0px 0px 10px rgba(151, 151, 151, 0.308);
+        padding: 20px;
+        gap: 15px;
+        margin-top: 25px;
+
+        
+        div > .imgContainer {
+            background: #e7eff3;
+            height: 80px;
+            width: 80px;
+            margin: auto;
+            border-radius: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #023047;
+            font-weight: 700;
+            margin-top: -60px;
+        }
+
+        .title {
+            font-weight: 500;
+            text-align: center;
+        }
+        .description {
+            color: grey;
+        }
+        
+    }
+}

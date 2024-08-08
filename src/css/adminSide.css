@@ -1,0 +1,100 @@
+.adminSide {
+    width: 215px;
+    border-right: 2px solid #eeeeee;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 0;
+    top: 56px;
+    left: 0;
+    z-index: 9;
+    @media screen and (width < 695px) {
+        display: none;
+    }
+
+
+.option {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin: 5px 7px;
+    padding: 10px 13px;
+    font-size: 14px;
+    color: #2b2b2b;
+    border-radius: 5px;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    &:hover {
+        background-color: #eeeeee;
+    }
+    svg {
+        width: 13px;
+        height: 13px;
+    }
+}
+.option2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin: 5px 7px;
+    padding: 10px 13px;
+    padding-left: 35px;
+    font-size: 14px;
+    color: #2b2b2b;
+    border-radius: 5px;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    
+    &:hover {
+        background-color: #eeeeee;
+    }
+    svg {
+        width: 13px;
+        height: 13px;
+    }
+}
+.option1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin: 5px 7px;
+    padding: 10px 13px;
+    font-size: 14px;
+    color: #b87700;
+    background-color: #ffa60036;
+    border-radius: 5px;
+    cursor: pointer;
+
+    svg {
+        width: 13px;
+        height: 13px;
+    }
+}
+.option3 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin: 5px 7px;
+    padding: 10px 13px;
+    padding-left: 35px;
+    font-size: 14px;
+    color: #2b2b2b;
+    border-radius: 5px;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    background: #ffa60036;
+    color: #b87700;
+    
+    
+    svg {
+        width: 13px;
+        height: 13px;
+    }
+}
+
+}

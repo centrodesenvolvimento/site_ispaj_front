@@ -1,0 +1,25 @@
+.dashboardContainer {
+
+
+#first1 {
+    /* background-color: red; */
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .basicInfo {
+        font-size: 14px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 4; /* Number of lines to display */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 10px;
+        padding-bottom: 0;
+    
+    }
+}
+}
+}

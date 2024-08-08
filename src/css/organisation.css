@@ -1,0 +1,169 @@
+.orgSection {
+    @media screen and (width < 1100px) {
+        margin: 0 20px;
+    }
+}
+.orgContainer {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+    align-items: center;
+    
+}
+.leafContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: 1px solid #c7c7c7;
+    width: 200px;
+    border-radius: 10px;
+    position: relative;
+    padding-bottom: 15px;
+    z-index: 100;
+    align-self: center;
+}
+.leafImage {
+    /* 023047 */
+    background-color: #e69500;
+    width: 70px;
+    height: 70px;
+    border-radius: 500px;
+    align-self: center;
+    margin-top: -40px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    span {
+        color: white;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 17px;
+    }
+}
+
+.leafTitle {
+    margin-top: 5px;
+    color: #023047;
+    font-weight: 700;
+}
+.leafStat {
+    color: #5f5f5f;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.leafStat > svg {
+    color: orange;
+    width: 27px;
+    height: 25px
+}
+.leafValue {
+    font-size: 20px;
+}
+* {
+    
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	position: relative;
+}
+.orgSection {
+
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    zoom: 1;
+}
+
+/* Generic styling */
+
+
+
+.content{
+	width: 100%;
+	max-width: 1400px;
+	margin: 0 auto;
+	padding: 0 20px;
+    background: transparent;
+    height: 800px;
+    margin-top: 20px;
+    @media screen and (width < 768px) {
+        height: 2700px;
+    }
+    
+}
+
+a:focus{
+	outline: 2px dashed #f7f7f7;
+}
+
+@media screen and (max-width: 767px){
+	.content{
+		padding: 0 20px;
+	}	
+}
+
+
+
+/* Department/ section colors */
+/* .department.dep-a a{ background: #FFD600; }
+.department.dep-b a{ background: #AAD4E7; }
+.department.dep-c a{ background: #FDB0FD; }
+.department.dep-d a{ background: #A3A2A2; }
+.department.dep-e a{ background: #f0f0f0; } */
+
+
+
+.orgChartContainer {
+	width: 100%;
+	border: 2px solid #a7a7a7;
+	max-height: 600px;
+    height: 600px;
+    
+	
+
+}
+.orgChart {
+	width: 100%;
+	border: 2px solid #a7a7a7;
+	max-height: 600px;
+    background-color: #5c5c5c;
+            background-image: linear-gradient(90deg, rgba(91,91,91,1.00) 0%,rgba(112,112,112,1.00) 40%,rgba(91,91,91,1.00) 80%,rgba(91,91,91,1.00) 97%);
+            animation-duration: 1s;
+              animation-fill-mode: forwards;
+              animation-iteration-count: infinite;
+              animation-name: loadingShimmer;
+              animation-timing-function: linear;
+              background-color: #efefef;
+              background-image: linear-gradient(90deg, rgba(239,239,239,1.00) 0%,rgba(221,221,221,1.00) 40%,rgba(239,239,239,1.00) 80%,rgba(239,239,239,1.00) 97%);
+              background-repeat: no-repeat;
+              background-size: 50%;
+            @keyframes loadingShimmer {
+                0% {
+                  background-position: -100% 0;
+                }
+              
+                100% {
+                  background-position: 200% 0;
+                }
+              }
+	
+	
+}
+}

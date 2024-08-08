@@ -1,0 +1,146 @@
+.globeContainer {
+    margin: 0 15px;
+    margin-top: 100px;
+    @media screen and (width < 500px) {
+        margin: 0;
+        margin-top: 70px;
+    }
+}
+.globeContainer1 {
+    background-color: #023047;
+    /* background-image: linear-gradient(#023047, #023047), url('../images/ispajview.png');
+    background-size: 100%; */
+    border-radius: 30px;
+    /* border: solid 8px #a8a8a8; */
+    width: calc(50% + 49%);
+    width: calc(100% + 100);
+    @media screen and (width < 1170px) {
+        max-width: 900px;
+        margin: auto;
+    }
+    @media screen and (width < 600px) {
+        height: 450px;
+    }
+    @media screen and (width < 500px) {
+        height: 400px;
+    }
+    @media screen and (width < 345px) {
+        height: 310px;
+    }
+}
+.globeContainer > div {
+    max-width: 1500px;
+    margin: auto;
+}
+.globeContainer > div > .title {
+    font-size: 35px;
+    font-weight: 500;
+    position: relative;
+    padding: 0 20px;
+    @media screen and (width < 900px) {
+        font-size: 30px;
+    }
+    @media screen and (width < 650px) {
+        font-size: 26px;
+    }
+    @media screen and (width < 600px) {
+        font-size: 25px;
+    }
+}
+.globeContainer > div > .title::before {
+    position: absolute;
+    content: "";
+    border-top: solid 8px orange;
+    border-radius: 100px;
+    max-width: 300px;
+    width: 100%;
+    min-width: 100px;
+    top: -10px;
+    
+}
+.canvas {
+    
+}
+.globeGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 1500px;
+    margin: auto;
+    padding: 0 20px;
+    gap: 1vw;
+    height: 500px;
+    @media screen and (width < 1170px) {
+        grid-template-columns: repeat(1, 1fr);
+        height: 1000px;
+        gap: 15px;
+    }
+    @media screen and (width < 545px) {
+        height: 1500px;
+    }
+
+}
+.globeLeft {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1vw;
+    grid-template-areas: 
+    "first second"
+    "third fourth";
+    @media screen and (width < 1170px) {
+        max-width: 900px;
+        margin: auto;
+    }
+    @media screen and (width < 545px) {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 15px;
+        grid-template-areas: 
+        "first"
+        "second"
+        "third"
+        "fourth";
+    }
+}
+.globeLeft > div:nth-child(1) {
+    grid-area: first;
+}
+.globeLeft > div:nth-child(2) {
+    grid-area: second;
+}
+.globeLeft > div:nth-child(3) {
+    grid-area: third;
+}
+.globeLeft > div:nth-child(4) {
+    grid-area: fourth;
+}
+.globeLeft .description::before {
+    position: absolute;
+    content: "";
+    border-top: solid 8px orange;
+    border-radius: 100px;
+    width: 80px;
+    top: -10px;
+}
+.globeLeft .description {
+    position: relative;
+    color: grey;
+    padding-top: 5px;
+}
+.globeLeft > div {
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(151, 151, 151, 0.308);
+    border-radius: 15px;
+    overflow: hidden;
+    height: 250px;
+    align-content: center;
+}
+.globeLeft > div > img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transition: 0.3s ease-in-out;
+}
+.globeLeft > div:hover > img {
+    filter: brightness(0.5);
+    transform: scale(1.2);
+}
