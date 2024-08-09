@@ -272,8 +272,8 @@ const EnginesPage = ({curso, departamentos}) => {
                         <div className='description'>{location.state.avaliacao}</div>
 
                         <div className='banner'>
-                            <div className='title'>O ENSINO AO SERVI�O DE ANGOLA</div>
-                            <div className='description'>Existimos para formar profissionais de excel�ncia</div>
+                            <div className='title'>O ENSINO AO SERVIÇO DE ANGOLA</div>
+                            <div className='description'>Existimos para formar profissionais de excelência</div>
                         </div>
                     </div>:
 

@@ -115,7 +115,7 @@ const Footer = () => {
                     </div>
                     <div className='footerGrid1'>
                         <div className='column'>
-                        © 2024 Universidade ISPAJ. Todos os direitos reservados. A Universidade ISPAJ dedica-se à excelência académica e à inovação na educação. Nosso campus está localizado em Luanda, Nova Vida, rua 45. Para questões gerais, entre em contato conosco pelo telefone (+244) 945-123-327 ou envie um e-mail para info@ispaj.com. Para dúvidas relacionadas à admissão, envie um e-mail para admissions@ispaj.edu ou ligue para (+244) 945 648 049. Nosso horário de atendimento é de segunda a sexta-feira, das 9h às 17h. Mantenha-se conectado conosco através de nossos canais de mídia social: Facebook, Twitter e Instagram.
+                        © 2024 Universidade ISPAJ. Todos os direitos reservados. A Universidade ISPAJ dedica-se à excelência académica e à inovação na educação. Nosso campus está localizado em Luanda, Nova Vida, rua 45. Para questões gerais, entre em contato conosco pelo telefone (+244) 934550014/934551800 ou envie um e-mail para geral@ispaj.net. Mantenha-se conectado conosco através de nossos canais de mídia social: Facebook, Twitter e Instagram.
                         </div>
                         <div className='column'>
                         <svg style={{cursor: 'pointer'}} onClick={() => {
