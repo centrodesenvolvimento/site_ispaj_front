@@ -7,8 +7,20 @@ import { baseURL } from '../api/api'
 import { format } from 'date-fns'
 import Skeleton from 'react-loading-skeleton'
 import Footer from '../components/footer'
-import Lightbox from 'react-image-lightbox'
-import 'react-image-lightbox/style.css'
+import Lightbox from "yet-another-react-lightbox"
+import "yet-another-react-lightbox/styles.css"
+import "yet-another-react-lightbox/plugins/counter.css"
+import Counter from "yet-another-react-lightbox/plugins/counter"
+import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen"
+import "yet-another-react-lightbox/styles.css"
+import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails"
+import "yet-another-react-lightbox/plugins/thumbnails.css"
+import Zoom from "yet-another-react-lightbox/plugins/zoom"
+import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
+
+
+
+
 const NewsArticle = () => {
     const navigate = useNavigate()
     const { id } = useParams()
@@ -123,14 +135,39 @@ const NewsArticle = () => {
     useEffect(() => {
       if (prevLocationRef.current.pathname !== location.pathname) {
         window.location.reload();
+        window.scrollTo(0, 0)
+
+        
     }
     prevLocationRef.current = location;
 
   }, [location])
+  const secondContainerRef = useRef(null)
+    useEffect(() => {
+      const adjustMargin = () => {
+        if (secondContainerRef.current) {
+            const outerContainerHeight = document.querySelector('.outerContainer')?.clientHeight + 25 || 0;
+            secondContainerRef.current.style.marginTop = `${outerContainerHeight}px`;
+        }
+    };
+
+    const intervalId = setInterval(() => {
+        adjustMargin(); // Call the function to adjust margin at regular intervals
+    }, 1); // Adjust the interval time as needed
+
+    // Cleanup the interval on component unmount
+    return () => {
+        clearInterval(intervalId);
+    };
+    })
+    useEffect(() => {
+      window.scrollTo(0, 0)
+
+    }, [])
     return (
         <div className="abtCont">
             <Header />
-            <div className='newsArticleContainer'>
+            <div className='newsArticleContainer' ref={secondContainerRef} style={{marginTop: document.querySelector('.outerContainer')?.clientHeight + 25}}>
                 <div className='firstCont'>
               <div className="navigation" style={{margin: 0}}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-map-fill" viewBox="0 0 16 16">
@@ -221,24 +258,36 @@ const NewsArticle = () => {
   </div>
 </div>
 {isOpen && (
+        // <Lightbox
+        
+        //   mainSrc={[...article.imagens][photoIndex]}
+        //   nextSrc={[...article.imagens][(photoIndex + 1) % [...article.imagens].length]}
+        //   prevSrc={[...article.imagens][(photoIndex + [...article.imagens].length - 1) % [...article.imagens].length]}
+        //   onCloseRequest={() => setIsOpen(false)}
+        //   onMovePrevRequest={() =>
+        //     setPhotoIndex((photoIndex + [...article.imagens].length - 1) % [...article.imagens].length)
+        //   }
+        //   onMoveNextRequest={() =>
+        //     setPhotoIndex((photoIndex + 1) % [...article.imagens].length)
+        //   }
+        // />
         <Lightbox
-          onAfterOpen={() => {
-            let i = 2
-            i = i + 23
-            console.log('opened lightbox', i)
-            setPhotoIndex(0)
-          }}
-          mainSrc={[...article.imagens][photoIndex]}
-          nextSrc={[...article.imagens][(photoIndex + 1) % [...article.imagens].length]}
-          prevSrc={[...article.imagens][(photoIndex + [...article.imagens].length - 1) % [...article.imagens].length]}
-          onCloseRequest={() => setIsOpen(false)}
-          onMovePrevRequest={() =>
-            setPhotoIndex((photoIndex + [...article.imagens].length - 1) % [...article.imagens].length)
-          }
-          onMoveNextRequest={() =>
-            setPhotoIndex((photoIndex + 1) % [...article.imagens].length)
-          }
-        />
+        
+        styles={{
+          slide: {
+          },
+          container: {
+            background: '#000000ea'
+          },
+          
+        }}
+        plugins={[Counter, Fullscreen, Thumbnails, Zoom, Slideshow]}
+        open={isOpen}
+        close={() => setIsOpen(false)}
+        slides={[...article.imagens].map((item)=> {
+          return {src: item}
+        })}
+      />
       )}
 <div className='dots' style={{display: 'none'}}>
     {article?.imagens && [...article?.imagens].length > 0 && [...article?.imagens].map((item, index) => {

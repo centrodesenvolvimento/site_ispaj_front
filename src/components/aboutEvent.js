@@ -1,9 +1,17 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import '../css/aboutEvent.css'
 import { useEffect, useState } from 'react'
-import Lightbox from 'react-image-lightbox'
 import Skeleton from 'react-loading-skeleton'
 import { format } from 'date-fns'
+import Lightbox from "yet-another-react-lightbox"
+import "yet-another-react-lightbox/styles.css"
+import "yet-another-react-lightbox/plugins/counter.css"
+import Counter from "yet-another-react-lightbox/plugins/counter"
+import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen"
+import "yet-another-react-lightbox/styles.css"
+import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails"
+import "yet-another-react-lightbox/plugins/thumbnails.css"
+import Zoom from "yet-another-react-lightbox/plugins/zoom"
 const AboutEvent = ({
     item
 }) => {
@@ -44,7 +52,7 @@ const AboutEvent = ({
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
   <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
 </svg>      
-            <span>Publicado em {new Date().getDate()} de {months[new Date().getMonth()]}, {new Date().getFullYear()}</span>
+            <span>Publicado em {new Date(item?.info?.iniDate).getDate()} de {months[new Date(item?.info?.iniDate).getMonth()]}, {new Date(item?.info?.iniDate).getFullYear()}</span>
 
             
             </div> : <Skeleton className='date'/>}
@@ -58,7 +66,7 @@ const AboutEvent = ({
   <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
 </svg>
             </div>
-            <div className='title'>{item.title}</div>
+            <div className='title'>{item?.info?.titulo}</div>
             {item ? <div onClick={() => {
             openLightbox(0)
         
@@ -71,20 +79,19 @@ const AboutEvent = ({
             </div>
             {isOpen && (
         <Lightbox
-          mainSrc={[item?.info.imagem][photoIndex]}
-          nextSrc={[item?.info.imagem][(photoIndex + 1) % [item?.info.imagem].length]}
-          prevSrc={[item?.info.imagem][(photoIndex + [item?.info.imagem].length - 1) % [item?.info.imagem].length]}
-          onCloseRequest={() => setIsOpen(false)}
-          onAfterOpen={() => {
-            
-          }}
-          onMovePrevRequest={() =>
-            setPhotoIndex((photoIndex + [item?.info.imagem].length - 1) % [item?.info.imagem].length)
+        
+        styles={{
+          slide: {
+          },
+          container: {
+            background: '#000000ea'
           }
-          onMoveNextRequest={() =>
-            setPhotoIndex((photoIndex + 1) %[item?.info.imagem].length)
-          }
-        />
+        }}
+        plugins={[Counter, Fullscreen, Zoom]}
+        open={isOpen}
+        close={() => setIsOpen(false)}
+        slides={[{src: item?.info?.imagem}]}
+      />
       )}
             <div className='eventAttrs'>
                 <section className='attr'>

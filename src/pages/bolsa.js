@@ -2,7 +2,7 @@ import '../css/bolsas.css'
 import { useLocation, useNavigate } from "react-router-dom"
 import Footer from "../components/footer"
 import Header from "../components/header"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import toast, { Toaster } from "react-hot-toast"
 import axios from "axios"
 import { baseURL } from "../api/api"
@@ -26,7 +26,8 @@ const Bolsa = () => {
     const [email, setEmail] = useState('')
 
 
-
+    const secondContainerRef = useRef(null)
+    
     const send = () => {
         setErrors([])
         setLoad(true)
@@ -78,12 +79,32 @@ const Bolsa = () => {
         
         
     }
+    useEffect(() => {
+        const adjustMargin = () => {
+            if (secondContainerRef.current) {
+                const outerContainerHeight = document.querySelector('.outerContainer')?.clientHeight + 20 || 0;
+                secondContainerRef.current.style.marginTop = `${outerContainerHeight}px`;
+            }
+        };
+
+        const intervalId = setInterval(() => {
+            adjustMargin(); // Call the function to adjust margin at regular intervals
+        }, 1); // Adjust the interval time as needed
+
+        // Cleanup the interval on component unmount
+        return () => {
+            clearInterval(intervalId);
+        };
+    })
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     return (
         <div className="abtCont">
             <Header />
             <Toaster/>
 
-            <div className='newsArticleContainer'>
+            <div className='newsArticleContainer' ref={secondContainerRef} style={{marginTop: document.querySelector('.outerContainer')?.clientHeight + 20}}>
                 <div className='firstCont'>
                 <div className="navigation" style={{margin: 0, marginBottom: 30}}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-map-fill" viewBox="0 0 16 16">

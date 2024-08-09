@@ -29,7 +29,7 @@ const Organisation = ({aboutContent}) => {
             </div>
             {`${aboutContent?.organigrama}`.length > 8 && <div style={{display: 'flex', flexDirection: 'row'}}><div
             onClick={() => {
-              window.open(aboutContent?.organigrama)
+              window.open(`${baseURL}/storage/pdfs/${aboutContent?.organigrama}`)
             }} className='seeMore'>Tela Cheia</div>
             {/* <a href={aboutContent?.organigrama} download={'OrganigramaISPAJ'} className='seeMore'>Baixar PDF</a> */}
             </div>}

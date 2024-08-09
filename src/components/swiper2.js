@@ -49,8 +49,26 @@ const Swiper2 = () => {
         return () => clearInterval(interval);
   
     }, [activeIndex])
+    const secondContainerRef = useRef(null)
+    useEffect(() => {
+      const adjustMargin = () => {
+        if (secondContainerRef.current) {
+            const outerContainerHeight = document.querySelector('.outerContainer')?.clientHeight || 0;
+            secondContainerRef.current.style.marginTop = `${outerContainerHeight}px`;
+        }
+    };
+
+    const intervalId = setInterval(() => {
+        adjustMargin(); // Call the function to adjust margin at regular intervals
+    }, 1); // Adjust the interval time as needed
+
+    // Cleanup the interval on component unmount
+    return () => {
+        clearInterval(intervalId);
+    };
+    })
     return (
-        <div className='secondContainer'>
+        <div className='secondContainer' ref={secondContainerRef} style={{marginTop: document.querySelector('.outerContainer')?.clientHeight}}>
             
             <Swiper
         spaceBetween={30}

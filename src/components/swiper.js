@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {motion} from 'framer-motion'
 import '../css/header.css'
 import axios from 'axios'
@@ -26,11 +26,30 @@ const Swiper = () => {
             setAboutContent([...res.data][0])
         })
     }, [])
+    const secondContainerRef = useRef(null)
+    useEffect(() => {
+        
+        const adjustMargin = () => {
+            if (secondContainerRef.current) {
+                const outerContainerHeight = document.querySelector('.outerContainer')?.clientHeight || 0;
+                secondContainerRef.current.style.marginTop = `${outerContainerHeight}px`;
+            }
+        };
+
+        const intervalId = setInterval(() => {
+            adjustMargin(); // Call the function to adjust margin at regular intervals
+        }, 1); // Adjust the interval time as needed
+
+        // Cleanup the interval on component unmount
+        return () => {
+            clearInterval(intervalId);
+        };
+    })
     const [canPlay, setCanPlay] = useState(false)
     return (
-        <div className='secondContainer'>
+        <div className='secondContainer' ref={secondContainerRef} style={{marginTop: document.querySelector('.outerContainer')?.clientHeight}}>
             
-        <div className='swiper' style={{}}>
+        <div className='swiper'>
             <div className='slideTextCont'>{activeIndex == 0 && <motion.div initial={{opacity: 0, x: 200}} animate={{opacity: 1, x: 0}} transition={{duration: 0.8}} className='slideText'>Seja bem vindo ao Instituto Superior Politécnico Alvorecer Da Juventude</motion.div>}</div>
             <div className='slideTextCont'>{activeIndex == 1 && <motion.div initial={{opacity: 0, x: 200}} animate={{opacity: 1, x: 0}} transition={{duration: 0.8}} className='slideText'>Um lugar de descoberta, crescimento e sucesso. Experimente</motion.div>}</div>
             <div className='slideTextCont'>{activeIndex == 2 && <motion.div initial={{opacity: 0, x: 200}} animate={{opacity: 1, x: 0}} transition={{duration: 0.8}} className='slideText'>Educação transformadora</motion.div>}</div>

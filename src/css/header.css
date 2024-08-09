@@ -9,7 +9,6 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 70px;
     z-index: 200;
     box-sizing: border-box;
     margin: 0;
@@ -23,13 +22,86 @@
         height: 60px;
     }
 }
+.preHeader::before {
+    /* content: "";
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    right: 0;
+    left: 0;
+    height: 55px;
+    background-color: orange; */
+    
+}
+.preHeader {
+    max-width: 1580px;
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    padding: 10px 0;
+    height: 55px;
+    position: relative;
+    transition: 0.3s ease-in-out;  
+    background: transparent;
+    
+
+    
+    border-bottom: 0.5px solid #dddddd;
+    @media screen and (width < 800px) {
+        display: none;
+    }
+
+    .socials {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 0 20px;
+        gap: 10px;
+        svg {
+            color: orange;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+    }
+    
+    .params {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .param {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+        margin: 0 20px;
+        
+        svg {
+            color: orange;
+            width: 23px;
+            height: 23px;
+        }
+        .paramTitle {
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .description {
+            color: #7e7e7e;
+            font-size: 13px;
+            margin-top: -2px;
+        }
+    }
+}
 .secondContainer {
     flex: 1;
     z-index: 5;
-    margin-top: 70px;
+    transition: 0.3s ease-in-out;  
     @media screen and (width < 400px) {
         justify-content: space-between;
-        margin-top: 50px;
     }
 }
 .container {
@@ -44,6 +116,7 @@
     margin-right: auto;
     gap: 10px;
     background: transparent;
+    transition: 0.3s ease-in-out;  
 
     box-sizing: border-box;
     @media screen and (width < 400px) {
@@ -456,6 +529,7 @@ svg[class~='bi-brightness-high'] {
     background-image: linear-gradient(90deg, rgba(239,239,239,1.00) 0%,rgba(221,221,221,1.00) 40%,rgba(239,239,239,1.00) 80%,rgba(239,239,239,1.00) 97%);
     background-repeat: no-repeat;
     background-size: 50%;
+    
     /* background-color: rgb(255, 255, 255); */
     
     /* background-color: #e3e3e3;

@@ -106,7 +106,7 @@ const News = () => {
                             </section>
                         
                 <div className='seeMore' onClick={()=> {
-                    navigate('/soon')
+                                navigate('/noticias')
                 }}>Ver Mais</div>
             </div>
         </div>

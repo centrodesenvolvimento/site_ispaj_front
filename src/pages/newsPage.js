@@ -145,17 +145,40 @@ const NewsPage = () => {
     useEffect(() => {
       if (prevLocationRef.current.pathname !== location.pathname) {
         window.location.reload();
+        window.scrollTo(0, 0)
+
     }
     prevLocationRef.current = location;
 
   }, [location])
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+const secondContainerRef = useRef(null)
+useEffect(() => {
+    const adjustMargin = () => {
+        if (secondContainerRef.current) {
+            const outerContainerHeight = document.querySelector('.outerContainer')?.clientHeight + 35 || 0;
+            secondContainerRef.current.style.marginTop = `${outerContainerHeight}px`;
+        }
+    };
+
+    const intervalId = setInterval(() => {
+        adjustMargin(); // Call the function to adjust margin at regular intervals
+    }, 1); // Adjust the interval time as needed
+
+    // Cleanup the interval on component unmount
+    return () => {
+        clearInterval(intervalId);
+    };
+})
     return (
         <div className="abtCont">
             <Toaster />
             <Header />
             {/* <div className="" style={{marginTop: 0, background: '#eeeeee', aspectRatio: 4/1.5, width: '100%', maxHeight: 300}}>
             <img style={{objectFit: 'cover', width: '100%', height: '100%'}} src={process.env.PUBLIC_URL + '/images/ispaj.png'}/></div> */}
-            <div className="aboutFirst" style={{marginTop: 100, maxWidth: 1600}}>
+            <div className="aboutFirst" ref={secondContainerRef} style={{marginTop: document.querySelector('.outerContainer')?.clientHeight + 35}}>
               <div className="navigation" >
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-map-fill" viewBox="0 0 16 16">
                       <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.598-.49L10.5.99 5.598.01a.5.5 0 0 0-.196 0l-5 1A.5.5 0 0 0 0 1.5v14a.5.5 0 0 0 .598.49l4.902-.98 4.902.98a.5.5 0 0 0 .196 0l5-1A.5.5 0 0 0 16 14.5zM5 14.09V1.11l.5-.1.5.1v12.98l-.402-.08a.5.5 0 0 0-.196 0zm5 .8V1.91l.402.08a.5.5 0 0 0 .196 0L11 1.91v12.98l-.5.1z"/>
@@ -298,7 +321,7 @@ const NewsPage = () => {
                             
                             forcePage={currentPage-1}
                             pageRangeDisplayed={5}
-                            pageCount={posts2.slice(0, Math.ceil((posts2.length -2) /postPerPage)).map((item, index) => index + 1)}
+                            pageCount={posts1.slice(0, Math.ceil((posts1.length) /postPerPage)).map((item, index) => index + 1)}
                             previousLabel="<"
                             renderOnZeroPageCount={null}
                             containerClassName={'pagination'}
@@ -347,7 +370,7 @@ const NewsPage = () => {
                             
                             forcePage={currentPage-1}
                             pageRangeDisplayed={5}
-                            pageCount={posts2.slice(0, Math.ceil((posts2.length -2) /postPerPage)).map((item, index) => index + 1)}
+                            pageCount={posts1.slice(0, Math.ceil((posts1.length) /postPerPage)).map((item, index) => index + 1)}
                             previousLabel="<"
                             renderOnZeroPageCount={null}
                             containerClassName={'pagination'}

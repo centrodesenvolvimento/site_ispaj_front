@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 import '../css/sugestions.css'
 import toast, { Toaster } from "react-hot-toast"
@@ -75,8 +75,14 @@ const Sugestions = () => {
           .then(data => setAnimationData(data))
           .catch(error => console.error('Error loading animation data:', error));
       }, []);
+      const secondContainerRef = useRef(null)
+    useEffect(() => {
+        if (secondContainerRef.current){
+            secondContainerRef.current.style.marginTop = document.querySelector('.outerContainer')?.clientHeight
+        }
+    })
     return (
-        <div style={{display: 'flex', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
+        <div style={{display: 'flex', height: '100%', justifyContent: 'center', alignItems: 'center', }}>
             <Toaster/>
             <div className="container1" style={{width: '100%', height: '100%'}}>
                 <div className="sugestionsContainer" style={{maxWidth: '100%', margin: 0}}>
