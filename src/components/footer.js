@@ -84,7 +84,7 @@ const Footer = () => {
                             <div style={{cursor: 'pointer'}} className='item' onClick={() => {
                                 navigate('/cursos')
                                 localStorage.setItem('path', 'Ciências das Engenharias/Exatas')
-                            }}>Ciências das Engenharias/Exactas</div>
+                            }}>Engenharias e Ciências Exactas</div>
                             <div style={{cursor: 'pointer'}} className='item' onClick={() => {
                                 navigate('/cursos')
                                 localStorage.setItem('path', 'Ciências de Saúde')
