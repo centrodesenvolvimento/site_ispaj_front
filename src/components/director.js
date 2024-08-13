@@ -18,7 +18,7 @@ const Director = () => {
         axios.get(`${baseURL}/api/aboutContents`)
         .then(res => {
             // setAboutContent([...res.data][0])
-            setName([...[...res.data][0].orgaos_singulares].filter((item) => item.presidente == 'true')[0].nome)
+            setName([...[...res.data][0].orgaos_singulares].filter((item) => item.presidente == 'true')[0]?.nome)
         })
 
 

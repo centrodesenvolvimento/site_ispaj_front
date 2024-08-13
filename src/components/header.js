@@ -238,9 +238,7 @@ const Header = () => {
                 
                         </div>
                         <div className='headerEnd' >
-                            <div className='contact' onClick={() => {
-                            navigate('/soon')
-                        }}>
+                            <div className='contact' style={{opacity: 0}}>
                                 Inscrição Online
                             </div>
                         </div>
