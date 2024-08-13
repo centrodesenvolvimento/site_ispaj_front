@@ -93,7 +93,7 @@ const Footer = () => {
 
                         </section>
                         {/* third column */}
-                        <section className='column'>
+                        {/* <section className='column'>
                             <div className='title'>Outros sites nossos</div>
                             <div style={{cursor: 'pointer'}} className='item' onClick={() => {
                                 navigate('/soon')
@@ -101,7 +101,7 @@ const Footer = () => {
                             <div style={{cursor: 'pointer'}} className='item' onClick={() => {
                                 navigate('/soon')
                             }}>Clínica ISPAJ</div>
-                        </section>
+                        </section> */}
                         <section className='column'>
                             <div className='title'>Nos Contacte</div>
                             <div style={{cursor: 'pointer'}} className='item'><a style={{textDecoration: 'none'}} href={`mailto:${info?.email}`}>{info?.email}</a></div>
@@ -115,7 +115,7 @@ const Footer = () => {
                     </div>
                     <div className='footerGrid1'>
                         <div className='column'>
-                        © 2024. O Instituto Superior Politécnico Alvorecer da Juventude. Todos os direitos reservados. O ISPAJ dedica-se à excelência académica e à inovação na educação. Estamos localizados em Luanda, Kilamba Kiaxi, Urbanização Nova Vida, rua 45. Para questões gerais, entre em contato conosco pelo telefone (+244) 934550014/934551800 ou envie um e-mail para geral@ispaj.net. Mantenha-se conectado connosco através de nossos canais de mídia social: Facebook, Twitter e Instagram.
+                        © 2024. O Instituto Superior Politécnico Alvorecer da Juventude. Todos os direitos reservados. O ISPAJ dedica-se à excelência académica e à inovação na educação. Estamos localizados em Luanda, Kilamba Kiaxi, Urbanização Nova Vida, rua 45. Para questões gerais, entre em contato conosco pelo telefone (+244) 934550014/934551800 ou envie um e-mail para geral@ispaj.net. Mantenha-se conectado connosco através de nossos canais de mídia social: Facebook, Instagram e Twitter.
                         </div>
                         <div className='column'>
                         <svg style={{cursor: 'pointer'}} onClick={() => {

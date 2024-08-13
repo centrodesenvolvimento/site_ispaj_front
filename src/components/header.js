@@ -238,7 +238,7 @@ const Header = () => {
                 
                         </div>
                         <div className='headerEnd' >
-                            <div className='contact' style={{opacity: 0}}>
+                            <div className='contfact' style={{opacity: 0}}>
                                 Inscrição Online
                             </div>
                         </div>
@@ -389,18 +389,18 @@ const Header = () => {
                                     ...departments[1]
                                 }
                             })
-                            localStorage.setItem('path', 'Sociais e económicas')
+                            localStorage.setItem('path', 'Sociais e Económicas')
                             window.location.reload()
-                        }}><span>Sociais e económicas</span></div>
+                        }}><span>Ciências Sociais e Económicas</span></div>
                         <div className='sideMenuItem' onClick={() => {
                             navigate('/cursos', {
                                 state: {
                                     ...departments[2]
                                 }
                             })
-                            localStorage.setItem('path', 'Engenharias e ciências exatas')
+                            localStorage.setItem('path', 'Engenharias e Ciências Exatas')
                             window.location.reload()
-                        }}><span>Engenharias e ciências exatas</span></div>
+                        }}><span>Engenharias e Ciências Exatas</span></div>
                         <div className='sideMenuItem' onClick={() => {
                             navigate('/cursos', {
                                 state: {
@@ -410,7 +410,7 @@ const Header = () => {
                             localStorage.setItem('path', 'Saúde')
                             localStorage.setItem('course',departments[0]?.id)
                             window.location.reload()
-                        }}><span>Saúde</span></div>
+                        }}><span>Ciências da Saúde</span></div>
                     </SideMenuItem>
                         : selectedSide == 3 ? <SideMenuItem>
                         <div onClick={() => setSelectedSide(0)} className='sideMenuItem1'><LeftChevron /></div>
@@ -660,7 +660,7 @@ const Content = ({ selected, dir }) => {
                                 localStorage.setItem('path', 'Sociais e económicas')
                                 window.location.reload()
 
-                        }}>Sociais e económicas</div>
+                        }}>Ciências Sociais e Económicas</div>
                     <div className='subItem' onClick={() => {
                                 navigate('/cursos', {
                                     state: {
@@ -670,7 +670,7 @@ const Content = ({ selected, dir }) => {
                                 localStorage.setItem('path', 'Engenharias e ciências exatas')
                                 localStorage.setItem('course',departments[2]?.id)
                                 window.location.reload()
-                        }}>Engenharias e ciências exatas</div>
+                        }}>Engenharias e Ciências Exatas</div>
                     <div className='subItem' onClick={() => {
                                 navigate('/cursos', {
                                     state: {
@@ -681,7 +681,7 @@ const Content = ({ selected, dir }) => {
                                 localStorage.setItem('course',departments[0]?.id)
                                 window.location.reload()
 
-                        }}>Saúde</div>
+                        }}>Ciências da Saúde</div>
                     
                 </div>
                 : selected == 3 ? <div className='subMenu'>
