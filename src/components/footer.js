@@ -139,7 +139,7 @@ const Footer = () => {
             </div>
 
             <div className='madeBy'>
-                    <div><span>© {new Date().getFullYear()} Universidade ISPAJ - </span> <span>Made by LevelSoft</span></div>
+                    <div><span>© {new Date().getFullYear()} ISPAJ - Instituto Superior Politécnico Alvorecer da Juventude - </span> <span>Made by LevelSoft</span></div>
             </div>
         </div>
     )
