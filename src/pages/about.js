@@ -95,7 +95,7 @@ const wrapperVariants = {
   }, [])
   
     return (
-      <div ref={menuRef} style={{zIndex: 100}} className="aboutOptions">
+      <div ref={menuRef} style={{zIndex: 50}} className="aboutOptions">
         <motion.div animate={open ? "open" : "closed"} className="relative">
           <button
             onClick={() => setOpen((pv) => !pv)}

@@ -303,7 +303,7 @@ const Header = () => {
                                 duration: 0.5,
                                 ease: 'easeInOut',
                             }}
-                            className='sideText'>instituto superior politécnico alvorecer da juventude</motion.div>}
+                            className='sideText' style={{marginLeft: 5}}>instituto superior politécnico alvorecer da juventude</motion.div>}
                         </div>
                         {selectedSide == 0 ? <motion.div
                         initial={{

@@ -130,8 +130,8 @@ const AboutEvent = ({
                 <div className='' dangerouslySetInnerHTML={{__html: item?.info?.descricao}}>
 
                 </div>
-                <div className='mapView' dangerouslySetInnerHTML={{__html: item?.info?.iframe}}>
-                </div>
+                {item?.info?.iframe && <div className='mapView' dangerouslySetInnerHTML={{__html: item?.info?.iframe}}>
+                </div>}
                 
             </div>
         </div>

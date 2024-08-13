@@ -48,6 +48,7 @@ const AdminCalendar = () => {
     const [description, setDescription] = useState('')
     const [sameDay, setSameDay] = useState(false)
     const [hours, setHours] = useState('')
+    const [hours2, setHours2] = useState('')
     const [localizacao, setLocalizacao] = useState('')
     const [imagePreview, setImagePreview] = useState('')
     const [events, setEvents] = useState([
@@ -139,7 +140,7 @@ const AdminCalendar = () => {
     const addEvent = async() => {
         setErrors([])
         setMessages([])
-        if (title.length == 0 || publics.length == 0 || localizacao.length == 0 || type.length == 0 || description == '<p><br></p>' || description.length == 0 || iframe.length == 0 || !completedCrop || (sameDay && hours.length == 0)) {
+        if (title.length == 0 || publics.length == 0 || localizacao.length == 0 || type.length == 0 || description == '<p><br></p>' || description.length == 0 || !completedCrop || (sameDay && hours.length == 0 || hours2.length == 0)) {
             setErrors(['Preencha todos os campos!'])
         }else {
             try {
@@ -159,7 +160,7 @@ const AdminCalendar = () => {
                         mesmo_dia: sameDay,
                         iniDate: dateAdded,
                         finalDate: finalDate,
-                        horario: hours,
+                        horario: `${hours} - ${hours2}`,
                         publico: publics,
                         descricao: description,
                         localizacao: localizacao,
@@ -210,7 +211,7 @@ const AdminCalendar = () => {
                             mesmo_dia: sameDay,
                             iniDate: dateAdded,
                             finalDate: finalDate,
-                            horario: hours,
+                            horario: `${hours} - ${hours2}`,
                             publico: publics,
                             descricao: description,
                             localizacao: localizacao,
@@ -429,11 +430,20 @@ const AdminCalendar = () => {
                                         </div>
                                         <div className='form'>
                                             <div  className='label'>
-                                                Horário
+                                                Horário (clica no relógio)
                                             </div>
-                                            <input value={hours} onChange={(e) => {
+                                            <div className='label'>Hora de início - Hora de fim</div>
+                                            <div style={{display: 'flex', flexDirection: 'row', maxWidth: 600,  gap: 10, alignItems: 'center'}}>
+                                            <input style={{maxWidth: 150}}className='loginInput' type='time' value={hours} onChange={(e) => {
                                                 setHours(e.target.value)
-                                            }} className='loginInput' placeholder='Ex: 14:30 - 16:00'/>
+                                            }}/> - 
+                                            <input style={{maxWidth: 150}}className='loginInput' type='time' value={hours2} onChange={(e) => {
+                                                setHours2(e.target.value)
+                                            }}/>
+                                            </div>
+                                            {/* <input value={hours} onChange={(e) => {
+                                                setHours(e.target.value)
+                                            }} className='loginInput' placeholder='Ex: 14:30 - 16:00'/> */}
                                         </div>
                                             </div>
     }
@@ -492,7 +502,7 @@ const AdminCalendar = () => {
     </div>
     <div className='form'>
         <div>
-            <div className='label'>IFrame para o mapa</div>
+            <div className='label'>IFrame para o mapa (opcional)</div>
             <div style={{fontSize: 14}}>OBS: Vá para <a style={{color: 'blue'}} target='_blank' href='https://www.google.com/maps/'>Google Maps</a>; procure uma localização; procure opção de partilha; escolhe a opção de "incorporar um mapa"; copie o código HTML e cole aqui abaixo.</div>
         </div>
         <input value={iframe} onChange={(e) => setIframe(e.target.value)}  className='loginInput' placeholder='IFrame...'/>
@@ -568,7 +578,11 @@ const AdminCalendar = () => {
                             setIframe(item.info.iframe)
                             setDateAdded(new Date(item.info.iniDate))
                             setFinalDate(new Date(item.info.finalDate))
-                            setHours(item.hours)
+                            console.log('same', item.info.mesmo_dia == true)
+                            setSameDay(item.info.mesmo_dia == true)
+                            
+                            setHours(`${item.info.horario}`.split(' - ')[0]?.trim())
+                            setHours2(`${item.info.horario}`.split(' - ')[1]?.trim())
                             
                             }}>
 <div className='actionButton'>
@@ -639,7 +653,7 @@ const AdminCalendar = () => {
                                                 
                                             <div style={{display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: 10, margin: '20px 0'}}>
         
-        <input type='checkbox' value={sameDay} onChange={(e) => {
+        <input type='checkbox' value={sameDay} checked={sameDay} onChange={(e) => {
         setSameDay(!sameDay)                                                               
         }}/>
       <div style={{display: 'flex', flexDirection: 'column', gap: 1.5}}>
@@ -717,12 +731,23 @@ const AdminCalendar = () => {
                                 
                                         </div>
                                         <div className='form'>
+                                        <div className='form'>
                                             <div  className='label'>
-                                                Horário
+                                                Horário (clica no relógio)
                                             </div>
-                                            <input value={hours} onChange={(e) => {
+                                            <div className='label'>Hora de início - Hora de fim</div>
+                                            <div style={{display: 'flex', flexDirection: 'row', maxWidth: 600,  gap: 10, alignItems: 'center'}}>
+                                            <input style={{maxWidth: 150}}className='loginInput' type='time' value={hours} onChange={(e) => {
                                                 setHours(e.target.value)
-                                            }} className='loginInput' placeholder='Ex: 14:30 - 16:00'/>
+                                            }}/> - 
+                                            <input style={{maxWidth: 150}}className='loginInput' type='time' value={hours2} onChange={(e) => {
+                                                setHours2(e.target.value)
+                                            }}/>
+                                            </div>
+                                            {/* <input value={hours} onChange={(e) => {
+                                                setHours(e.target.value)
+                                            }} className='loginInput' placeholder='Ex: 14:30 - 16:00'/> */}
+                                        </div>
                                         </div>
                                             </div>
     }

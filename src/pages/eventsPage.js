@@ -23,6 +23,7 @@ const EventsPage = () => {
     const [section, setSection] = useState('Eventos')
     const [date, setDate] = useState(new Date())
     const [events, setEvents] = useState([])
+    const [load, setLoad] = useState(true)
     const [posts, setPosts] = useState([
         {
             id: 0,
@@ -147,7 +148,12 @@ const EventsPage = () => {
         .then(res => {
             setEventos([...res.data])
             setFilteredEvents([...res.data])
+            setLoad(false)
         })
+        .catch(() => {
+            setLoad(false)
+        })
+
     }, [])
     const [publics, setPublics] = useState([])
 
@@ -205,10 +211,14 @@ const EventsPage = () => {
                 }
                 
             }).filter((item) => {
-                if (publics.every(element => [...item?.info?.publico].includes(element))){
+                if (publics.length > 0){
+                    if (publics.some(element => [...item?.info?.publico].includes(element))){
+                        return item
+                    }
+                }else {
                     return item
                 }
-            }))
+            }).sort((a, b) =>  [...b?.info?.publico].length - [...a?.info?.publico].length))
         }else if (view == 'year'){
             console.log('year')
             setFilteredEvents( eventos.filter((item) => {
@@ -240,10 +250,14 @@ const EventsPage = () => {
                 }
                 
             }).filter((item) => {
-                if (publics.every(element => [...item?.info?.publico].includes(element))){
+                if (publics.length > 0){
+                    if (publics.some(element => [...item?.info?.publico].includes(element))){
+                        return item
+                    }
+                }else {
                     return item
                 }
-            }))
+            }).sort((a, b) =>  [...b?.info?.publico].length - [...a?.info?.publico].length))
         }else if (view == 'decade'){
             console.log('decade', clickedYear)
             setFilteredEvents( eventos.filter((item) => {
@@ -276,10 +290,14 @@ const EventsPage = () => {
                 }
                 
             }).filter((item) => {
-                if (publics.every(element => [...item?.info?.publico].includes(element))){
+                if (publics.length > 0){
+                    if (publics.some(element => [...item?.info?.publico].includes(element))){
+                        return item
+                    }
+                }else {
                     return item
                 }
-            }))
+            }).sort((a, b) =>  [...b?.info?.publico].length - [...a?.info?.publico].length))
         }
     }, [date, publics, eventos])
     // tommorow work on about event page and publics filtering
@@ -310,7 +328,10 @@ const EventsPage = () => {
       }]
     useEffect(() => {
         console.log('publics', eventos.filter((item) => {
-            if (publics.every(element => [...item?.info?.publico].includes(element))){
+            // if (publics.every(element => [...item?.info?.publico].includes(element))){
+            //     return item
+            // }
+            if (publics.some(element => [...item?.info?.publico].includes(element))){
                 return item
             }
         }))
@@ -628,7 +649,7 @@ const EventsPage = () => {
                     })
                     : 
                     <div>
-                        {<div className="noResults">
+                        {!load && <div className="noResults">
                             Nenhum resultado.
                         </div>}
                         
@@ -666,7 +687,7 @@ const EventsPage = () => {
                                 )
                             })
                         :
-                        <div className="">Nenhum evento em curso.</div>}</>}
+                        <div className="">{!load && 'Nenhum evento em curso.'}</div>}</>}
                 </section>
             </div>
 

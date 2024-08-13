@@ -243,6 +243,9 @@ Trabalho em hospitais, clínicas, centros de saúde.`,
     ])
     useEffect(() => {
     }, [])
+    const firstVid = useRef(null)
+    const secondVid = useRef(null)
+    const thirdVid = useRef(null)
     return (
         <div className='testContainer'>
             <Swiper 
@@ -256,10 +259,10 @@ Trabalho em hospitais, clínicas, centros de saúde.`,
         loop
         slidesPerView={1}
         onChange={() => {
-            console.log('changed')
+            // console.log('changed', firstVid.current)
         }}
         onSlideChange={(e) => {
-            console.log('changeddddd', e.realIndex)
+            // console.log('changeddddd')
             setActiveIndex(e.realIndex)
         }}
         
@@ -283,7 +286,7 @@ Trabalho em hospitais, clínicas, centros de saúde.`,
                 <SwiperSlide className='swiperTest'>
         <section className='firstCont'>
             <div className='videoCont'>
-                {item?.info?.video && <video controls src={`${baseURL}/storage/videos/${item?.info?.video}`}/> }
+                {item?.info?.video && <video ref={firstVid} controls src={`${baseURL}/storage/videos/${item?.info?.video}`}/> }
             </div>
                 <div className='info'>
                     <div className='title'>Veja o que os estudantes de {item?.info?.titulo} dizem</div>

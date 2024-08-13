@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import '../css/adminSide.css'
+import '../css/adminSide2.css'
 import { useLocation, useNavigate } from 'react-router-dom'
 import {
   Accordion,
@@ -10,12 +10,12 @@ import {
 
 import { Popover, PopoverContent, PopoverTrigger } from '../@/components/ui/popover'
 
-const AdminSide = () => {
+const AdminSide2 = () => {
 
     const navigate = useNavigate()
     const location = useLocation()
     return (
-        <div className="adminSide">
+        <div className="adminSide2">
             <div className={location.pathname.endsWith('/admin') ? 'option1' : 'option'} onClick={() => {
               navigate('/admin')
               localStorage.setItem('path', 'Dashboard')
@@ -139,4 +139,4 @@ const AdminSide = () => {
         </div>
     )
 }
-export default AdminSide
+export default AdminSide2
