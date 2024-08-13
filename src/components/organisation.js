@@ -16,7 +16,7 @@ const Organisation = ({aboutContent}) => {
               <div className='info' style={{height: '100%'}}>
                       <div className='preTitle'>Organigrama Insitucional</div>
                       <div className='title'>A estrutura organizacional do ISPAJ</div>
-                      <div className='description'>segue o organigrama abaixo, onde se destaca os diferentes departamentos, faculdades, unidades administrativas e suas inter-relações:</div>
+                      <div className='description'>segue o organigrama abaixo, onde se destaca os diferentes departamentos, unidades administrativas e suas inter-relações:</div>
                   </div>
             </div>
                 

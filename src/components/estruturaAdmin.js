@@ -14,7 +14,7 @@ const EstruturaAdmin = ({aboutContent}) => {
                 {/*  */}
             </div>
             <div className='container1'>
-                <div className='preTitle'>Docentes, dos quais:</div>
+                <div className='preTitle'>Docentes:</div>
                 <div className='adminGrid'>
                 <section className='subordinates' style={{justifyContent: 'space-between'}}>
                         <div>

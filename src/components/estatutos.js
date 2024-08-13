@@ -113,8 +113,8 @@ const Estatutos = ({aboutContent}) =>  {
         <div className='sectionContainer'>
         <div className='container'>
             <div className='info' style={{height: '100%'}}>
-                <div className='preTitle'>Estatutos e regulamentos</div>
-                <div className='title'>Explore os estatutos e regulamentos que guiam as atividades acadêmicas e administrativas do ISPAJ</div>
+                <div className='preTitle'>Estatutos e Regulamentos</div>
+                <div className='title'>Explore os estatutos e regulamentos que guiam as actividades académicas e administrativas do ISPAJ</div>
             </div>
 
             {/*  */}
