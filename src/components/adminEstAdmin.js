@@ -89,7 +89,7 @@ const AdminEstAdmin = () => {
                             }}>
                                 <Edit title='Editar'/>
                             </DialogTrigger>
-                            <DialogContent style={{width: '100%', maxWidth: 1000, display: 'flex', flexDirection: 'column'}}>
+                            <DialogContent style={{width: '100%', maxWidth: 300, display: 'flex', flexDirection: 'column'}}>
                             <DialogHeader>
                             <DialogTitle>Editar</DialogTitle>
                             <DialogDescription>
@@ -127,7 +127,7 @@ const AdminEstAdmin = () => {
                                         saveValue({
                                             'saude': value
                                         })
-                                    }} className='save'>Salvar</div>
+                                    }} className='save'>Guardar</div>
 
                                 </div>
                                 {/* <div className='' dangerouslySetInnerHTML={{__html: prMessage}}>
@@ -154,7 +154,7 @@ const AdminEstAdmin = () => {
                             }}>
                                 <Edit title='Editar'/>
                             </DialogTrigger>
-                            <DialogContent style={{width: '100%', maxWidth: 1000, display: 'flex', flexDirection: 'column'}}>
+                            <DialogContent style={{width: '100%', maxWidth: 300, display: 'flex', flexDirection: 'column'}}>
                             <DialogHeader>
                             <DialogTitle>Editar</DialogTitle>
                             <DialogDescription>
@@ -192,7 +192,7 @@ const AdminEstAdmin = () => {
                                         saveValue({
                                             'engenharia': value
                                         })
-                                    }} className='save'>Salvar</div>
+                                    }} className='save'>Guardar</div>
 
                                 </div>
                                 {/* <div className='' dangerouslySetInnerHTML={{__html: prMessage}}>
@@ -218,7 +218,7 @@ const AdminEstAdmin = () => {
                             }}>
                                 <Edit title='Editar'/>
                             </DialogTrigger>
-                            <DialogContent style={{width: '100%', maxWidth: 1000, display: 'flex', flexDirection: 'column'}}>
+                            <DialogContent style={{width: '100%', maxWidth: 300, display: 'flex', flexDirection: 'column'}}>
                             <DialogHeader>
                             <DialogTitle>Editar</DialogTitle>
                             <DialogDescription>
@@ -256,7 +256,7 @@ const AdminEstAdmin = () => {
                                         saveValue({
                                             'sociais': value
                                         })
-                                    }} className='save'>Salvar</div>
+                                    }} className='save'>Guardar</div>
 
                                 </div>
                                 {/* <div className='' dangerouslySetInnerHTML={{__html: prMessage}}>
@@ -283,7 +283,7 @@ const AdminEstAdmin = () => {
                             }}>
                                 <Edit title='Editar'/>
                             </DialogTrigger>
-                            <DialogContent style={{width: '100%', maxWidth: 1000, display: 'flex', flexDirection: 'column'}}>
+                            <DialogContent style={{width: '100%', maxWidth: 300, display: 'flex', flexDirection: 'column'}}>
                             <DialogHeader>
                             <DialogTitle>Editar</DialogTitle>
                             <DialogDescription>
@@ -321,7 +321,7 @@ const AdminEstAdmin = () => {
                                         saveValue({
                                             'nao_docentes': value
                                         })
-                                    }} className='save'>Salvar</div>
+                                    }} className='save'>Guardar</div>
 
                                 </div>
                                 {/* <div className='' dangerouslySetInnerHTML={{__html: prMessage}}>

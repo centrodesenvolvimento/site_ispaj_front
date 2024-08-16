@@ -232,12 +232,13 @@ image: process.env.PUBLIC_URL + '/images/cardiology.png'
     }
     const [info, setInfo] = useState(null)
     const [articles, setArticles] = useState([])
-
+    const [events, setEvents] = useState([])
+    const [monthlyViews, setMonthlyViews] = useState([])
     useEffect(() => {
       axios.get(`${baseURL}/api/info`)
       .then(res => {
         let content = [...res.data][0]
-        setChartData([...res.data][0]?.info?.monthstats)
+        // setChartData([...res.data][0]?.info?.monthstats)
         setInfo([...res.data][0])
         setEmail1(content?.info?.email)
         setEmail2(content?.info?.email2)
@@ -246,10 +247,187 @@ image: process.env.PUBLIC_URL + '/images/cardiology.png'
         setLocalizacao(content?.info?.localizacao)
 
       })
-      axios.get(`${baseURL}/api/news?limit=5&trend=true`)
+      axios.get(`${baseURL}/api/news?limit=1000&trend=true`)
       .then(res => {
         console.log('articles', res.data)
-        setArticles([...res.data])
+        setArticles([...res.data].filter((item) => {
+          if (item.info?.show == undefined){
+              return item
+          }else if (item.info?.show == true){
+              return item
+          }
+      }))
+      })
+
+      axios.get(`${baseURL}/api/eventosViews`)
+      .then(res => {
+        setEvents([...res.data].sort((a, b) => b?.views_count - a?.views_count).filter((item) => {
+          if (item.info?.show == undefined){
+              return item
+          }else if (item.info?.show == true){
+              return item
+          }
+      }))
+
+      })
+      axios.get(`${baseURL}/api/monthlyViews`)
+      .then(res => {
+        let mViews = [...res.data].filter((item)=> {
+          if (new Date(item?.dateAdded).getFullYear() == new Date().getFullYear()) {
+            return item
+          }
+        })
+        setChartData( [
+          {
+              "month": "Janeiro",
+              "visits": mViews.reduce((count, curr) => {
+                const date = new Date(curr?.dateAdded);
+            
+                if (date.getMonth() === 0) {
+                    count++;
+                }
+            
+                return count;
+            }, 0)
+          },
+          {
+              "month": "Fevereiro",
+              "visits": mViews.reduce((count, curr) => {
+                const date = new Date(curr?.dateAdded);
+            
+                if (date.getMonth() === 1) {
+                    count++;
+                }
+            
+                return count;
+            }, 0)
+          },
+          {
+              "month": "Março",
+              "visits": mViews.reduce((count, curr) => {
+                const date = new Date(curr?.dateAdded);
+            
+                if (date.getMonth() === 2) {
+                    count++;
+                }
+            
+                return count;
+            }, 0)
+          },
+          {
+              "month": "Abril",
+              "visits": mViews.reduce((count, curr) => {
+                const date = new Date(curr?.dateAdded);
+            
+                if (date.getMonth() === 3) {
+                    count++;
+                }
+            
+                return count;
+            }, 0)
+          },
+          {
+              "month": "Maio",
+              "visits": mViews.reduce((count, curr) => {
+                const date = new Date(curr?.dateAdded);
+            
+                if (date.getMonth() === 4) {
+                    count++;
+                }
+            
+                return count;
+            }, 0)
+          },
+          {
+              "month": "Junho",
+              "visits": mViews.reduce((count, curr) => {
+                const date = new Date(curr?.dateAdded);
+            
+                if (date.getMonth() === 5) {
+                    count++;
+                }
+            
+                return count;
+            }, 0)
+          },
+          {
+              "month": "Julho",
+              "visits": mViews.reduce((count, curr) => {
+                const date = new Date(curr?.dateAdded);
+            
+                if (date.getMonth() === 6) {
+                    count++;
+                }
+            
+                return count;
+            }, 0)
+          },
+          {
+              "month": "Agosto",
+              "visits": mViews.reduce((count, curr) => {
+                const date = new Date(curr?.dateAdded);
+            
+                if (date.getMonth() === 7) {
+                    count++;
+                }
+            
+                return count;
+            }, 0)
+          },
+          {
+              "month": "Setembro",
+              "visits": mViews.reduce((count, curr) => {
+                const date = new Date(curr?.dateAdded);
+            
+                if (date.getMonth() === 8) {
+                    count++;
+                }
+            
+                return count;
+            }, 0)
+          },
+          {
+              "month": "Outubro",
+              "visits": mViews.reduce((count, curr) => {
+                const date = new Date(curr?.dateAdded);
+            
+                if (date.getMonth() === 9) {
+                    count++;
+                }
+            
+                return count;
+            }, 0)
+          },
+          {
+              "month": "Novembro",
+              "visits": mViews.reduce((count, curr) => {
+                const date = new Date(curr?.dateAdded);
+            
+                if (date.getMonth() === 10) {
+                    count++;
+                }
+            
+                return count;
+            }, 0)
+          },
+          {
+              "month": "Dezembro",
+              "visits": mViews.reduce((count, curr) => {
+                const date = new Date(curr?.dateAdded);
+            
+                if (date.getMonth() === 11) {
+                    count++;
+                }
+            
+                return count;
+            }, 0)
+          }
+      ])
+        setMonthlyViews([...res.data].filter((item)=> {
+          if (new Date(item?.dateAdded).getFullYear() == new Date().getFullYear()) {
+            return item
+          }
+        }))
       })
     }, [])
     
@@ -360,7 +538,7 @@ image: process.env.PUBLIC_URL + '/images/cardiology.png'
             <CardContent>
               <div className='topNews'>
                 {articles.length > 0 ? 
-                articles.map((item, index) => {
+                articles.slice(0, 5).map((item, index) => {
                   return (
                     <div className='news'>
                       <div className='imageContainer'>
@@ -398,25 +576,39 @@ image: process.env.PUBLIC_URL + '/images/cardiology.png'
 
             {/* third row */}
             <section className='thirdStats'>
-                <Card style={{flex: 2, display: 'none'}}>
-                  <CardHeader>
-                <div className='cardTitle'>Cursos mais visitados</div>
+            <Card style={{flex: 1.3}}>
+            <CardHeader>
+                <div className='cardTitle'>Eventos mais vistos</div>
                 {/* <CardDescription>Top 5</CardDescription> */}
                 
-                </CardHeader>
-                <CardContent>
-                <div className='topNews'>
-                {
-                  courses.map((item, index) => {
+            </CardHeader>
+            <CardContent>
+              <div className='topNews'>
+                {events.length > 0 ? 
+                events.slice(0, 5).map((item, index) => {
+                  return (
+                    <div className='news'>
+                      <div className='imageContainer'>
+                        <img src={`${JSON.parse(item.info)?.info?.imagem}`}/>
+                      </div>
+                      <div className='info'>
+                        <div className='views'>{item?.views_count} visualizações</div>
+                        <div className='title'>{JSON.parse(item.info)?.info?.titulo}</div>
+                      </div>
+                      
+                      
+                    </div>
+                  )
+                }):
+                  news.map((item, index) => {
                     return (
                       <div className='news'>
                         <div className='imageContainer'>
-                          <img src={item.image}/>
                         </div>
                         <div className='info'>
-                          <div className='views'>120 visualizações</div>
-                          <div className='title'>{item.name} - Departamento: {item.category} - Duração: {item.courseInformation.duration}</div>
-                          
+                          <Skeleton style={{margin: 0}} width={100} height={11} className='views'/>
+                          <Skeleton count={2} style={{width: '100%'}} height={12}/>
+                          <div className='date'>{new Date(item.date).getDate()} {months[new Date(item.date).getMonth()].slice(0, 3)}, {new Date(item.date).getFullYear()}</div>
                         </div>
                         
                         
@@ -425,8 +617,8 @@ image: process.env.PUBLIC_URL + '/images/cardiology.png'
                   })
                 }
               </div>
-                </CardContent>
-                </Card>
+            </CardContent>
+            </Card>
 
 
                 <Card style={{flex: 1.5, maxWidth: 800}}>
@@ -498,7 +690,7 @@ image: process.env.PUBLIC_URL + '/images/cardiology.png'
                                     <div className='buttons' style={{marginBottom: 50}}>
                                     <div onClick={() => {
                                         editInfo()
-                                    }} className='save'>Salvar</div>
+                                    }} className='save'>Guardar</div>
 
                                 </div>
                                     

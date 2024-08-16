@@ -18,6 +18,7 @@ import { ScrollArea } from '../@/components/ui/scroll-area'
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '../@/components/ui/sheet'
 import '../css/adminHistory.css'
 import ReactQuill from 'react-quill'
+import ReactSwitch from 'react-switch'
 const AdminAdmissionsPerguntas = () => {
     const [dateAdded, setDateAdded] = useState(new Date())
     const [title, setTitle] = useState('')
@@ -25,6 +26,7 @@ const AdminAdmissionsPerguntas = () => {
     const [errors, setErrors] = useState([])
     const [messages, setMessages] = useState([])
     const [historial, setHistorial] = useState([])
+    const [show, setShow] = useState(false)
     // const reviews = [
     //     {
     //         titulo: 'Início do Projecto de Construção do ISPAJ',
@@ -108,7 +110,7 @@ const AdminAdmissionsPerguntas = () => {
         setMessages([])
         if (title.length == 0 || description.length == 0){
             setErrors(['Por favor preencha todos os campos!'])
-        }else if (title == item.pergunta && description == item.resposta) {
+        }else if (title == item.pergunta && description == item.resposta && item?.show == show) {
             setErrors(['Nenhuma alteração feita!'])
 
         }else {
@@ -123,6 +125,7 @@ const AdminAdmissionsPerguntas = () => {
                             pergunta: title,
                             resposta: description,
                             dateAdded: new Date(),
+                            show: show
                         }
                     }else {
                         return p
@@ -237,6 +240,13 @@ const AdminAdmissionsPerguntas = () => {
                             <DialogTrigger onClick={() => {
                                 setTitle(item.pergunta)
                                 setDescription(item.resposta)
+                                if ((item.show != undefined && item.show == true) || (item.show != undefined && item.show == "true")){
+                                    setShow(true)
+                                }else if ((item.show != undefined && item.show == false) || (item.show != undefined && item.show == "false")){
+                                    setShow(false)
+                                }else {
+                                    setShow(true)
+                                }
                                 // setTestName(item.nome)
                                 // setTestVia(item.via)
                                 // setTest(item.testemunho)
@@ -276,7 +286,11 @@ const AdminAdmissionsPerguntas = () => {
                                 )
                             })}
                             </div>
-
+                            <div className='form'>
+                            <ReactSwitch uncheckedIcon={null} checkedIcon={null} checked={show} onChange={() => {
+                                            setShow(!show)
+                                        }} />
+                                </div>
                             <div className="errors">
                             {messages.length > 0 && messages.map((item, index) => {
                                 return (
@@ -289,7 +303,7 @@ const AdminAdmissionsPerguntas = () => {
                                     <div className='buttons' style={{marginBottom: 50}}>
                                     <div onClick={() => {
                                         editQuestion(item)
-                                    }} className='save'>Salvar</div>
+                                    }} className='save'>Guardar</div>
 
                                 </div>
                                     </div>
@@ -298,7 +312,7 @@ const AdminAdmissionsPerguntas = () => {
                                                     
 
                                                     <AlertDialog>
-                                <AlertDialogTrigger style={{width: '100%'}}>
+                                <AlertDialogTrigger style={{display: 'none'}}>
                                 <div className='actionButton'>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
@@ -306,7 +320,7 @@ const AdminAdmissionsPerguntas = () => {
 </svg>
                                                 </div>
                                 </AlertDialogTrigger>
-                                <AlertDialogContent style={{flexDirection: 'column', display: 'flex'}}>
+                                <AlertDialogContent style={{flexDirection: 'column', display: 'flex', alignItems: 'center', textAlign: 'center'}}>
                                     <span>
                                         <AlertDialogTitle>
                                             Apagar pergunta
@@ -315,7 +329,7 @@ const AdminAdmissionsPerguntas = () => {
                                             Deseja mesmo apagar essa pergunta?
                                         </AlertDialogDescription>
                                     </span>
-                                    <span style={{alignSelf: 'flex-end', marginTop: 15, display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', }}>
+                                    <span style={{alignSelf: 'center', marginTop: 15, display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', }}>
                                     <AlertDialogCancel style={{margin: 0}}>Cancelar</AlertDialogCancel>
                                     <AlertDialogAction style={{margin: 0}} onClick={() => {
                                         

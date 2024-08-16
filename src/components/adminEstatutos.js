@@ -17,6 +17,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger } from '../@/component
 import { SelectValue } from '@radix-ui/react-select'
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogTitle, AlertDialogTrigger } from '../@/components/ui/alert-dialog'
 import { Edit, HeaderLabel } from './adminHome'
+import ReactSwitch from 'react-switch'
 
 const AdminEstatutos = () => {
     const [errors, setErrors] = useState([])
@@ -26,6 +27,7 @@ const AdminEstatutos = () => {
     const [preview, setPreview] = useState(null)
     const [documents, setDocuments] = useState([])
     const [title, setTitle] = useState('')
+    const [show, setShow] = useState(false)
 
     const addDocument = () => {
         setErrors([])
@@ -58,7 +60,7 @@ const AdminEstatutos = () => {
         setMessages([])
         if (title.length == 0){
             setErrors(['Preencha todos os campos por favor!'])
-        }else if (title == item.titulo && `${new Date(dateAdded)}`== `${new Date(item.data)}` && !selectedDoc){
+        }else if (title == item.titulo && `${new Date(dateAdded)}`== `${new Date(item.data)}` && !selectedDoc && item?.show == show){
             setErrors(['Nenhuma alteração feita!'])
 
         }else  {
@@ -69,7 +71,8 @@ const AdminEstatutos = () => {
                     id: item.id,
                     titulo: title,
                     data: dateAdded,
-                    documento: item.documento
+                    documento: item.documento,
+                    show: show
                 },{
                     headers: {
                         'Content-Type': 'multipart/form-data',
@@ -93,7 +96,8 @@ const AdminEstatutos = () => {
                             id: item.id,
                             titulo: title,
                             data: dateAdded,
-                            documento: item.documento
+                            documento: item.documento,
+                            show: show
                         }
                     }else {
                         return d
@@ -287,6 +291,13 @@ const AdminEstatutos = () => {
                                 setTitle(item.titulo)
                                 setPreview(item.documento)
                                 setSelectedDoc(null)
+                                if ((item.show != undefined && item.show == true) || (item.show != undefined && item.show == "true")){
+                                    setShow(true)
+                                }else if ((item.show != undefined && item.show == false) || (item.show != undefined && item.show == "false")){
+                                    setShow(false)
+                                }else {
+                                    setShow(true)
+                                }
                                 // setTestName(item.nome)
                                 // setTestVia(item.via)
                                 // setTest(item.testemunho)
@@ -346,7 +357,7 @@ const AdminEstatutos = () => {
                                             <embed className='orgChart' src={URL.createObjectURL(selectedDoc)} style={{width: '100%', aspectRatio: 2/1.5}} />
                                             </div>
                                             : preview ? <div style={{}}>
-                                            <embed className='orgChart' src={`${baseURL}/storage/images/${preview}`} style={{width: '100%', aspectRatio: 2/1.5}} />
+                                            <embed className='orgChart' src={`${baseURL}/storage/pdfs/${preview}`} style={{width: '100%', aspectRatio: 2/1.5}} />
                                             </div> : <div></div>}
                                     
                                             {/* <input value={''} className='imageInput2' type='file' accept='video/*'  onChange={(e)=>{
@@ -370,6 +381,11 @@ const AdminEstatutos = () => {
                                             </div>}
                                             */}
                                         </div>
+                                        <div className='form'>
+                                        <ReactSwitch uncheckedIcon={null} checkedIcon={null} checked={show} onChange={() => {
+                                            setShow(!show)
+                                        }} />
+                                        </div>
                                             <div className="errors">
                                                                     {errors.length > 0 && errors.map((item, index) => {
                                         return (
@@ -392,7 +408,7 @@ const AdminEstatutos = () => {
                                             <div className='buttons' style={{marginBottom: 50}}>
                                             <div onClick={() => {
                                                 editDocument(item)
-                                            }} className='save'>Salvar</div>
+                                            }} className='save'>Guardar</div>
                                         </div>
                                             </div>
                                 </ScrollArea>
@@ -401,7 +417,7 @@ const AdminEstatutos = () => {
                                                     
 
                                                     <AlertDialog>
-                                <AlertDialogTrigger>
+                                <AlertDialogTrigger style={{display: 'none'}}>
                                 <div className='actionButton'>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
@@ -409,7 +425,7 @@ const AdminEstatutos = () => {
 </svg>
                                                 </div>
                                 </AlertDialogTrigger>
-                                <AlertDialogContent style={{flexDirection: 'column', display: 'flex'}}>
+                                <AlertDialogContent style={{flexDirection: 'column', display: 'flex', alignItems: 'center', textAlign: 'center'}}>
                                     <span>
                                         <AlertDialogTitle>
                                             Apagar estatuto ou regulamento
@@ -418,7 +434,7 @@ const AdminEstatutos = () => {
                                             Deseja mesmo apagar esse estatuto ou regulamento?
                                         </AlertDialogDescription>
                                     </span>
-                                    <span style={{alignSelf: 'flex-end', marginTop: 15, display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', }}>
+                                    <span style={{alignSelf: 'center', marginTop: 15, display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', }}>
                                     <AlertDialogCancel style={{margin: 0}}>Cancelar</AlertDialogCancel>
                                     <AlertDialogAction style={{margin: 0}} onClick={() => {
                                         axios.get(`${baseURL}/api/aboutContents`)

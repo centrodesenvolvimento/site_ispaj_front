@@ -20,12 +20,25 @@ const Footer = () => {
         }
     }, []) 
     const [info, setInfo] = useState(null)
+    const [departments, setDepartments] = useState([])
     useEffect(() => {
         axios.get(`${baseURL}/api/info`)
         .then(res => {
             setInfo([...res.data][0]?.info)
         })
-    }, [])   
+        .catch(err => {
+            console.log('error', err.response.data.message)
+        })
+
+        axios.get(`${baseURL}/api/departamentos`)
+        .then(res  => {
+            setDepartments([...res.data])
+        })
+        .catch(err => {
+            console.log('error', err.response.data.message)
+        })
+    }, []) 
+      
     return (
         <div className='footerCont'>
             <div class="footerCont1">
@@ -77,7 +90,16 @@ const Footer = () => {
                         {/* second column */}
                         <section className='column'>
                             <div className='title'>Ensino</div>
-                            <div style={{cursor: 'pointer'}} className='item' onClick={() => {
+                            {departments?.map((item) => {
+                                return (
+                                    <div style={{cursor: 'pointer'}} className='item' onClick={() => {
+                                        navigate('/cursos')
+                                        localStorage.setItem('path', `${item?.info?.titulo}`)
+                                    }}>{item?.info?.titulo}</div>
+                                )
+                            })
+                            }
+                            {/* <div style={{cursor: 'pointer'}} className='item' onClick={() => {
                                 navigate('/cursos')
                                 localStorage.setItem('path', 'Ciências Sociais e Económicas')
                             }}>Ciências Sociais e Económicas</div>
@@ -88,7 +110,7 @@ const Footer = () => {
                             <div style={{cursor: 'pointer'}} className='item' onClick={() => {
                                 navigate('/cursos')
                                 localStorage.setItem('path', 'Ciências de Saúde')
-                            }}>Ciências da Saúde</div>
+                            }}>Ciências da Saúde</div> */}
 
 
                         </section>

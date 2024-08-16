@@ -51,7 +51,7 @@ const News = () => {
     ])
     const [posts, setPosts] = useState([])
     useEffect(() => {
-        axios.get(`${baseURL}/api/news?limit=6`)
+        axios.get(`${baseURL}/api/news`)
         .then(res => {
             setPosts([...res.data])
         })
@@ -66,7 +66,13 @@ const News = () => {
                             <section className='grid'>
                                 {posts.length >= 6 ?
 
-                                posts.slice(0, 7).map((post, index) => {
+                                posts.slice(0, 6).filter((item) => {
+                                    if (item.info?.show == undefined){
+                                        return item
+                                    }else if (item.info?.show == true){
+                                        return item
+                                    }
+                                }).map((post, index) => {
                                     console.log(post)
                                     return (
                                         <div key={index} className="newsBanner" style={{}}>

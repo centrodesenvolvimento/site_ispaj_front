@@ -92,14 +92,32 @@ const NewsPage = () => {
     useEffect(() => {
         axios.get(`${baseURL}/api/news`)
         .then(res => {
-            setPosts([...res.data])
-            setPosts2([...res.data])
+            setPosts([...res.data].filter((item) => {
+                if (item.info?.show == undefined){
+                    return item
+                }else if (item.info?.show == true){
+                    return item
+                }
+            }))
+            setPosts2([...res.data].filter((item) => {
+                if (item.info?.show == undefined){
+                    return item
+                }else if (item.info?.show == true){
+                    return item
+                }
+            }))
             for (let i = 1; i <= Math.ceil([...res.data].length/postPerPage); i++) {
                 setPages([...pages, i])
             }
             const lastPostIndex = currentPage * postPerPage
             const firstPostIndex = lastPostIndex - postPerPage
-            const currentPosts = [...res.data].slice(firstPostIndex, lastPostIndex)
+            const currentPosts = [...res.data].filter((item) => {
+                if (item.info?.show == undefined){
+                    return item
+                }else if (item.info?.show == true){
+                    return item
+                }
+            }).slice(firstPostIndex, lastPostIndex)
             setPosts1(currentPosts.slice(2))
         })
         .catch(err => {

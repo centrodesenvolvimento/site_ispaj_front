@@ -82,7 +82,13 @@ const History = ({aboutContent}) => {
             <div class="historyContainer">
             {
              aboutContent?.historial && [...aboutContent?.historial].length > 0 ? 
-             [...aboutContent?.historial].sort((a, b) => new Date(a.data) - new Date(b.data)).map((item, index) => {
+             [...aboutContent?.historial].filter((item) => {
+               if (item.show == undefined){
+                   return item
+               }else if (item.show == true){
+                   return item
+               }
+           }).sort((a, b) => new Date(a.data) - new Date(b.data)).map((item, index) => {
                console.log(index, item.title)
                return (
                    <div class={`timeline-block timeline-block-${index % 2 == 0 ? 'left' : 'right'}`}>

@@ -146,8 +146,20 @@ const EventsPage = () => {
     useEffect(() => {
         axios.get(`${baseURL}/api/events`)
         .then(res => {
-            setEventos([...res.data])
-            setFilteredEvents([...res.data])
+            setEventos([...res.data].filter((item) => {
+                if (item.info?.show == undefined){
+                    return item
+                }else if (item.info?.show == true){
+                    return item
+                }
+            }))
+            setFilteredEvents([...res.data].filter((item) => {
+                if (item.info?.show == undefined){
+                    return item
+                }else if (item.info?.show == true){
+                    return item
+                }
+            }))
             setLoad(false)
         })
         .catch(() => {
@@ -337,6 +349,52 @@ const EventsPage = () => {
         }))
         
     }, [publics])
+
+    const prevLocationRef = useRef(location);
+
+    useEffect(() => {
+        console.log('idddd', location.pathname.split('/event/')[1])
+        
+
+      if (prevLocationRef.current.pathname !== location.pathname && location.pathname.includes('/event/')) {
+        console.log('iddd', location.pathname.split('/event/')[1])
+        const viewedEvents = JSON.parse(sessionStorage.getItem('viewedEvents')) || [];
+        if (location.state?.item && location.pathname.includes('/event/') && ![...viewedEvents].includes(location.pathname.split('/event/')[1])){
+            console.log('passeeeeeddddddd')
+            axios.post(`${baseURL}/api/addEventoView/`, {
+                evento_id: location.pathname.split('/event/')[1],
+                info: location?.state?.item
+            })
+            .then(response => {
+                viewedEvents.push(location.pathname.split('/event/')[1])
+                sessionStorage.setItem('viewedEvents', JSON.stringify(viewedEvents));
+            })
+            .catch(err => {
+
+            })
+        }else {
+            const viewedEvents = JSON.parse(sessionStorage.getItem('viewedEvents')) || [];
+            if (location.pathname.includes('/event/') && ![...viewedEvents].includes(location.pathname.split('/event/')[1])){
+                console.log('passeeeeeddddddd')
+                axios.post(`${baseURL}/api/addEventoView/`, {
+                    evento_id: location.pathname.split('/event/')[1],
+                    info: location?.state?.item
+                })
+                .then(response => {
+                    viewedEvents.push(location.pathname.split('/event/')[1])
+                    sessionStorage.setItem('viewedEvents', JSON.stringify(viewedEvents));
+                })
+                .catch(err => {
+
+                })
+            }
+        }
+
+        
+    }
+    prevLocationRef.current = location;
+
+  }, [location])
     const secondContainerRef = useRef(null)
     useEffect(() => {
         const adjustMargin = () => {

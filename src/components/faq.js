@@ -194,7 +194,13 @@ const [faqs, setFaqs] = useState([
         <div className='container1'>
             <div className='feesContainer'>
                 <Accordion type='multiple' collapsible>
-                    {admissionsContents?.perguntas && [...admissionsContents?.perguntas].length > 0 ? [...admissionsContents?.perguntas].map((item, index) => {
+                    {admissionsContents?.perguntas && [...admissionsContents?.perguntas].length > 0 ? [...admissionsContents?.perguntas].filter((item) => {
+               if (item.show == undefined){
+                   return item
+               }else if (item.show == true || item.show == 'true'){
+                   return item
+               }
+           }).map((item, index) => {
                         return (
                             <AccordionItem key={index} value={`item-${index}`}>
                                 <AccordionTrigger style={{ fontSize: 14}}>{item.pergunta}</AccordionTrigger>

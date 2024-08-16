@@ -67,7 +67,13 @@ const Reviews = () => {
         axios.get(`${baseURL}/api/homeContents`)
         .then(res => {
             let revs = [...[...res.data][0].testemunhos]
-            setReviews(revs)
+            setReviews(revs.filter((item) => {
+                if (item.show == undefined){
+                    return item
+                }else if (item.show == true){
+                    return item
+                }
+            }))
             console.log('test', revs)
 
 

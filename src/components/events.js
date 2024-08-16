@@ -53,7 +53,7 @@ const Events = () => {
     ])
     const [eventos, setEventos] = useState([])
     useEffect(() => {
-        axios.get(`${baseURL}/api/events?limit=4`)
+        axios.get(`${baseURL}/api/events`)
         .then(res => {
             setEventos([...res.data])
         })
@@ -66,7 +66,13 @@ const Events = () => {
 
             <section className='eventsContainer'>
                 {eventos && eventos.length > 3 ?
-                eventos.map((event, index) => {
+                eventos.filter((item) => {
+                    if (item.info?.show == undefined){
+                        return item
+                    }else if (item.info?.show == true){
+                        return item
+                    }
+                }).slice(0, 4).map((event, index) => {
                     return (
                         <div className='eventContainer'>
                                 <img src={event?.info?.imagem}/>
@@ -89,7 +95,7 @@ const Events = () => {
                                     <span className='eventLocationInfo'>{event?.info?.localizacao}</span>
                                 </div>
                                 <div className='eventButton' onClick={() => {
-                                    navigate(`eventos/event/${event.title}`, {
+                                    navigate(`eventos/event/${event.id}`, {
                                         state: {
                                             item: event,
                                             fromHome: true

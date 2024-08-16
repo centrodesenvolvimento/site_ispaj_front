@@ -10,6 +10,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { useEffect, useState } from 'react'
 import { baseURL } from '../api/api'
 import axios from 'axios'
+import ReactSwitch from 'react-switch'
 const AdminAbout = () => {
     const [values, setValues] =  useState([
         {
@@ -18,6 +19,7 @@ const AdminAbout = () => {
             description: 'Dedicamo-nos a apoiar o desenvolvimento académico, pessoal e profissional dos nossos alunos para garantir o seu sucesso'
         }
     ])
+    const [show, setShow] = useState(false)
     const [somos, setSomos] = useState('')
     const [selectedVideo, setSelectedVideo] = useState('')
     const [videoPreview, setVideoPreview] = useState(null)
@@ -141,13 +143,14 @@ const AdminAbout = () => {
                                 nome: valueName,
                                 descricao: valueDescription,
                                 dateAdded: new Date(),
+                                show: true
                             },
                             ...[...obj.valores]
                         ]
                     })
                     .then(res => {
                         console.log('success')
-                        setMessages(['Testemunho adicionado com sucesso.'])
+                        setMessages(['Valor adicionado com sucesso.'])
                         window.location.reload()
                     })
                     .catch(err => {
@@ -162,12 +165,13 @@ const AdminAbout = () => {
                                 nome: valueName,
                                 descricao: valueDescription,
                                 dateAdded: new Date(),
+                                show: true
                             }
                         ]
                     })
                     .then(res => {
                         console.log('success', res)
-                        setMessages(['Testemunho adicionado com sucesso.'])
+                        setMessages(['Valor adicionado com sucesso.'])
                         window.location.reload()
                     })
                     .catch(err => {
@@ -185,7 +189,7 @@ const AdminAbout = () => {
         if (valueName.length == 0 || valueDescription.length == 0){
             setErrors(['Por favor preencha todos os campos!'])
         }
-        else if (valueName == item.nome && valueDescription == item.descricao){
+        else if (valueName == item.nome && valueDescription == item.descricao && (item?.show == show)){
             setErrors(['Nenhuma alteração feita!'])
         }else {
             axios.get(`${baseURL}/api/aboutContents`)
@@ -199,6 +203,7 @@ const AdminAbout = () => {
                             nome: valueName,
                             descricao: valueDescription,
                             dateAdded: new Date(),
+                            show: show
                         }
                     }else {
                         return t
@@ -209,7 +214,7 @@ const AdminAbout = () => {
                 })
                 .then(res => {
                     console.log('success')
-                    setMessages(['Testemunho adicionado com sucesso.'])
+                    setMessages(['Valor adicionado com sucesso.'])
                     window.location.reload()
                 })
                 .catch(err => {
@@ -298,7 +303,7 @@ const AdminAbout = () => {
                                 <div className='buttons' style={{marginBottom: 50}}>
                                     <div onClick={() => {
                                         saveVideo()
-                                    }} className='save'>Salvar</div>
+                                    }} className='save'>Guardar</div>
 
                                 </div>
                                 {/* <div className='' dangerouslySetInnerHTML={{__html: prMessage}}>
@@ -370,7 +375,7 @@ const AdminAbout = () => {
                                 <div className='buttons' style={{marginBottom: 50}}>
                                     <div onClick={() => {
                                         saveMission()
-                                    }} className='save'>Salvar</div>
+                                    }} className='save'>Guardar</div>
 
                                 </div>
                                 {/* <div className='' dangerouslySetInnerHTML={{__html: prMessage}}>
@@ -429,10 +434,12 @@ const AdminAbout = () => {
                             <DialogTrigger onClick={() => {
                                 setValueName('')
                                 setValueDescription('')
+                                setMessages([])
+                                setErrors([])
                             }}>
                                 <Edit title='Adicionar'/>
                             </DialogTrigger>
-                            <DialogContent style={{width: '100%', maxWidth: 1000, display: 'flex', flexDirection: 'column'}}>
+                            <DialogContent style={{width: '100%', maxWidth: 500, display: 'flex', flexDirection: 'column'}}>
                             <DialogHeader>
                             <DialogTitle>Adicionar</DialogTitle>
                             <DialogDescription>
@@ -474,7 +481,7 @@ const AdminAbout = () => {
                                 <div className='buttons' style={{marginBottom: 50}}>
                                     <div onClick={() => {
                                         saveValue()
-                                    }} className='save'>Salvar</div>
+                                    }} className='save'>Guardar</div>
 
                                 </div>
                                 {/* <div className='' dangerouslySetInnerHTML={{__html: prMessage}}>
@@ -516,17 +523,26 @@ const AdminAbout = () => {
                             <DialogTrigger onClick={() => {
                                 setValueName(item.nome)
                                 setValueDescription(item.descricao)
+                                setErrors([])
+                                setMessages([])
+                                if (item.show != undefined && item.show == true){
+                                    setShow(true)
+                                }else if (item.show != undefined && item.show == false){
+                                    setShow(false)
+                                }else {
+                                    setShow(true)
+                                }
                             }}>
                             <div className='actionButton'>
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
   <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
 </svg>
                                                     </div>                            </DialogTrigger>
-                            <DialogContent style={{width: '100%', maxWidth: 1000, display: 'flex', flexDirection: 'column'}}>
+                            <DialogContent style={{width: '100%', maxWidth: 500, display: 'flex', flexDirection: 'column'}}>
                             <DialogHeader>
-                            <DialogTitle>Adicionar</DialogTitle>
+                            <DialogTitle>Editar</DialogTitle>
                             <DialogDescription>
-                                Adicionar valor
+                                Editar valor
                             </DialogDescription>
                             </DialogHeader>
                             <div className='sectionForms'>
@@ -541,6 +557,11 @@ const AdminAbout = () => {
                                     <textarea placeholder='Escreva a descrição do valor...' 
                                     value={valueDescription} onChange={(e) => setValueDescription(e.target.value)}
                                     className='loginInput' style={{height: 100}}/>
+                                </div>
+                                <div className='form'>
+                                <ReactSwitch uncheckedIcon={null} checkedIcon={null} checked={show} onChange={() => {
+                                            setShow(!show)
+                                        }} />
                                 </div>
                             <div className="errors">
                             {errors.length > 0 && errors.map((item, index) => {
@@ -564,7 +585,7 @@ const AdminAbout = () => {
                                 <div className='buttons' style={{marginBottom: 50}}>
                                     <div onClick={() => {
                                         editValue(item)
-                                    }} className='save'>Salvar</div>
+                                    }} className='save'>Guardar</div>
 
                                 </div>
                                 {/* <div className='' dangerouslySetInnerHTML={{__html: prMessage}}>
@@ -578,7 +599,7 @@ const AdminAbout = () => {
                                                     
 
                                                     <AlertDialog>
-                                <AlertDialogTrigger style={{width: '100%'}}>
+                                <AlertDialogTrigger style={{display: 'none'}}>
                                     
                                 <div className='actionButton'>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
@@ -587,16 +608,16 @@ const AdminAbout = () => {
 </svg>
                                                 </div>
                                 </AlertDialogTrigger>
-                                <AlertDialogContent style={{flexDirection: 'column', display: 'flex'}}>
+                                <AlertDialogContent style={{flexDirection: 'column', display: 'flex', alignItems: 'center', textAlign: 'center'}}>
                                     <span>
-                                        <AlertDialogTitle>
+                                        <AlertDialogTitle style={{alignSelf: 'center', textAlign: 'center'}}>
                                             Apagar valor
                                         </AlertDialogTitle>
-                                        <AlertDialogDescription>
+                                        <AlertDialogDescription style={{}}>
                                             Deseja mesmo apagar esse valor?
                                         </AlertDialogDescription>
                                     </span>
-                                    <span style={{alignSelf: 'flex-end', marginTop: 15, display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', }}>
+                                    <span style={{alignSelf: 'center', marginTop: 15, display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', }}>
                                     <AlertDialogCancel style={{margin: 0}}>Cancelar</AlertDialogCancel>
                                     <AlertDialogAction style={{margin: 0}} onClick={() => {
                                         

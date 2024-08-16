@@ -13,6 +13,8 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { Sheet, SheetContent, SheetHeader, SheetOverlay, SheetTitle, SheetTrigger } from '../@/components/ui/sheet'
 import axios from 'axios'
 import { baseURL } from '../api/api'
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogOverlay, AlertDialogTitle } from '../@/components/ui/alert-dialog'
+import { Overlay } from '@radix-ui/react-alert-dialog'
 const containerVariants = {
     close: {
         width: '0px',
@@ -109,7 +111,7 @@ const Header = () => {
   useEffect(() => {
       axios.get(`${baseURL}/api/departamentos`)
       .then(res => {
-          console.log('res', res.data)
+          console.log('departamentos', res.data)
           setDepartments([...res.data])
       })
   }, [])
@@ -141,6 +143,8 @@ const Header = () => {
         lastScrollTop = st;
     });
   }, [])
+  const [dialogOpen, setDialogOpen] = useState(false)
+
       return (
         <div style={{margin: 0, padding: 0}}>
             <div className='outerContainer'>
@@ -207,28 +211,28 @@ const Header = () => {
                   <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
                 </svg> <AnimatePresence>
                     {
-                        selected == 1 && <Content dir={'l'} selected={selected}/>
+                        selected == 1 && <Content dir={'l'} selected={selected} setSelected={setSelected}/>
                     }
                 </AnimatePresence></div>
                             <div onMouseLeave={() => setSelected(0)} onMouseOver={() => setSelected(2)} onClick={() => console.log('ad;lkfj ad;lkj f')} id='tab2' className={location.pathname.includes('/cursos') ? 'menuItem1' : 'menuItem'}><span>Ensino</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
                 </svg> <AnimatePresence>
                     {
-                        selected == 2 && <Content dir={'l'} selected={selected}/>
+                        selected == 2 && <Content dir={'l'} selected={selected} departments={departments} setSelected={setSelected}/>
                     }
                 </AnimatePresence></div>
                             <div onMouseLeave={() => setSelected(0)}  onMouseOver={() => setSelected(3)} id='tab3' onClick={() => console.log('ad;lkfj ad;lkj f')} className={location.pathname.includes('admissoes') ? 'menuItem1' : 'menuItem'}><span>Admissões</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
                 </svg> <AnimatePresence>
                     {
-                        selected == 3 && <Content dir={'l'} selected={selected}/>
+                        selected == 3 && <Content dir={'l'} selected={selected} setSelected={setSelected}/>
                     }
                 </AnimatePresence></div>
                 <div onMouseLeave={() => setSelected(0)}  onMouseOver={() => setSelected(4)} id='tab3' onClick={() => console.log('ad;lkfj ad;lkj f')} className={location.pathname.includes('colaboradores') ? 'menuItem1' : 'menuItem'}><span>Colaboradores</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
                 </svg> <AnimatePresence>
                     {
-                        selected == 4 && <Content dir={'l'} selected={selected}/>
+                        selected == 4 && <Content dir={'l'} selected={selected} setSelected={setSelected}/>
                     }
                 </AnimatePresence></div>
                             <div onClick={() => {
@@ -422,7 +426,7 @@ const Header = () => {
                                 window.open(`${baseURL}/storage/pdfs/${content.emolumentos}`)
 
                             }else {
-                                alert('Documento não existe')
+                                setDialogOpen(true)
                             }
                         setOpen(false)
                         })
@@ -438,7 +442,7 @@ const Header = () => {
                                 window.open(`${baseURL}/storage/pdfs/${content.calendario}`)
 
                             }else {
-                                alert('Documento não existe')
+                                setDialogOpen(true)
                             }
                         setOpen(false)
                         })
@@ -485,7 +489,35 @@ const Header = () => {
                         </Sheet>
                 
                 </div>
-                
+                <AlertDialog open={dialogOpen}>
+                                {/* <AlertDialogTrigger style={{width: '100%'}}>
+                                    
+                                <div className='actionButton'>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+</svg>
+                                                </div>
+                                </AlertDialogTrigger> */}
+                                <AlertDialogContent style={{flexDirection: 'column', display: 'flex', alignItems: 'center'}}>
+                                    <span>
+                                        <AlertDialogTitle style={{textAlign: 'center', alignSelf: 'center'}}>
+                                            Documento não existe
+                                        </AlertDialogTitle>
+                                        <AlertDialogDescription style={{textAlign: 'center', alignSelf: 'center'}}>
+                                            O documento solicitado encontra-se indisponível.
+                                        </AlertDialogDescription>
+                                    </span>
+                                    <span style={{alignSelf: 'center', marginTop: 15, display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', }}>
+                                    
+                                    <AlertDialogAction onClick={() => {
+                                        setDialogOpen(false)
+                                        setSelected(0)
+                                    }} style={{margin: 0}} >Ok</AlertDialogAction>
+                                    </span>
+                                    
+                                </AlertDialogContent>
+                            </AlertDialog> 
                 {/* <div ref={menu} className={`mobileItems ${open ? 'fadeIn': 'fadeOut'}`}>
                         <div onClick={() => location.pathname != '/about' && navigate('/about')} className={location.pathname == '/about' ? 'mobileItem1' : 'mobileItem'}>About</div>
                         <div onClick={() => location.pathname != '/blog' && navigate('/blog')} className={location.pathname.includes('/blog') ? 'mobileItem1' : 'mobileItem'}>Blog</div>
@@ -577,11 +609,10 @@ const SideMenuItem = ({children, ...props}) => {
         </motion.div>
     )
 }
-const Content = ({ selected, dir }) => {
+const Content = ({ selected, dir, departments, setSelected }) => {
     const navigate = useNavigate()
     const location = useLocation()
-    const [departments, setDepartments] = useState([])
-    
+    const [dialogOpen, setDialogOpen] = useState(false)
     return (
 
         <motion.div 
@@ -599,6 +630,35 @@ const Content = ({ selected, dir }) => {
         }}
         style={{width: '250px'}} id='overlay-content' className="content absolute top-[calc(60px)]
          rounded-lg border border-gray-300 bg-gradient-to-b from-white via-white-100 to-white p-4">
+            <AlertDialog open={dialogOpen}>
+                                {/* <AlertDialogTrigger style={{width: '100%'}}>
+                                    
+                                <div className='actionButton'>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+</svg>
+                                                </div>
+                                </AlertDialogTrigger> */}
+                                <AlertDialogContent style={{flexDirection: 'column', display: 'flex', alignItems: 'center'}}>
+                                    <span>
+                                        <AlertDialogTitle style={{textAlign: 'center', alignSelf: 'center'}}>
+                                            Documento não existe
+                                        </AlertDialogTitle>
+                                        <AlertDialogDescription style={{textAlign: 'center', alignSelf: 'center'}}>
+                                        O documento solicitado encontra-se indisponível.
+                                        </AlertDialogDescription>
+                                    </span>
+                                    <span style={{alignSelf: 'center', marginTop: 15, display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', }}>
+                                    
+                                    <AlertDialogAction onClick={() => {
+                                        setDialogOpen(false)
+                                        setSelected(0)
+                                    }} style={{margin: 0}} >Ok</AlertDialogAction>
+                                    </span>
+                                    
+                                </AlertDialogContent>
+                            </AlertDialog> 
             <div style={{position: 'absolute', top: '-40px', width: '100%'}} className=' absolute -top[40px] left-0 right 0 h-[40px]'></div>
 
             <motion.div
@@ -618,7 +678,7 @@ const Content = ({ selected, dir }) => {
             {
                 selected == 1 ?
                 <div className='subMenu'>
-                    <div className='subItem' onClick={() => {
+                    <div className={localStorage.getItem('path')?.includes('Sobre') ? 'subItem1' : 'subItem'} onClick={() => {
                         location.pathname != '/sobre' && navigate('/sobre')
                         
                         localStorage.setItem('path', 'Sobre o ISPAJ')
@@ -627,31 +687,45 @@ const Content = ({ selected, dir }) => {
                         navigate('/sobre')
                         
                         localStorage.setItem('path', 'Estrutura Orgânica')
-                    }} className='subItem'>Estrutura Orgânica</div>
+                    }} className={localStorage.getItem('path')?.includes('Estrutura Orgânica') ? 'subItem1' : 'subItem'}>Estrutura Orgânica</div>
                     <div onClick={() => {
                         navigate('/sobre')
                         
                         localStorage.setItem('path', 'Estrutura Administrativa')
-                    }} className='subItem'>Estrutura Administrativa</div>
+                    }} className={localStorage.getItem('path')?.includes('Estrutura Administrativa') ? 'subItem1' : 'subItem'}>Estrutura Administrativa</div>
                     <div onClick={() => {
                         navigate('/sobre')
 
                         localStorage.setItem('path',  'Historial')
-                    }}className='subItem'>Historial</div>
+                    }} className={localStorage.getItem('path')?.includes('Historial') ? 'subItem1' : 'subItem'}>Historial</div>
                     <div onClick={() => {
                         navigate('/sobre')
 
                         localStorage.setItem('path', 'Organigrama Institucional')
-                    }}className='subItem'>Organigrama Institucional</div>
+                    }} className={localStorage.getItem('path')?.includes('Organigrama') ? 'subItem1' : 'subItem'}>Organigrama Institucional</div>
                     <div  onClick={() => {
                         navigate('/sobre')
 
                         localStorage.setItem('path', 'Estatutos e Regulamentos')
-                    }} className='subItem'>Estatutos e Regulamentos</div>
+                    }} className={localStorage.getItem('path')?.includes('Estatutos') ? 'subItem1' : 'subItem'}>Estatutos e Regulamentos</div>
                 </div>
                 : selected == 2?
                 <div className='subMenu'>
-                    <div className='subItem' onClick={() => {
+                    {departments?.map((item) => {
+                        return (
+                            <div className={localStorage.getItem('path')?.includes(item?.info?.titulo) ? 'subItem1' : 'subItem'} onClick={() => {
+                                navigate('/cursos', {
+                                    state: {
+                                        ...departments[item?.id]
+                                    }
+                                })
+                                localStorage.setItem('path', `${item?.info?.titulo}`)
+                                window.location.reload()
+
+                        }}>{item?.info?.titulo}</div>
+                        )
+                    })}
+                    {/* <div className='subItem' onClick={() => {
                                 navigate('/cursos', {
                                     state: {
                                         ...departments[1]
@@ -681,10 +755,11 @@ const Content = ({ selected, dir }) => {
                                 localStorage.setItem('course',departments[0]?.id)
                                 window.location.reload()
 
-                        }}>Ciências da Saúde</div>
+                        }}>Ciências da Saúde</div> */}
                     
                 </div>
                 : selected == 3 ? <div className='subMenu'>
+                    
                     <div onClick={() => {
                         
                         axios.get(`${baseURL}/api/admissionsContents`)
@@ -694,10 +769,10 @@ const Content = ({ selected, dir }) => {
                                 window.open(`${baseURL}/storage/pdfs/${content.emolumentos}`)
 
                             }else {
-                                alert('Documento não existe')
+                                setDialogOpen(true)
                             }
                         })
-                    }}className='subItem'>Emolumentos/Propinas</div>
+                    }}>Emolumentos/Propinas</div>
                     <div onClick={() => {
 
                             axios.get(`${baseURL}/api/admissionsContents`)
@@ -707,10 +782,10 @@ const Content = ({ selected, dir }) => {
                                 window.open(`${baseURL}/storage/pdfs/${content.calendario}`)
 
                             }else {
-                                alert('Documento não existe')
+                                setDialogOpen(true)
                             }
                         })                    }}className='subItem' >Calendário Académico</div>
-                    <div className='subItem' onClick={() => {
+                    <div className={localStorage.getItem('path')?.includes('Exames') ? 'subItem1' : 'subItem'} onClick={() => {
                         navigate('/admissoes')
                         localStorage.setItem('path', 'Exames de Acesso')
                     }}>Exames de acesso</div>
@@ -718,17 +793,17 @@ const Content = ({ selected, dir }) => {
                          navigate('/admissoes')
                         localStorage.setItem('path', 'Horários')
                     }}>Horários</div> */}
-                    <div className='subItem' onClick={() => {
+                    <div className={localStorage.getItem('path')?.includes('Perguntas') ? 'subItem1' : 'subItem'} onClick={() => {
                          navigate('/admissoes')
                         localStorage.setItem('path', 'Perguntas Frequentes')
-                    }}>Perguntas frequentes</div><div className='subItem' onClick={() => {
+                    }}>Perguntas frequentes</div><div className={localStorage.getItem('path').includes('Sugestões') ? 'subItem1' : 'subItem'} onClick={() => {
                         navigate('/admissoes')
                        localStorage.setItem('path', 'Sugestões e Reclamações')
                    }}>Sugestões e Reclamações</div>
                 </div>
                 :
                 <div className='subMenu'>
-                    <div className='subItem' onClick={() => {
+                    <div className={location.pathname.includes('bolsas') ? 'subItem1' : 'subItem'} onClick={() => {
                         navigate('/colaboradores/bolsas', {
                             
                         })

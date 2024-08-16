@@ -16,6 +16,8 @@ import { Calendar } from '../@/components/ui/calendar'
 import { Select, SelectContent, SelectItem, SelectTrigger } from '../@/components/ui/select'
 import { SelectValue } from '@radix-ui/react-select'
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogTitle, AlertDialogTrigger } from '../@/components/ui/alert-dialog'
+import Switch from "react-switch";
+
 
 
 export const HeaderLabel = ({title}) => {
@@ -253,6 +255,7 @@ const AdminHome = () => {
                                 data: dateAdded,
                                 testemunho: test,
                                 dateAdded: new Date(),
+                                show: true
                             },
                             ...[...obj.testemunhos]
                         ]
@@ -276,6 +279,7 @@ const AdminHome = () => {
                                 data: dateAdded,
                                 testemunho: test,
                                 dateAdded: new Date(),
+                                show: true
                             }
                         ]
                     })
@@ -303,7 +307,7 @@ const AdminHome = () => {
         }
         else if (testName.split(/\s(?=\S)/ig).length > 2) {
             setErrors(['Só o primeiro e último nome são necessários!'])
-        }else if (testName == item.nome && testVia == item.via && test == item.via && dateAdded == item.data){
+        }else if (testName == item.nome && testVia == item.via && test == item.via && dateAdded == item.data && (item?.show == show)){
             setErrors(['Nenhuma alteração feita!'])
         }else {
             axios.get(`${baseURL}/api/homeContents`)
@@ -319,6 +323,7 @@ const AdminHome = () => {
                             data: dateAdded,
                             testemunho: test,
                             dateAdded: new Date(),
+                            show: show
                         }
                     }else {
                         return t
@@ -329,7 +334,7 @@ const AdminHome = () => {
                 })
                 .then(res => {
                     console.log('success')
-                    setMessages(['Testemunho adicionado com sucesso.'])
+                    setMessages(['Testemunho editado com sucesso.'])
                     window.location.reload()
                 })
                 .catch(err => {
@@ -361,6 +366,7 @@ const AdminHome = () => {
             setProfile(res.data[0].perfilPr)
         })
     }, [])
+    const [show, setShow] = useState(false)
     return (
         <div className="dashboardContainer" id='adminHomeContainer'>
             <div className="title">Página Inicial</div>
@@ -426,7 +432,7 @@ const AdminHome = () => {
                                 <div className='buttons' style={{marginBottom: 50}}>
                                     <div onClick={() => {
                                         saveVideo()
-                                    }} className='save'>Salvar</div>
+                                    }} className='save'>Guardar</div>
 
                                 </div>
                                 {/* <div className='' dangerouslySetInnerHTML={{__html: prMessage}}>
@@ -530,7 +536,7 @@ const AdminHome = () => {
                                 <div className='buttons' style={{marginBottom: 50}}>
                                     <div onClick={() => {
                                         savePR()
-                                    }} className='save'>Salvar</div>
+                                    }} className='save'>Guardar</div>
 
                                 </div>
                                 {/* <div className='' dangerouslySetInnerHTML={{__html: prMessage}}>
@@ -564,7 +570,7 @@ const AdminHome = () => {
                             }}>
                                 <Edit title='Adicionar'/>
                             </DialogTrigger>
-                            <DialogContent style={{width: '100%', maxWidth: 1000, display: 'flex', flexDirection: 'column'}}>
+                            <DialogContent style={{width: '100%', maxWidth: 500, display: 'flex', flexDirection: 'column'}}>
                                 <DialogHeader>
                                     <DialogTitle>Adicionar</DialogTitle>
                                     <DialogDescription>Adicionar um novo testemunho</DialogDescription>
@@ -692,6 +698,13 @@ const AdminHome = () => {
                                 setTestVia(item.via)
                                 setTest(item.testemunho)
                                 setDateAdded(new Date(item.data))
+                                if (item.show != undefined && item.show == true){
+                                    setShow(true)
+                                }else if (item.show != undefined && item.show == false){
+                                    setShow(false)
+                                }else {
+                                    setShow(true)
+                                }
                             }}>
                             <div className='actionButton'>
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
@@ -699,7 +712,7 @@ const AdminHome = () => {
 </svg>
                                                     </div>
                             </DialogTrigger>
-                            <DialogContent style={{width: '100%', maxWidth: 1000, display: 'flex', flexDirection: 'column'}}>
+                            <DialogContent style={{width: '100%', maxWidth: 500, display: 'flex', flexDirection: 'column'}}>
                                 <DialogHeader>
                                     <DialogTitle>Editar</DialogTitle>
                                     <DialogDescription>Editar testemunho</DialogDescription>
@@ -756,6 +769,12 @@ const AdminHome = () => {
                                         <textarea value={test} onChange={(e)=>setTest(e.target.value)} style={{height: 100}} placeholder='Digite o testemunho...' className='loginInput' />
                                         
                                     </div>
+                                    <div className='form'>
+                                        <Switch uncheckedIcon={null} checkedIcon={null} checked={show} onChange={() => {
+                                            setShow(!show)
+                                        }} />
+                                        
+                                    </div>
                                     <div className="errors">
                             {errors.length > 0 && errors.map((item, index) => {
                                 return (
@@ -778,7 +797,7 @@ const AdminHome = () => {
                                     <div className='buttons' style={{marginBottom: 50}}>
                                     <div onClick={() => {
                                         editTest(item)
-                                    }} className='save'>Salvar</div>
+                                    }} className='save'>Guardar</div>
 
                                 </div>
                                     </div>
@@ -788,7 +807,7 @@ const AdminHome = () => {
                                                     
 
                                                     <AlertDialog>
-                                <AlertDialogTrigger style={{width: '100%'}}>
+                                <AlertDialogTrigger style={{display: 'none'}}>
                                 <div className='actionButton'>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
@@ -796,7 +815,7 @@ const AdminHome = () => {
 </svg>
                                                 </div>
                                 </AlertDialogTrigger>
-                                <AlertDialogContent style={{flexDirection: 'column', display: 'flex'}}>
+                                <AlertDialogContent style={{flexDirection: 'column', display: 'flex', alignItems: 'center', textAlign: 'center'}}>
                                     <span>
                                         <AlertDialogTitle>
                                             Apagar Testemunho
@@ -805,7 +824,7 @@ const AdminHome = () => {
                                             Deseja mesmo apagar esse testemunho?
                                         </AlertDialogDescription>
                                     </span>
-                                    <span style={{alignSelf: 'flex-end', marginTop: 15, display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', }}>
+                                    <span style={{alignSelf: 'center', marginTop: 15, display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', }}>
                                     <AlertDialogCancel style={{margin: 0}}>Cancelar</AlertDialogCancel>
                                     <AlertDialogAction style={{margin: 0}} onClick={() => {
                                         

@@ -123,7 +123,13 @@ const Estatutos = ({aboutContent}) =>  {
  */}
         <div className='container1'>
             <div className='regulations'>
-                {aboutContent?.regulamentos && [...aboutContent?.regulamentos].length > 0 ? [...aboutContent?.regulamentos].map((item, index)=> {
+                {aboutContent?.regulamentos && [...aboutContent?.regulamentos].length > 0 ? [...aboutContent?.regulamentos].filter((item) => {
+               if (item.show == undefined){
+                   return item
+               }else if (item.show == true || item.show == 'true'){
+                   return item
+               }
+           }).map((item, index)=> {
                     return (
                         <div className='regContainer'>
                             <div>

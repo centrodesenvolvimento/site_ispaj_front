@@ -358,7 +358,7 @@ const Admin = () => {
                                                         email: editEmail.value
                                                     }
                                                 })
-                                            }} className='save'>Salvar</div>
+                                            }} className='save'>Guardar</div>
                                         </div> :  <svg onClick={() => {
                                             setEditEmail({
                                                 ...editEmail,
@@ -578,7 +578,7 @@ const Admin = () => {
                         
                                                 })
                         
-                                            }} className='save'>Salvar</div>
+                                            }} className='save'>Guardar</div>
                                         </div> :  <svg onClick={() => {
                                             setEditName({
                                                 ...editName,
@@ -737,7 +737,7 @@ const Admin = () => {
                                         </svg>
                                                 </div>
                                     </AlertDialogTrigger>
-                                    <AlertDialogContent style={{flexDirection: 'column', display: 'flex'}}>
+                                    <AlertDialogContent style={{flexDirection: 'column', display: 'flex', alignItems: 'center', textAlign: 'center'}}>
                                         <span>
                                             <AlertDialogTitle>
                                                 Sair de conta
@@ -746,7 +746,7 @@ const Admin = () => {
                                                 Deseja mesmo sair de conta? Terá de fazer login de novo para acessar o painel administrativo.
                                             </AlertDialogDescription>
                                         </span>
-                                        <span style={{alignSelf: 'flex-end', marginTop: 15, display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', }}>
+                                        <span style={{alignSelf: 'center', marginTop: 15, display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', }}>
                                         <AlertDialogCancel style={{margin: 0}}>Cancelar</AlertDialogCancel>
                                         <AlertDialogAction style={{margin: 0}} onClick={() => {
                                             navigate('/login')

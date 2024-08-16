@@ -324,7 +324,7 @@ const AdminDepartments = () => {
                                     <div className='buttons' style={{marginBottom: 50}}>
                                         <div onClick={() => {
                                             saveDeparment(departments[0])
-                                        }} className='save'>Salvar</div>
+                                        }} className='save'>Guardar</div>
                                     </div>
                                     {/* <div className='' dangerouslySetInnerHTML={{__html: prMessage}}>
                                     </div> */}
@@ -485,7 +485,7 @@ const AdminDepartments = () => {
                                     <div className='buttons' style={{marginBottom: 50}}>
                                         <div onClick={() => {
                                             saveDeparment(departments[1])
-                                        }} className='save'>Salvar</div>
+                                        }} className='save'>Guardar</div>
                                     </div>
                                     {/* <div className='' dangerouslySetInnerHTML={{__html: prMessage}}>
                                     </div> */}
@@ -647,7 +647,7 @@ const AdminDepartments = () => {
                                     <div className='buttons' style={{marginBottom: 50}}>
                                         <div onClick={() => {
                                             saveDeparment(departments[2])
-                                        }} className='save'>Salvar</div>
+                                        }} className='save'>Guardar</div>
                                     </div>
                                     {/* <div className='' dangerouslySetInnerHTML={{__html: prMessage}}>
                                     </div> */}

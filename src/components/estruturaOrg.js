@@ -167,29 +167,114 @@ Nesta conformidade, o ISPAJ assenta a sua organização interna na óptica de ad
                 <div className='preTitle'>Orgãos Singulares de Gestão:</div>
 
                 {aboutContent?.orgaos_singulares && [...aboutContent?.orgaos_singulares].length > 0 ? <div className='orgGrid'>
-                    <section className='president'>
+                    {aboutContent?.orgaos_singulares && [...aboutContent.orgaos_singulares].filter((item) => {
+                            if (item.show == undefined){
+                                return item
+                            }else if (item.show == true){
+                                return item
+                            }
+                        }).filter((item) => item.presidente == 'true')[0] && 
+                        <section className='president'>
                         <div className='cont'>
-                           <img src={aboutContent?.orgaos_singulares && `${baseURL}/storage/images/${[...aboutContent.orgaos_singulares].filter((item) => item.presidente == 'true')[0].imagem}`}/>
+                           <img src={aboutContent?.orgaos_singulares && `${baseURL}/storage/images/${[...aboutContent.orgaos_singulares].filter((item) => {
+                            if (item.show == undefined){
+                                return item
+                            }else if (item.show == true){
+                                return item
+                            }
+                        }).filter((item) => item.presidente == 'true')[0]?.imagem}`}/>
                            
                         </div>
                         <div className='info'>
                             <div className='preTitle'>Presidente</div>
-                            {aboutContent?.orgaos_singulares && [...aboutContent.orgaos_singulares].filter((item) => item.presidente == 'true')[0] ? <div className='title'>{aboutContent?.orgaos_singulares && [...aboutContent.orgaos_singulares].filter((item) => item.presidente == 'true')?.[0].nome}</div>: <Skeleton className='title'/>}
-                            {aboutContent?.orgaos_singulares && [...aboutContent.orgaos_singulares].filter((item) => item.presidente == 'true')[0] ? <div className='description'>{aboutContent?.orgaos_singulares && [...aboutContent.orgaos_singulares].filter((item) => item.presidente == 'true')?.[0].descricao}</div>: <Skeleton className='description' count={3}/>}
+                            {aboutContent?.orgaos_singulares && [...aboutContent.orgaos_singulares].filter((item) => {
+                            if (item.show == undefined){
+                                return item
+                            }else if (item.show == true){
+                                return item
+                            }
+                        }).filter((item) => item.presidente == 'true')[0] ? <div className='title'>{aboutContent?.orgaos_singulares && [...aboutContent.orgaos_singulares].filter((item) => {
+                          if (item.show == undefined){
+                              return item
+                          }else if (item.show == true){
+                              return item
+                          }
+                      }).filter((item) => item.presidente == 'true')[0]?.nome}</div>: <Skeleton className='title'/>}
+                            {aboutContent?.orgaos_singulares && [...aboutContent.orgaos_singulares].filter((item) => {
+                            if (item.show == undefined){
+                                return item
+                            }else if (item.show == true){
+                                return item
+                            }
+                        }).filter((item) => item.presidente == 'true')[0] ? <div className='description'>{aboutContent?.orgaos_singulares && [...aboutContent.orgaos_singulares].filter((item) => {
+                          if (item.show == undefined){
+                              return item
+                          }else if (item.show == true){
+                              return item
+                          }
+                      }).filter((item) => item.presidente == 'true')?.[0].descricao}</div>: <Skeleton className='description' count={3}/>}
                         </div>
-                    </section>
-                    <section className='subordinates' id='subordinate1'>
-                        {aboutContent?.orgaos_singulares && [...aboutContent.orgaos_singulares].filter((item) => item.presidente == 'true')[0] && <div className='cont'>
-                          <img src={aboutContent?.orgaos_singulares && `${baseURL}/storage/images/${[...aboutContent.orgaos_singulares].filter((item) => item.presidente == 'true')?.[0].imagem}`}/>
+                    </section>}
+                    {aboutContent?.orgaos_singulares && [...aboutContent.orgaos_singulares].filter((item) => {
+                            if (item.show == undefined){
+                                return item
+                            }else if (item.show == true){
+                                return item
+                            }
+                        }).filter((item) => item.presidente == 'true')[0]&& <section className='subordinates' id='subordinate1'>
+                        {aboutContent?.orgaos_singulares && [...aboutContent.orgaos_singulares].filter((item) => {
+                            if (item.show == undefined){
+                                return item
+                            }else if (item.show == true){
+                                return item
+                            }
+                        }).filter((item) => item.presidente == 'true').length > 0 && <div className='cont'>
+                          <img src={aboutContent?.orgaos_singulares && `${baseURL}/storage/images/${[...aboutContent.orgaos_singulares].filter((item) => {
+                            if (item.show == undefined){
+                                return item
+                            }else if (item.show == true){
+                                return item
+                            }
+                        }).filter((item) => item.presidente == 'true')[0]?.imagem}`}/>
                         </div>}
                         <div>
-                            <div className='imgContainer'>{aboutContent?.orgaos_singulares && [...aboutContent.orgaos_singulares].filter((item) => item.presidente == 'true')[0].nome[0]}{aboutContent?.orgaos_singulares && `${aboutContent?.orgaos_singulares && [...aboutContent.orgaos_singulares].filter((item) => item.presidente == 'true')[0].nome}`.split(' ')[1][0]}</div>
+                            <div className='imgContainer'>{aboutContent?.orgaos_singulares && [...aboutContent.orgaos_singulares].filter((item) => {
+                            if (item.show == undefined){
+                                return item
+                            }else if (item.show == true){
+                                return item
+                            }
+                        }).filter((item) => item.presidente == 'true')[0]?.nome[0]}{aboutContent?.orgaos_singulares && `${aboutContent?.orgaos_singulares && [...aboutContent.orgaos_singulares].filter((item) => {
+                          if (item.show == undefined){
+                              return item
+                          }else if (item.show == true){
+                              return item
+                          }
+                      }).filter((item) => item.presidente == 'true')[0]?.nome}`.split(' ')[1][0]}</div>
                         </div>
-                        {<div className='title'>{aboutContent?.orgaos_singulares && [...aboutContent.orgaos_singulares].filter((item) => item.presidente == 'true')[0].nome}</div>}
-                            <div className='description'>{aboutContent?.orgaos_singulares && [...aboutContent.orgaos_singulares].filter((item) => item.presidente == 'true')[0].descricao}</div>
-                    </section>
+                        {<div className='title'>{aboutContent?.orgaos_singulares && [...aboutContent.orgaos_singulares].filter((item) => {
+                            if (item.show == undefined){
+                                return item
+                            }else if (item.show == true){
+                                return item
+                            }
+                        }).filter((item) => item.presidente == 'true')[0]?.nome}</div>}
+                            <div className='description'>{aboutContent?.orgaos_singulares && [...aboutContent.orgaos_singulares].filter((item) => {
+                            if (item.show == undefined){
+                                return item
+                            }else if (item.show == true){
+                                return item
+                            }
+                        }).filter((item) => item.presidente == 'true')[0]?.descricao}</div>
+                    </section>}
                     
-                    {aboutContent?.orgaos_singulares && [...aboutContent.orgaos_singulares].filter((item) => item.presidente != 'true').reverse().map((item, index)=> {
+                    {aboutContent?.orgaos_singulares && [...aboutContent.orgaos_singulares].filter((item) => {
+                            if (item.show == undefined){
+                                return item
+                            }else if (item.show == true){
+                                return item
+                            }
+                        }).filter((item) => item.presidente != 'true').reverse().map((item, index)=> {
                       return (
                         <section className='subordinates'>
                         <div>
@@ -219,10 +304,10 @@ Nesta conformidade, o ISPAJ assenta a sua organização interna na óptica de ad
                     return (
                       <span className='member' style={{minWidth: 120, maxWidth: 120}}>
                             <span className='memberImage'>
-                                <img src={`${baseURL}/storage/images/${item.imagem}`}/>
+                                <img src={`${baseURL}/storage/images/${item?.imagem}`}/>
                             </span>
-                            <div className='memberName'>{item.nome}</div>
-                            <div className='memberRole'>{item.cargo}</div>
+                            <div className='memberName'>{item?.nome}</div>
+                            <div className='memberRole'>{item?.cargo}</div>
                         </span>
                     )
                 }): 
@@ -308,7 +393,13 @@ Nesta conformidade, o ISPAJ assenta a sua organização interna na óptica de ad
                 <div style={{marginTop: 20}} className='preTitle'>Orgãos Colegiais de gestão e consulta</div>
                 <div className='orgGrid1'>
                 {aboutContent?.orgaos_colegiais && [...aboutContent?.orgaos_colegiais].length > 0 ? 
-                [...aboutContent?.orgaos_colegiais].map((item, index) => {
+                [...aboutContent?.orgaos_colegiais].filter((item) => {
+                  if (item.show == undefined){
+                      return item
+                  }else if (item.show == "true"){
+                      return item
+                  }
+              }).map((item, index) => {
                   return (
                     <section className='subordinates'>
                 <div>
@@ -338,10 +429,10 @@ Nesta conformidade, o ISPAJ assenta a sua organização interna na óptica de ad
                     return (
                       <span className='member' style={{minWidth: 120, maxWidth: 120}}>
                             <span className='memberImage'>
-                                <img src={`${baseURL}/storage/images/${item.imagem}`}/>
+                                <img src={`${baseURL}/storage/images/${item?.imagem}`}/>
                             </span>
-                            <div className='memberName'>{item.nome}</div>
-                            <div className='memberRole'>{item.cargo}</div>
+                            <div className='memberName'>{item?.nome}</div>
+                            <div className='memberRole'>{item?.cargo}</div>
                         </span>
                     )
                 }): 

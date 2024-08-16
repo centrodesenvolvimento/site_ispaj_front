@@ -17,6 +17,7 @@ import getCroppedImg from './cropImage'
 import { Checkbox } from '../@/components/ui/checkbox'
 import { ScrollArea } from '../@/components/ui/scroll-area'
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '../@/components/ui/sheet'
+import ReactSwitch from 'react-switch'
 
 const AdminEstOrg = () => {
     const [errors, setErrors] = useState([])
@@ -36,6 +37,7 @@ const AdminEstOrg = () => {
     const [role, setRole] = useState('')
     const [description, setDescription] = useState('')
     const [completedCrop, setCompletedCrop] = useState(null)
+    const [show, setShow] = useState(false)
     const onCropComplete = async (croppedArea, croppedAreaPixels) => {
         setCroppedAreaPixels(croppedAreaPixels)
         const croppedImageUrl = await getCroppedImg(selectedImage, croppedAreaPixels)
@@ -72,7 +74,7 @@ const AdminEstOrg = () => {
                             descricao: description,
                             presidente: true,
                             nome: prName,
-                            image_data: base64Data
+                            image_data: base64Data,
                         },{
                             headers: {
                                 'Content-Type': 'multipart/form-data',
@@ -150,7 +152,7 @@ const AdminEstOrg = () => {
             setErrors(['Preencha todos os campos!'])
         }else if (isPresident && (prName.length == 0 || !completedCrop)){
             setErrors(['Preencha as informações do presidente!'])
-        }else if (prName == item.nome && description == item.descricao && role == item.cargo && !completedCrop ){
+        }else if (prName == item.nome && description == item.descricao && role == item.cargo && !completedCrop && item?.show == show ){
             setErrors(['Nenhuma alteração feita!'])
         }else {
             if (completedCrop){
@@ -174,7 +176,8 @@ const AdminEstOrg = () => {
                             "descricao": description,
                             "image_data": base64Data,
                             "imagem": item.imagem,
-                            "hasMembers": false
+                            "hasMembers": false,
+                            "show": show
                         })
                         .then(res => {
                             setMessages(['Órgão adicionado com sucesso!'])
@@ -205,7 +208,8 @@ const AdminEstOrg = () => {
                             "nome": prName,
                             "descricao": description,
                             "imagem": item.imagem,
-                            "hasMembers": false
+                            "hasMembers": false,
+                            "show": show
                         }
                     }else {
                         return o
@@ -235,7 +239,8 @@ const AdminEstOrg = () => {
                                 "id": item.id,
                                 "cargo": role,
                                 "descricao": description,
-                                "hasMembers": item.hasMembers
+                                "hasMembers": item.hasMembers,
+                                "show": show
                             }
                         }else {
                             return o
@@ -271,7 +276,8 @@ const AdminEstOrg = () => {
                             id: i.id,
                             cargo: role,
                             descricao: description,
-                            membros: i.membros
+                            membros: i.membros,
+                            show: show
                         }
                     }
                     return i
@@ -424,7 +430,7 @@ const AdminEstOrg = () => {
                             }}>
                                 <Edit title='Adicionar'/>
                             </DialogTrigger>
-                            <DialogContent style={{width: '100%', maxWidth: 1000, display: 'flex', flexDirection: 'column'}}>
+                            <DialogContent style={{width: '100%', maxWidth: 600, display: 'flex', flexDirection: 'column'}}>
                                 <DialogHeader>
                                     <DialogTitle>Adicionar</DialogTitle>
                                     <DialogDescription>Adicionar um novo órgão singular</DialogDescription>
@@ -595,6 +601,13 @@ const AdminEstOrg = () => {
                                     setRole(item.cargo)
                                     setDescription(item.descricao)
                                 }
+                                if (item.show != undefined && item.show == true){
+                                    setShow(true)
+                                }else if (item.show != undefined && item.show == false){
+                                    setShow(false)
+                                }else {
+                                    setShow(true)
+                                }
                             }}>
                             <div className='actionButton'>
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
@@ -602,8 +615,9 @@ const AdminEstOrg = () => {
 </svg>
                                                     </div>
                             </DialogTrigger>
-                            <DialogContent style={{width: '100%', maxWidth: 1000, display: 'flex', flexDirection: 'column'}}>
+                            <DialogContent style={{width: '100%', maxWidth: 600, display: 'flex', flexDirection: 'column'}}>
                                 <DialogHeader>
+                                    
                                     <DialogTitle>Editar</DialogTitle>
                                     <DialogDescription>Editar Órgão</DialogDescription>
 
@@ -675,7 +689,11 @@ const AdminEstOrg = () => {
                                     /> */}
                                     </div>
                                     </div>}                                                                    
-
+                                    <div className='form'>
+                                    <ReactSwitch uncheckedIcon={null} checkedIcon={null} checked={show} onChange={() => {
+                                            setShow(!show)
+                                        }} />
+                                    </div>
                                     <div className="errors">
                             {errors.length > 0 && errors.map((item, index) => {
                                 return (
@@ -698,7 +716,7 @@ const AdminEstOrg = () => {
                                     <div className='buttons' style={{marginBottom: 50}}>
                                     <div onClick={() => {
                                         editOrgSing(item)
-                                    }} className='save'>Salvar</div>
+                                    }} className='save'>Guardar</div>
 
                                 </div>
                                 </div>
@@ -708,7 +726,7 @@ const AdminEstOrg = () => {
                                                     
 
                                                     <AlertDialog>
-                                <AlertDialogTrigger style={{width: '100%'}}>
+                                <AlertDialogTrigger style={{display: 'none'}}>
                                 <div className='actionButton'>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
@@ -716,7 +734,7 @@ const AdminEstOrg = () => {
 </svg>
                                                 </div>
                                 </AlertDialogTrigger>
-                                <AlertDialogContent style={{flexDirection: 'column', display: 'flex'}}>
+                                <AlertDialogContent style={{flexDirection: 'column', display: 'flex', alignItems: 'center', textAlign: 'center'}}>
                                     <span>
                                         <AlertDialogTitle>
                                             Apagar Órgão
@@ -725,7 +743,7 @@ const AdminEstOrg = () => {
                                             Deseja mesmo apagar esse órgão?
                                         </AlertDialogDescription>
                                     </span>
-                                    <span style={{alignSelf: 'flex-end', marginTop: 15, display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', }}>
+                                    <span style={{alignSelf: 'center', marginTop: 15, display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', }}>
                                     <AlertDialogCancel style={{margin: 0}}>Cancelar</AlertDialogCancel>
                                     <AlertDialogAction style={{margin: 0}} onClick={() => {
                                         console.log('deleted')
@@ -881,10 +899,10 @@ const AdminEstOrg = () => {
                             </span>
                             <div className='memberName'>{it.nome}</div>
                             <AlertDialog>
-                                <AlertDialogTrigger style={{width: '100%'}}>
+                                <AlertDialogTrigger style={{}}>
                                 <div style={{fontSize: 13, color:'red', border: '1px solid red', padding: '0 10px', margin:'5px 0', borderRadius: 5, cursor: 'pointer'}}>Deletar</div>
                                 </AlertDialogTrigger>
-                                <AlertDialogContent style={{flexDirection: 'column', display: 'flex'}}>
+                                <AlertDialogContent style={{flexDirection: 'column', display: 'flex', alignItems: 'center', textAlign: 'center'}}>
                                     <span>
                                         <AlertDialogTitle>
                                             Apagar Membro
@@ -893,7 +911,7 @@ const AdminEstOrg = () => {
                                             Deseja mesmo apagar esse membro?
                                         </AlertDialogDescription>
                                     </span>
-                                    <span style={{alignSelf: 'flex-end', marginTop: 15, display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', }}>
+                                    <span style={{alignSelf: 'center', marginTop: 15, display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', }}>
                                     <AlertDialogCancel style={{margin: 0}}>Cancelar</AlertDialogCancel>
                                     <AlertDialogAction style={{margin: 0}} onClick={() => {
                                         
@@ -999,7 +1017,7 @@ const AdminEstOrg = () => {
                             }}>
                                 <Edit title='Adicionar'/>
                             </DialogTrigger>
-                            <DialogContent style={{width: '100%', maxWidth: 1000, display: 'flex', flexDirection: 'column'}}>
+                            <DialogContent style={{width: '100%', maxWidth: 600, display: 'flex', flexDirection: 'column'}}>
                                 <DialogHeader>
                                     <DialogTitle>Adicionar</DialogTitle>
                                     <DialogDescription>Adicionar um novo órgão colegial</DialogDescription>
@@ -1059,7 +1077,7 @@ const AdminEstOrg = () => {
                         <TableHeader>
                             <TableRow>
                                 <TableHead>Nº</TableHead>
-                                <TableHead>Cargp</TableHead>
+                                <TableHead>Cargo</TableHead>
                                 <TableHead>Descrição</TableHead>                                
                                 <TableHead className='tableActions'>Ações</TableHead>
                                 <TableHead>Membros</TableHead>
@@ -1085,6 +1103,13 @@ const AdminEstOrg = () => {
                             <DialogTrigger onClick={() => {
                                 setRole(item.cargo)
                                 setDescription(item.descricao)
+                                if (item.show != undefined && item.show == "true"){
+                                    setShow(true)
+                                }else if (item.show != undefined && item.show == "false"){
+                                    setShow(false)
+                                }else {
+                                    setShow(true)
+                                }
                             }}>
                             <div className='actionButton'>
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
@@ -1092,7 +1117,7 @@ const AdminEstOrg = () => {
 </svg>
                                                     </div>
                             </DialogTrigger>
-                            <DialogContent style={{width: '100%', maxWidth: 1000, display: 'flex', flexDirection: 'column'}}>
+                            <DialogContent style={{width: '100%', maxWidth: 600, display: 'flex', flexDirection: 'column'}}>
                                 <DialogHeader>
                                     <DialogTitle>Editar</DialogTitle>
                                     <DialogDescription>Editar órgão colegial</DialogDescription>
@@ -1125,7 +1150,11 @@ const AdminEstOrg = () => {
                                 )
                             })}
                             </div>
-
+                            <div className='form'>
+                            <ReactSwitch uncheckedIcon={null} checkedIcon={null} checked={show} onChange={() => {
+                                            setShow(!show)
+                                        }} />
+                            </div>
                             <div className="errors">
                             {messages.length > 0 && messages.map((item, index) => {
                                 return (
@@ -1138,7 +1167,7 @@ const AdminEstOrg = () => {
                                     <div className='buttons' style={{marginBottom: 50}}>
                                     <div onClick={() => {
                                         editOrgCol(item)
-                                    }} className='save'>Salvar</div>
+                                    }} className='save'>Guardar</div>
 
                                 </div>
                                     </div>
@@ -1148,7 +1177,7 @@ const AdminEstOrg = () => {
                                                     
 
                                                     <AlertDialog>
-                                <AlertDialogTrigger style={{width: '100%'}}>
+                                <AlertDialogTrigger style={{display: 'none'}}>
                                 <div className='actionButton'>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
@@ -1156,7 +1185,7 @@ const AdminEstOrg = () => {
 </svg>
                                                 </div>
                                 </AlertDialogTrigger>
-                                <AlertDialogContent style={{flexDirection: 'column', display: 'flex'}}>
+                                <AlertDialogContent style={{flexDirection: 'column', display: 'flex', alignItems: 'center', textAlign: 'center'}}>
                                     <span>
                                         <AlertDialogTitle>
                                             Apagar Órgão
@@ -1165,7 +1194,7 @@ const AdminEstOrg = () => {
                                             Deseja mesmo apagar esse órgão?
                                         </AlertDialogDescription>
                                     </span>
-                                    <span style={{alignSelf: 'flex-end', marginTop: 15, display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', }}>
+                                    <span style={{alignSelf: 'center', marginTop: 15, display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', }}>
                                     <AlertDialogCancel style={{margin: 0}}>Cancelar</AlertDialogCancel>
                                     <AlertDialogAction style={{margin: 0}} onClick={() => {
                                        axios.post(`${baseURL}/api/editAboutContent/colegiais/${1}`, {
@@ -1318,10 +1347,10 @@ const AdminEstOrg = () => {
                             </span>
                             <div className='memberName'>{it.nome}</div>
                             <AlertDialog>
-                                <AlertDialogTrigger style={{width: '100%'}}>
+                                <AlertDialogTrigger style={{}}>
                                 <div style={{fontSize: 13, color:'red', border: '1px solid red', padding: '0 10px', margin:'5px 0', borderRadius: 5, cursor: 'pointer'}}>Deletar</div>
                                 </AlertDialogTrigger>
-                                <AlertDialogContent style={{flexDirection: 'column', display: 'flex'}}>
+                                <AlertDialogContent style={{flexDirection: 'column', display: 'flex', alignItems: 'center', textAlign: 'center'}}>
                                     <span>
                                         <AlertDialogTitle>
                                             Apagar Membro
@@ -1330,7 +1359,7 @@ const AdminEstOrg = () => {
                                             Deseja mesmo apagar esse membro?
                                         </AlertDialogDescription>
                                     </span>
-                                    <span style={{alignSelf: 'flex-end', marginTop: 15, display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', }}>
+                                    <span style={{alignSelf: 'center', marginTop: 15, display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', }}>
                                     <AlertDialogCancel style={{margin: 0}}>Cancelar</AlertDialogCancel>
                                     <AlertDialogAction style={{margin: 0}} onClick={() => {
                                         

@@ -53,9 +53,15 @@ const NewsArticle = () => {
                 })
             }
           })
-        axios.get(`${baseURL}/api/news?limit=6`)
+        axios.get(`${baseURL}/api/news`)
         .then(res => {
-          setLatest([...res.data])
+          setLatest([...res.data].filter((item) => {
+            if (item.info?.show == undefined){
+                return item
+            }else if (item.info?.show == true){
+                return item
+            }
+        }))
         })
     }
     useEffect(() => {
@@ -305,7 +311,7 @@ const NewsArticle = () => {
                   <div className='title2'>Últimas Notícias</div>
                     <div className='sidePosts'>
                       {latest && latest.length > 3 ?
-                      latest.filter((item) => item.id != article?.id).map((item, index) => {
+                      latest.filter((item) => item.id != article?.id).slice(0, 6).map((item, index) => {
                         return (
                           <div className='post' key={index}>
                       <div className='imgContainer' style={{overflow: 'hidden'}}>

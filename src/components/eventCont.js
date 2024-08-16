@@ -13,7 +13,7 @@ const EventCont = ({item, navigatePost}) => {
                 {item?.info?.mesmo_dia ? <div className="date">{new Date(item.info.iniDate).getDate()}/{new Date(item.info.iniDate).getMonth()+1}/{new Date(item.info.iniDate).getFullYear()} das {item?.info?.horario}</div> :  <div className="date">De {new Date(item.info.iniDate).getDate()}/{new Date(item.info.iniDate).getMonth()+1}/{new Date(item.info.iniDate).getFullYear()} à {new Date(item.info.finalDate).getDate()}/{new Date(item.info.finalDate).getMonth()+1}/{new Date(item.info.finalDate).getFullYear()}</div>}
                 <div className="title" onClick={()=> {
             
-            navigate(`event/${item.title}`, {
+            navigate(`event/${item.id}`, {
                 state: {
                     item: item
                 }

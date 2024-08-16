@@ -71,7 +71,13 @@ const ExamsSection = ({admissionsContents}) =>  {
         </div>
         <div className='container1'>
             <div className='regulations'>
-                {admissionsContents?.exames && [...admissionsContents?.exames].length > 0 ? [...admissionsContents?.exames].map((item, index)=> {
+                {admissionsContents?.exames && [...admissionsContents?.exames].length > 0 ? [...admissionsContents?.exames].filter((item) => {
+               if (item.show == undefined){
+                   return item
+               }else if (item.show == true || item.show == 'true'){
+                   return item
+               }
+           }).map((item, index)=> {
                     return (
                         <div className='regContainer'>
                             <div>

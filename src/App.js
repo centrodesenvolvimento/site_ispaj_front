@@ -47,37 +47,52 @@ function App() {
     "Dezembro"
 ])
 const updateVisits = () => {
-  axios.get(`${baseURL}/api/info`)
-      .then(res => {
-        let monthstats = [...res.data][0]?.info?.monthstats
-        let newMonthStats = monthstats.map((item) => {
-          if (months[new Date().getMonth()] == item.month){
-            return {month: months[new Date().getMonth()], visits: item.visits + 1}
-          }
-          return item
-        })
-        const visitedOnce = (sessionStorage.getItem('visitedOnce')) || false
-        if (!visitedOnce){
-          axios.get(`${baseURL}/api/info`)
-          .then(res => {
-            axios.post(`${baseURL}/api/editInfo/1`, {
-              info: {
-                email: [...res.data][0]?.info?.email,
-                email2: [...res.data][0]?.info?.email2,
-                numero: [...res.data][0]?.info?.numero,
-                numero2: [...res.data][0]?.info?.numero2,
-                localizacao: [...res.data][0]?.info?.localizacao,
-                monthstats: newMonthStats
-              }
-            })
-            .then(res => {
-              sessionStorage.setItem('visitedOnce', true)
-            })
-          })
-        }
+  // axios.get(`${baseURL}/api/info`)
+  //     .then(res => {
+  //       let monthstats = [...res.data][0]?.info?.monthstats
+  //       let newMonthStats = monthstats.map((item) => {
+  //         if (months[new Date().getMonth()] == item.month){
+  //           return {month: months[new Date().getMonth()], visits: item.visits + 1}
+  //         }
+  //         return item
+  //       })
+  //       const visitedOnce = (sessionStorage.getItem('visitedOnce')) || false
+  //       if (!visitedOnce){
+  //         axios.get(`${baseURL}/api/info`)
+  //         .then(res => {
+  //           axios.post(`${baseURL}/api/editInfo/1`, {
+  //             info: {
+  //               email: [...res.data][0]?.info?.email,
+  //               email2: [...res.data][0]?.info?.email2,
+  //               numero: [...res.data][0]?.info?.numero,
+  //               numero2: [...res.data][0]?.info?.numero2,
+  //               localizacao: [...res.data][0]?.info?.localizacao,
+  //               monthstats: newMonthStats
+  //             }
+  //           })
+  //           .then(res => {
+  //             sessionStorage.setItem('visitedOnce', true)
+  //           })
+  //         })
+  //       }
 
         
-      })
+  //     })
+  console.log('running')
+      const visitedOnce = (sessionStorage.getItem('visitedOnce')) || false
+        if (!visitedOnce){
+          axios.post(`${baseURL}/api/addMonthlyView`, {
+            dateAdded: new Date()
+          })
+          .then(res => {
+            sessionStorage.setItem('visitedOnce', true)
+          })
+          .catch(err => {
+            sessionStorage.setItem('visitedOnce', true)
+          })
+          sessionStorage.setItem('visitedOnce', true)
+
+        }
 }
   useEffect(() => {
     console.log('inside homeee')

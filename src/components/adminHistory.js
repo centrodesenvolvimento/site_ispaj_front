@@ -17,6 +17,7 @@ import { Checkbox } from '../@/components/ui/checkbox'
 import { ScrollArea } from '../@/components/ui/scroll-area'
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '../@/components/ui/sheet'
 import '../css/adminHistory.css'
+import ReactSwitch from 'react-switch'
 const AdminHistory = () => {
     const [dateAdded, setDateAdded] = useState(new Date())
     const [title, setTitle] = useState('')
@@ -102,12 +103,13 @@ const AdminHistory = () => {
     })
         }
     }
+    const [show, setShow] = useState(false)
     const editEvent = (item) => {
         setErrors([])
         setMessages([])
         if (title.length == 0 || description.length == 0){
             setErrors(['Por favor preencha todos os campos!'])
-        }else if (title == item.titulo && description == item.descricao && `${new Date(dateAdded)}`== `${new Date(item.data)}`) {
+        }else if (title == item.titulo && description == item.descricao && `${new Date(dateAdded)}`== `${new Date(item.data)}` && item?.show == show) {
             setErrors(['Nenhuma alteração feita!'])
 
         }else {
@@ -123,6 +125,7 @@ const AdminHistory = () => {
                             descricao: description,
                             data: dateAdded,
                             dateAdded: new Date(),
+                            show: show
                         }
                     }else {
                         return h
@@ -145,6 +148,7 @@ const AdminHistory = () => {
         }
         
     }
+
     return (
         <div className="dashboardContainer" id='adminHomeContainer'>
             <div className="title">Historial</div>
@@ -160,7 +164,7 @@ const AdminHistory = () => {
                             }}>
                                 <Edit title='Adicionar'/>
                             </DialogTrigger>
-                            <DialogContent style={{width: '100%', maxWidth: 1000, display: 'flex', flexDirection: 'column'}}>
+                            <DialogContent style={{width: '100%', maxWidth: 600, display: 'flex', flexDirection: 'column'}}>
                                 <DialogHeader>
                                     <DialogTitle>Adicionar</DialogTitle>
                                     <DialogDescription>Adicionar um novo acontecimento</DialogDescription>
@@ -264,6 +268,13 @@ const AdminHistory = () => {
                                 setTitle(item.titulo)
                                 setDescription(item.descricao)
                                 setDateAdded(new Date(item.data))
+                                if (item.show != undefined && item.show == true){
+                                    setShow(true)
+                                }else if (item.show != undefined && item.show == false){
+                                    setShow(false)
+                                }else {
+                                    setShow(true)
+                                }
                                 // setTestName(item.nome)
                                 // setTestVia(item.via)
                                 // setTest(item.testemunho)
@@ -275,7 +286,7 @@ const AdminHistory = () => {
 </svg>
                                                     </div>
                             </DialogTrigger>
-                            <DialogContent style={{width: '100%', maxWidth: 1000, display: 'flex', flexDirection: 'column'}}>
+                            <DialogContent style={{width: '100%', maxWidth: 600, display: 'flex', flexDirection: 'column'}}>
                                 <DialogHeader>
                                     <DialogTitle>Editar</DialogTitle>
                                     <DialogDescription>Editar Acontecimento</DialogDescription>
@@ -316,6 +327,11 @@ const AdminHistory = () => {
                                         }} style={{height: 100}} placeholder='Digite o testemunho...' className='loginInput' />
                                         
                                     </div>
+                                    <div className='form'>
+                                    <ReactSwitch uncheckedIcon={null} checkedIcon={null} checked={show} onChange={() => {
+                                            setShow(!show)
+                                        }} />
+                                    </div>
                                     <div className="errors">
                             {errors.length > 0 && errors.map((item, index) => {
                                 return (
@@ -338,7 +354,7 @@ const AdminHistory = () => {
                                     <div className='buttons' style={{marginBottom: 50}}>
                                     <div onClick={() => {
                                         editEvent(item)
-                                    }} className='save'>Salvar</div>
+                                    }} className='save'>Guardar</div>
 
                                 </div>
                                     </div>
@@ -348,7 +364,7 @@ const AdminHistory = () => {
                                                     
 
                                                     <AlertDialog>
-                                <AlertDialogTrigger style={{width: '100%'}}>
+                                <AlertDialogTrigger style={{display: 'none'}}>
                                 <div className='actionButton'>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
@@ -356,7 +372,7 @@ const AdminHistory = () => {
 </svg>
                                                 </div>
                                 </AlertDialogTrigger>
-                                <AlertDialogContent style={{flexDirection: 'column', display: 'flex'}}>
+                                <AlertDialogContent style={{flexDirection: 'column', display: 'flex', alignItems: 'center', textAlign: 'center'}}>
                                     <span>
                                         <AlertDialogTitle>
                                             Apagar acontecimento
@@ -365,7 +381,7 @@ const AdminHistory = () => {
                                             Deseja mesmo apagar esse acontecimento?
                                         </AlertDialogDescription>
                                     </span>
-                                    <span style={{alignSelf: 'flex-end', marginTop: 15, display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', }}>
+                                    <span style={{alignSelf: 'center', marginTop: 15, display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', }}>
                                     <AlertDialogCancel style={{margin: 0}}>Cancelar</AlertDialogCancel>
                                     <AlertDialogAction style={{margin: 0}} onClick={() => {
                                         

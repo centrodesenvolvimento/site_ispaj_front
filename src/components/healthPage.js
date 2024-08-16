@@ -326,7 +326,13 @@ const HealthPage = ({curso, departamentos}) => {
 
                     <ScrollArea className='coursesScrollArea'>
                     <div className='courses'>
-                        {curso?.cursos && curso?.cursos?.map((item, index) => {
+                        {curso?.cursos && curso?.cursos?.filter((item) => {
+               if (item.show == undefined){
+                   return item
+               }else if (item.show == true){
+                   return item
+               }
+           }).map((item, index) => {
                             return (
                                 <div className='course'>
                                     <div className='imageContainer'>

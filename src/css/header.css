@@ -323,6 +323,21 @@
         color: #ec9a00
     }
 }
+.subItem1 {
+    color: #ec9a00;
+    position: relative;
+    padding-left: 10px;
+
+    &::before {
+        content: '.';
+        margin-right: 5px;
+        position: absolute;
+        left: 0;
+        top: -2.8px;
+        font-weight: 900;
+
+    }
+}
 .bi-listCont {
     display: none;
     @media screen and (width < 1075px) {

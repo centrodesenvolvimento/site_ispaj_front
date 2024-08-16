@@ -48,7 +48,13 @@ const AboutSection = ({aboutContent}) => {
                 <div className='preTitle'>Valores</div>
                 <section className='grid2'>
                     {aboutContent && [...aboutContent?.valores].length > 0 ?
-                        aboutContent && [...aboutContent?.valores].map((item, index) => {
+                        aboutContent && [...aboutContent?.valores].filter((item) => {
+                            if (item.show == undefined){
+                                return item
+                            }else if (item.show == true){
+                                return item
+                            }
+                        }).map((item, index) => {
                             return (
                                 <section className='value1'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gem" viewBox="0 0 16 16">

@@ -17,6 +17,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger } from '../@/component
 import { SelectValue } from '@radix-ui/react-select'
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogTitle, AlertDialogTrigger } from '../@/components/ui/alert-dialog'
 import { Edit, HeaderLabel } from './adminHome'
+import ReactSwitch from 'react-switch'
 
 const AdminNews = () => {
     const [errors, setErrors] = useState([])
@@ -36,6 +37,7 @@ const AdminNews = () => {
     const [crop, setCrop]= useState({x: 0, y: 0})
     const [zoom, setZoom]= useState(1)
     const [news, setNews] = useState([])
+    const [show, setShow] = useState(false)
 
     const [completedCrop, setCompletedCrop] = useState(null)
     const imageRef = useRef(null)    
@@ -83,7 +85,7 @@ const AdminNews = () => {
         setErrors([])
         setMessages([])
         setLoad(true)
-        if (title == item.info.titulo && description == item.info.descricao  && prevImagesPreviews.length == [...item.imagens].length && imagesToSend.length == 0 && `${new Date(dateAdded)}`== `${new Date(item.info.data)}`) {
+        if (title == item.info.titulo && description == item.info.descricao  && prevImagesPreviews.length == [...item.imagens].length && imagesToSend.length == 0 && `${new Date(dateAdded)}`== `${new Date(item.info.data)}` && `${item.info?.show}` == `${show}`) {
             setErrors(['Nenhuma alteração feita'])
             setLoad(false)
         }else {
@@ -95,7 +97,8 @@ const AdminNews = () => {
                     titulo: title,
                     descricao: description,
                     data: dateAdded,
-                    views: item.info.views
+                    views: item.info.views,
+                    show: show
                 })
                 .then(res => {
                     console.log('res', res.data)
@@ -111,7 +114,8 @@ const AdminNews = () => {
                     titulo: title,
                     descricao: description,
                     data: dateAdded,
-                    views: item.info.views
+                    views: item.info.views,
+                    show: show
                 })
                 .then(res => {
                     setMessages(['Notícia atualizada com sucesso'])
@@ -357,6 +361,14 @@ const AdminNews = () => {
                                 setDateAdded(new Date(item.info.data))
                                 setImagesToSend([])
                                 setImagesPreview([])
+
+                                if ((item.info?.show != undefined && item.info?.show == true) || (item.info?.show != undefined && item.info?.show == "true")){
+                                    setShow(true)
+                                }else if ((item.info?.show != undefined && item.info?.show == false) || (item.info?.show != undefined && item.info?.show == "false")){
+                                    setShow(false)
+                                }else {
+                                    setShow(true)
+                                }
                             }}>
 <div className='actionButton'>
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
@@ -479,7 +491,11 @@ const AdminNews = () => {
                                     }}/>
                                 </div>
                                 </div>
-                                        
+                                <div className='form'>
+                                <ReactSwitch uncheckedIcon={null} checkedIcon={null} checked={show} onChange={() => {
+                                            setShow(!show)
+                                        }} />
+                                    </div>
                                         <div className="errors">
                                                                 {errors.length > 0 && errors.map((item, index) => {
                                     return (
@@ -504,7 +520,7 @@ const AdminNews = () => {
                                         <div className='buttons' style={{marginBottom: 50}}>
                                         <div onClick={() => {
                                             editNews(item)
-                                        }} className='save'>Salvar</div>
+                                        }} className='save'>Guardar</div>
                                     </div>
                                         </div>
                                 </ScrollArea>
@@ -514,7 +530,7 @@ const AdminNews = () => {
                                                     
 
                                                     <AlertDialog>
-                                <AlertDialogTrigger>
+                                <AlertDialogTrigger style={{display: 'none'}}>
                                 <div className='actionButton'>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
@@ -522,7 +538,7 @@ const AdminNews = () => {
 </svg>
                                                 </div>
                                 </AlertDialogTrigger>
-                                <AlertDialogContent style={{flexDirection: 'column', display: 'flex'}}>
+                                <AlertDialogContent style={{flexDirection: 'column', display: 'flex',alignItems: 'center', textAlign: 'center'}}>
                                     <span>
                                         <AlertDialogTitle>
                                             Apagar notícia
@@ -532,7 +548,7 @@ const AdminNews = () => {
                                         </AlertDialogDescription>
                                     </span>
                                     {load && <div>Processando...</div>}
-                                    <span style={{alignSelf: 'flex-end', marginTop: 15, display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', }}>
+                                    <span style={{alignSelf: 'center', marginTop: 15, display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', }}>
                                     <AlertDialogCancel style={{margin: 0}}>Cancelar</AlertDialogCancel>
                                     <AlertDialogAction style={{margin: 0}} onClick={() => {
                                         setLoad(true)
