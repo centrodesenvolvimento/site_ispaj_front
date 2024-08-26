@@ -136,7 +136,7 @@
 }
 .logoTextCont {
     cursor: pointer;
-    @media screen and (width < 1075px) {
+    @media screen and (width < 1180px) {
         max-width: 100%;
         flex: 1;
     }
@@ -171,7 +171,7 @@
     display: flex;
     justify-content: center;
     z-index: 1000;
-    @media screen and (width < 1075px) {
+    @media screen and (width < 1180px) {
         display: none;
     }
 }
@@ -304,7 +304,7 @@
     flex: 1;
     justify-content: flex-end;
     display: flex;
-    @media screen and (width < 1075px) {
+    @media screen and (width < 1180px) {
         display: none;
     }
     
@@ -340,7 +340,7 @@
 }
 .bi-listCont {
     display: none;
-    @media screen and (width < 1075px) {
+    @media screen and (width < 1180px) {
         cursor: pointer;
         display: block;
         background-color: #ec9a00;
@@ -352,7 +352,7 @@
 }
 .bi-listCont1 {
     display: none;
-    @media screen and (width < 1075px) {
+    @media screen and (width < 1180px) {
         cursor: pointer;
         display: block;
         background-color: black;
@@ -413,7 +413,7 @@ svg[class~='bi-brightness-high'] {
 }
 .sideMenu {
     display: none;
-    @media screen and (width < 1075px) {
+    @media screen and (width < 1180px) {
         display: block;
         
     }

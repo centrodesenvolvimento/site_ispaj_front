@@ -31,6 +31,7 @@ import { baseURL } from './api/api';
 import Bolsa from './pages/bolsa';
 import { AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogDescription, AlertDialogOverlay, AlertDialogTitle } from './@/components/ui/alert-dialog';
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogOverlay, DialogTitle } from './@/components/ui/dialog';
+import Admissions2 from './pages/admissions2';
 
 function App() {
   const [departments, setDepartments] = useState([])
@@ -152,6 +153,7 @@ const updateVisits = () => {
         <Route path='/admin/sobre/estatutos' element={<Admin />} />
         <Route path='/admin/departamentos' element={<Admin />} />
         <Route path='/admin/departamentos/departamento' element={<Admin />} />
+        <Route path='/sugestoes_e_reclamacoes' element={<Admissions2 />} />
         <Route path='/admin/calendario' element={<Admin />} />
         <Route path='/admin/admissoes/emolumentos' element={<Admin />} />
         <Route path='/admin/admissoes/calendario' element={<Admin />} />

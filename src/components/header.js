@@ -461,14 +461,20 @@ useEffect(() => {
                         selected == 4 && <Content dir={'l'} selected={selected} setSelected={setSelected}/>
                     }
                 </AnimatePresence></div>
-                            <div onClick={() => {
+                            <div className={location.pathname.includes('sugestoes') ? 'menuItem1' : 'menuItem'} onClick={() => {
+                        navigate('/sugestoes_e_reclamacoes')
+                       
+                   }}><span>Sugestões/Reclamações</span></div>
+                
+                <div onClick={() => {
                                 navigate('/noticias')
                             }} className={location.pathname.includes('/noticias') ? 'menuItem1' : 'menuItem'}><span>Notícias</span></div>
-                
-                
                         </div>
-                        <div className='headerEnd' >
-                            <div className='contfact' style={{opacity: 0}}>
+                       
+                
+                
+                        <div className='headerEnd' style={{display: 'none'}}>
+                            <div className='contfact' style={{display: 'none'}}>
                                 Inscrição Online
                             </div>
                         </div>
@@ -555,9 +561,18 @@ useEffect(() => {
                             <div onClick={() => {
                                 setSelectedSide(4)
                             }} className={location.pathname.includes('colaboradores') ? 'sideMenuItem2' : 'sideMenuItem'}><span>Colaboradores</span><RightChevron /></div>
+                            <div className={location.pathname.includes('sugestoes') ? 'sideMenuItem2' : 'sideMenuItem'} onClick={() => {
+                        navigate('/sugestoes_e_reclamacoes')
+                       
+                   }}>
+                                Sugestões/Reclamações
+                            </div>
                             <div onClick={() => {
                                 navigate('/noticias')
                             }} className={location.pathname.includes('/noticias') ? 'sideMenuItem2' : 'sideMenuItem'}><span>Notícias</span></div>
+                            <div>
+                                
+                            </div>
                         </motion.div>
                         : selectedSide == 1 ?
                         <SideMenuItem>
@@ -694,12 +709,12 @@ useEffect(() => {
                             setOpen(false)
 
                         }}><span>Perguntas frequentes</span></div>
-                        <div className='sideMenuItem' onClick={() => {
+                        {/* <div className='sideMenuItem' onClick={() => {
                             navigate('/admissoes')
                             localStorage.setItem('path', 'Sugestões e Reclamações')
                             setOpen(false)
 
-                        }}><span>Sugestões e Reclamações</span></div>
+                        }}><span>Sugestões e Reclamações</span></div> */}
                     </SideMenuItem>
                     :
                     <SideMenuItem>
@@ -1022,10 +1037,7 @@ const Content = ({ selected, dir, departments, setSelected }) => {
                     <div className={localStorage.getItem('path')?.includes('Perguntas') ? 'subItem1' : 'subItem'} onClick={() => {
                          navigate('/admissoes')
                         localStorage.setItem('path', 'Perguntas Frequentes')
-                    }}>Perguntas frequentes</div><div className={localStorage.getItem('path')?.includes('Sugestões') ? 'subItem1' : 'subItem'} onClick={() => {
-                        navigate('/admissoes')
-                       localStorage.setItem('path', 'Sugestões e Reclamações')
-                   }}>Sugestões e Reclamações</div>
+                    }}>Perguntas frequentes</div>
                 </div>
                 :
                 <div className='subMenu'>
