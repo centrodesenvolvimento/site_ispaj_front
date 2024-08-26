@@ -46,6 +46,7 @@ import AdminAdmissionsPerguntas from '../components/adminAdmissionsPerguntas'
 import AdminAdmissionsExames from '../components/adminAdmissionsExames'
 import AdminNews from '../components/adminNews'
 import AdminSide2 from '../components/adminSide2'
+import AdminAvisos from '../components/adminAvisos'
 const Admin = () => {
     const navigate = useNavigate()
     const location = useLocation()
@@ -815,6 +816,8 @@ const Admin = () => {
                         ? <AdminAdmissionsExames />
                         : location.pathname.includes('admin/news')
                         ? <AdminNews />
+                        : location.pathname.includes('admin/avisos')
+                        ? <AdminAvisos />
                         :
                     <div>
                     </div>}

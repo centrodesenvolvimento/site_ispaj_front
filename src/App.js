@@ -29,6 +29,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { baseURL } from './api/api';
 import Bolsa from './pages/bolsa';
+import { AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogDescription, AlertDialogOverlay, AlertDialogTitle } from './@/components/ui/alert-dialog';
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogOverlay, DialogTitle } from './@/components/ui/dialog';
 
 function App() {
   const [departments, setDepartments] = useState([])
@@ -46,6 +48,8 @@ function App() {
     "Novembro",
     "Dezembro"
 ])
+const [dialogOpen, setDialogOpen] = useState(true)
+const [avisos, setAvisos] = useState([])
 const updateVisits = () => {
   // axios.get(`${baseURL}/api/info`)
   //     .then(res => {
@@ -78,6 +82,7 @@ const updateVisits = () => {
 
         
   //     })
+
   console.log('running')
       const visitedOnce = (sessionStorage.getItem('visitedOnce')) || false
         if (!visitedOnce){
@@ -94,8 +99,9 @@ const updateVisits = () => {
 
         }
 }
+  
   useEffect(() => {
-    console.log('inside homeee')
+      
       axios.get(`${baseURL}/api/departamentos`)
       .then(res => {
           console.log('res', res.data)
@@ -124,6 +130,7 @@ const updateVisits = () => {
           <Reviews />
           <Events />
           {/* <Globe /> */}
+          
           <Footer />
         </div>}/>
         <Route path='/sobre' element={<About />}/>
@@ -151,6 +158,8 @@ const updateVisits = () => {
         <Route path='/admin/admissoes/exames' element={<Admin />} />
         <Route path='/admin/admissoes/perguntas' element={<Admin />} />
         <Route path='/admin/news' element={<Admin />} />
+        <Route path='/admin/avisos' element={<Admin />} />
+
 
 
         <Route path='/soon' element={<Soon />} />

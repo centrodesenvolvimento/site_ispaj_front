@@ -1,3 +1,4 @@
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { useRef, useState } from 'react'
 import '../css/header.css' 
 import { useEffect } from 'react'
@@ -15,6 +16,9 @@ import axios from 'axios'
 import { baseURL } from '../api/api'
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogOverlay, AlertDialogTitle } from '../@/components/ui/alert-dialog'
 import { Overlay } from '@radix-ui/react-alert-dialog'
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogOverlay, DialogTitle } from '../@/components/ui/dialog'
+import { Close } from '@radix-ui/react-dialog'
+import { Carousel } from 'react-responsive-carousel'
 const containerVariants = {
     close: {
         width: '0px',
@@ -58,6 +62,7 @@ const Header = () => {
     const progressCircle = useRef(null);
     const progressContent = useRef(null);
     const [activeIndex, setActiveIndex] = useState(0)
+    const [avisos, setAvisos] = useState([])
     const onAutoplayTimeLeft = (s, time, progress) => {
       progressCircle.current.style.setProperty('--progress', 1 - progress);
       progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
@@ -143,10 +148,231 @@ const Header = () => {
         lastScrollTop = st;
     });
   }, [])
+  const [alerta, setAlerta] = useState(true)
+
+  useEffect(() => {
+    console.log('inside avisos useeffect')
+    axios.get(`${baseURL}/api/avisos`)
+    .then(res => {
+      console.log('avisosssssssssssssssssssssssssssssssss', res.data)
+      setAvisos([...res.data].filter((item) => {
+        if (item?.info?.show == undefined){
+            return item
+        }else if (item?.info?.show == true){
+            return item
+        }
+    }))
+    setDialogOpen1(true)
+    
+    })
+    .catch(err => {
+      console.log('avisos error', err.response.data.message)
+    })
+  }, [])
   const [dialogOpen, setDialogOpen] = useState(false)
+  const [dialogOpen1, setDialogOpen1] = useState(false)
+//   useEffect(() => {
+        
+//     var count = 0;
+//     var directions = {
+//     prev: 0,
+//     next: 1
+//     }
+//     var prevButton = document.querySelector(".slidernavigation button:first-child");
+//     var nextButton = document.querySelector(".slidernavigation button:last-child");
+//     var sliders = document.querySelectorAll(".slidercontent figure");
+//     function initListeners() {
+//         nextButton?.addEventListener("click", onNavigationClick);
+//         prevButton?.addEventListener("click", onNavigationClick);
+//     }
+//     function getElementIndex(element) {
+//         return Array.from(element.parentElement.children).indexOf(element);
+//     }
+//     function countController(directionIndex) {
+//         var result = { new: 0, old: count };
+//         var max = avisos.length
+        
+//         if(directionIndex === directions.next) {
+//           count = count === max - 1 ? 0 : (count + 1);
+//         }
+        
+//         if(directionIndex === directions.prev) {
+//           count = count === 0 ? (max - 1) : (count - 1);
+//         }
+        
+//         result.new = count;
+        
+//         return result;
+//       }
+//     function onNavigationClick(e) {
+//         var currentButton = e.target;
+        
+//         var index = getElementIndex(e.target);
+//         var controlledCount = countController(index);
+
+//         var oldSlideItem = sliders[controlledCount.old];
+
+//         var newSlideItem = sliders[controlledCount.new];
+
+
+//         oldSlideItem?.classList.remove("show");
+//         currentButton?.classList.add("disabled");
+
+//         var showNextSliderItemInterval = setInterval(function() {
+//         newSlideItem?.classList.add("show");
+//         currentButton.classList.remove("disabled");
+//         clearInterval(showNextSliderItemInterval);
+//         }, 150);
+//     }
+//     console.log('hello')
+//     initListeners();
+
+
+// })
+useEffect(() => {
+    
+    
+}, [])
 
       return (
         <div style={{margin: 0, padding: 0}}>
+            {avisos.length > 0 && !(sessionStorage.getItem('viewedAlert')) && <Dialog onOpenChange={() => {
+                sessionStorage.setItem('viewedAlert', true)
+            }} defaultOpen={true} >
+                <DialogClose style={{display: 'none'}} onClick={() => {
+                    console.log('carlosss')
+                }}/>
+                
+            
+                                {/* <AlertDialogTrigger style={{width: '100%'}}>
+                                    
+                                <div className='actionButton'>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+</svg>
+                                                </div>
+                                </AlertDialogTrigger> */}
+                                <DialogOverlay style={{zIndex: 1000}} onClick={() => {
+                                  setDialogOpen1(false)
+                                }}/>
+                                <DialogContent style={{flexDirection: 'column', display: 'flex', zIndex: 1001, maxWidth: 700, overflow: 'hidden', margin: 'auto'}}>
+                                    <span>
+                                        <DialogTitle style={{textAlign: 'center', alignSelf: 'center'}}>
+                                            Aviso
+                                        </DialogTitle>
+                                        <DialogDescription style={{textAlign: 'center', alignSelf: 'center'}}>
+                                            
+                                        </DialogDescription>
+                                        
+                                        <Carousel autoPlay infiniteLoop
+                                        renderArrowPrev={(onClickHandler, hasPrev, label) =>
+                                            hasPrev && (
+                                              <div
+                                                className="alertButtonPrev"
+                                                onClick={onClickHandler}
+                                                title={label}
+                                                style={{left: 15 }}
+                                              >
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
+</svg>
+                                              </div>
+                                            )
+                                          }
+                                          renderArrowNext={(onClickHandler, hasNext, label) =>
+                                            hasNext && (
+                                              <div
+                                                className="alertButtonNext"
+                                                onClick={onClickHandler}
+                                                title={label}
+                                                style={{right: 15 }}
+                                              >
+                                                
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+                            </svg>
+                                              </div>
+                                            )
+                                          }
+                                    
+                                        swipeable={true}
+                                        thumbWidth={60}
+                                        showIndicators={false}
+                                        
+                                        >
+                                            {
+                                    avisos.concat(avisos).length > 0 && avisos.map((item, index) => {
+                                        return (
+                                            
+                                                    <div style={{position: 'relative'}} className='alertAviso'>
+                                                        <div className='alertContainer'>
+                                                        
+                                                          <img className='alertImage' src={`${baseURL}/storage/images/${item?.info?.image}`}/>
+                                                        
+                                                        
+                                                        </div>
+                                                        <div className='alertInfo'>
+                                                            <div className='profile'>
+                                                                <div className='profilepic'>
+                                                                    <img src={process.env.PUBLIC_URL + '/images/logo.png'}/>
+                                                                </div>
+                                                                <div className='profileTitle'>instituto superior politécnico alvorecer da juventude</div>
+                                                            </div>
+                                                            <div className='caption'>{item?.info?.title}</div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                
+                        
+                                        )
+                                    })
+                                }
+                                        </Carousel>
+                            {/* <div className="slider">
+                                <div className="slidercontent">
+                                {
+                                    avisos.length > 0 && avisos.map((item, index) => {
+                                        if (index == 0){
+                                            return (
+                                                <figure className='show'>
+                                              <img src={`${baseURL}/storage/images/${item?.info?.image}`}/>
+                                            
+                                                </figure>
+                                            )
+                                        }
+                                        return (
+                                            <figure>
+                                                
+                                              <img src={`${baseURL}/storage/images/${item?.info?.image}`}/>
+                                            
+                                            </figure>
+                                            
+                                        )
+                                    })
+                                }
+                                </div>
+                                <div class="slidernavigation">
+                                <button style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
+                            </svg>
+                                    <i className="fa-solid fa-chevron-left"></i>
+                                </button>
+                                <button style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+                            </svg>
+                                    <i className="fa-solid fa-chevron-right"></i>
+                                </button>
+                                </div>
+                            </div> */}
+                                            
+                                    </span>
+                                    
+                                    
+                                </DialogContent>
+                            </Dialog> }
             <div className='outerContainer'>
                 <div className='preHeader' ref={preHeaderRef1}>
                     <section className='socials'>
@@ -796,7 +1022,7 @@ const Content = ({ selected, dir, departments, setSelected }) => {
                     <div className={localStorage.getItem('path')?.includes('Perguntas') ? 'subItem1' : 'subItem'} onClick={() => {
                          navigate('/admissoes')
                         localStorage.setItem('path', 'Perguntas Frequentes')
-                    }}>Perguntas frequentes</div><div className={localStorage.getItem('path').includes('Sugestões') ? 'subItem1' : 'subItem'} onClick={() => {
+                    }}>Perguntas frequentes</div><div className={localStorage.getItem('path')?.includes('Sugestões') ? 'subItem1' : 'subItem'} onClick={() => {
                         navigate('/admissoes')
                        localStorage.setItem('path', 'Sugestões e Reclamações')
                    }}>Sugestões e Reclamações</div>

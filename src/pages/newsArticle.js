@@ -38,7 +38,7 @@ const NewsArticle = () => {
               imagens: [...res.data.imagens].map((item) => `${baseURL}/storage/images/${item}`)
             })
             const viewedArticles = JSON.parse(sessionStorage.getItem('viewedArticles')) || [];
-            if (![...viewedArticles].includes(id)){
+            if (![...viewedArticles]?.includes(id)){
               axios.post(`${baseURL}/api/editNews/any/${id}`, {
                 titulo: res.data.info.titulo,
                 descricao: res.data.info.descricao,
@@ -73,71 +73,137 @@ const NewsArticle = () => {
     const [latest, setLatest] = useState([])
     const [isOpen, setIsOpen] = useState(false)
     const [photoIndex, setPhotoIndex] = useState(0)
+    const [activeIndex, setActiveIndex] = useState({new: 0, old: 1})
+
     const openLightbox = (index) => {
       setPhotoIndex(index);
       setIsOpen(true);
     };
     useEffect(() => {
-        
-        var count = 0;
-        var directions = {
-        prev: 0,
-        next: 1
-        }
-        var prevButton = document.querySelector(".slidernavigation button:first-child");
-        var nextButton = document.querySelector(".slidernavigation button:last-child");
-        var sliders = document.querySelectorAll(".slidercontent figure");
-        function initListeners() {
-            nextButton?.addEventListener("click", onNavigationClick);
-            prevButton?.addEventListener("click", onNavigationClick);
-        }
-        function getElementIndex(element) {
-            return Array.from(element.parentElement.children).indexOf(element);
-        }
-        function countController(directionIndex) {
-            var result = { new: 0, old: count };
-            var max = sliders.length
-            
-            if(directionIndex === directions.next) {
+      let count = 0;
+      const directions = {
+          prev: 0,
+          next: 1
+      };
+
+      const prevButton = document.querySelector(".slidernavigation button:first-child");
+      const nextButton = document.querySelector(".slidernavigation button:last-child");
+      
+      const sliders = document.querySelectorAll(".slidercontent figure");
+      function getElementIndex(direction) {
+          const sliders = document.querySelectorAll(".slidercontent figure");
+          const max =  sliders.length;
+          console.log('max1', max)
+          let oldCount = count;
+          if (direction === directions.next) {
               count = count === max - 1 ? 0 : (count + 1);
-            }
-            
-            if(directionIndex === directions.prev) {
+          } else if (direction === directions.prev) {
               count = count === 0 ? (max - 1) : (count - 1);
-            }
-            
-            result.new = count;
-            
-            return result;
           }
-        function onNavigationClick(e) {
-            var currentButton = e.target;
+          setActiveIndex({ new: count, old: oldCount })
+          console.log('{ new: count, old: oldCount }', { new: count, old: oldCount })
+          return { new: count, old: oldCount };
+      }
+
+      const onNextClick = (e) => {
+        if (true){onNavigationClick(e, directions.next)}
+      };
+
+      const onPrevClick = (e) => {
+        if (true){onNavigationClick(e, directions.prev)}
+      };
+
+      function onNavigationClick(e, direction) {
+         if (true){
+          console.log('lengthhhh', article?.imagens && [...article?.imagens].length)
+          const { new: newIndex, old: oldIndex } = getElementIndex(direction);
+          console.log('new Index', activeIndex, newIndex)
+          const sliders = document.querySelectorAll(".slidercontent figure");
+          const oldSlideItem = sliders[oldIndex];
+          const newSlideItem = sliders[newIndex];
+
+          oldSlideItem?.classList.replace('show', 'disabled')
+
+          newSlideItem?.classList.replace('disabled', 'show')
+          
+          console.log('new', newIndex, 'old', oldIndex)}
+
+      }
+
+      prevButton?.addEventListener("click", onPrevClick);
+      nextButton?.addEventListener("click", onNextClick);
+
+      // Cleanup event listeners on component unmount
+      return () => {
+          prevButton?.removeEventListener("click", onPrevClick);
+          nextButton?.removeEventListener("click", onNextClick);
+      };
+  }, []);
+    // useEffect(() => {
+        
+    //     var count = 0;
+    //     var directions = {
+    //     prev: 0,
+    //     next: 1
+    //     }
+    //     var prevButton = document.querySelector(".slidernavigation button:first-child");
+    //     var nextButton = document.querySelector(".slidernavigation button:last-child");
+    //     var sliders = document.querySelectorAll(".slidercontent figure");
+    //     function initListeners() {
+    //         nextButton?.addEventListener("click", onNavigationClick);
+    //         prevButton?.addEventListener("click", onNavigationClick);
+    //     }
+    //     function getElementIndex(element) {
+    //         return Array.from(element.parentElement.children).indexOf(element);
+    //     }
+    //     function countController(directionIndex) {
+    //         var result = { new: 0, old: count };
+    //         var max = sliders.length
             
-            var index = getElementIndex(e.target);
-            var controlledCount = countController(index);
+    //         if(directionIndex === directions.next) {
+    //           count = count === max - 1 ? 0 : (count + 1);
+    //         }
+            
+    //         if(directionIndex === directions.prev) {
+    //           count = count === 0 ? (max - 1) : (count - 1);
+    //         }
+            
+    //         result.new = count;
+            
+    //         return result;
+    //       }
+    //     function onNavigationClick(e) {
+    //         var currentButton = e.target;
+            
+    //         var index = getElementIndex(e.target);
+    //         var controlledCount = countController(index);
 
-            var oldSlideItem = sliders[controlledCount.old];
+    //         var oldSlideItem = sliders[controlledCount.old];
 
-            var newSlideItem = sliders[controlledCount.new];
-
-
-            oldSlideItem?.classList.remove("show");
-            currentButton?.classList.add("disabled");
-
-            var showNextSliderItemInterval = setInterval(function() {
-            newSlideItem?.classList.add("show");
-            currentButton.classList.remove("disabled");
-            clearInterval(showNextSliderItemInterval);
-            }, 150);
-        }
-        console.log('hello')
-        initListeners();
+    //         var newSlideItem = sliders[controlledCount.new];
 
 
-    })
+    //         oldSlideItem?.classList.remove("show");
+    //         currentButton?.classList.add("disabled");
+
+    //         var showNextSliderItemInterval = setInterval(function() {
+    //         newSlideItem?.classList.add("show");
+    //         currentButton.classList.remove("disabled");
+    //         clearInterval(showNextSliderItemInterval);
+    //         }, 150);
+    //     }
+
+    //     console.log('hello')
+    //     initListeners();
+    //     return () => {
+    //         nextButton?.removeEventListener("click", (e) => onNavigationClick(e, directions.next));
+    //         prevButton?.removeEventListener("click", (e) => onNavigationClick(e, directions.prev));
+    //     };
+
+
+    // })
     const location = useLocation()
     const prevLocationRef = useRef(location);
-
     useEffect(() => {
       if (prevLocationRef.current.pathname !== location.pathname) {
         window.location.reload();
@@ -231,33 +297,38 @@ const NewsArticle = () => {
     <div className="slidercontent">
       {
         article?.imagens && [...article?.imagens].length > 0 && [...article?.imagens].map((item, index) => {
-            if (index == 0){
-                return (
-                    <figure className="show" onClick={()=> {
+                if (index == 0){
+                  return (
+                    <figure className='show' onClick={()=> {
                       openLightbox(index)
                     }}>
                         <img src={item} alt="Imagem"/>
                     </figure>
                 )
-            }
-            return (
-                <figure onClick={()=> {
-                  openLightbox(index)
-                }}>
-                    <img src={item} alt="Imagem"/>
-                </figure>
-                
-            )
+                }else {
+                  return (
+                    <figure className='disabled' onClick={()=> {
+                      openLightbox(index)
+                    }}>
+                        <img src={item} alt="Imagem"/>
+                    </figure>
+                )
+                }
+            
         })
       }
     </div>
     <div class="slidernavigation">
-      <button>
-        {`<`}
+      <button style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
+</svg>
         <i className="fa-solid fa-chevron-left"></i>
       </button>
-      <button>
-        {'>'}
+      <button style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+</svg>
         <i className="fa-solid fa-chevron-right"></i>
       </button>
     </div>
