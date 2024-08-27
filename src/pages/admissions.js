@@ -70,11 +70,27 @@ const wrapperVariants = {
         variants={itemVariants}
         onClick={() => {
           if (`${text}`.includes('Emolumentos')){
-            window.open(process.env.PUBLIC_URL + 'pdf/emolumentos.pdf')
+            axios.get(`${baseURL}/api/admissionsContents`)
+            .then(res => {
+                let content = [...res.data][0]
+                if (content.emolumentos) {
+                    window.open(`${baseURL}/storage/pdfs/${content.emolumentos}`)
+
+                }else {
+                }
             setOpen(false)
+            })
           }else if (`${text}`.includes('Calendário')){
-            window.open(process.env.PUBLIC_URL + 'pdf/calendar.pdf')
+            axios.get(`${baseURL}/api/admissionsContents`)
+            .then(res => {
+                let content = [...res.data][0]
+                if (content.calendario) {
+                    window.open(`${baseURL}/storage/pdfs/${content.calendario}`)
+
+                }else {
+                }
             setOpen(false)
+            })
 
           }else {
             !section.includes(text) && setSection(text)
@@ -135,7 +151,7 @@ const wrapperVariants = {
             {/* <Option setOpen={setOpen} section={section} setSection={setSection} text="Processo de Admissao" /> */}
             {/* <Option setOpen={setOpen} section={section} setSection={setSection} text="Horários" /> */}
             <Option setOpen={setOpen} section={section} setSection={setSection} text="Perguntas Frequentes" />
-            <Option setOpen={setOpen} section={section} setSection={setSection} text="Sugestões e Reclamações" />
+            {/* <Option setOpen={setOpen} section={section} setSection={setSection} text="Sugestões e Reclamações" /> */}
 
           </motion.ul>
         </motion.div>
