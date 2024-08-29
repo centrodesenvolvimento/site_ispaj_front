@@ -19,6 +19,10 @@ import { Overlay } from '@radix-ui/react-alert-dialog'
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogOverlay, DialogTitle } from '../@/components/ui/dialog'
 import { Close } from '@radix-ui/react-dialog'
 import { Carousel } from 'react-responsive-carousel'
+import { Bounce, toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import styles from 'yet-another-react-lightbox/styles.css'
+
 const containerVariants = {
     close: {
         width: '0px',
@@ -54,6 +58,7 @@ const LeftChevron = () => {
     )
 }
 const Header = () => {
+    const dialogRef = useRef(null)
     const navigate = useNavigate()
     const location = useLocation()
     const sideMenuRef = useRef(null)
@@ -155,6 +160,7 @@ const Header = () => {
     axios.get(`${baseURL}/api/avisos`)
     .then(res => {
       console.log('avisosssssssssssssssssssssssssssssssss', res.data)
+      setDialogOpen1(true && !(sessionStorage.getItem('viewedAlert')))
       setAvisos([...res.data].filter((item) => {
         if (item?.info?.show == undefined){
             return item
@@ -162,7 +168,7 @@ const Header = () => {
             return item
         }
     }))
-    setDialogOpen1(true)
+    setDialogOpen1(true && !(sessionStorage.getItem('viewedAlert')))
     
     })
     .catch(err => {
@@ -236,11 +242,45 @@ useEffect(() => {
 
       return (
         <div style={{margin: 0, padding: 0}}>
-            {avisos.length > 0 && !(sessionStorage.getItem('viewedAlert')) && <Dialog onOpenChange={() => {
+            <ToastContainer />
+            {avisos.length > 0 && <Dialog 
+            open={dialogOpen1}
+            ref={dialogRef}
+            onOpenChange={() => {
                 sessionStorage.setItem('viewedAlert', true)
+                console.log('11111')
+                toast.info(<div onClick={() => {
+                    sessionStorage.setItem('viewedAlert', false)
+                    setDialogOpen1(true)
+                    console.log('sessionstorage', sessionStorage.getItem('viewedAlert'))
+                    toast.dismiss()
+                }} style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%', cursor: 'pointer'}}>
+                    Voltar a ver anúncios?
+                    
+                  </div>, {
+                    position: "bottom-right",
+                    autoClose: false,
+                
+                    transition: Bounce,
+                    // closeOnClick: true,
+                    onClose: () => {
+                        sessionStorage.setItem('viewedAlert', true)
+                        
+                        localStorage.setItem('toastClosed', 'true')
+                    },
+                    render: (
+                        <div>
+                          Voltar a ver anúncioss?
+                          <button onClick={() => {
+                              sessionStorage.setItem('viewedAlert', false)
+                              toast.dismiss()
+                          }}>Ver</button>
+                        </div>
+                      ),
+                  });
             }} defaultOpen={true} >
                 <DialogClose style={{display: 'none'}} onClick={() => {
-                    console.log('carlosss')
+                    console.log('closeeeedddddddd')
                 }}/>
                 
             
