@@ -89,7 +89,7 @@ const History = ({aboutContent}) => {
                    return item
                }
            }).sort((a, b) => new Date(a.data) - new Date(b.data)).map((item, index) => {
-               console.log(index, item.title)
+               //(index, item.title)
                return (
                    <div class={`timeline-block timeline-block-${index % 2 == 0 ? 'left' : 'right'}`}>
      <div class="marker"></div>
@@ -102,7 +102,7 @@ const History = ({aboutContent}) => {
                )
             }):
             timelineBlocks.map((item, index) => {
-               console.log(index, item.title)
+               //(index, item.title)
                return (
                    <div class={`timeline-block timeline-block-${index % 2 == 0 ? 'left' : 'right'}`}>
      <div class="marker"></div>
@@ -119,7 +119,7 @@ const History = ({aboutContent}) => {
 {/* 23 de Março, 2014
  */}
 {/* timelineBlocks.map((item, index) => {
-                console.log(index, item.title)
+                //(index, item.title)
                 return (
                     <div class={`timeline-block timeline-block-${index % 2 == 0 ? 'left' : 'right'}`}>
       <div class="marker"></div>

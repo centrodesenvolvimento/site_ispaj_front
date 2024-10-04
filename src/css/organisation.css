@@ -130,7 +130,36 @@ a:focus{
 
 
 
-.orgChartContainer {
+
+
+}
+.orgSection .content{
+	width: 100%;
+	max-width: 1400px;
+	margin: 0 auto;
+	padding: 0 20px;
+    background: transparent;
+    height: 800px;
+    margin-top: 20px;
+    @media screen and (width < 768px) {
+        height: 2700px;
+    }
+    
+}
+
+.orgSection :focus{
+	outline: 2px dashed #f7f7f7;
+}
+
+@media screen and (max-width: 767px){
+	.orgSection .content{
+		padding: 0 20px;
+	}	
+}
+
+
+
+.orgSection .orgChartContainer {
 	width: 100%;
 	border: 2px solid #a7a7a7;
 	max-height: 600px;
@@ -139,7 +168,7 @@ a:focus{
 	
 
 }
-.orgChart {
+.orgSection .orgChart {
 	width: 100%;
 	border: 2px solid #a7a7a7;
 	max-height: 600px;
@@ -154,16 +183,16 @@ a:focus{
               background-image: linear-gradient(90deg, rgba(239,239,239,1.00) 0%,rgba(221,221,221,1.00) 40%,rgba(239,239,239,1.00) 80%,rgba(239,239,239,1.00) 97%);
               background-repeat: no-repeat;
               background-size: 50%;
-            @keyframes loadingShimmer {
-                0% {
-                  background-position: -100% 0;
-                }
-              
-                100% {
-                  background-position: 200% 0;
-                }
-              }
+            
 	
 	
 }
+@keyframes loadingShimmer {
+    0% {
+      background-position: -100% 0;
+    }
+  
+    100% {
+      background-position: 200% 0;
+    }
 }

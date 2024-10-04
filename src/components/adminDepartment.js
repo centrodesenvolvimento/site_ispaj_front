@@ -105,7 +105,7 @@ const AdminDepartment = ()=> {
                         
                     })
                     .then(res  => {
-                        console.log('res', res.data)
+                        //('res', res.data)
                         setMessages(['Adicionado com sucesso!'])
                         window.location.reload()
                     })
@@ -158,7 +158,7 @@ const AdminDepartment = ()=> {
                             
                         })
                         .then(res  => {
-                            console.log('res', res.data)
+                            //('res', res.data)
                             setMessages(['Adicionado com sucesso!'])
                             window.location.reload()
                         })
@@ -196,7 +196,7 @@ const AdminDepartment = ()=> {
                     cursos: newList
                 })
                 .then(res => {
-                    console.log('responseeeee', res.data)
+                    //('responseeeee', res.data)
                     setMessages(['Alterado com sucesso!'])
                     window.location.reload()
                 })
@@ -244,7 +244,7 @@ const AdminDepartment = ()=> {
                                         const reader = new FileReader()
                                         reader.onload = (event) => {
                                             setSelectedImage(event.target.result)
-                                            console.log('data', event.target.result)
+                                            //('data', event.target.result)
                                         }
                                         reader.readAsDataURL(file)
                                     }else {
@@ -252,7 +252,7 @@ const AdminDepartment = ()=> {
                                     }
                                 }}/>
                                 {/* <div className='selectedImage'>
-                                    <img src={selectedImage}/>
+                                    <img loading="lazy"src={selectedImage}/>
                                 </div> */}
                                 {selectedImage && <div style={{aspectRatio: '4/2'}}>
                                     <Cropper
@@ -482,7 +482,7 @@ const AdminDepartment = ()=> {
                                         const reader = new FileReader()
                                         reader.onload = (event) => {
                                             setSelectedImage(event.target.result)
-                                            console.log('data', event.target.result)
+                                            //('data', event.target.result)
                                         }
                                         reader.readAsDataURL(file)
                                     }else {
@@ -490,7 +490,7 @@ const AdminDepartment = ()=> {
                                     }
                                 }}/>
                                 {/* <div className='selectedImage'>
-                                    <img src={selectedImage}/>
+                                    <img loading="lazy"src={selectedImage}/>
                                 </div> */}
                                 {selectedImage && <div style={{aspectRatio: '4/2'}}>
                                     <Cropper
@@ -512,7 +512,7 @@ const AdminDepartment = ()=> {
                                 }}
                                 /> */}
                                 {!completedCrop && imagePreview && <div style={{aspectRatio: '4/2', background: '#d3d3d3', borderRadius: 5, overflow: 'hidden'}}>
-                                    <img style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/storage/images/${imagePreview}`}/>
+                                    <img loading="lazy"style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/public/storage/images/${imagePreview}`}/>
                                 </div>}
                                 </div>
                                         <div className='form'>
@@ -682,10 +682,10 @@ const AdminDepartment = ()=> {
                                     cursos: newList
                                 })
                                 .then(res => {
-                                    console.log('responseeeee', res.data)
+                                    //('responseeeee', res.data)
                                     window.location.reload()
                                 })
-                                console.log('newList', newList)
+                                //('newList', newList)
                                     }}>Confirmar</AlertDialogAction>
                                     </span>
                                     

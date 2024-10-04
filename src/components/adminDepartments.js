@@ -53,7 +53,7 @@ const AdminDepartments = () => {
         }else {
             if (videoPreview && !completedCrop){
                 
-                console.log('carlos', department.info)
+                //('carlos', department.info)
                 let formData = new FormData()
                 axios.post(`${baseURL}/api/editDepartment/info/${department.id}`, {
                     video: department.info?.video ? department.infovideo : '',
@@ -69,7 +69,7 @@ const AdminDepartments = () => {
                     }
                 })
                 .then(res => {
-                    console.log('response', res.data)
+                    //('response', res.data)
                     setMessages(['Editado com successo.'])
                     window.location.reload()
                 })
@@ -87,7 +87,7 @@ const AdminDepartments = () => {
                         const regex = /^data:(.+);base64,/;
                         const match = b64.match(regex);
                         const base64Data = b64.replace(match[0], '')
-                        console.log('carlos', department.info)
+                        //('carlos', department.info)
                         let formData = new FormData()
                         axios.post(`${baseURL}/api/editDepartment/info/${department.id}`, {
                             saidas: saidas,
@@ -104,7 +104,7 @@ const AdminDepartments = () => {
                             }
                         })
                         .then(res => {
-                            console.log('response', res.data)
+                            //('response', res.data)
                             setMessages(['Editado com successo.'])
                             window.location.reload()
                         })
@@ -128,7 +128,7 @@ const AdminDepartments = () => {
                         const regex = /^data:(.+);base64,/;
                         const match = b64.match(regex);
                         const base64Data = b64.replace(match[0], '')
-                        console.log('carlos', department.info)
+                        //('carlos', department.info)
                         let formData = new FormData()
                         axios.post(`${baseURL}/api/editDepartment/info/${department.id}`, {
                             saidas: saidas,
@@ -146,7 +146,7 @@ const AdminDepartments = () => {
                             }
                         })
                         .then(res => {
-                            console.log('response', res.data)
+                            //('response', res.data)
                             setMessages(['Editado com successo.'])
                             window.location.reload()
                         })
@@ -170,7 +170,7 @@ const AdminDepartments = () => {
                         saidas: saidas
                 })
                 .then(res => {
-                    console.log('res', res.data)
+                    //('res', res.data)
                     setMessages(['Editado com successo.'])
                     window.location.reload()
                 })
@@ -185,7 +185,7 @@ const AdminDepartments = () => {
     useEffect(() => {
         axios.get(`${baseURL}/api/departamentos`)
         .then(res => {
-            console.log('res', res.data)
+            //('res', res.data)
             setDepartments([...res.data])
         })
     }, [])
@@ -204,7 +204,7 @@ const AdminDepartments = () => {
                                 setSaidas(departments[0]?.info?.saidas)
                                 
                                 setImagePreview(departments[0]?.info?.imagem)
-                                console.log('info', departments[0]?.info)
+                                //('info', departments[0]?.info)
                                 setSelectedImage(null)
                                 setCompletedCrop(null)
                             }}>
@@ -235,7 +235,7 @@ const AdminDepartments = () => {
                                             const reader = new FileReader()
                                             reader.onload = (event) => {
                                                 setSelectedImage(event.target.result)
-                                                console.log('data', event.target.result)
+                                                //('data', event.target.result)
                                             }
                                             reader.readAsDataURL(file)
                                         }else {
@@ -243,7 +243,7 @@ const AdminDepartments = () => {
                                         }
                                     }}/>
                                     {/* <div className='selectedImage'>
-                                        <img src={selectedImage}/>
+                                        <img loading="lazy"src={selectedImage}/>
                                     </div> */}
                                     {selectedImage && <div style={{aspectRatio: '4/2'}}>
                                         <Cropper
@@ -265,7 +265,7 @@ const AdminDepartments = () => {
                                     }}
                                     /> */}
                                     {!completedCrop && imagePreview && <div style={{aspectRatio: '4/3', background: '#d3d3d3', borderRadius: 5, overflow: 'hidden'}}>
-                                        <img style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/storage/images/${imagePreview}`}/>
+                                        <img loading="lazy"style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/public/storage/images/${imagePreview}`}/>
                                     </div>}
                                     </div>
                                     <div className='form'>
@@ -290,7 +290,7 @@ const AdminDepartments = () => {
                                         //     const reader = new FileReader()
                                         //     reader.onload = (event) => {
                                         //         setSelectedImage(event.target.result)
-                                        //         console.log('data', event.target.result)
+                                        //         //('data', event.target.result)
                                         //     }
                                         //     reader.readAsDataURL(file)
                                         // }else {
@@ -299,7 +299,7 @@ const AdminDepartments = () => {
                                     }}/>
                                    {videoPreview &&
                                    <div className='selectedVideo'>
-                                    <video src={URL.createObjectURL(videoPreview)} loop muted controls />
+                                    <video loading="lazy"  src={URL.createObjectURL(videoPreview)} loop muted controls />
                                     </div>}
                                 </div>
                                 <div className="errors">
@@ -348,7 +348,7 @@ const AdminDepartments = () => {
                             
                         </div>
                         <div className="videoCont">
-                            {departments[0]?.info?.video && <video style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/storage/videos/${departments[0]?.info?.video}`} loop muted controls />}
+                            {departments[0]?.info?.video && <video loading="lazy"  style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/public/storage/videos/${departments[0]?.info?.video}`} loop muted controls />}
                         </div>
                     </div>
                 </section>
@@ -366,7 +366,7 @@ const AdminDepartments = () => {
                                 setSaidas(departments[1]?.info?.saidas)
                                 
                                 setImagePreview(departments[1]?.info?.imagem)
-                                console.log('info', departments[1]?.info)
+                                //('info', departments[1]?.info)
                                 setSelectedImage(null)
                                 setCompletedCrop(null)
                             }}>
@@ -396,7 +396,7 @@ const AdminDepartments = () => {
                                             const reader = new FileReader()
                                             reader.onload = (event) => {
                                                 setSelectedImage(event.target.result)
-                                                console.log('data', event.target.result)
+                                                //('data', event.target.result)
                                             }
                                             reader.readAsDataURL(file)
                                         }else {
@@ -404,7 +404,7 @@ const AdminDepartments = () => {
                                         }
                                     }}/>
                                     {/* <div className='selectedImage'>
-                                        <img src={selectedImage}/>
+                                        <img loading="lazy"src={selectedImage}/>
                                     </div> */}
                                     {selectedImage && <div style={{aspectRatio: '4/2'}}>
                                         <Cropper
@@ -426,7 +426,7 @@ const AdminDepartments = () => {
                                     }}
                                     /> */}
                                     {!completedCrop && imagePreview && <div style={{aspectRatio: '4/3', background: '#d3d3d3', borderRadius: 5, overflow: 'hidden'}}>
-                                        <img style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/storage/images/${imagePreview}`}/>
+                                        <img loading="lazy"style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/public/storage/images/${imagePreview}`}/>
                                     </div>}
                                     </div>
                                     <div className='form'>
@@ -451,7 +451,7 @@ const AdminDepartments = () => {
                                         //     const reader = new FileReader()
                                         //     reader.onload = (event) => {
                                         //         setSelectedImage(event.target.result)
-                                        //         console.log('data', event.target.result)
+                                        //         //('data', event.target.result)
                                         //     }
                                         //     reader.readAsDataURL(file)
                                         // }else {
@@ -460,7 +460,7 @@ const AdminDepartments = () => {
                                     }}/>
                                    {videoPreview &&
                                    <div className='selectedVideo'>
-                                    <video src={URL.createObjectURL(videoPreview)} loop muted controls />
+                                    <video loading="lazy"  src={URL.createObjectURL(videoPreview)} loop muted controls />
                                     </div>}
                                 </div>
                                 <div className="errors">
@@ -511,7 +511,7 @@ const AdminDepartments = () => {
                             
                         </div>
                         <div className="videoCont">
-                        {departments[1]?.info?.video && <video style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/storage/videos/${departments[1]?.info?.video}`} loop muted controls />}
+                        {departments[1]?.info?.video && <video loading="lazy"  style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/public/storage/videos/${departments[1]?.info?.video}`} loop muted controls />}
                         </div>
                     </div>
                 </section>
@@ -528,7 +528,7 @@ const AdminDepartments = () => {
                                 setSaidas(departments[2]?.info?.saidas)
                                 
                                 setImagePreview(departments[2]?.info?.imagem)
-                                console.log('info', departments[2]?.info)
+                                //('info', departments[2]?.info)
                                 setSelectedImage(null)
                                 setCompletedCrop(null)
                             }}>
@@ -558,7 +558,7 @@ const AdminDepartments = () => {
                                             const reader = new FileReader()
                                             reader.onload = (event) => {
                                                 setSelectedImage(event.target.result)
-                                                console.log('data', event.target.result)
+                                                //('data', event.target.result)
                                             }
                                             reader.readAsDataURL(file)
                                         }else {
@@ -566,7 +566,7 @@ const AdminDepartments = () => {
                                         }
                                     }}/>
                                     {/* <div className='selectedImage'>
-                                        <img src={selectedImage}/>
+                                        <img loading="lazy"src={selectedImage}/>
                                     </div> */}
                                     {selectedImage && <div style={{aspectRatio: '4/2'}}>
                                         <Cropper
@@ -588,7 +588,7 @@ const AdminDepartments = () => {
                                     }}
                                     /> */}
                                     {!completedCrop && imagePreview && <div style={{aspectRatio: '4/3', background: '#d3d3d3', borderRadius: 5, overflow: 'hidden'}}>
-                                        <img style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/storage/images/${imagePreview}`}/>
+                                        <img loading="lazy"style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/public/storage/images/${imagePreview}`}/>
                                     </div>}
                                     </div>
                                     <div className='form'>
@@ -613,7 +613,7 @@ const AdminDepartments = () => {
                                         //     const reader = new FileReader()
                                         //     reader.onload = (event) => {
                                         //         setSelectedImage(event.target.result)
-                                        //         console.log('data', event.target.result)
+                                        //         //('data', event.target.result)
                                         //     }
                                         //     reader.readAsDataURL(file)
                                         // }else {
@@ -622,7 +622,7 @@ const AdminDepartments = () => {
                                     }}/>
                                    {videoPreview &&
                                    <div className='selectedVideo'>
-                                    <video src={URL.createObjectURL(videoPreview)} loop muted controls />
+                                    <video loading="lazy"  src={URL.createObjectURL(videoPreview)} loop muted controls />
                                     </div>}
                                 </div>
                                 <div className="errors">
@@ -671,7 +671,7 @@ const AdminDepartments = () => {
                         <div className="basicInfo">{departments[2]?.info?.descricao}
                         </div>
                         <div className="videoCont">
-                        {departments[2]?.info?.video && <video style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/storage/videos/${departments[2]?.info?.video}`} loop muted controls />}
+                        {departments[2]?.info?.video && <video loading="lazy"  style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/public/storage/videos/${departments[2]?.info?.video}`} loop muted controls />}
                         </div>
                     </div>
                 </section>

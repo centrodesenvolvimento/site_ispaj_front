@@ -70,7 +70,7 @@ const AdminNews = () => {
             })
             .then(res => {
                 setLoad(false)
-                console.log('response', res.data)
+                //('response', res.data)
                 setMessages(['Notícia adicionada com sucesso'])
                 window.location.reload();
             })
@@ -89,7 +89,7 @@ const AdminNews = () => {
             setErrors(['Nenhuma alteração feita'])
             setLoad(false)
         }else {
-            console.log('pass')
+            //('pass')
             if (prevImagesPreviews.length != [...item.imagens].length || imagesToSend.length > 0){
                 axios.post(`${baseURL}/api/editNews/images/${item.id}`, {
                     deletedImages: prevImagesPreviews,
@@ -101,7 +101,7 @@ const AdminNews = () => {
                     show: show
                 })
                 .then(res => {
-                    console.log('res', res.data)
+                    //('res', res.data)
                     setMessages(['Notícia atualizada com sucesso'])
                     window.location.reload()
                 })
@@ -143,7 +143,7 @@ const AdminNews = () => {
                 const match = b64.match(regex);
                 const base64Data = b64.replace(match[0], '')
                 setImagesToSend([...imagesToSend, base64Data])
-                console.log('imagestosend', imagesToSend.length)
+                //('imagestosend', imagesToSend.length)
                 
             }
             reader.readAsDataURL(blob)
@@ -156,7 +156,7 @@ const AdminNews = () => {
     const disappendImage = async (item, itemIndex) => {
         setImagesPreview(imagesPreview.filter((i) =>  i!=item))
         setImagesToSend(imagesToSend.filter((i, index) => index != itemIndex))
-        console.log('imagestosend', imagesToSend)
+        //('imagestosend', imagesToSend)
     }
     const disappendImage1 = async (item, itemIndex) => {
         setPrevImagesPreviews(prevImagesPreviews.filter((i) =>  i!=item))
@@ -237,14 +237,14 @@ const AdminNews = () => {
                                                 }} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
   <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
                                                 </svg>
-                                                <img src={item}/>
+                                                <img loading="lazy"src={item}/>
                                             </div>
                                         )
                                     })}
                                 </div>
                                 
                                 {/* <div className='selectedImage'>
-                                    <img src={selectedImage}/>
+                                    <img loading="lazy"src={selectedImage}/>
                                 </div> */}
                                 
                                 {selectedImage && <div style={{aspectRatio: '4/2'}}>
@@ -278,7 +278,7 @@ const AdminNews = () => {
                                             const reader = new FileReader()
                                             reader.onload = (event) => {
                                                 setSelectedImage(event.target.result)
-                                                console.log('data', event.target.result)
+                                                //('data', event.target.result)
                                             }
                                             reader.readAsDataURL(file)
                                         }else {
@@ -343,7 +343,7 @@ const AdminNews = () => {
                                             <TableCell>{index + 1}</TableCell>
                                             <TableCell>
                                                 <div style={{width: 70, height: 40, borderRadius: 5, overflow: 'hidden'}}>
-                                                    <img style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/storage/images/${[...item.imagens][0]}`}/>
+                                                    <img loading="lazy"style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/public/storage/images/${[...item.imagens][0]}`}/>
                                                 </div>
                                             </TableCell>
                                             <TableCell><div className='revText'>{item.info.titulo}</div></TableCell>
@@ -429,7 +429,7 @@ const AdminNews = () => {
                                                 }} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
   <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
                                                 </svg>
-                                                <img src={`${baseURL}/storage/images/${item}`}/>
+                                                <img loading="lazy"src={`${baseURL}/public/storage/images/${item}`}/>
                                             </div>
                                         )
                                     })}
@@ -441,14 +441,14 @@ const AdminNews = () => {
                                                 }} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
   <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
                                                 </svg>
-                                                <img src={item}/>
+                                                <img loading="lazy"src={item}/>
                                             </div>
                                         )
                                     })}
                                 </div>
                                 
                                 {/* <div className='selectedImage'>
-                                    <img src={selectedImage}/>
+                                    <img loading="lazy"src={selectedImage}/>
                                 </div> */}
                                 
                                 {selectedImage && <div style={{aspectRatio: '4/2'}}>
@@ -482,7 +482,7 @@ const AdminNews = () => {
                                             const reader = new FileReader()
                                             reader.onload = (event) => {
                                                 setSelectedImage(event.target.result)
-                                                console.log('data', event.target.result)
+                                                //('data', event.target.result)
                                             }
                                             reader.readAsDataURL(file)
                                         }else {
@@ -560,7 +560,7 @@ const AdminNews = () => {
                                             window.location.reload()
                                         })
                                         .catch(err => {
-                                            console.log('err', err)
+                                            //('err', err)
                                             setLoad(false)
                                         })
                                         

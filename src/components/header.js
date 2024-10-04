@@ -9,7 +9,6 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
-import { Shimmer } from 'react-shimmer'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Sheet, SheetContent, SheetHeader, SheetOverlay, SheetTitle, SheetTrigger } from '../@/components/ui/sheet'
 import axios from 'axios'
@@ -93,7 +92,7 @@ const Header = () => {
     }
     useEffect(() => {
         const interval = setInterval(() => {
-            console.log('index', activeIndex)
+            // //('index', activeIndex)
             if (activeIndex == 2){
                 setActiveIndex(0)
             }else {
@@ -121,7 +120,7 @@ const Header = () => {
   useEffect(() => {
       axios.get(`${baseURL}/api/departamentos`)
       .then(res => {
-          console.log('departamentos', res.data)
+        //   //('departamentos', res.data)
           setDepartments([...res.data])
       })
   }, [])
@@ -156,10 +155,10 @@ const Header = () => {
   const [alerta, setAlerta] = useState(true)
 
   useEffect(() => {
-    console.log('inside avisos useeffect')
+    // //('inside avisos useeffect')
     axios.get(`${baseURL}/api/avisos`)
     .then(res => {
-      console.log('avisosssssssssssssssssssssssssssssssss', res.data)
+    //   //('avisosssssssssssssssssssssssssssssssss', res.data)
       setDialogOpen1(true && !(sessionStorage.getItem('viewedAlert')))
       setAvisos([...res.data].filter((item) => {
         if (item?.info?.show == undefined){
@@ -172,7 +171,7 @@ const Header = () => {
     
     })
     .catch(err => {
-      console.log('avisos error', err.response.data.message)
+    //   //('avisos error', err.response.data.message)
     })
   }, [])
   const [dialogOpen, setDialogOpen] = useState(false)
@@ -230,15 +229,13 @@ const Header = () => {
 //         clearInterval(showNextSliderItemInterval);
 //         }, 150);
 //     }
-//     console.log('hello')
+//     //('hello')
 //     initListeners();
 
 
 // })
-useEffect(() => {
-    
-    
-}, [])
+    useEffect(() => {
+    }, [])
 
       return (
         <div style={{margin: 0, padding: 0}}>
@@ -248,11 +245,12 @@ useEffect(() => {
             ref={dialogRef}
             onOpenChange={() => {
                 sessionStorage.setItem('viewedAlert', true)
-                console.log('11111')
+                // //('11111')
+                setDialogOpen1(false)
                 toast.info(<div onClick={() => {
                     sessionStorage.setItem('viewedAlert', false)
                     setDialogOpen1(true)
-                    console.log('sessionstorage', sessionStorage.getItem('viewedAlert'))
+                    // //('sessionstorage', sessionStorage.getItem('viewedAlert'))
                     toast.dismiss()
                 }} style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%', cursor: 'pointer'}}>
                     Voltar a ver anúncios?
@@ -265,12 +263,12 @@ useEffect(() => {
                     // closeOnClick: true,
                     onClose: () => {
                         sessionStorage.setItem('viewedAlert', true)
-                        
                         localStorage.setItem('toastClosed', 'true')
+                        
                     },
                     render: (
                         <div>
-                          Voltar a ver anúncioss?
+                          Voltar a ver anúncios?
                           <button onClick={() => {
                               sessionStorage.setItem('viewedAlert', false)
                               toast.dismiss()
@@ -279,10 +277,7 @@ useEffect(() => {
                       ),
                   });
             }} defaultOpen={true} >
-                <DialogClose style={{display: 'none'}} onClick={() => {
-                    console.log('closeeeedddddddd')
-                }}/>
-                
+                <div>               
             
                                 {/* <AlertDialogTrigger style={{width: '100%'}}>
                                     
@@ -295,6 +290,35 @@ useEffect(() => {
                                 </AlertDialogTrigger> */}
                                 <DialogOverlay style={{zIndex: 1000}} onClick={() => {
                                   setDialogOpen1(false)
+                                  toast.info(<div onClick={() => {
+                                    sessionStorage.setItem('viewedAlert', false)
+                                    setDialogOpen1(true)
+                                    // //('sessionstorage', sessionStorage.getItem('viewedAlert'))
+                                    toast.dismiss()
+                                }} style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%', cursor: 'pointer'}}>
+                                    Voltar a ver anúncios?
+                                    
+                                  </div>, {
+                                    position: "bottom-right",
+                                    autoClose: false,
+                                
+                                    transition: Bounce,
+                                    // closeOnClick: true,
+                                    onClose: () => {
+                                        sessionStorage.setItem('viewedAlert', true)
+                                        localStorage.setItem('toastClosed', 'true')
+                                        
+                                    },
+                                    render: (
+                                        <div>
+                                          Voltar a ver anúncios?
+                                          <button onClick={() => {
+                                              sessionStorage.setItem('viewedAlert', false)
+                                              toast.dismiss()
+                                          }}>Ver</button>
+                                        </div>
+                                      ),
+                                  });
                                 }}/>
                                 <DialogContent style={{flexDirection: 'column', display: 'flex', zIndex: 1001, maxWidth: 700, overflow: 'hidden', margin: 'auto'}}>
                                     <span>
@@ -348,14 +372,14 @@ useEffect(() => {
                                                     <div style={{position: 'relative'}} className='alertAviso'>
                                                         <div className='alertContainer'>
                                                         
-                                                          <img className='alertImage' src={`${baseURL}/storage/images/${item?.info?.image}`}/>
+                                                          <img loading="lazy"className='alertImage' src={`${baseURL}/public/storage/images/${item?.info?.image}`}/>
                                                         
                                                         
                                                         </div>
                                                         <div className='alertInfo'>
                                                             <div className='profile'>
                                                                 <div className='profilepic'>
-                                                                    <img src={process.env.PUBLIC_URL + '/images/logo.png'}/>
+                                                                    <img loading="lazy"src={process.env.PUBLIC_URL + '/images/logo.png'}/>
                                                                 </div>
                                                                 <div className='profileTitle'>instituto superior politécnico alvorecer da juventude</div>
                                                             </div>
@@ -376,7 +400,7 @@ useEffect(() => {
                                         if (index == 0){
                                             return (
                                                 <figure className='show'>
-                                              <img src={`${baseURL}/storage/images/${item?.info?.image}`}/>
+                                              <img loading="lazy"src={`${baseURL}/public/storage/images/${item?.info?.image}`}/>
                                             
                                                 </figure>
                                             )
@@ -384,7 +408,7 @@ useEffect(() => {
                                         return (
                                             <figure>
                                                 
-                                              <img src={`${baseURL}/storage/images/${item?.info?.image}`}/>
+                                              <img loading="lazy"src={`${baseURL}/public/storage/images/${item?.info?.image}`}/>
                                             
                                             </figure>
                                             
@@ -412,6 +436,7 @@ useEffect(() => {
                                     
                                     
                                 </DialogContent>
+                                </div>
                             </Dialog> }
             <div className='outerContainer'>
                 <div className='preHeader' ref={preHeaderRef1}>
@@ -468,7 +493,7 @@ useEffect(() => {
                 </div>
                 <div className='container' ref={preHeaderRef}>
                 
-                    <img onClick={() => location.pathname != '/' && navigate('/')} alt='logo' className='logo' src={process.env.PUBLIC_URL + '/images/logotrans.png'}/>
+                    <img loading="lazy"onClick={() => location.pathname != '/' && navigate('/')} alt='logo' className='logo' src={process.env.PUBLIC_URL + '/images/logotrans.png'}/>
                     <div className='logoTextCont'>
                         <div onClick={() => location.pathname != '/' && navigate('/')} className='logoText'>instituto superior politécnico alvorecer da juventude</div>
                     </div>
@@ -480,21 +505,21 @@ useEffect(() => {
                         selected == 1 && <Content dir={'l'} selected={selected} setSelected={setSelected}/>
                     }
                 </AnimatePresence></div>
-                            <div onMouseLeave={() => setSelected(0)} onMouseOver={() => setSelected(2)} onClick={() => console.log('ad;lkfj ad;lkj f')} id='tab2' className={location.pathname.includes('/cursos') ? 'menuItem1' : 'menuItem'}><span>Ensino</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                            <div onMouseLeave={() => setSelected(0)} onMouseOver={() => setSelected(2)} onClick={() => {}} id='tab2' className={location.pathname.includes('/cursos') ? 'menuItem1' : 'menuItem'}><span>Ensino</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
                 </svg> <AnimatePresence>
                     {
                         selected == 2 && <Content dir={'l'} selected={selected} departments={departments} setSelected={setSelected}/>
                     }
                 </AnimatePresence></div>
-                            <div onMouseLeave={() => setSelected(0)}  onMouseOver={() => setSelected(3)} id='tab3' onClick={() => console.log('ad;lkfj ad;lkj f')} className={location.pathname.includes('admissoes') ? 'menuItem1' : 'menuItem'}><span>Admissões</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                            <div onMouseLeave={() => setSelected(0)}  onMouseOver={() => setSelected(3)} id='tab3' onClick={() => {}} className={location.pathname.includes('admissoes') ? 'menuItem1' : 'menuItem'}><span>Admissões</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
                 </svg> <AnimatePresence>
                     {
                         selected == 3 && <Content dir={'l'} selected={selected} setSelected={setSelected}/>
                     }
                 </AnimatePresence></div>
-                <div onMouseLeave={() => setSelected(0)}  onMouseOver={() => setSelected(4)} id='tab3' onClick={() => console.log('ad;lkfj ad;lkj f')} className={location.pathname.includes('colaboradores') ? 'menuItem1' : 'menuItem'}><span>Colaboradores</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                <div onMouseLeave={() => setSelected(0)}  onMouseOver={() => setSelected(4)} id='tab3' onClick={() => {}} className={location.pathname.includes('colaboradores') ? 'menuItem1' : 'menuItem'}><span>Colaboradores</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
                 </svg> <AnimatePresence>
                     {
@@ -503,6 +528,7 @@ useEffect(() => {
                 </AnimatePresence></div>
                             <div className={location.pathname.includes('sugestoes') ? 'menuItem1' : 'menuItem'} onClick={() => {
                         navigate('/sugestoes_e_reclamacoes')
+                        localStorage.setItem('path', 'Sugestões/Reclamações')
                        
                    }}><span>Sugestões/Reclamações</span></div>
                 
@@ -518,15 +544,15 @@ useEffect(() => {
                                 Inscrição Online
                             </div>
                         </div>
-                        <Sheet open={open} style={{zIndex: 111000100101}}>
-                            <SheetTrigger onClick={()=> {
+                        <Sheet open={open} style={{zIndex: 111000100101, outline: 'none', border: 'none'}}>
+                            <SheetTrigger style={{outline: 'none', border: 'none'}} onClick={()=> {
                                 setSelectedSide(0)
                                 setOpen(true)
                             }}>
                                 <div ref={icon} onClick={() => {
                                     // setOpen(!open)
                                      }} className={open ? 'bi-listCont1' : 'bi-listCont'}>
-                                {!open ?    <svg ref={icon}  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                                {!open ?    <svg ref={icon} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
                                     </svg>
                                     :
@@ -602,13 +628,21 @@ useEffect(() => {
                                 setSelectedSide(4)
                             }} className={location.pathname.includes('colaboradores') ? 'sideMenuItem2' : 'sideMenuItem'}><span>Colaboradores</span><RightChevron /></div>
                             <div className={location.pathname.includes('sugestoes') ? 'sideMenuItem2' : 'sideMenuItem'} onClick={() => {
-                        navigate('/sugestoes_e_reclamacoes')
-                       
+                                setOpen(false)
+                                
+                                setTimeout(() => {
+
+                                    navigate('/sugestoes_e_reclamacoes')
+                        localStorage.setItem('path', 'Sugestões/Reclamações');
+                                }, 500)       
                    }}>
                                 Sugestões/Reclamações
                             </div>
                             <div onClick={() => {
-                                navigate('/noticias')
+                                setOpen(false)
+                                setTimeout(() => {
+                                    navigate('/noticias')
+                                }, 500)
                             }} className={location.pathname.includes('/noticias') ? 'sideMenuItem2' : 'sideMenuItem'}><span>Notícias</span></div>
                             <div>
                                 
@@ -619,48 +653,70 @@ useEffect(() => {
                         <div onClick={() => setSelectedSide(0)} className='sideMenuItem1'><LeftChevron /></div>
                         
                         <div className='sideMenuItem' onClick={() => {
-                            navigate('/sobre')
+                            setOpen(false)
+                            setTimeout(() => {
+                                navigate('/sobre')
 
                             localStorage.setItem('path',  'Sobre o ISPAJ')
-                            setOpen(false)
+                            }, 500)
+                            
                         }}><span>Sobre o ISPAJ</span></div>
                         <div className='sideMenuItem' onClick={() => {
-                            navigate('/sobre')
+                            setOpen(false)
+                            setTimeout(() => {
+                                navigate('/sobre')
 
                             localStorage.getItem('path') != 'Estrutura Orgânica' && localStorage.setItem('path',  'Estrutura Orgânica')
-                            setOpen(false)
+                            }, 500)
+                            
 
                         }}><span>Estrutura Orgânica</span></div>
 
                         <div onClick={() => {
-                            navigate('/sobre')
-
-                            localStorage.getItem('path') != 'Estrutura Administrativa' && localStorage.setItem('path',  'Estrutura Administrativa')
                             setOpen(false)
+                            setTimeout(() => {
+                                navigate('/sobre')
+                            localStorage.getItem('path') != 'Estrutura Administrativa' && localStorage.setItem('path',  'Estrutura Administrativa')
+                            }, 500)
+                            
 
                         }} className='sideMenuItem'><span>Estrutura Administrativa</span></div>
 
                         <div className='sideMenuItem' onClick={() => {
-                            navigate('/sobre')
+                            setOpen(false)
+                            setTimeout(() => {
+                                navigate('/sobre')
 
                             localStorage.getItem('path') != 'Historial' && localStorage.setItem('path',  'Historial')
                             setOpen(false)
+                            }, 500)
+                            
 
                         }} ><span>Historial</span></div>
 
                         <div className='sideMenuItem' onClick={() => {
-                            navigate('/sobre')
+                                                        setOpen(false)
+                            setTimeout(() => {
+                                navigate('/sobre')
 
-                            localStorage.getItem('path') != 'Organigrama Insitucional' && localStorage.setItem('path',  'Organigrama Insitucional')
-                            setOpen(false)
+                                localStorage.getItem('path') != 'Organigrama Insitucional' && localStorage.setItem('path',  'Organigrama Insitucional')
+                                setOpen(false)
+                            }, 500)
+                            
 
                         }}><span>Organigrama Insitucional</span></div>
 
                         <div className='sideMenuItem' onClick={() => {
-                            navigate('/sobre')
+                            setOpen(false);
 
-                            localStorage.getItem('path') != 'Estatutos e Regulamentos' && localStorage.setItem('path',  'Estatutos e Regulamentos')
-                            setOpen(false)
+                            
+                            setTimeout(() => {
+                                navigate('/sobre')
+
+                                localStorage.getItem('path') != 'Estatutos e Regulamentos' && localStorage.setItem('path',  'Estatutos e Regulamentos')
+                                setOpen(false)
+                            }, 500)
+                            
 
                         }}><span>Estatutos e Regulamentos</span></div>
                         
@@ -668,71 +724,73 @@ useEffect(() => {
                         selectedSide == 2 ?
                         <SideMenuItem>
                         <div onClick={() => setSelectedSide(0)} className='sideMenuItem1'><LeftChevron /></div>
-                        <div className='sideMenuItem' onClick={() => {
-                            navigate('/cursos', {
-                                state: {
-                                    ...departments[1]
-                                }
-                            })
-                            localStorage.setItem('path', 'Sociais e Económicas')
-                            window.location.reload()
-                        }}><span>Ciências Sociais e Económicas</span></div>
-                        <div className='sideMenuItem' onClick={() => {
-                            navigate('/cursos', {
-                                state: {
-                                    ...departments[2]
-                                }
-                            })
-                            localStorage.setItem('path', 'Engenharias e Ciências Exatas')
-                            window.location.reload()
-                        }}><span>Engenharias e Ciências Exatas</span></div>
-                        <div className='sideMenuItem' onClick={() => {
-                            navigate('/cursos', {
-                                state: {
-                                    ...departments[0]
-                                }
-                            })
-                            localStorage.setItem('path', 'Saúde')
-                            localStorage.setItem('course',departments[0]?.id)
-                            window.location.reload()
-                        }}><span>Ciências da Saúde</span></div>
+                        {departments?.map((item) => {
+                        return (
+                            <div className='sideMenuItem' onClick={() => {
+                                setOpen(false)
+                                setTimeout(() => {
+                                    navigate('/cursos', {
+                                        state: {
+                                            ...item
+                                        }
+                                    })
+                                    localStorage.setItem('path', `${item?.info?.titulo}`)
+                                    window.location.reload()
+                                }, 500)
+                                
+                        }} >{item?.info?.titulo}</div>
+                        )
+                        })}
+                        
                     </SideMenuItem>
                         : selectedSide == 3 ? <SideMenuItem>
                         <div onClick={() => setSelectedSide(0)} className='sideMenuItem1'><LeftChevron /></div>
                         <div className='sideMenuItem' onClick={() => {
-                        axios.get(`${baseURL}/api/admissionsContents`)
+                        setOpen(false)
+
+                        setTimeout(() => {
+                            axios.get(`${baseURL}/api/admissionsContents`)
                         .then(res => {
                             let content = [...res.data][0]
                             if (content.emolumentos) {
-                                window.open(`${baseURL}/storage/pdfs/${content.emolumentos}`)
+                                window.open(`${baseURL}/public/storage/pdfs/${content.emolumentos}`)
 
                             }else {
                                 setDialogOpen(true)
                             }
                         setOpen(false)
                         })
+                        }, 500)
+                        
                         
                     }}><span>Emolumentos/Propinas</span></div>
                         <div
                         onClick={() => {
-                            
-                            axios.get(`${baseURL}/api/admissionsContents`)
+                            setOpen(false)
+                            setTimeout(() => {
+                                axios.get(`${baseURL}/api/admissionsContents`)
                         .then(res => {
                             let content = [...res.data][0]
                             if (content.calendario) {
-                                window.open(`${baseURL}/storage/pdfs/${content.calendario}`)
+                                window.open(`${baseURL}/public/storage/pdfs/${content.calendario}`)
 
                             }else {
                                 setDialogOpen(true)
                             }
                         setOpen(false)
                         })
+                            }, 500)
+                            
                         }} className='sideMenuItem'><span>Calendário Académico</span></div>
 
                         <div onClick={() => {
-                            navigate('/admissoes')
-                            localStorage.setItem('path', 'Exames de Acesso')
                             setOpen(false)
+                            setTimeout(() => {
+                                navigate('/admissoes')
+                                localStorage.setItem('path', 'Exames de Acesso')
+                                setOpen(false)
+                            }, 500)
+                            
 
                         }} className='sideMenuItem'><span>Exames de acesso</span></div>
                         {/* <div className='sideMenuItem' onProgress={() => {
@@ -744,9 +802,13 @@ useEffect(() => {
                         {/* navigate('/admissoes')
                        localStorage.setItem('path', 'Sugestões e Reclamações') */}
                         <div className='sideMenuItem' onClick={() => {
-                            navigate('/admissoes')
+                            setOpen(false)
+                            setTimeout(() => {
+                                navigate('/admissoes')
                             localStorage.setItem('path', 'Perguntas Frequentes')
                             setOpen(false)
+                            }, 500)
+                            
 
                         }}><span>Perguntas frequentes</span></div>
                         {/* <div className='sideMenuItem' onClick={() => {
@@ -760,8 +822,13 @@ useEffect(() => {
                     <SideMenuItem>
                         <div onClick={() => setSelectedSide(0)} className='sideMenuItem1'><LeftChevron /></div>
                         <div className='sideMenuItem' onClick={() => {
-                            navigate('/colaboradores/bolsas', {
-                            })
+                            setOpen(false)
+                            setTimeout(() => {
+                                navigate('/colaboradores/bolsas', {
+                                })
+                            setOpen(false)
+                            }, 500)
+                            
                         }}><span>Bolsa de professores</span></div>
                     </SideMenuItem>}
                     </div>
@@ -816,10 +883,10 @@ useEffect(() => {
         loop
         slidesPerView={1}
         onChange={() => {
-            console.log('changed')
+            //('changed')
         }}
         onSlideChange={(e) => {
-            console.log('changeddddd', e.realIndex)
+            //('changeddddd', e.realIndex)
             setActiveIndex(e.realIndex)
         }}
         
@@ -838,18 +905,18 @@ useEffect(() => {
         <SwiperSlide>
         <div className='slideTextCont'>{activeIndex == 0 && <motion.div initial={{opacity: 0, x: 200}} animate={{opacity: 1, x: 0}} transition={{duration: 0.8}} className='slideText'>Seja bem vindo ao Instituto Superior Politécnico Alvorecer Da Juventude</motion.div>}</div>
 
-          <img src={process.env.PUBLIC_URL + '/images/welcome.png'} />
+          <img loading="lazy"src={process.env.PUBLIC_URL + '/images/welcome.png'} />
         </SwiperSlide>
         <SwiperSlide>
         <div className='slideTextCont'>{activeIndex == 1 && <motion.div initial={{opacity: 0, x: 200}} animate={{opacity: 1, x: 0}} transition={{duration: 0.8}} className='slideText'>Um lugar de descoberta, crescimento e sucesso. Experimente</motion.div>}</div>
 
-          <img src={process.env.PUBLIC_URL + '/images/ispajview.png'}  />
+          <img loading="lazy"src={process.env.PUBLIC_URL + '/images/ispajview.png'}  />
 
         </SwiperSlide>
         <SwiperSlide>
         <div className='slideTextCont'>{activeIndex == 2 && <motion.div initial={{opacity: 0, x: 200}} animate={{opacity: 1, x: 0}} transition={{duration: 0.8}} className='slideText'>Educação transformadora</motion.div>}</div>
 
-          <img src={process.env.PUBLIC_URL + '/images/lab.png'}  />
+          <img loading="lazy"src={process.env.PUBLIC_URL + '/images/lab.png'}  />
 
         </SwiperSlide>
         <div onClick={() => handlePrev()} className='button left'><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
@@ -894,6 +961,7 @@ const Content = ({ selected, dir, departments, setSelected }) => {
     const navigate = useNavigate()
     const location = useLocation()
     const [dialogOpen, setDialogOpen] = useState(false)
+    
     return (
 
         <motion.div 
@@ -909,7 +977,7 @@ const Content = ({ selected, dir, departments, setSelected }) => {
             opacity: 0,
             y: 30
         }}
-        style={{width: '250px'}} id='overlay-content' className="content absolute top-[calc(60px)]
+        style={{width: '250px', top: '60px', position: 'absolute'}} id='overlay-content' className="content absolute top-[calc(60px)]
          rounded-lg border border-gray-300 bg-gradient-to-b from-white via-white-100 to-white p-4">
             <AlertDialog open={dialogOpen}>
                                 {/* <AlertDialogTrigger style={{width: '100%'}}>
@@ -997,7 +1065,7 @@ const Content = ({ selected, dir, departments, setSelected }) => {
                             <div className={localStorage.getItem('path')?.includes(item?.info?.titulo) ? 'subItem1' : 'subItem'} onClick={() => {
                                 navigate('/cursos', {
                                     state: {
-                                        ...departments[item?.id]
+                                        ...item
                                     }
                                 })
                                 localStorage.setItem('path', `${item?.info?.titulo}`)
@@ -1047,7 +1115,7 @@ const Content = ({ selected, dir, departments, setSelected }) => {
                         .then(res => {
                             let content = [...res.data][0]
                             if (content.emolumentos) {
-                                window.open(`${baseURL}/storage/pdfs/${content.emolumentos}`)
+                                window.open(`${baseURL}/public/storage/pdfs/${content.emolumentos}`)
 
                             }else {
                                 setDialogOpen(true)
@@ -1060,7 +1128,7 @@ const Content = ({ selected, dir, departments, setSelected }) => {
                         .then(res => {
                             let content = [...res.data][0]
                             if (content.calendario) {
-                                window.open(`${baseURL}/storage/pdfs/${content.calendario}`)
+                                window.open(`${baseURL}/public/storage/pdfs/${content.calendario}`)
 
                             }else {
                                 setDialogOpen(true)

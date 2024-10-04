@@ -1,150 +1,135 @@
-.aboutCourse {
-
-.header {
+.aboutCourse .header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 10px;
 }
-.tabs {
+.aboutCourse .tabs {
     display: flex;
     flex-direction: row;
     border-bottom: 1px solid #d8d8d8;
     align-self: flex-end;
     flex-wrap: wrap;
     gap: 10px;
-    .tab {
-        padding: 7px;
-        cursor: pointer;
-        transition: 0.2s ease-in-out;
-        border: 1px solid #dadada;
-        font-size: 14px;
-        @media screen and (width > 440px) {
-            border-bottom: 0;
-
-        }
-        @media screen and (width < 1100px){
-            /* margin-top: 5px; */
-        }
-        &:hover {
-            background-color: #ffb731;
-            color: white;
-        }
-    }
-    > .tab1 {
-        background-color: #f19d00;
-        border: 0;
-        color: white;
-        font-weight: 500;
-        border: 1px solid #f19d00;
-
-    }
-    div[class~='tab1']{
-        background-color: orange;
-        color: white;
-        font-weight: 500;
-        
-
-        
-    }
-
-    
 }
-.searchContainer {
+
+.aboutCourse .tabs .tab {
+    padding: 7px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    border: 1px solid #dadada;
+    font-size: 14px;
+}
+
+.aboutCourse .tabs .tab:hover {
+    background-color: #ffb731;
+    color: white;
+}
+
+/* Styling for the active tab */
+.aboutCourse .tabs .tab1 {
+    background-color: #f19d00;
+    border: 0;
+    color: white;
+    font-weight: 500;
+    border: 1px solid #f19d00;
+}
+
+.aboutCourse .tabs div[class~='tab1'] {
+    background-color: orange;
+    color: white;
+    font-weight: 500;
+}
+.aboutCourse .searchContainer {
     flex: 1;
     max-width: 600px;
     align-self: flex-end;
-    > .search {
-        background-color: white;
-        display: flex;
-        flex-direction: row;
-        height: 40px;
-        align-items: center;
-        border: 1px solid #dfdfdf;
-        border-radius: 5px;
-        overflow: hidden;
-        > span {
-            background-color: #ebebeb;
-            padding: 10px;
-            cursor: pointer;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            &:hover {
-                background-color: #ebebeb83;
-            }
-            
-        }
-        >input {
-            flex: 1;
-            height: 100%;
-            border: 0;
-            outline: none;
-            padding: 0 5px;
-        }
-    }
 }
-.newsBanners {
+
+.aboutCourse .searchContainer .search {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    align-items: center;
+    border: 1px solid #dfdfdf;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.aboutCourse .searchContainer .search span {
+    background-color: #ebebeb;
+    padding: 10px;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.aboutCourse .searchContainer .search span:hover {
+    background-color: #ebebeb83;
+}
+
+.aboutCourse .searchContainer .search input {
+    flex: 1;
+    height: 100%;
+    border: 0;
+    outline: none;
+    padding: 0 5px;
+}
+
+.aboutCourse .newsBanners {
     display: flex;
     gap: 20px;
     flex-direction: row;
-    .newsBanner:nth-child(1) {
-        flex: 1.5;
-        background-color: #5c5c5c;
-            background-image: linear-gradient(90deg, rgba(91,91,91,1.00) 0%,rgba(112,112,112,1.00) 40%,rgba(91,91,91,1.00) 80%,rgba(91,91,91,1.00) 97%);
-            animation-duration: 1s;
-              animation-fill-mode: forwards;
-              animation-iteration-count: infinite;
-              animation-name: loadingShimmer;
-              animation-timing-function: linear;
-              background-color: #efefef;
-              background-image: linear-gradient(90deg, rgba(239,239,239,1.00) 0%,rgba(221,221,221,1.00) 40%,rgba(239,239,239,1.00) 80%,rgba(239,239,239,1.00) 97%);
-              background-repeat: no-repeat;
-              background-size: 50%;
-            @keyframes loadingShimmer {
-                0% {
-                  background-position: -100% 0;
-                }
-              
-                100% {
-                  background-position: 200% 0;
-                }
-              }
+}
+
+.aboutCourse .newsBanners .newsBanner:nth-child(1) {
+    flex: 1.5;
+    background-color: #5c5c5c;
+    background-image: linear-gradient(90deg, rgba(91,91,91,1.00) 0%, rgba(112,112,112,1.00) 40%, rgba(91,91,91,1.00) 80%, rgba(91,91,91,1.00) 97%);
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: loadingShimmer;
+    animation-timing-function: linear;
+    background-color: #efefef;
+    background-image: linear-gradient(90deg, rgba(239,239,239,1.00) 0%, rgba(221,221,221,1.00) 40%, rgba(239,239,239,1.00) 80%, rgba(239,239,239,1.00) 97%);
+    background-repeat: no-repeat;
+    background-size: 50%;
+    width: 100%;
+}
+
+.aboutCourse .newsBanners .newsBanner:nth-child(2) {
+    flex: 1;
+    background-color: #5c5c5c;
+    background-image: linear-gradient(90deg, rgba(91,91,91,1.00) 0%, rgba(112,112,112,1.00) 40%, rgba(91,91,91,1.00) 80%, rgba(91,91,91,1.00) 97%);
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: loadingShimmer;
+    animation-timing-function: linear;
+    background-color: #efefef;
+    background-image: linear-gradient(90deg, rgba(239,239,239,1.00) 0%, rgba(221,221,221,1.00) 40%, rgba(239,239,239,1.00) 80%, rgba(239,239,239,1.00) 97%);
+    background-repeat: no-repeat;
+    background-size: 50%;
+    width: 100%;
+}
+
+/* Keyframes for loading shimmer */
+@keyframes loadingShimmer {
+    0% {
+        background-position: -100% 0;
     }
-    .newsBanner:nth-child(2) {
-        flex: 1;
-        background-color: #5c5c5c;
-            background-image: linear-gradient(90deg, rgba(91,91,91,1.00) 0%,rgba(112,112,112,1.00) 40%,rgba(91,91,91,1.00) 80%,rgba(91,91,91,1.00) 97%);
-            animation-duration: 1s;
-              animation-fill-mode: forwards;
-              animation-iteration-count: infinite;
-              animation-name: loadingShimmer;
-              animation-timing-function: linear;
-              background-color: #efefef;
-              background-image: linear-gradient(90deg, rgba(239,239,239,1.00) 0%,rgba(221,221,221,1.00) 40%,rgba(239,239,239,1.00) 80%,rgba(239,239,239,1.00) 97%);
-              background-repeat: no-repeat;
-              background-size: 50%;
-            @keyframes loadingShimmer {
-                0% {
-                  background-position: -100% 0;
-                }
-              
-                100% {
-                  background-position: 200% 0;
-                }
-              }
-    }
-    @media screen and (width < 948px) {
-        flex-direction: column;
-        .newsBanner {
-            max-height: 320px;
-            min-height: 250px;
-        }
+    100% {
+        background-position: 200% 0;
     }
 }
-.newsBanner {
+
+
+.aboutCourse .newsBanner {
     position: relative;
     aspect-ratio: 4/2;
     max-height: 400px;
@@ -152,256 +137,233 @@
     overflow: hidden;
     border-radius: 5px;
     background-color: #eeeeee;
-    background-image: linear-gradient(90deg, rgba(91,91,91,1.00) 0%,rgba(112,112,112,1.00) 40%,rgba(91,91,91,1.00) 80%,rgba(91,91,91,1.00) 97%);
-            animation-duration: 1s;
-              animation-fill-mode: forwards;
-              animation-iteration-count: infinite;
-              animation-name: loadingShimmer;
-              animation-timing-function: linear;
-              background-color: #efefef;
-              background-image: linear-gradient(90deg, rgba(239,239,239,1.00) 0%,rgba(221,221,221,1.00) 40%,rgba(239,239,239,1.00) 80%,rgba(239,239,239,1.00) 97%);
-              background-repeat: no-repeat;
-              background-size: 50%;
-            @keyframes loadingShimmer {
-                0% {
-                  background-position: -100% 0;
-                }
-              
-                100% {
-                  background-position: 200% 0;
-                }
-              }
-    &:hover {
-        img {
-            filter: brightness(0.9);
-            transform: scale(1.1);
-
-        }
-    }
-    img {
-        transition: 0.3s ease-in-out;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        filter: brightness(0.5);
-        
-    }
-    .infoContainer {
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        justify-content: space-between;
-        display: flex;
-        flex-direction: column;
-
-        .glance {
-            margin: 10px;
-            border: 1px solid orange;
-            background-color: orange;
-            width: 130px;
-            text-align: center;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 15px;
-            padding: 3px 0;
-            z-index: 1;
-        }
-        .info {
-            margin: 10px;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            .postDate {
-                color: white;
-                font-weight: 500;
-            }
-
-            .postTitle {
-                font-weight: 600;
-                font-size: 15px;
-                padding-top: 20px;
-                display: -webkit-box;
-                -webkit-box-orient: vertical;
-                -webkit-line-clamp: 3; /* Number of lines to display */
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-            .postTitle::before {
-                position: absolute;
-                content: "";
-                border-top: solid 6px orange;
-                border-radius: 5px;
-                max-width: 300px;
-                width: 100%;
-                min-width: 100px;
-                top: 10px;
-            }
-        }
-
-    
-    }
-
+    background-image: linear-gradient(90deg, rgba(91,91,91,1.00) 0%, rgba(112,112,112,1.00) 40%, rgba(91,91,91,1.00) 80%, rgba(91,91,91,1.00) 97%);
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: loadingShimmer;
+    animation-timing-function: linear;
+    background-repeat: no-repeat;
+    background-size: 50%;
 }
-.subTitle {
+
+@keyframes loadingShimmer {
+    0% {
+        background-position: -100% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.aboutCourse .newsBanner:hover img {
+    filter: brightness(0.9);
+    transform: scale(1.1);
+}
+
+.aboutCourse .newsBanner img {
+    transition: 0.3s ease-in-out;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    filter: brightness(0.5);
+}
+
+.aboutCourse .newsBanner .infoContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+}
+
+.aboutCourse .newsBanner .infoContainer .glance {
+    margin: 10px;
+    border: 1px solid orange;
+    background-color: orange;
+    width: 130px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 15px;
+    padding: 3px 0;
+    z-index: 1;
+}
+
+.aboutCourse .newsBanner .infoContainer .info {
+    margin: 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.aboutCourse .newsBanner .infoContainer .info .postDate {
+    color: white;
+    font-weight: 500;
+}
+
+.aboutCourse .newsBanner .infoContainer .info .postTitle {
+    font-weight: 600;
+    font-size: 15px;
+    padding-top: 20px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.aboutCourse .newsBanner .infoContainer .info .postTitle::before {
+    position: absolute;
+    content: "";
+    border-top: solid 6px orange;
+    border-radius: 5px;
+    max-width: 300px;
+    width: 100%;
+    min-width: 100px;
+    top: 10px;
+}
+.aboutCourse .subTitle {
     font-size: 17px;
     font-weight: 600;
-
-    span {
-        font-size: 12px;
-        font-weight: 400;
-    }
 }
-.postGrid {
+
+.aboutCourse .subTitle span {
+    font-size: 12px;
+    font-weight: 400;
+}
+.aboutCourse .postGrid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
-    @media screen and (width < 1000px){
-        grid-template-columns: repeat(3, 1fr);
-    }
-    @media screen and (width < 700px){
-        grid-template-columns: repeat(2, 1fr);
-    }
-    @media screen and (width < 500px){
-        grid-template-columns: repeat(1, 1fr);
-    }
-    .newsBanner1 {
-        display: flex;
-        flex: 1;
-        flex-direction: column;
-        overflow: hidden;
-        border-radius: 5px;
-        background-color: #5c5c5c;
-            background-image: linear-gradient(90deg, rgba(91,91,91,1.00) 0%,rgba(112,112,112,1.00) 40%,rgba(91,91,91,1.00) 80%,rgba(91,91,91,1.00) 97%);
-            animation-duration: 1s;
-              animation-fill-mode: forwards;
-              animation-iteration-count: infinite;
-              animation-name: loadingShimmer;
-              animation-timing-function: linear;
-              background-color: #efefef;
-              background-image: linear-gradient(90deg, rgba(239,239,239,1.00) 0%,rgba(221,221,221,1.00) 40%,rgba(239,239,239,1.00) 80%,rgba(239,239,239,1.00) 97%);
-              background-repeat: no-repeat;
-              background-size: 50%;
-            @keyframes loadingShimmer {
-                0% {
-                  background-position: -100% 0;
-                }
-              
-                100% {
-                  background-position: 200% 0;
-                }
-              }
-            @media screen and (width < 650px) {
-                max-height: 240px;
-            }
-        @media screen and (width < 830px) {
-            max-height: 100%;
-        }
-        &:hover {
-            img {
-                filter: brightness(0.9);
-                transform: scale(1.1);
-    
-            }
-        }
-        img {
-            transition: 0.3s ease-in-out;
-            aspect-ratio: 4/2.3;
-            object-fit: cover;
-            z-index: 1;
-
-            filter: brightness(0.5);
-            
-        }
-        .infoContainer {
-            
-            justify-content: space-between;
-            display: flex;
-            flex-direction: column;
-            z-index: 10;
-            height: 100%;
-            .glance {
-                display: none;
-            }
-            
-            .info::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: url('../../public/images/ispajview.png') center center / cover; /* Or use a color */
-                z-index: -1;
-                opacity: 0.3; 
-                border-radius: inherit;
-                filter: blur(20px);
-                
-            }
-            .info {
-                z-index: 10;
-
-                /* background-color: white; */
-                height: 100%;
-                
-                padding: 15px;
-                color: black;
-                display: flex;
-                flex-direction: column;
-                margin: 0;
-                border: 1px solid #e4e4e4;
-                border-top: none;
-                border-radius: 5px;
-                border-top-left-radius: 0;
-                border-top-right-radius: 0;
-                backdrop-filter: blur(20px);
-                z-index: 10;
-                background-color: rgb(255, 255, 255);
+}
+.aboutCourse .postGrid .newsBanner1 {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 5px;
+    background-color: #5c5c5c;
+    background-image: linear-gradient(90deg, rgba(91, 91, 91, 1.00) 0%, rgba(112, 112, 112, 1.00) 40%, rgba(91, 91, 91, 1.00) 80%, rgba(91, 91, 91, 1.00) 97%);
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: loadingShimmer;
+    animation-timing-function: linear;
+    background-color: #efefef;
+    background-image: linear-gradient(90deg, rgba(239, 239, 239, 1.00) 0%, rgba(221, 221, 221, 1.00) 40%, rgba(239, 239, 239, 1.00) 80%, rgba(239, 239, 239, 1.00) 97%);
+    background-repeat: no-repeat;
+    background-size: 50%;
+    height: max-content;
+    min-height: max-content;
+}
 
 
+.aboutCourse .postGrid .newsBanner1:hover img {
+    filter: brightness(0.9);
+    transform: scale(1.1);
+}
 
-                .postDate {
-                    color: rgb(73, 73, 73);
-                    font-size: 13px;
-                    font-weight: 500;
-                }
-                .postTitle {
-                    font-weight: 600;
-                    font-size: 15px;
-                    padding-top: 20px;
-                    display: -webkit-box;
-                    -webkit-box-orient: vertical;
-                    -webkit-line-clamp: 2; /* Number of lines to display */
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    @media screen and (width < 700px){
-                        font-size: 14px;
-                    }
-                }
-                .postTitle::before {
-                    position: absolute;
-                    content: "";
-                    border-top: solid 6px orange;
-                    border-radius: 5px;
-                    max-width: 300px;
-                    width: 100%;
-                    min-width: 100px;
-                    top: 10px;
-                }
-            }
-    
-        
-        }
-    }
+.aboutCourse .postGrid .newsBanner1 img {
+    transition: 0.3s ease-in-out;
+    aspect-ratio: 4 / 2.3;
+    object-fit: cover;
+    z-index: 1;
+    filter: brightness(0.5);
     
 }
+
+.aboutCourse .postGrid .newsBanner1 .infoContainer {
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    height: 100%;
+}
+
+.aboutCourse .postGrid .newsBanner1 .infoContainer .glance {
+    display: none;
+}
+
+.aboutCourse .postGrid .newsBanner1 .infoContainer .info::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../../public/images/ispajview.png') center center / cover;
+    z-index: -1;
+    opacity: 0.3;
+    border-radius: inherit;
+    filter: blur(20px);
+}
+
+.aboutCourse .postGrid .newsBanner1 .infoContainer .info {
+    z-index: 10;
+    height: 100%;
+    padding: 15px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    border: 1px solid #e4e4e4;
+    border-top: none;
+    border-radius: 5px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    backdrop-filter: blur(20px);
+    background-color: rgb(255, 255, 255);
+}
+
+.aboutCourse .postGrid .newsBanner1 .infoContainer .info .postDate {
+    color: rgb(73, 73, 73);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.aboutCourse .postGrid .newsBanner1 .infoContainer .info .postTitle {
+    font-weight: 600;
+    font-size: 15px;
+    padding-top: 20px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.aboutCourse .postGrid .newsBanner1 .infoContainer .info .postTitle::before {
+    position: absolute;
+    content: "";
+    border-top: solid 6px orange;
+    border-radius: 5px;
+    max-width: 300px;
+    width: 100%;
+    min-width: 100px;
+    top: 10px;
+}
+
+@keyframes loadingShimmer {
+    0% {
+        background-position: -100% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+
+/*  */
 .pagination {
     display: flex;
     list-style: none;
@@ -468,7 +430,75 @@
     color: grey;
   }
 
-}
+
+
 .something {
     color: #d88c00;
+}
+/* Media queries fixed to use max-width */
+@media screen and (max-width: 440px) {
+    .aboutCourse .tabs .tab {
+        border-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .aboutCourse .tabs .tab {
+        /* margin-top: 5px; Uncomment this if needed */
+    }
+}
+
+/* Media query with max-width instead of width < */
+@media screen and (max-width: 948px) {
+    .aboutCourse .newsBanners {
+        flex-direction: column;
+    }
+    .aboutCourse .newsBanners .newsBanner {
+        max-height: 320px;
+        min-height: 250px;
+        aspect-ratio: unset;
+        
+    }
+    .aboutCourse .newsBanners .newsBanner img {
+        aspect-ratio: 4/2;
+        width: 100%;
+        height: 100%;
+    }
+
+}
+@media screen and (max-width: 1000px) {
+    .aboutCourse .postGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .aboutCourse .postGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .aboutCourse .postGrid {
+        grid-template-columns: repeat(1, 1fr);
+        
+    }
+    
+}
+@media screen and (max-width: 650px) {
+    .aboutCourse .postGrid .newsBanner1 {
+        max-height: 240px;
+    }
+}
+
+@media screen and (max-width: 830px) {
+    .aboutCourse .postGrid .newsBanner1 {
+        max-height: 100%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .aboutCourse .postGrid .newsBanner1 .infoContainer .info .postTitle {
+        font-size: 14px;
+    }
 }

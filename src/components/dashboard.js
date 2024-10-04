@@ -249,7 +249,7 @@ image: process.env.PUBLIC_URL + '/images/cardiology.png'
       })
       axios.get(`${baseURL}/api/news?limit=1000&trend=true`)
       .then(res => {
-        console.log('articles', res.data)
+        //('articles', res.data)
         setArticles([...res.data].filter((item) => {
           if (item.info?.show == undefined){
               return item
@@ -507,7 +507,7 @@ image: process.env.PUBLIC_URL + '/images/cardiology.png'
             <ChartTooltip
               cursor={false}
               content={(item) => {
-                console.log(chartData.filter((item1)=> item1.month == item?.label)[0]?.visits)
+                //(chartData.filter((item1)=> item1.month == item?.label)[0]?.visits)
                 return (
               <div className='chartTTContent'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
@@ -542,7 +542,7 @@ image: process.env.PUBLIC_URL + '/images/cardiology.png'
                   return (
                     <div className='news'>
                       <div className='imageContainer'>
-                        <img src={`${baseURL}/storage/images/${[...item.imagens][0]}`}/>
+                        <img loading="lazy"src={`${baseURL}/public/storage/images/${[...item.imagens][0]}`}/>
                       </div>
                       <div className='info'>
                         <div className='views'>{item?.info?.views} visualizações</div>
@@ -589,7 +589,7 @@ image: process.env.PUBLIC_URL + '/images/cardiology.png'
                   return (
                     <div className='news'>
                       <div className='imageContainer'>
-                        <img src={`${JSON.parse(item.info)?.info?.imagem}`}/>
+                        <img loading="lazy"src={`${JSON.parse(item.info)?.info?.imagem}`}/>
                       </div>
                       <div className='info'>
                         <div className='views'>{item?.views_count} visualizações</div>

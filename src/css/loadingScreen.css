@@ -1,0 +1,47 @@
+.loadingContainer {
+    height: 100vh;
+    width: 100vw;
+}
+.loadingContainer .text-container {
+    height: 90vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+ .loadingContainer .text-container h1{
+    margin: 0;
+    font-size: 150px;
+    color: rgba(225,225,225, .01);
+    background-image: url("../images/ispajview1.png");
+    background-repeat: repeat;
+    -webkit-background-clip:text;
+    animation: animate 15s ease-in-out infinite;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 900;
+  }
+  @media screen and (max-width: 500px) {
+    .loadingContainer .text-container h1{
+        font-size: 100px;
+    }
+  }
+  
+    @keyframes animate {
+      0%, 100% {
+        background-position: left top;
+      }
+      25%{
+        background-position: right bottom;
+       }
+      50% {
+        background-position: left bottom;
+      }
+      75% {
+        background-position: right top;
+      }   
+  }
+  
+  

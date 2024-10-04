@@ -179,7 +179,7 @@ const [faqs, setFaqs] = useState([
         }
     ]);
     useEffect(() => {
-        console.log('adm', admissionsContents)
+        //('adm', admissionsContents)
     }, [])
     return (
         <div className="sectionContainer">

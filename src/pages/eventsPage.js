@@ -17,7 +17,6 @@ import {
   import { Checkbox } from "../@/components/ui/checkbox"
 import axios from "axios"
 import { baseURL } from "../api/api"
-import { element } from "three/examples/jsm/nodes/shadernode/ShaderNode"
 const EventsPage = () => {
     const navigate = useNavigate()
     const [section, setSection] = useState('Eventos')
@@ -83,7 +82,7 @@ const EventsPage = () => {
             if (new Date(clickedMonth).getMonth() == new Date(date).getMonth())
                 return 'selected-month'
         }else if (view == 'decade'){
-            console.log('decadeeeee')
+            //('decadeeeee')
             if (new Date(clickedYear).getFullYear() == new Date(date).getFullYear())
                 return 'selected-year'
         }
@@ -93,6 +92,7 @@ const EventsPage = () => {
     const [looked, setLooked] = useState(false)
     const location = useLocation()
     const look = () => {
+        
         if (search.length == 0){
             alert('Digite algo para ver resultados.')
         }else {
@@ -122,9 +122,7 @@ const EventsPage = () => {
     const scrollDivRef = useRef(null)
     const scrollSearchRef = useRef(null)
     useEffect(() => {
-        console.log('carlos', scrollDivRef.current && window.scrollTo({
-            top: scrollDivRef.current.getBoundingClientRect().top
-        }))
+       
         scrollDivRef.current && window.scrollTo({
             top: scrollDivRef.current.getBoundingClientRect().top + window.scrollY - 170
         })
@@ -170,34 +168,34 @@ const EventsPage = () => {
     const [publics, setPublics] = useState([])
 
     useEffect(()=> {
-        console.log(clickedMonth, view)
+        //(clickedMonth, view)
         
         if (view == 'month'){
-            console.log('inside month', eventos.filter((item) => {
-                const initial = new Date(date)
-                const final = new Date(date)
-                // Set the initial date to the beginning of the day
-                initial.setHours(0, 0, 0, 0);
+            // //('inside month', eventos.filter((item) => {
+            //     const initial = new Date(date)
+            //     const final = new Date(date)
+            //     // Set the initial date to the beginning of the day
+            //     initial.setHours(0, 0, 0, 0);
     
-                // Set the final date to the end of the day
-                final.setHours(23, 59, 59, 999);
-                const itemDate = new Date(item.info.iniDate)
-                if (!item.info?.mesmo_dia){
-                    const initial1 = new Date(item.info.iniDate)
-                    initial1.setHours(0, 0, 0, 0);
-                    const final1 = new Date(item.info.finalDate)
-                    final1.setHours(23, 59, 59, 999);
-                    if (initial >= initial1 && final <= final1){
-                        return item
-                    }
-                }else {
-                    if (itemDate >= initial && itemDate <= final){
-                        console.log('date', date >= initial)
-                        return item
-                    }
-                }
+            //     // Set the final date to the end of the day
+            //     final.setHours(23, 59, 59, 999);
+            //     const itemDate = new Date(item.info.iniDate)
+            //     if (!item.info?.mesmo_dia){
+            //         const initial1 = new Date(item.info.iniDate)
+            //         initial1.setHours(0, 0, 0, 0);
+            //         const final1 = new Date(item.info.finalDate)
+            //         final1.setHours(23, 59, 59, 999);
+            //         if (initial >= initial1 && final <= final1){
+            //             return item
+            //         }
+            //     }else {
+            //         if (itemDate >= initial && itemDate <= final){
+            //             //('date', date >= initial)
+            //             return item
+            //         }
+            //     }
                 
-            }))
+            // }))
             setFilteredEvents(eventos.filter((item) => {
                 const initial = new Date(date)
                 const final = new Date(date)
@@ -217,7 +215,7 @@ const EventsPage = () => {
                     }
                 }else {
                     if (itemDate >= initial && itemDate <= final){
-                        console.log('date', date >= initial)
+                        //('date', date >= initial)
                         return item
                     }
                 }
@@ -232,7 +230,7 @@ const EventsPage = () => {
                 }
             }).sort((a, b) =>  [...b?.info?.publico].length - [...a?.info?.publico].length))
         }else if (view == 'year'){
-            console.log('year')
+            //('year')
             setFilteredEvents( eventos.filter((item) => {
                 const initial = new Date(clickedMonth)
                 const final = new Date(clickedMonth)
@@ -271,7 +269,7 @@ const EventsPage = () => {
                 }
             }).sort((a, b) =>  [...b?.info?.publico].length - [...a?.info?.publico].length))
         }else if (view == 'decade'){
-            console.log('decade', clickedYear)
+            //('decade', clickedYear)
             setFilteredEvents( eventos.filter((item) => {
                 const initial = new Date(clickedYear)
                 const final = new Date(clickedYear)
@@ -339,28 +337,28 @@ const EventsPage = () => {
         label: "Todos",
       }]
     useEffect(() => {
-        console.log('publics', eventos.filter((item) => {
+        //('publics', eventos.filter((item) => {
             // if (publics.every(element => [...item?.info?.publico].includes(element))){
             //     return item
             // }
-            if (publics.some(element => [...item?.info?.publico].includes(element))){
-                return item
-            }
-        }))
+        //     if (publics.some(element => [...item?.info?.publico].includes(element))){
+        //         return item
+        //     }
+        // }))
         
     }, [publics])
 
     const prevLocationRef = useRef(location);
 
     useEffect(() => {
-        console.log('idddd', location.pathname.split('/event/')[1])
+        //('idddd', location.pathname.split('/event/')[1])
         
 
       if (prevLocationRef.current.pathname !== location.pathname && location.pathname.includes('/event/')) {
-        console.log('iddd', location.pathname.split('/event/')[1])
+        //('iddd', location.pathname.split('/event/')[1])
         const viewedEvents = JSON.parse(sessionStorage.getItem('viewedEvents')) || [];
         if (location.state?.item && location.pathname.includes('/event/') && ![...viewedEvents].includes(location.pathname.split('/event/')[1])){
-            console.log('passeeeeeddddddd')
+            //('passeeeeeddddddd')
             axios.post(`${baseURL}/api/addEventoView/`, {
                 evento_id: location.pathname.split('/event/')[1],
                 info: location?.state?.item
@@ -375,7 +373,7 @@ const EventsPage = () => {
         }else {
             const viewedEvents = JSON.parse(sessionStorage.getItem('viewedEvents')) || [];
             if (location.pathname.includes('/event/') && ![...viewedEvents].includes(location.pathname.split('/event/')[1])){
-                console.log('passeeeeeddddddd')
+                //('passeeeeeddddddd')
                 axios.post(`${baseURL}/api/addEventoView/`, {
                     evento_id: location.pathname.split('/event/')[1],
                     info: location?.state?.item
@@ -447,7 +445,7 @@ const EventsPage = () => {
                     </div>
                     <Calendar 
                     onChange={(newDate) => {
-                        console.log('changed', newDate)
+                        //('changed', newDate)
                         setDate(newDate)
                     }}
                     value={date}
@@ -474,12 +472,12 @@ const EventsPage = () => {
                         setDate(date)
                     }}
                     onClickMonth={(date) => {
-                        console.log('date', date)
+                        //('date', date)
                         setClickedMonth(date)
                         setDate(date)
                     }}
                     onClickYear={(date) => {
-                        console.log('dateDecde', date)
+                        //('dateDecde', date)
                         setClickedYear(date)
                         setDate(date)
                     }}

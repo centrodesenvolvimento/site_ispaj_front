@@ -1,21 +1,9 @@
 import { useLocation, useNavigate } from "react-router-dom"
 import Header from "../components/header"
-import Swiper2 from "../components/swiper2"
 import Footer from "../components/footer"
 import '../css/about.css'
 import { useEffect, useRef, useState } from "react"
-import AboutSection from "../components/aboutSection"
 import { motion } from "framer-motion"
-import Organisation from "../components/organisation"
-import EstruturaOrg from "../components/estruturaOrg"
-import EstruturaAdmin from "../components/estruturaAdmin"
-import History from "../components/history"
-import Estatutos from "../components/estatutos"
-import Swiper3 from "../components/swiper3"
-import ExamsSection from "../components/examsSection"
-import Fees from "../components/fees"
-import Faq from "../components/faq"
-import Timings from "../components/timings"
 import HealthPage from "../components/healthPage"
 import SocialsPage from "../components/socialsPage"
 import EnginesPage from "../components/enginesPage"
@@ -61,28 +49,30 @@ const wrapperVariants = {
     },
   };
   
-  const actionIconVariants = {
-    open: { scale: 1, y: 0 },
-    closed: { scale: 0, y: -7 },
-  };
+  
 
-  const Option = ({ text, section, setSection, setOpen }) => {
+  const Option = ({departamentos, item, text, section, setSection, setOpen }) => {
+    const navigate = useNavigate()
     return (
       <motion.li
         variants={itemVariants}
         onClick={() => {
-          if (`${text}`.includes('Emolumentos')){
-            window.open(process.env.PUBLIC_URL + 'pdf/emolumentos.pdf')
-            setOpen(false)
-          }else if (`${text}`.includes('Calendário')){
-            window.open(process.env.PUBLIC_URL + 'pdf/calendar.pdf')
-            setOpen(false)
-
-          }else {
-            !section.includes(text) && setSection(text)
+          
+          
+          !section.includes(text) && setSection(text)
           !section.includes(text) && localStorage.setItem('path', text)
+          // window.location.reload()
+          // //('text', text)
+          navigate('/cursos', {
+            state: {
+              ...item
+            }
+          })
+          setOpen(false)
           window.location.reload()
-          }
+          
+        // localStorage.setItem('path', `${item?.info?.titulo}`)
+          
           
         }}
         className={section.includes(text) ? 'optionItem1' : 'optionItem'}
@@ -92,11 +82,11 @@ const wrapperVariants = {
       </motion.li>
     );
   };
-  const StaggeredDropDown = ({section, setSection}) => {
+  const StaggeredDropDown = ({departamentos, section, setSection}) => {
     
     const [open, setOpen] = useState(false);
     useEffect(() => {
-      console.log('open', open)
+      //('open', open)
     }, [open])
     const menuRef = useRef(null)
     useEffect(() => {
@@ -131,9 +121,14 @@ const wrapperVariants = {
             style={{ originY: "top", translateX: 0}}
             className="aboutOptionsList"
           >
-            <Option setOpen={setOpen} section={section} setSection={setSection}text="Ciências de Saúde" />
+            {departamentos?.map((item) => {
+                        return (
+                          <Option departamentos={departamentos} item={item} setOpen={setOpen} section={section} setSection={setSection}text={`${item?.info?.titulo}`} />
+                        )
+                        })}
+            {/* <Option setOpen={setOpen} section={section} setSection={setSection}text="Ciências de Saúde" />
             <Option setOpen={setOpen} section={section} setSection={setSection} text="Ciências Sociais e Económicas" />
-            <Option setOpen={setOpen} section={section} setSection={setSection} text="Ciências das Engenharias/Exatas" />
+            <Option setOpen={setOpen} section={section} setSection={setSection} text="Ciências das Engenharias/Exatas" /> */}
             
           </motion.ul>
         </motion.div>
@@ -141,17 +136,13 @@ const wrapperVariants = {
     );
   };
 const Courses = () => {
-    const [section, setSection] = useState('Ciências de Saúde')
+    const [section, setSection] = useState('Ciências da Saúde')
     const [curso, setCurso] = useState(null)
     const navigate = useNavigate()
     const location = useLocation()
     
     
-    useEffect(() => {
-      return () => {
-        console.log('removed pathd')
-      }
-    }, [])
+    
     const [departamentos, setDepartmentos] = useState([])
     useEffect(() => {
       axios.get(`${baseURL}/api/departamentos`)
@@ -159,38 +150,42 @@ const Courses = () => {
         setDepartmentos([...res.data])
 
         if (location?.state?.id){
+          //('locationnnnn', location.state.id)
             axios.get(`${baseURL}/api/department/${location?.state?.id}`)
           .then(res => {
             setCurso(res.data)
           })
           .catch(err => {
-            console.log('departmentError', location.state, err.response.data)
+            //('departmentError', location.state, err.response.data)
           })
         }else {
-          console.log('else', localStorage.getItem('path'))
-          if (localStorage.getItem('path').includes('Saúde')) {
+          //('else', localStorage.getItem('path'))
+          if (localStorage.getItem('path').toLowerCase().includes('saúde')) {
+            //('saudeeeeeeeee')
           axios.get(`${baseURL}/api/department/${[...res.data][0]?.id}`)
           .then(res => {
             setCurso(res.data)
           })
           .catch(err => {
-            console.log('departmentError1', err.response.data)
+            //('departmentError1', err.response.data)
           })
-         }else if (localStorage.getItem('path').includes('Sociais')) {
+         }else if (localStorage.getItem('path').toLowerCase().includes('sociais')) {
+          //('socialssss')
           axios.get(`${baseURL}/api/department/${[...res.data][1]?.id}`)
                         .then(res => {
                           setCurso(res.data)
                         })
                         .catch(err => {
-                          console.log('departmentError1', err.response.data)
+                          //('departmentError1', err.response.data)
                         })
           } else {
+            //('engineeeesss')
             axios.get(`${baseURL}/api/department/${[...res.data][2]?.id}`)
             .then(res => {
               setCurso(res.data)
             })
             .catch(err => {
-              console.log('departmentError1', err.response.data)
+              //('departmentError1', err.response.data)
             })
           
         }
@@ -200,16 +195,12 @@ const Courses = () => {
       window.scrollTo(0, 0)
 
       
-    }, [])
+    }, [location.state])
   
     useEffect(() => {
-        console.log('carlos')
-      localStorage.getItem('path') && setSection(localStorage.getItem('path'))
-  
-
-      
-    })
-    const prevLocationRef = useRef(location);
+        //('carlos')
+        localStorage.getItem('path') && setSection(localStorage.getItem('path'))
+    }, [])
 
     const secondContainerRef = useRef(null)
     useEffect(() => {
@@ -231,9 +222,7 @@ const Courses = () => {
     };
         
     })
-    useEffect(() =>  {
-      console.log("working")
-    })
+    
     return (
         <div className="abtCont">
             <Header />
@@ -246,7 +235,7 @@ const Courses = () => {
                               navigate('/')
                           }}>Home</span> <span>{'>'}</span><span>{section}</span>
                 </div>
-                <StaggeredDropDown section={section} setSection={setSection} />
+                <StaggeredDropDown departamentos={departamentos} section={section} setSection={setSection} />
             </div>
             
             <div className="aboutContainer">

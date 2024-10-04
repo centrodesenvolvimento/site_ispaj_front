@@ -7,7 +7,7 @@ const Swiper = () => {
     const [activeIndex, setActiveIndex] = useState(0)
     useEffect(() => {
         const interval = setInterval(() => {
-            console.log('index', activeIndex)
+            //('index', activeIndex)
             if (activeIndex == 2){
                 setActiveIndex(0)
             }else {
@@ -23,6 +23,7 @@ const Swiper = () => {
     useEffect(() => {
         axios.get(`${baseURL}/api/homeContents`)
         .then(res => {
+            //('homeContents', res.data[0])
             setAboutContent([...res.data][0])
         })
     }, [])
@@ -51,10 +52,10 @@ const Swiper = () => {
             
         <div className='swiper'>
             <div className='slideTextCont'>{activeIndex == 0 && <motion.div initial={{opacity: 0, x: 200}} animate={{opacity: 1, x: 0}} transition={{duration: 0.8}} className='slideText'>Seja bem vindo ao Instituto Superior Politécnico Alvorecer Da Juventude</motion.div>}</div>
-            <div className='slideTextCont'>{activeIndex == 1 && <motion.div initial={{opacity: 0, x: 200}} animate={{opacity: 1, x: 0}} transition={{duration: 0.8}} className='slideText'>Um lugar de descoberta, crescimento e sucesso. Experimente</motion.div>}</div>
+            <div className='slideTextCont'>{activeIndex == 1 && <motion.div initial={{opacity: 0, x: 200}} animate={{opacity: 1, x: 0}} transition={{duration: 0.8}} className='slideText'>Um lugar de descoberta, crescimento e sucesso</motion.div>}</div>
             <div className='slideTextCont'>{activeIndex == 2 && <motion.div initial={{opacity: 0, x: 200}} animate={{opacity: 1, x: 0}} transition={{duration: 0.8}} className='slideText'>Educação transformadora</motion.div>}</div>
-            {/* <video src={process.env.PUBLIC_URL + 'images/homeVid1.mp4'} autoPlay loop muted /> */}
-            {aboutContent && <video onCanPlay={() =>{
+            {/* <video loading="lazy"  src={process.env.PUBLIC_URL + 'images/homeVid1.mp4'} autoPlay loop muted /> */}
+            {aboutContent && <video loading="lazy"  onCanPlay={() =>{
                 setCanPlay(true)
             }} src={aboutContent?.videoInicial} style={{display: canPlay ? 'block' : 'none'}} autoPlay loop muted/>}
         </div>

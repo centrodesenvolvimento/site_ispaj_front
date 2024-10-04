@@ -1,178 +1,185 @@
 .aboutEventContainer {
     background-color: white;
-    > .first {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding-right: 10px;
-        align-items: center;
-        margin-bottom: 5px;
-        padding: 0 10px;
+}
 
-        > svg {
-            color: orange;
-            width: 33px;
-            height: 33px;
-            cursor: pointer;
-        }
+.aboutEventContainer .first {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 10px;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.aboutEventContainer .first svg {
+    color: orange;
+    width: 33px;
+    height: 33px;
+    cursor: pointer;
+}
+
+.aboutEventContainer .title {
+    color: #023047;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 0 10px;
+}
+
+.aboutEventContainer .imgContainer {
+    aspect-ratio: 4/2;
+    overflow: hidden;
+    border-radius: 3px;
+    border: 5px solid rgb(240, 240, 240);
+    background-color: #5c5c5c;
+    background-image: linear-gradient(90deg, rgba(91,91,91,1.00) 0%,rgba(112,112,112,1.00) 40%,rgba(91,91,91,1.00) 80%,rgba(91,91,91,1.00) 97%);
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: loadingShimmer;
+    animation-timing-function: linear;
+    background-color: #efefef;
+    background-image: linear-gradient(90deg, rgba(239,239,239,1.00) 0%,rgba(221,221,221,1.00) 40%,rgba(239,239,239,1.00) 80%,rgba(239,239,239,1.00) 97%);
+    background-repeat: no-repeat;
+    background-size: 50%;
+}
+
+@keyframes loadingShimmer {
+    0% {
+        background-position: -100% 0;
     }
-    > .title {
-        color: #023047;
-        font-size: 20px;
-        font-weight: 700;
-        padding: 0 10px;
-
-        
+    100% {
+        background-position: 200% 0;
     }
-    > .imgContainer {
-        aspect-ratio: 4/2;
-        overflow: hidden;
-        border-radius: 3px;
-        border: 5px solid rgb(240, 240, 240);
+}
 
-        background-color: #5c5c5c;
-            background-image: linear-gradient(90deg, rgba(91,91,91,1.00) 0%,rgba(112,112,112,1.00) 40%,rgba(91,91,91,1.00) 80%,rgba(91,91,91,1.00) 97%);
-            animation-duration: 1s;
-              animation-fill-mode: forwards;
-              animation-iteration-count: infinite;
-              animation-name: loadingShimmer;
-              animation-timing-function: linear;
-              background-color: #efefef;
-              background-image: linear-gradient(90deg, rgba(239,239,239,1.00) 0%,rgba(221,221,221,1.00) 40%,rgba(239,239,239,1.00) 80%,rgba(239,239,239,1.00) 97%);
-              background-repeat: no-repeat;
-              background-size: 50%;
-            @keyframes loadingShimmer {
-                0% {
-                  background-position: -100% 0;
-                }
-              
-                100% {
-                  background-position: 200% 0;
-                }
-              }
-    
-        > img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    }
-    .date {
-        display: flex;
-        flex-direction: row;
-        margin: 8px 0;
-        margin-top: 15px;
-        align-items: center;
-        gap: 10px;
-        font-size: 14px;
-        color: rgb(73, 73, 73);
-        svg {
-            width: 14px;
-            height: 14px;
-        }
-    }
-    .date1 {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 10px;
-        font-size: 13px;
-        color: rgb(73, 73, 73);
-        width: 110px;
-        padding: 5px 5px;
-        border-radius: 5px;
-        margin-top: 20px;
-        margin-left: 5px;
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-        background-color: #e3e3e3;
-        cursor: pointer;
-        &:hover {
-          opacity: 0.7;
-        }
-  
-        
-        svg {
-            width: 14px;
-            height: 14px;
-        }
-    }
-    .eventAttrs {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        margin-top: 20px;
-        gap: 15px;
-        padding: 0 5px;
+.aboutEventContainer .imgContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-        @media screen and (width < 535px) {
-            grid-template-columns: repeat(1, 1fr);
-        }
-        
-        .attr {
-            background-color: white;
-            box-shadow: 0px 0px 10px rgba(151, 151, 151, 0.24);
-            padding: 10px 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+.aboutEventContainer .date {
+    display: flex;
+    flex-direction: row;
+    margin: 8px 0;
+    margin-top: 15px;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: rgb(73, 73, 73);
+}
 
-            >svg {
-                color: orange;
-                width: 20px;
-                height: 20px;
-            }
-        }
-        .attrTitle {
-            font-weight: 600;
-            font-size: 15px;
-        }
-        .attrValue {
-            color: grey;
-            font-size: 14px;
-        }
-    }
-    .eventContent {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        margin-top: 20px;
-        font-size: 15px;
-        line-height: 26px;
-        padding: 0 5px;
+.aboutEventContainer .date svg {
+    width: 14px;
+    height: 14px;
+}
 
+.aboutEventContainer .date1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: rgb(73, 73, 73);
+    width: 110px;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-left: 5px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background-color: #e3e3e3;
+    cursor: pointer;
+}
 
-        ol {
-            text-decoration: dotted;
-            padding: 0 20px;
-            font-size: 14px;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            list-style: decimal;
-        }
-        ul {
-            text-decoration: dotted;
-            padding: 0 20px;
-            font-size: 14px;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            list-style: circle;
+.aboutEventContainer .date1:hover {
+    opacity: 0.7;
+}
 
-            
-        }
-        li:first-child {
-            margin-top: 5px;
-        }
+.aboutEventContainer .date1 svg {
+    width: 14px;
+    height: 14px;
+}
 
-    }
-    .mapView {
-        aspect-ratio: 4/2.5;
-        background-color: lightgrey;
+.aboutEventContainer .eventAttrs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 20px;
+    gap: 15px;
+    padding: 0 5px;
+}
 
-        iframe {
-            width: 100%;
-            height: 100%;
-        }
+.aboutEventContainer .eventAttrs .attr {
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(151, 151, 151, 0.24);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.aboutEventContainer .eventAttrs .attr svg {
+    color: orange;
+    width: 20px;
+    height: 20px;
+}
+
+.aboutEventContainer .eventAttrs .attrTitle {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.aboutEventContainer .eventAttrs .attrValue {
+    color: grey;
+    font-size: 14px;
+}
+
+.aboutEventContainer .eventContent {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+    font-size: 15px;
+    line-height: 26px;
+    padding: 0 5px;
+}
+
+.aboutEventContainer .eventContent ol {
+    text-decoration: dotted;
+    padding: 0 20px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    list-style: decimal;
+}
+
+.aboutEventContainer .eventContent ul {
+    text-decoration: dotted;
+    padding: 0 20px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    list-style: circle;
+}
+
+.aboutEventContainer .eventContent li:first-child {
+    margin-top: 5px;
+}
+
+.aboutEventContainer .mapView {
+    aspect-ratio: 4/2.5;
+    background-color: lightgrey;
+}
+
+.aboutEventContainer .mapView iframe {
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (max-width: 535px) {
+    .aboutEventContainer .eventAttrs {
+        grid-template-columns: 1fr;
     }
 }

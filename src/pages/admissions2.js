@@ -70,10 +70,10 @@ const wrapperVariants = {
         variants={itemVariants}
         onClick={() => {
           if (`${text}`.includes('Emolumentos')){
-            window.open(process.env.PUBLIC_URL + 'pdf/emolumentos.pdf')
+            // window.open(process.env.PUBLIC_URL + 'pdf/emolumentos.pdf')
             setOpen(false)
           }else if (`${text}`.includes('Calendário')){
-            window.open(process.env.PUBLIC_URL + 'pdf/calendar.pdf')
+            // window.open(process.env.PUBLIC_URL + 'pdf/calendar.pdf')
             setOpen(false)
 
           }else {
@@ -93,7 +93,7 @@ const wrapperVariants = {
     
     const [open, setOpen] = useState(false);
     useEffect(() => {
-      console.log('open', open)
+      //('open', open)
     }, [open])
     const menuRef = useRef(null)
     useEffect(() => {
@@ -165,11 +165,10 @@ const Admissions2 = () => {
     }, [])
     const secondContainerRef = useRef(null)
     useEffect(()=> {
-      console.log('carlos')
+      //('carlos')
         localStorage.getItem('path') && setSection(localStorage.getItem('path'))
         const adjustMargin = () => {
             const outerContainerHeight = document.querySelector('.outerContainer')?.clientHeight || 0;
-            console.log('window', outerContainerHeight + 10);
 
             if (secondContainerRef.current) {
                 secondContainerRef.current.style.marginTop = `${outerContainerHeight + 10}px`;

@@ -135,7 +135,7 @@ const AdminEstOrg = () => {
                 ]
             })
             .then(res => {
-                console.log('res', res.data)
+                //('res', res.data)
                 setMessages(['Órgão adicionado com sucesso!'])
                 window.location.reload()
             })
@@ -156,7 +156,7 @@ const AdminEstOrg = () => {
             setErrors(['Nenhuma alteração feita!'])
         }else {
             if (completedCrop){
-                console.log('completed')
+                //('completed')
                 try {
                     const response = await fetch(completedCrop)
                     const blob = await response.blob()
@@ -181,7 +181,7 @@ const AdminEstOrg = () => {
                         })
                         .then(res => {
                             setMessages(['Órgão adicionado com sucesso!'])
-                            console.log('ressss', res.data)
+                            //('ressss', res.data)
                             window.location.reload()
                         })
                         .catch(err => {
@@ -221,11 +221,11 @@ const AdminEstOrg = () => {
                 
                 )
                 .then(res => {
-                    console.log('success', res.data)
+                    //('success', res.data)
                     window.location.reload()
                 })
                 .catch(err => {
-                    console.log('err', err.response.data.message)
+                    //('err', err.response.data.message)
                 })
             })
                 }else {
@@ -252,11 +252,11 @@ const AdminEstOrg = () => {
                     
                     )
                     .then(res => {
-                        console.log('success', res.data)
+                        //('success', res.data)
                         window.location.reload()
                     })
                     .catch(err => {
-                        console.log('err', err.response.data.message)
+                        //('err', err.response.data.message)
                     })
                 }) 
                 }
@@ -289,7 +289,7 @@ const AdminEstOrg = () => {
                 },
             })
             .then(res => {
-                console.log('res', res.data.data)
+                //('res', res.data.data)
                 setMessages(['Órgão adicionado com sucesso!'])
                 window.location.reload()
             })
@@ -328,7 +328,7 @@ const AdminEstOrg = () => {
                     })
                     .then(res => {
                         setMessages(['Membro adicionado com successo!'])
-                        console.log('cadfa', res)
+                        //('cadfa', res)
                         setRole('')
                         setPrName('')
                         setCompletedCrop(null)
@@ -378,7 +378,7 @@ const AdminEstOrg = () => {
                     })
                     .then(res => {
                         setMessages(['Membro adicionado com successo!'])
-                        console.log('cadfa', res)
+                        //('cadfa', res)
                         setRole('')
                         setPrName('')
                         setCompletedCrop(null)
@@ -502,7 +502,7 @@ const AdminEstOrg = () => {
                                         const reader = new FileReader()
                                         reader.onload = (event) => {
                                             setSelectedImage(event.target.result)
-                                            console.log('data', event.target.result)
+                                            //('data', event.target.result)
                                         }
                                         reader.readAsDataURL(file)
                                     }else {
@@ -510,7 +510,7 @@ const AdminEstOrg = () => {
                                     }
                                 }}/>
                                 {/* <div className='selectedImage'>
-                                    <img src={selectedImage}/>
+                                    <img loading="lazy"src={selectedImage}/>
                                 </div> */}
                                 {selectedImage && <div style={{aspectRatio: '4/2'}}>
                                     <Cropper
@@ -656,7 +656,7 @@ const AdminEstOrg = () => {
                                             const reader = new FileReader()
                                             reader.onload = (event) => {
                                                 setSelectedImage(event.target.result)
-                                                console.log('data', event.target.result)
+                                                //('data', event.target.result)
                                             }
                                             reader.readAsDataURL(file)
                                         }else {
@@ -664,7 +664,7 @@ const AdminEstOrg = () => {
                                         }
                                     }}/>
                                     {/* <div className='selectedImage'>
-                                        <img src={selectedImage}/>
+                                        <img loading="lazy"src={selectedImage}/>
                                     </div> */}
                                     {selectedImage ? <div style={{aspectRatio: '4/2'}}>
                                         <Cropper
@@ -678,7 +678,7 @@ const AdminEstOrg = () => {
                                         onZoomChange={setZoom}
                                         />
                                     </div> : <div style={{aspectRatio: '4/2'}}>
-                                        <img style={{width: '100%', height: '100%', objectFit: 'cover', aspectRatio: '4/2'}} src={`${baseURL}/storage/images/${item.imagem}`}/>
+                                        <img loading="lazy"style={{width: '100%', height: '100%', objectFit: 'cover', aspectRatio: '4/2'}} src={`${baseURL}/public/storage/images/${item.imagem}`}/>
                                         </div>}
                                     {/* <canvas
                                     ref={previewCanvasRef}
@@ -746,7 +746,7 @@ const AdminEstOrg = () => {
                                     <span style={{alignSelf: 'center', marginTop: 15, display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', }}>
                                     <AlertDialogCancel style={{margin: 0}}>Cancelar</AlertDialogCancel>
                                     <AlertDialogAction style={{margin: 0}} onClick={() => {
-                                        console.log('deleted')
+                                        //('deleted')
                                         axios.get(`${baseURL}/api/aboutContents`)
                                         .then(res => {
                 let obj = [...res.data][0]
@@ -756,11 +756,11 @@ const AdminEstOrg = () => {
                 },
                 )
                 .then(res => {
-                    console.log('success', res)
+                    //('success', res)
                     window.location.reload()
                 })
                 .catch(err => {
-                    console.log('err', err.response.data.message)
+                    //('err', err.response.data.message)
                 })
 
     })
@@ -830,7 +830,7 @@ const AdminEstOrg = () => {
                                             const reader = new FileReader()
                                             reader.onload = (event) => {
                                                 setSelectedImage(event.target.result)
-                                                console.log('data', event.target.result)
+                                                //('data', event.target.result)
                                             }
                                             reader.readAsDataURL(file)
                                         }else {
@@ -838,7 +838,7 @@ const AdminEstOrg = () => {
                                         }
                                     }}/>
                                     {/* <div className='selectedImage'>
-                                        <img src={selectedImage}/>
+                                        <img loading="lazy"src={selectedImage}/>
                                     </div> */}
                                     {selectedImage && <div style={{aspectRatio: '4/2'}}>
                                         <Cropper
@@ -895,7 +895,7 @@ const AdminEstOrg = () => {
                     return (
                       <span className='member' style={{minWidth: 120, maxWidth: 120, display: 'flex', flexDirection: 'column', justifyContent: ''}}>
                             <span className='memberImage'>
-                                <img src={`${baseURL}/storage/images/${it.imagem}`}/>
+                                <img loading="lazy"src={`${baseURL}/public/storage/images/${it.imagem}`}/>
                             </span>
                             <div className='memberName'>{it.nome}</div>
                             <AlertDialog>
@@ -928,7 +928,7 @@ const AdminEstOrg = () => {
                 },
                 )
                 .then(res => {
-                    console.log('success', res)
+                    //('success', res)
                     axios.get(`${baseURL}/api/aboutContents`)
                         .then(res => {
                             let list = [...res.data]
@@ -937,7 +937,7 @@ const AdminEstOrg = () => {
                     // window.location.reload()
                 })
                 .catch(err => {
-                    console.log('err', err.response.data.message)
+                    //('err', err.response.data.message)
                 })      
     })
                                     }}>Confirmar</AlertDialogAction>
@@ -1206,7 +1206,7 @@ const AdminEstOrg = () => {
                                         },
                                     })
                                     .then(res => {
-                                        console.log('res', res.data.data)
+                                        //('res', res.data.data)
                                         setMessages(['Órgão adicionado com sucesso!'])
                                         window.location.reload()
                                     })
@@ -1278,7 +1278,7 @@ const AdminEstOrg = () => {
                                             const reader = new FileReader()
                                             reader.onload = (event) => {
                                                 setSelectedImage(event.target.result)
-                                                console.log('data', event.target.result)
+                                                //('data', event.target.result)
                                             }
                                             reader.readAsDataURL(file)
                                         }else {
@@ -1286,7 +1286,7 @@ const AdminEstOrg = () => {
                                         }
                                     }}/>
                                     {/* <div className='selectedImage'>
-                                        <img src={selectedImage}/>
+                                        <img loading="lazy"src={selectedImage}/>
                                     </div> */}
                                     {selectedImage && <div style={{aspectRatio: '4/2'}}>
                                         <Cropper
@@ -1343,7 +1343,7 @@ const AdminEstOrg = () => {
                     return (
                       <span className='member' style={{minWidth: 120, maxWidth: 120, display: 'flex', flexDirection: 'column', justifyContent: ''}}>
                             <span className='memberImage'>
-                                <img src={`${baseURL}/storage/images/${it.imagem}`}/>
+                                <img loading="lazy"src={`${baseURL}/public/storage/images/${it.imagem}`}/>
                             </span>
                             <div className='memberName'>{it.nome}</div>
                             <AlertDialog>
@@ -1376,7 +1376,7 @@ const AdminEstOrg = () => {
                 },
                 )
                 .then(res => {
-                    console.log('success', res)
+                    //('success', res)
                     axios.get(`${baseURL}/api/aboutContents`)
                         .then(res => {
                             let list = [...res.data]
@@ -1385,7 +1385,7 @@ const AdminEstOrg = () => {
                     // window.location.reload()
                 })
                 .catch(err => {
-                    console.log('err', err.response.data.message)
+                    //('err', err.response.data.message)
                 })    
     })
                                     }}>Confirmar</AlertDialogAction>

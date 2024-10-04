@@ -46,7 +46,7 @@ const AdminAdmissionsPerguntas = () => {
         .then(res => {
             let content = [...res.data][0]
             setPerguntas(content.perguntas)
-            console.log(content.emolumentos)
+            //(content.emolumentos)
         })
         }, [])
     const addQuestion = () => {
@@ -73,15 +73,15 @@ const AdminAdmissionsPerguntas = () => {
                         ]
                     })
                     .then(res => {
-                        console.log('success', res.data)
+                        //('success', res.data)
                         setMessages(['Pergunta adicionada com sucesso.'])
                         window.location.reload()
                     })
                     .catch(err => {
-                        console.log('err', err.response.data.message)
+                        //('err', err.response.data.message)
                     })
                 }else {
-                    console.log('ok')
+                    //('ok')
                     axios.post(`${baseURL}/api/editAdmissionsContent/any/${2}`, {
                         perguntas: [
                             {
@@ -93,12 +93,12 @@ const AdminAdmissionsPerguntas = () => {
                         ]
                     })
                     .then(res => {
-                        console.log('success', res.data)
+                        //('success', res.data)
                         setMessages(['Pergunta adicionada com sucesso.'])
                         window.location.reload()
                     })
                     .catch(err => {
-                        console.log('err', err.response.data.message)
+                        //('err', err.response.data.message)
                     })
                 }
                 
@@ -135,12 +135,12 @@ const AdminAdmissionsPerguntas = () => {
                     perguntas: newPerg
                 })
                 .then(res => {
-                    console.log('success')
+                    //('success')
                     setMessages(['Pergunta editada com sucesso.'])
                     window.location.reload()
                 })
                 .catch(err => {
-                    console.log('err', err.response.data.message)
+                    //('err', err.response.data.message)
                 })
 
                 
@@ -342,11 +342,11 @@ const AdminAdmissionsPerguntas = () => {
                     perguntas: perguntas.filter((p) => p.id != item.id)
                 })
                 .then(res => {
-                    console.log('success')
+                    //('success')
                     window.location.reload()
                 })
                 .catch(err => {
-                    console.log('err', err.response.data.message)
+                    //('err', err.response.data.message)
                 })
                 
     })

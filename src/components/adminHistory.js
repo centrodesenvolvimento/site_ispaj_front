@@ -70,15 +70,15 @@ const AdminHistory = () => {
                         ]
                     })
                     .then(res => {
-                        console.log('success', res.data)
+                        //('success', res.data)
                         setMessages(['Acontecimento adicionado com sucesso.'])
                         window.location.reload()
                     })
                     .catch(err => {
-                        console.log('err', err.response.data.message)
+                        //('err', err.response.data.message)
                     })
                 }else {
-                    console.log('ok')
+                    //('ok')
                     axios.post(`${baseURL}/api/editAboutContent/any/${1}`, {
                         historial: [
                             {
@@ -91,12 +91,12 @@ const AdminHistory = () => {
                         ]
                     })
                     .then(res => {
-                        console.log('success', res.data)
+                        //('success', res.data)
                         setMessages(['Acontecimento adicionado com sucesso.'])
                         window.location.reload()
                     })
                     .catch(err => {
-                        console.log('err', err.response.data.message)
+                        //('err', err.response.data.message)
                     })
                 }
                 
@@ -135,12 +135,12 @@ const AdminHistory = () => {
                     historial: newHist
                 })
                 .then(res => {
-                    console.log('success')
+                    //('success')
                     setMessages(['Acontecimento editado com sucesso.'])
                     window.location.reload()
                 })
                 .catch(err => {
-                    console.log('err', err.response.data.message)
+                    //('err', err.response.data.message)
                 })
 
                 
@@ -394,11 +394,11 @@ const AdminHistory = () => {
                     historial: historial.filter((h) => h.id != item.id)
                 })
                 .then(res => {
-                    console.log('success')
+                    //('success')
                     window.location.reload()
                 })
                 .catch(err => {
-                    console.log('err', err.response.data.message)
+                    //('err', err.response.data.message)
                 })
                 
     })

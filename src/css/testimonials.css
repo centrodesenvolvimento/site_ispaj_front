@@ -1,106 +1,97 @@
 .testContainer {
     padding: 0px 10px;
-
-    @media screen and (width < 440px) {
-        padding-left: 0;
-        padding-right: 0;
-    }
-    .swiper-pagination-bullet {
-        width: 7px;
-        height: 7px;
-        background-color: #aaaaaa; /* Change the color as needed */
-        opacity: 0.7;
-        border-radius: 100px;
-      }
-      
-      .swiper-pagination-bullet-active {
-        background-color: #f19d00; /* Active dot color */
-        opacity: 1;
-        width: 20px;
-      }
-      .swiper-pagination {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        gap: 5px;
-        margin-top: 20px;
-      }
-    
-    .swiper-footer {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        
-        .servicesControl1 {
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
-            margin-top: -30px;
-            @media screen and (width < 440px) {
-                padding: 0 15px;
-            }
-            svg {
-                cursor: pointer;
-                color: orange;
-                width: 30px;
-                height: 30px;
-                transition: 0.3s ease-in-out;
-
-                &:hover {
-                    opacity: 0.7;
-                }
-            }
-        }
-        .autoplay-progress {
-            position: absolute;
-            right: 16px;
-            bottom: 0px;
-            width: 45px;
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            z-index: 101;
-            font-size: 14px;
-            color: orange;
-            
-            @media screen and (width < 500px) {
-                width: 45px;
-                height: 45px;
-            }
-          }
-          
-          .autoplay-progress svg {
-            --progress: 0;
-            position: absolute;
-            left: 0;
-            top: 0px;
-            z-index: 10;
-            width: 100%;
-            height: 100%;
-            stroke-width: 4px;
-            stroke: orange;
-            fill: none;
-            stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
-            stroke-dasharray: 125.6;
-            transform: rotate(-90deg);
-          }
-          
-        
-    }
 }
+
+.testContainer .swiper-pagination-bullet {
+    width: 7px;
+    height: 7px;
+    background-color: #aaaaaa; /* Change the color as needed */
+    opacity: 0.7;
+    border-radius: 100px;
+}
+
+.testContainer .swiper-pagination-bullet-active {
+    background-color: #f19d00; /* Active dot color */
+    opacity: 1;
+    width: 20px;
+}
+
+.testContainer .swiper-pagination {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 20px;
+}
+
+.testContainer .swiper-footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.testContainer .swiper-footer .servicesControl1 {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: -30px;
+}
+
+.testContainer .swiper-footer .servicesControl1 {
+    padding: 0 15px;
+}
+
+.testContainer .swiper-footer svg.servicesControlButton {
+    cursor: pointer;
+    color: orange;
+    width: 30px;
+    height: 30px;
+    transition: 0.3s ease-in-out;
+}
+
+.testContainer .swiper-footer svg.servicesControlButton:hover {
+    opacity: 0.7;
+}
+
+.testContainer .swiper-footer .autoplay-progress {
+    position: absolute;
+    right: 16px;
+    bottom: 0px;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    z-index: 101;
+    font-size: 14px;
+    color: orange;
+}
+
+.testContainer .swiper-footer .autoplay-progress svg {
+    --progress: 0;
+    position: absolute;
+    left: 0;
+    top: 0px;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    stroke-width: 4px;
+    stroke: orange;
+    fill: none;
+    stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
+    stroke-dasharray: 125.6;
+    transform: rotate(-90deg);
+}
+
 .mySwiper1 {
     width: 100%;
-    height: 100%;   
-    margin-top: 20px; 
+    height: 100%;
+    margin-top: 20px;
     margin-bottom: 100px;
-    @media screen and (width < 600px) {
-        margin-bottom: 50px;
-    }
-    
 }
+
 .mySwiper1::after {
     position: absolute;
     content: '';
@@ -108,7 +99,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    
     background-image: linear-gradient(to bottom, transparent 100%, rgb(255, 255, 255) 100%);
     pointer-events: none;
     z-index: 100;
@@ -117,293 +107,310 @@
     display: flex;
     flex-direction: row;
     gap: 20px;
-    @media screen and (width < 440px){
+}
+
+.swiperTest .firstCont {
+    flex: 2.5;
+}
+
+.swiperTest .firstCont .videoCont {
+    background-color: #efefef;
+    background-image: linear-gradient(90deg, rgba(239,239,239,1.00) 0%,rgba(221,221,221,1.00) 40%,rgba(239,239,239,1.00) 80%,rgba(239,239,239,1.00) 97%);
+    background-repeat: repeat;
+    background-size: 50%;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: loadingShimmer;
+    animation-timing-function: linear;
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 4/2;
+    position: relative;
+    background-color: #5c5c5c;
+    background-image: linear-gradient(90deg, rgba(91,91,91,1.00) 0%,rgba(112,112,112,1.00) 40%,rgba(91,91,91,1.00) 80%,rgba(91,91,91,1.00) 97%);
+    
+    
+}
+
+@keyframes loadingShimmer {
+    0% {
+        background-position: -100% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.swiperTest .firstCont video {
+    width: 100%;
+    height: 100%;
+}
+
+.swiperTest .firstCont .title {
+    font-weight: 700;
+    padding: 5px 5px;
+}
+
+.swiperTest .firstCont .profile {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.swiperTest .firstCont .profile .profileInfo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 5px;
+    flex: 1;
+}
+
+.swiperTest .firstCont .profile .profileName {
+    color: #023047;
+    font-size: 14px;
+    font-weight: 700;
+    max-width: 300px;
+}
+
+.swiperTest .firstCont .profile .profileImageContainer {
+    background: #e7eff3;
+    height: 60px;
+    width: 60px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #023047;
+    font-weight: 700;
+}
+
+.swiperTest .firstCont .profile .learnMore {
+    border: 2px orange solid;
+    width: 80px;
+    text-align: center;
+    border-radius: 5px;
+    color: orange;
+    font-size: 13px;
+    padding: 5px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    align-self: flex-start;
+    position: relative;
+    overflow: hidden!important;
+    background: transparent!important;
+    z-index: 10;
+}
+
+.swiperTest .firstCont .profile .learnMore:hover {
+    background: orange;
+    color: white;
+}
+
+.swiperTest .firstCont .profile .learnMore::before {
+    content: '';
+    width: 0%;
+    height: 100%;
+    display: block;
+    background: #e69500;
+    position: absolute;
+    transform: skewX(-20deg);
+    left: -10%;
+    opacity: 1;
+    top: 0;
+    z-index: -12;
+    transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
+    box-shadow: 2px 0px 14px rgba(0,0,0,.6);
+}
+
+.swiperTest .firstCont .profile .learnMore::after {
+    content: '';
+    width: 0%;
+    height: 100%;
+    display: block;
+    background: #001d6b;
+    position: absolute;
+    transform: skewX(-20deg);
+    left: -10%;
+    opacity: 0;
+    top: 0;
+    z-index: -15;
+    transition: all .4s cubic-bezier(.2,.95,.57,.99);
+    box-shadow: 2px 0px 14px rgba(0,0,0,.6);
+}
+
+.swiperTest .firstCont .profile .learnMore:hover::before {
+    opacity: 1;
+    width: 116%;
+}
+
+.swiperTest .firstCont .profile .learnMore:hover::after {
+    opacity: 1;
+    width: 120%;
+}
+
+.swiperTest .firstCont .aboutCourse {
+    background-color: #eeeeee;
+    padding: 15px;
+    border-radius: 15px;
+    color: grey;
+    font-size: 14.5px;
+}
+
+.swiperTest .secondCont {
+    flex: 1;
+}
+
+.swiperTest .secondCont .header {
+    background-color: orange;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 4px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.swiperTest .secondCont .courses {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.swiperTest .secondCont .courseContainer {
+    transition: 0.3s ease-in-out;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.swiperTest .secondCont .courseContainer:hover .title {
+    color: orange;
+}
+
+.swiperTest .secondCont .courseContainer .title {
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.swiperTest .secondCont .courseContainer .description {
+    color: grey;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.swiperTest .secondCont .courseContainer .imgContainer {
+    aspect-ratio: 4/1.5;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #efefef;
+    background-image: linear-gradient(90deg, rgba(239,239,239,1.00) 0%,rgba(221,221,221,1.00) 40%,rgba(239,239,239,1.00) 80%,rgba(239,239,239,1.00) 97%);
+    background-repeat: no-repeat;
+    background-size: 50%;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: loadingShimmer;
+    animation-timing-function: linear;
+}
+
+#autoPlay1 {
+    margin-top: 50px;
+}
+
+/* Media Queries */
+@media screen and (max-width: 440px) {
+    .swiperTest {
         padding: 0 15px;
     }
-    @media screen and (width < 700px) {
+
+    .swiperTest .firstCont .title {
+        font-size: 15px;
+    }
+
+    .swiperTest .firstCont .profile .profileName {
+        font-size: 13px;
+    }
+
+    .swiperTest .firstCont .profile .profileImageContainer {
+        height: 50px;
+        width: 50px;
+    }
+
+    .swiperTest .firstCont .profile .learnMore {
+        width: 80px;
+        font-size: 12px;
+    }
+
+    .swiperTest .firstCont .aboutCourse {
+        font-size: 13px;
+    }
+
+    .swiperTest .secondCont .courses {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .swiperTest .secondCont .courseContainer .title {
+        font-size: 14px;
+    }
+
+    .swiperTest .secondCont .courseContainer .description {
+        font-size: 12px;
+    }
+
+    .swiperTest .secondCont .courseContainer .imgContainer {
+        background-image: linear-gradient(90deg, rgba(239,239,239,1.00) 0%,rgba(221,221,221,1.00) 40%,rgba(239,239,239,1.00) 80%,rgba(239,239,239,1.00) 97%);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .swiperTest {
         flex-direction: column;
     }
 
-    .firstCont {
-        flex: 2.5;
-        @media screen and (width < 1450px) {
-            flex: 2;
-        }
-        .videoCont {
-            background-color: lightgrey;
-            aspect-ratio: 4/2;
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-
-            
-            background-color: #5c5c5c;
-            background-image: linear-gradient(90deg, rgba(91,91,91,1.00) 0%,rgba(112,112,112,1.00) 40%,rgba(91,91,91,1.00) 80%,rgba(91,91,91,1.00) 97%);
-            animation-duration: 1s;
-              animation-fill-mode: forwards;
-              animation-iteration-count: infinite;
-              animation-name: loadingShimmer;
-              animation-timing-function: linear;
-              background-color: #efefef;
-              background-image: linear-gradient(90deg, rgba(239,239,239,1.00) 0%,rgba(221,221,221,1.00) 40%,rgba(239,239,239,1.00) 80%,rgba(239,239,239,1.00) 97%);
-              background-repeat: no-repeat;
-              background-size: 50%;
-            @keyframes loadingShimmer {
-                0% {
-                  background-position: -100% 0;
-                }
-              
-                100% {
-                  background-position: 200% 0;
-                }
-              }
-        }
-        
-        
-        video {
-            width: 100%;
-            height: 100%;
-        }
-
-        .title {
-            font-weight: 700;
-            padding: 5px 5px;
-            @media screen and (width < 440px) {
-                font-size: 15px;
-            }
-            
-        }
-
-        .profile {
-            padding: 10px 0px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            .profileInfo {
-                display: flex;
-                align-items: center;
-                gap: 10px
-            }
-            .profileName {
-                color: #023047;
-                font-size: 14px;
-                font-weight: 700;
-                max-width: 180px;
-                @media screen and (width < 440px) {
-                    font-size: 13px;
-                    width: 130px;
-                }
-            }
-            .profileImageContainer {
-                background: #e7eff3;
-                height: 60px;
-                width: 60px;
-                border-radius: 100px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                color: #023047;
-                font-weight: 700;
-                @media screen and (width < 440px) {
-                    font-size: 13px;
-                    height: 50px;
-                    width: 50px;
-                }
-            }
-            .learnMore {
-                border: 2px orange solid;
-                width: 80px;
-                text-align: center;
-                border-radius: 5px;
-                color: orange;
-                font-size: 13px;
-                padding: 5px;
-                box-sizing: border-box;
-                margin-top: 5px;
-                cursor: pointer;
-                transition: 0.3s ease-in-out;
-                align-self: flex-start;
-
-                position: relative;
-                overflow: hidden!important;
-                -webkit-transition: all .3s ease-in-out;
-                -moz-transition: all .3s ease-in-out;
-                -o-transition: all .3s ease-in-out;
-                transition: all .3s ease-in-out;
-                background: transparent!important;
-                z-index:10;
-                &:hover {
-                    background: orange;
-                    color: white;
-                }
-                @media screen and (width < 440px) {
-                    width: 80px;
-                    font-size: 12px;
-                }
-            }
-            
-            
-            .learnMore::before {
-                content: '';
-                width: 0%;
-                height: 100%;
-                display: block;
-                background: #e69500;
-                position: absolute;
-                  -ms-transform: skewX(-20deg);
-                -webkit-transform: skewX(-20deg); 
-                transform: skewX(-20deg);   
-                left: -10%;
-                opacity: 1;
-                top: 0;
-                z-index: -12;
-                -moz-transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
-              -o-transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
-              -webkit-transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
-              transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
-                   box-shadow:2px 0px 14px rgba(0,0,0,.6);
-              } 
-            
-            .learnMore::after {
-                content: '';
-                width: 0%;
-                height: 100%;
-                display: block;
-                background: #001d6b;
-                position: absolute;
-                -ms-transform: skewX(-20deg);
-                -webkit-transform: skewX(-20deg); 
-                transform: skewX(-20deg);   
-                left: -10%;
-                opacity: 0;
-                top: 0;
-                z-index: -15;
-                -webkit-transition: all .94s cubic-bezier(.2,.95,.57,.99);
-                -moz-transition: all .4s cubic-bezier(.2,.95,.57,.99);
-                -o-transition: all .4s cubic-bezier(.2,.95,.57,.99);
-                transition: all .4s cubic-bezier(.2,.95,.57,.99);
-                box-shadow: 2px 0px 14px rgba(0,0,0,.6);
-            }
-            .learnMore:hover::before{
-                opacity:1;
-                width: 116%;
-            }
-            .learnMore:hover::after{
-                opacity:1;
-                width: 120%;
-            }
-            
-        }
-        .aboutCourse {
-            background-color: #eeeeee;
-            padding: 15px;
-            border-radius: 15px;
-            color: grey;
-            font-size: 14.5px;
-            @media screen and (width < 440px) {
-                font-size: 13px;
-            }
-        }
+    .swiperTest .secondCont .courses {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
     }
-    .secondCont {
-        flex: 1;
-        /* .courseContainer:last-child {
-            display: none;
-        } */
-        @media screen and (width < 700px) {
-            .courseContainer:last-child {
-                display: block;
-            }
-            
-        }
-        @media screen and (width < 440px) {.courseContainer:last-child {
-            display: none;
-        }
-        }
 
-        .header {
-            background-color: orange;
-            color: white;
-            text-align: center;
-            font-size: 15px;
-            font-weight: 600;
-            padding: 4px;
-            border-radius: 5px;
-            margin-bottom: 5px;
-        }
-        .courses {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            @media screen and (width < 700px) {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-            }
-            @media screen and (width < 440px) {
-                grid-template-columns: repeat(1, 1fr);
-
-            }
-        }
-        .courseContainer {
-            &:hover {
-                .title {
-                    color: orange;
-                }
-            }
-            .title {
-                transition: 0.3s ease-in-out;
-                font-weight: 500;
-                font-size: 15px;
-                cursor: pointer;
-                @media screen and (width < 440px) {
-                    font-size: 14px;
-                }
-            }
-            .description {
-                color: grey;
-                font-size: 13px;
-                font-weight: 500;
-                @media screen and (width < 440px) {
-                    font-size: 12px;
-                }
-            }
-            .imgContainer {
-                aspect-ratio: 4/1.5;
-                border-radius: 5px;
-                overflow: hidden;
-                background-color: #5c5c5c;
-            background-image: linear-gradient(90deg, rgba(91,91,91,1.00) 0%,rgba(112,112,112,1.00) 40%,rgba(91,91,91,1.00) 80%,rgba(91,91,91,1.00) 97%);
-            animation-duration: 1s;
-              animation-fill-mode: forwards;
-              animation-iteration-count: infinite;
-              animation-name: loadingShimmer;
-              animation-timing-function: linear;
-              background-color: #efefef;
-              background-image: linear-gradient(90deg, rgba(239,239,239,1.00) 0%,rgba(221,221,221,1.00) 40%,rgba(239,239,239,1.00) 80%,rgba(239,239,239,1.00) 97%);
-              background-repeat: no-repeat;
-              background-size: 50%;
-            @keyframes loadingShimmer {
-                0% {
-                  background-position: -100% 0;
-                }
-              
-                100% {
-                  background-position: 200% 0;
-                }
-              }
-                
-                
-                img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                }
-            }
-        }
-
+    .swiperTest .secondCont .courseContainer:last-child {
+        display: block;
     }
-    
 }
-#autoPlay1 {
-    margin-top: 50px;
+
+@media screen and (max-width: 1450px) {
+    .swiperTest .firstCont {
+        flex: 2;
+    }
+}
+@media screen and (max-width: 440px) {
+    .swiperTest .firstCont .profile .profileImageContainer {
+        font-size: 13px;
+        height: 50px;
+        width: 50px;
+    }
+    .testContainer {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .testContainer .swiper-footer .servicesControl1 {
+        padding: 0 15px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .testContainer .swiper-footer .autoplay-progress {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .mySwiper1 {
+        margin-bottom: 50px;
+    }
 }

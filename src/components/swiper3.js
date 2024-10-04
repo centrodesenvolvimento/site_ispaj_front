@@ -37,7 +37,7 @@ const Swiper3 = () => {
     
     useEffect(() => {
         const interval = setInterval(() => {
-            console.log('index', activeIndex)
+            //('index', activeIndex)
             if (activeIndex == 2){
                 setActiveIndex(0)
             }else {
@@ -80,10 +80,10 @@ const Swiper3 = () => {
         loop
         slidesPerView={1}
         onChange={() => {
-            console.log('changed')
+            //('changed')
         }}
         onSlideChange={(e) => {
-            console.log('changeddddd', e.realIndex)
+            //('changeddddd', e.realIndex)
             setActiveIndex(e.realIndex)
         }}
         
@@ -102,18 +102,18 @@ const Swiper3 = () => {
         <SwiperSlide>
         <div className='slideTextCont'>{activeIndex == 0 && <motion.div initial={{opacity: 0, x: 200}} animate={{opacity: 1, x: 0}} transition={{duration: 0.8}} className='slideText'>Aqui no ISPAJ somos ativos, envolvidos, engajados</motion.div>}</div>
 
-          <img src={process.env.PUBLIC_URL + '/images/join.png'} />
+          <img loading="lazy"src={process.env.PUBLIC_URL + '/images/join.png'} />
         </SwiperSlide>
         <SwiperSlide>
         <div className='slideTextCont'>{activeIndex == 1 && <motion.div initial={{opacity: 0, x: 200}} animate={{opacity: 1, x: 0}} transition={{duration: 0.8}} className='slideText'> Exploramos Fronteiras em Laboratórios Profissionais</motion.div>}</div>
 
-          <img src={process.env.PUBLIC_URL + '/images/join2.png'}  />
+          <img loading="lazy"src={process.env.PUBLIC_URL + '/images/join2.png'}  />
 
         </SwiperSlide>
         <SwiperSlide>
         <div className='slideTextCont'>{activeIndex == 2 && <motion.div initial={{opacity: 0, x: 200}} animate={{opacity: 1, x: 0}} transition={{duration: 0.8}} className='slideText'>Junte-se a nós. Junte-se ao ISPAJ</motion.div>}</div>
 
-          <img src={process.env.PUBLIC_URL + '/images/join3.png'}  />
+          <img loading="lazy"src={process.env.PUBLIC_URL + '/images/join3.png'}  />
 
         </SwiperSlide>
         <div onClick={() => handlePrev()} className='button left'><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">

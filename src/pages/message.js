@@ -55,7 +55,7 @@ const Message = () => {
         <div className="abtCont">
             <Header />
             {/* <div className="" style={{marginTop: 0, background: '#eeeeee', aspectRatio: 4/1.5, width: '100%', maxHeight: 300}}>
-            <img style={{objectFit: 'cover', width: '100%', height: '100%'}} src={process.env.PUBLIC_URL + '/images/ispaj.png'}/></div> */}
+            <img loading="lazy"style={{objectFit: 'cover', width: '100%', height: '100%'}} src={process.env.PUBLIC_URL + '/images/ispaj.png'}/></div> */}
             <div className="aboutFirst" ref={secondContainerRef} style={{marginTop: document.querySelector('.outerContainer')?.clientHeight + 20}}>
               <div className="navigation">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-map-fill" viewBox="0 0 16 16">
@@ -75,13 +75,13 @@ const Message = () => {
                 <div className='section'>
                     <div className='player'>
                         <div className='videoContainer'>
-                            <img src={JSON.parse(localStorage.getItem('aboutContent'))?.imagemPr}/>
+                            <img loading="lazy"src={JSON.parse(localStorage.getItem('aboutContent'))?.imagemPr}/>
                         </div>
                         <div className='playerInfo'>
-                            <div className='imgContainer'>{`${localStorage.getItem('prName')}`[0]}{`${localStorage.getItem('prName')}`.split(' ')[1][0]}</div>
+                            <div className='imgContainer'>{`${localStorage.getItem('prName')}`[0]}{`${localStorage.getItem('prName')}`?.split(' ')[1][0]}</div>
                             <div className='title'>{localStorage.getItem('prName')}</div>
                         </div>
-                        <div className='description' dangerouslySetInnerHTML={{__html: JSON.parse(localStorage.getItem('aboutContent')).perfilPr}}></div>
+                        <div className='description' dangerouslySetInnerHTML={{__html: JSON.parse(localStorage.getItem('aboutContent'))?.perfilPr}}></div>
                     </div>
                 </div>
                 {/* <div className='section'>
@@ -97,7 +97,7 @@ const Message = () => {
   <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388q0-.527.062-1.054.093-.558.31-.992t.559-.683q.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 9 7.558V11a1 1 0 0 0 1 1zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612q0-.527.062-1.054.094-.558.31-.992.217-.434.559-.683.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 3 7.558V11a1 1 0 0 0 1 1z"/>
 
 </svg>
-                    <div className="description" dangerouslySetInnerHTML={{__html: JSON.parse(localStorage.getItem('aboutContent')).mensagemPr}}></div>
+                    <div className="description" dangerouslySetInnerHTML={{__html: JSON.parse(localStorage.getItem('aboutContent'))?.mensagemPr}}></div>
                     {/* <div className="description" style={{marginBottom: 15, fontSize: 16}}>Não estaremos, certamente, equivocados ao afirmar que a sociedade angolana espera muito desta Universidade, sobretudo da sua responsabilidade social que inclui o impulso no desenvolvimento humano, sustentável e inclusivo, por via de uma formação multidisciplinar e integral que estimula atitudes éticas, humanas e cristãs que impregnem o ser e o agir das novas gerações comprometidas com o bem, o belo, o certo e o justo que não fragmenta nem vilipendia, mas une, engrandece e dignifica qualquer um (…).
                     </div>
 <div className="description" style={{marginBottom: 15, fontSize: 16}}>

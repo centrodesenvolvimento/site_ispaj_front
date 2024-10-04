@@ -54,7 +54,7 @@ const AdminAbout = () => {
                       },
                 })
                 .then(res => {
-                    console.log('success', res.data)
+                    //('success', res.data)
                     setMessages(['Alterações salvas!'])
                     window.location.reload()
                     setLoad(false)
@@ -75,7 +75,7 @@ const AdminAbout = () => {
                       },
                 })
                 .then(res => {
-                    console.log('success')
+                    //('success')
                     setMessages(['Alterações salvas|'])
                     window.location.reload()
                     setLoad(false)
@@ -110,7 +110,7 @@ const AdminAbout = () => {
                   },
             })
             .then(res => {
-                console.log('success')
+                //('success')
                 setMessages(['Alterações salvas|'])
                 window.location.reload()
                 setLoad(false)
@@ -149,15 +149,15 @@ const AdminAbout = () => {
                         ]
                     })
                     .then(res => {
-                        console.log('success')
+                        //('success')
                         setMessages(['Valor adicionado com sucesso.'])
                         window.location.reload()
                     })
                     .catch(err => {
-                        console.log('err', err.response.data.message)
+                        //('err', err.response.data.message)
                     })
                 }else {
-                    console.log('ok')
+                    //('ok')
                     axios.post(`${baseURL}/api/editAboutContent/valores/${1}`, {
                         valores: [
                             {
@@ -170,12 +170,12 @@ const AdminAbout = () => {
                         ]
                     })
                     .then(res => {
-                        console.log('success', res)
+                        //('success', res)
                         setMessages(['Valor adicionado com sucesso.'])
                         window.location.reload()
                     })
                     .catch(err => {
-                        console.log('err', err.response.data.message)
+                        //('err', err.response.data.message)
                     })
                 }
                 
@@ -213,12 +213,12 @@ const AdminAbout = () => {
                     valores: newValues
                 })
                 .then(res => {
-                    console.log('success')
+                    //('success')
                     setMessages(['Valor adicionado com sucesso.'])
                     window.location.reload()
                 })
                 .catch(err => {
-                    console.log('err', err.response.data.message)
+                    //('err', err.response.data.message)
                 })
 
                 
@@ -269,7 +269,7 @@ const AdminAbout = () => {
                                     //     const reader = new FileReader()
                                     //     reader.onload = (event) => {
                                     //         setSelectedImage(event.target.result)
-                                    //         console.log('data', event.target.result)
+                                    //         //('data', event.target.result)
                                     //     }
                                     //     reader.readAsDataURL(file)
                                     // }else {
@@ -278,7 +278,7 @@ const AdminAbout = () => {
                                 }}/>
                                {videoPreview && 
                                <div className='selectedVideo'>
-                                <video src={URL.createObjectURL(videoPreview)} loop muted controls />
+                                <video loading="lazy"  src={URL.createObjectURL(videoPreview)} loop muted controls />
                                 </div>}
                             </div>
                             <div className="errors">
@@ -301,9 +301,9 @@ const AdminAbout = () => {
                         </div>
                         {load && <div>Processando...</div>}
                                 <div className='buttons' style={{marginBottom: 50}}>
-                                    <div onClick={() => {
+                                    {!load && <div onClick={() => {
                                         saveVideo()
-                                    }} className='save'>Guardar</div>
+                                    }} className='save'>Guardar</div>}
 
                                 </div>
                                 {/* <div className='' dangerouslySetInnerHTML={{__html: prMessage}}>
@@ -322,7 +322,7 @@ const AdminAbout = () => {
                     <div className='description'>{aboutContent?.somos}</div>
                 </div>
                 <div className='imgContainer'>
-            {aboutContent && <video autoPlay loop muted src={aboutContent.video}/>}
+            {aboutContent && <video loading="lazy"  autoPlay loop muted src={aboutContent.video}/>}
                 </div>
             </section>
                 </section>
@@ -373,9 +373,9 @@ const AdminAbout = () => {
                         </div>
                         {load && <div>Processando...</div>}
                                 <div className='buttons' style={{marginBottom: 50}}>
-                                    <div onClick={() => {
+                                    {!load && <div onClick={() => {
                                         saveMission()
-                                    }} className='save'>Guardar</div>
+                                    }} className='save'>Guardar</div>}
 
                                 </div>
                                 {/* <div className='' dangerouslySetInnerHTML={{__html: prMessage}}>
@@ -389,14 +389,14 @@ const AdminAbout = () => {
                     </div>
                 <div className='missions'>
                     <div className='mission'>
-                        <img src={process.env.PUBLIC_URL + '/images/target.png'}/>
+                        <img loading="lazy"src={process.env.PUBLIC_URL + '/images/target.png'}/>
                         <div className='title'>Missão</div>
                         <div className='description'>
                         {aboutContent?.missao}
                         </div>
                     </div>
                     <div className='mission'>
-                        <img src={process.env.PUBLIC_URL + '/images/vision.png'}/>
+                        <img loading="lazy"src={process.env.PUBLIC_URL + '/images/vision.png'}/>
                         <div className='title'>Visão</div>
                         <div className='description'>
                         {aboutContent?.visao}
@@ -479,9 +479,9 @@ const AdminAbout = () => {
                         </div>
                         {load && <div>Processando...</div>}
                                 <div className='buttons' style={{marginBottom: 50}}>
-                                    <div onClick={() => {
+                                    {!load && <div onClick={() => {
                                         saveValue()
-                                    }} className='save'>Guardar</div>
+                                    }} className='save'>Guardar</div>}
 
                                 </div>
                                 {/* <div className='' dangerouslySetInnerHTML={{__html: prMessage}}>
@@ -583,9 +583,9 @@ const AdminAbout = () => {
                         </div>
                         {load && <div>Processando...</div>}
                                 <div className='buttons' style={{marginBottom: 50}}>
-                                    <div onClick={() => {
+                                   {!load && <div onClick={() => {
                                         editValue(item)
-                                    }} className='save'>Guardar</div>
+                                    }} className='save'>Guardar</div>}
 
                                 </div>
                                 {/* <div className='' dangerouslySetInnerHTML={{__html: prMessage}}>
@@ -630,11 +630,11 @@ const AdminAbout = () => {
                                                 valores: valores.filter((v) => v.id != item.id)
                                             })
                                             .then(res => {
-                                                console.log('success')
+                                                //('success')
                                                 window.location.reload()
                                             })
                                             .catch(err => {
-                                                console.log('err', err.response.data.message)
+                                                //('err', err.response.data.message)
                                             })
                                             
                                 })

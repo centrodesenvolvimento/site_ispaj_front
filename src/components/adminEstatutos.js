@@ -47,7 +47,7 @@ const AdminEstatutos = () => {
             })
             .then(res => {
                 setMessages(['Documento adicionado com sucesso!'])
-                console.log('success', res.data)
+                //('success', res.data)
                 window.location.reload()
             })
             .catch(err => {
@@ -80,7 +80,7 @@ const AdminEstatutos = () => {
                 })
                 .then(res => {
                     setMessages(['Editado com sucesso!'])
-                    console.log('success', res.data)
+                    //('success', res.data)
                     window.location.reload()
                 })
                 .catch(err => {
@@ -108,7 +108,7 @@ const AdminEstatutos = () => {
                     documentos: newDocs
                 })
                 .then(res => {
-                    console.log('success')
+                    //('success')
                     setMessages(['Editado com sucesso.'])
                     window.location.reload()
                 })
@@ -131,7 +131,7 @@ const AdminEstatutos = () => {
                 // })
                 // .then(res => {
                 //     setMessages(['Órgão adicionado com sucesso!'])
-                //     console.log('success', res.data)
+                //     //('success', res.data)
                 //     // window.location.reload()
                 // })
                 // .catch(err => {
@@ -217,7 +217,7 @@ const AdminEstatutos = () => {
                                             //     const reader = new FileReader()
                                             //     reader.onload = (event) => {
                                             //         setSelectedImage(event.target.result)
-                                            //         console.log('data', event.target.result)
+                                            //         //('data', event.target.result)
                                             //     }
                                             //     reader.readAsDataURL(file)
                                             // }else {
@@ -226,7 +226,7 @@ const AdminEstatutos = () => {
                                         }}/>
                                        {videoPreview &&
                                        <div className='selectedVideo'>
-                                        <video src={URL.createObjectURL(videoPreview)} loop muted controls />
+                                        <video loading="lazy"  src={URL.createObjectURL(videoPreview)} loop muted controls />
                                         </div>}
                                         */}
                                     </div>
@@ -357,7 +357,7 @@ const AdminEstatutos = () => {
                                             <embed className='orgChart' src={URL.createObjectURL(selectedDoc)} style={{width: '100%', aspectRatio: 2/1.5}} />
                                             </div>
                                             : preview ? <div style={{}}>
-                                            <embed className='orgChart' src={`${baseURL}/storage/pdfs/${preview}`} style={{width: '100%', aspectRatio: 2/1.5}} />
+                                            <embed className='orgChart' src={`${baseURL}/public/storage/pdfs/${preview}`} style={{width: '100%', aspectRatio: 2/1.5}} />
                                             </div> : <div></div>}
                                     
                                             {/* <input value={''} className='imageInput2' type='file' accept='video/*'  onChange={(e)=>{
@@ -368,7 +368,7 @@ const AdminEstatutos = () => {
                                                 //     const reader = new FileReader()
                                                 //     reader.onload = (event) => {
                                                 //         setSelectedImage(event.target.result)
-                                                //         console.log('data', event.target.result)
+                                                //         //('data', event.target.result)
                                                 //     }
                                                 //     reader.readAsDataURL(file)
                                                 // }else {
@@ -377,7 +377,7 @@ const AdminEstatutos = () => {
                                             }}/>
                                            {videoPreview &&
                                            <div className='selectedVideo'>
-                                            <video src={URL.createObjectURL(videoPreview)} loop muted controls />
+                                            <video loading="lazy"  src={URL.createObjectURL(videoPreview)} loop muted controls />
                                             </div>}
                                             */}
                                         </div>
@@ -448,7 +448,7 @@ const AdminEstatutos = () => {
                                                 documento: item.documento
                                             })
                                             .then(res => {
-                                                console.log('success', res.data)
+                                                //('success', res.data)
                                                 // setMessages(['Editado com sucesso.'])
                                                 window.location.reload()
                                             })

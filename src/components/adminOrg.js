@@ -35,7 +35,7 @@ const AdminOrg = () => {
             .then(res => {
                 let content = [...res.data][0]
                 if (content.organigrama){
-                    console.log('yes')
+                    //('yes')
                     axios.post(`${baseURL}/api/editAboutContent/any/1`, {
                         pdf: content.organigrama,
                         organigrama: selectedDoc
@@ -46,7 +46,7 @@ const AdminOrg = () => {
                     })
                     .then(res => {
                         setLoad(false)
-                        console.log('success', selectedDoc)
+                        //('success', selectedDoc)
                         setMessages(['Organigrama atualizado com success!'])
                         window.location.reload()
                         
@@ -65,7 +65,7 @@ const AdminOrg = () => {
                     })
                     .then(res => {
                         setLoad(false)
-                        console.log('success', selectedDoc)
+                        //('success', selectedDoc)
                         setMessages(['Organigrama atualizado com success!'])
                         window.location.reload()
                         
@@ -83,7 +83,7 @@ const AdminOrg = () => {
     .then(res => {
         let content = [...res.data][0]
         setPreview(content.organigrama)
-        console.log(content.organigrama)
+        //(content.organigrama)
     })
     }, [])
     return (
@@ -128,7 +128,7 @@ const AdminOrg = () => {
                                         //     const reader = new FileReader()
                                         //     reader.onload = (event) => {
                                         //         setSelectedImage(event.target.result)
-                                        //         console.log('data', event.target.result)
+                                        //         //('data', event.target.result)
                                         //     }
                                         //     reader.readAsDataURL(file)
                                         // }else {
@@ -137,7 +137,7 @@ const AdminOrg = () => {
                                     }}/>
                                    {videoPreview &&
                                    <div className='selectedVideo'>
-                                    <video src={URL.createObjectURL(videoPreview)} loop muted controls />
+                                    <video loading="lazy"  src={URL.createObjectURL(videoPreview)} loop muted controls />
                                     </div>}
                                     */}
                                 </div>
@@ -172,7 +172,7 @@ const AdminOrg = () => {
                         </Dialog>
                     </div>
                     <div style={{width: '100%', aspectRatio: 2/1.5, background: '#d3d3d3'}}>
-                    {preview && <embed className='orgChart' src={`${baseURL}/storage/pdfs/${preview}`} style={{width: '100%', height: '100%'}} />
+                    {preview && <embed className='orgChart' src={`${baseURL}/public/storage/pdfs/${preview}`} style={{width: '100%', height: '100%'}} />
                     }
                     </div>
                 </section>

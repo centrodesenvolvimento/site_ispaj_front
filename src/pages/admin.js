@@ -75,7 +75,7 @@ const Admin = () => {
         setErrors([])
         if (JSON.parse(localStorage.getItem('user')).level != 0){
             setErrors(['Apenas o admin principal poderá adicionar contas!'])
-            console.log(JSON.parse(localStorage.getItem('user')).level)
+            //(JSON.parse(localStorage.getItem('user')).level)
         }
         else if (fullName.length == 0 || confirm.length == 0 || email.length == 0 || password.length == 0 || fullName.length == 0){
             setErrors(['Por favor preencha todos os campos!'])
@@ -102,18 +102,18 @@ const Admin = () => {
                   }
             })
             .then(res =>  {
-                console.log('successful')
+                //('successful')
                 setMessages([`Utilizador ${email} adicionado com successo.`])
 
             })
             .catch(err => {
-                console.log('error', `${err.response.data.message}`.includes('duplicate key value violates unique'))
+                //('error', `${err.response.data.message}`.includes('duplicate key value violates unique'))
 
                 if (`${err.response.data.message}`.includes('duplicate key value violates unique')){
                     setErrors(['Já tem utilizador activo com o email fornecido. Utilize outro.'])
                 }else {
                 setErrors(['Erro de servidor. Tente mais logo.'])
-                console.log('err', err)
+                //('err', err)
                 }
             })
         }
@@ -147,7 +147,7 @@ const Admin = () => {
                         "Content-Type": 'application/json'                    }
                 })
                 .then(res => {
-                    console.log('res', res.data.data)
+                    //('res', res.data.data)
                     // localStorage.setItem('user', JSON.stringify(res.data.data))
                     setMessages(['Alteração salva.'])
                 })
@@ -172,12 +172,12 @@ const Admin = () => {
                         "Content-Type": 'application/json'                    }
                 })
                 .then(res => {
-                    console.log('res', res.data.data)
+                    //('res', res.data.data)
                     localStorage.setItem('user', JSON.stringify(res.data.data))
                     setMessages(['Alteração salva.'])
                 })
                 .catch(err => {
-                    console.log('err', err.response, 'id', user.id)
+                    //('err', err.response, 'id', user.id)
                     setErrors([err.response.data.message])
                     
                 })
@@ -197,12 +197,12 @@ const Admin = () => {
                         "Content-Type": 'application/json'                    }
                 })
                 .then(res => {
-                    console.log('res', res.data.data)
+                    //('res', res.data.data)
                     // localStorage.setItem('user', JSON.stringify(res.data.data))
                     setMessages(['Alteração salva.'])
                 })
                 .catch(err => {
-                    console.log('err', err.response, 'id', user.id)
+                    //('err', err.response, 'id', user.id)
                     setErrors([err.response.data.message])
                     
                 })
@@ -223,12 +223,12 @@ const Admin = () => {
                         "Content-Type": 'application/json'                    }
                 })
                 .then(res => {
-                    console.log('res', res.data.data)
+                    //('res', res.data.data)
                     localStorage.setItem('user', JSON.stringify(res.data.data))
                     setMessages(['Alteração salva.'])
                 })
                 .catch(err => {
-                    console.log('err', err.response, 'id', user.id)
+                    //('err', err.response, 'id', user.id)
                     setErrors([err.response.data.message])
                     
                 })
@@ -487,7 +487,7 @@ const Admin = () => {
                                     return (
                                         <Sheet onOpenChange={e => {
                                             if (e){
-                                                console.log('oke', item.name)
+                                                //('oke', item.name)
                                                 setEditName({
                                                     status: false,
                                                     value: item.name

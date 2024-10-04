@@ -1,330 +1,357 @@
 .orgGrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-areas: "first first first"
-    "second third fourth";
+    grid-template-areas: 
+        "first first first"
+        "second third fourth";
     gap: 25px;
     margin-top: 20px;
-    section:nth-child(1){
-        grid-area: first;
-    }
-    section:nth-child(3){
-        grid-area: second;
-    }
-    section:nth-child(4){
-        grid-area: third;
-    }
-    section:nth-child(5){
-        grid-area: fourth;
-    }
-    @media screen and (width < 800px) {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-areas: "first second"
-        "third fourth" 
-    }
-    @media screen and (width < 580px) {
-        grid-template-columns: repeat(1, 1fr);
-        grid-template-areas: "first"
-        "second"
-        "third" 
-        "fourth";
-    }
-    .president {
-        display: flex;
-        flex-direction: row;
-        background-color: white;
-        box-shadow: 0px 0px 10px rgba(151, 151, 151, 0.308);
-        border-radius: 5px;
-        overflow: hidden;
-
-        @media screen and (width < 800px) {
-            display: none;
-        }
-        .cont {
-
-            flex: 1;
-            background-color: #5c5c5c;
-            background-image: linear-gradient(90deg, rgba(91,91,91,1.00) 0%,rgba(112,112,112,1.00) 40%,rgba(91,91,91,1.00) 80%,rgba(91,91,91,1.00) 97%);
-            animation-duration: 1s;
-              animation-fill-mode: forwards;
-              animation-iteration-count: infinite;
-              animation-name: loadingShimmer;
-              animation-timing-function: linear;
-              background-color: #efefef;
-              background-image: linear-gradient(90deg, rgba(239,239,239,1.00) 0%,rgba(221,221,221,1.00) 40%,rgba(239,239,239,1.00) 80%,rgba(239,239,239,1.00) 97%);
-              background-repeat: no-repeat;
-              background-size: 50%;
-            @keyframes loadingShimmer {
-                0% {
-                  background-position: -100% 0;
-                }
-              
-                100% {
-                  background-position: 200% 0;
-                }
-              }
-            aspect-ratio: 4/3;
-            img {
-                object-fit: cover;
-                height: 100%;
-                width: 100%;
-            }
-        }
-        .info::before {
-            position: absolute;
-            content: "";
-            border-top: solid 8px #ffa500;
-            max-width: 70%;
-            width: 100%;
-            min-width: 100px;
-            top: 0;
-            left: 0;
-            
-        }
-        .info {
-            flex: 2;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-
-            .title {
-                position: relative;
-                margin-top: 15px;
-                font-size: 16px;
-                font-weight: 700;
-                color: #023047;
-            }
-            .title::before {
-                /* position: absolute;
-                content: "";
-                border-top: solid 8px #ffa500;
-                border-radius: 100px;
-                max-width: 100px;
-                width: 100%;
-                min-width: 100px;
-                top: -10px; */
-            }
-            .description {
-                color: #3b3b3b;
-                padding-right: 5px;
-                font-size: 14px;
-
-            }
-        }
-    }
-    #subordinate1 {
-        display: none;
-        position: relative;
-        color: white;
-        .description {
-            color: white;
-        }
-        .cont {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-
-            img {
-                object-fit: cover;
-                width: 100%;
-                height: 100%;
-                filter: brightness(0.4);
-            }
-        }
-        @media screen and (width < 800px) {
-            display: flex;
-            
-        }
-    }
-    .subordinates {
-        display: flex;
-        flex-direction: column;
-        background-color: white;
-        box-shadow: 0px 0px 10px rgba(151, 151, 151, 0.308);
-        padding: 20px;
-        gap: 20px;
-        margin-top: 25px;
-        
-        div > .imgContainer {
-            background: #e7eff3;
-            height: 80px;
-            width: 80px;
-            margin: auto;
-            border-radius: 100px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #023047;
-            font-weight: 700;
-            margin-top: -60px;
-        }
-
-        .title {
-            font-weight: 700;
-            font-size: 14.5px;
-        }
-        .description {
-            color: grey;
-            font-size: 14px;
-        }
-        
-    }
 }
 
+/* Grid Areas */
+.orgGrid section:nth-child(1) {
+    grid-area: first;
+}
+
+.orgGrid section:nth-child(3) {
+    grid-area: second;
+}
+
+.orgGrid section:nth-child(4) {
+    grid-area: third;
+}
+
+.orgGrid section:nth-child(5) {
+    grid-area: fourth;
+}
+
+.orgGrid .president {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(151, 151, 151, 0.308);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.orgGrid .president .cont {
+    flex: 1;
+    background-color: #5c5c5c;
+    background-image: linear-gradient(90deg, rgba(91,91,91,1.00) 0%, rgba(112,112,112,1.00) 40%, rgba(91,91,91,1.00) 80%, rgba(91,91,91,1.00) 97%);
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: loadingShimmer;
+    animation-timing-function: linear;
+    background-color: #efefef;
+    background-image: linear-gradient(90deg, rgba(239,239,239,1.00) 0%, rgba(221,221,221,1.00) 40%, rgba(239,239,239,1.00) 80%, rgba(239,239,239,1.00) 97%);
+    background-repeat: no-repeat;
+    background-size: 50%;
+    aspect-ratio: 4/3;
+}
+
+.orgGrid .president .cont img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.orgGrid .president .info {
+    flex: 2;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.orgGrid .president .info::before {
+    position: absolute;
+    content: "";
+    border-top: solid 8px #ffa500;
+    max-width: 70%;
+    width: 100%;
+    min-width: 100px;
+    top: 0;
+    left: 0;
+}
+
+.orgGrid .president .title {
+    position: relative;
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #023047;
+}
+
+.orgGrid .president .description {
+    color: #3b3b3b;
+    padding-right: 5px;
+    font-size: 14px;
+}
+
+.orgGrid #subordinate1 {
+    display: none;
+    position: relative;
+    color: white;
+}
+
+.orgGrid #subordinate1 .description {
+    color: white;
+}
+
+.orgGrid #subordinate1 .cont {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.orgGrid #subordinate1 .cont img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    filter: brightness(0.4);
+}
+
+.orgGrid .subordinates {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(151, 151, 151, 0.308);
+    padding: 20px;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.orgGrid .subordinates div > .imgContainer {
+    background: #e7eff3;
+    height: 80px;
+    width: 80px;
+    margin: auto;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #023047;
+    font-weight: 700;
+    margin-top: -60px;
+}
+
+.orgGrid .subordinates .title {
+    font-weight: 700;
+    font-size: 14.5px;
+}
+
+.orgGrid .subordinates .description {
+    color: grey;
+    font-size: 14px;
+}
 .orgGrid1 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
     margin-top: 30px;
-    .subordinates {
-        display: flex;
-        flex-direction: column;
-        background-color: white;
-        box-shadow: 0px 0px 10px rgba(151, 151, 151, 0.308);
-        padding: 20px;
-        gap: 20px;
-        margin-top: 20px;
-        justify-content: space-between;
-        
-        div > .imgContainer {
-            background: #e7eff3;
-            height: 80px;
-            width: 80px;
-            margin: auto;
-            border-radius: 100px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #023047;
-            font-weight: 700;
-            margin-top: -60px;
-        }
+}
 
-        .title {
-            font-weight: 700;
-            font-size: 14.5px;
-        }
-        .description {
-            color: grey;
-            font-size: 14px;
-        }
+/* Subordinates */
+.orgGrid1 .subordinates {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(151, 151, 151, 0.308);
+    padding: 20px;
+    gap: 20px;
+    margin-top: 20px;
+    justify-content: space-between;
+}
 
-        
-        
-    }
-    @media screen and (width < 800px) {
-        grid-template-columns: repeat(2, 1fr);
+.orgGrid1 .subordinates div > .imgContainer {
+    background: #e7eff3;
+    height: 80px;
+    width: 80px;
+    margin: auto;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #023047;
+    font-weight: 700;
+    margin-top: -60px;
+}
 
-    }
-    @media screen and (width < 580px) {
-        grid-template-columns: repeat(1, 1fr);
-    }
+.orgGrid1 .subordinates .title {
+    font-weight: 700;
+    font-size: 14.5px;
+}
+
+.orgGrid1 .subordinates .description {
+    color: grey;
+    font-size: 14px;
 }
 .modalComponent {
     width: 100%;
     flex: 1;
     margin-top: 15px;
-    .header {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 20px;
+}
 
-        .title {
-            font-size: 18px;
-            font-weight: 700;
-        }
-        
-    }
-    .description {
-        color: grey;
-        margin-top: 20px;
-        font-size: 14.5px;
-    }
-    .subTitle {
-        font-size: 16px;
-        font-weight: 600;
-        border-top: 1px solid lightgrey;
-        padding-top: 15px;
-        margin-top: 25px;
-    }
-    .imgContainer {
-        background: #e7eff3;
-        height: 70px;
-        width: 70px;
-        border-radius: 100px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #023047;
-        font-weight: 700;
-    }
+/* Header */
+.modalComponent .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
 
-    .members {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        width: 100%;
-        margin-top: 15px;
-        span[class='member'] {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            
-            > .memberImage {
-                max-height: 100px;
-                min-height: 100px;
-                max-width: 100px;
-                min-width: 100px;
-                border-radius: 500px;
-                background-color: #5c5c5c;
-            background-image: linear-gradient(90deg, rgba(91,91,91,1.00) 0%,rgba(112,112,112,1.00) 40%,rgba(91,91,91,1.00) 80%,rgba(91,91,91,1.00) 97%);
-            animation-duration: 1s;
-              animation-fill-mode: forwards;
-              animation-iteration-count: infinite;
-              animation-name: loadingShimmer;
-              animation-timing-function: linear;
-              background-color: #efefef;
-              background-image: linear-gradient(90deg, rgba(239,239,239,1.00) 0%,rgba(221,221,221,1.00) 40%,rgba(239,239,239,1.00) 80%,rgba(239,239,239,1.00) 97%);
-              background-repeat: no-repeat;
-              background-size: 50%;
-            @keyframes loadingShimmer {
-                0% {
-                  background-position: -100% 0;
-                }
-              
-                100% {
-                  background-position: 200% 0;
-                }
-              } 
-                img {
-                    height: 100%;
-                    width: 100%;
-                    object-fit: cover;
-                    border-radius: 500px;
-                }
-            }
-            .memberName {
-                font-size: 15px;
-                font-weight: 500;
-                margin-top: 20px;
-                text-align: center;
-                display: -webkit-box;
-                -webkit-box-orient: vertical;
-                -webkit-line-clamp: 2; /* Number of lines to display */
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-            .memberRole {
-                color: grey;
-                font-size: 13px;
-                text-align: center;
-            }
-        }
+.modalComponent .header .title {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* Description */
+.modalComponent .description {
+    color: grey;
+    margin-top: 20px;
+    font-size: 14.5px;
+}
+
+/* SubTitle */
+.modalComponent .subTitle {
+    font-size: 16px;
+    font-weight: 600;
+    border-top: 1px solid lightgrey;
+    padding-top: 15px;
+    margin-top: 25px;
+}
+
+/* Image Container */
+.modalComponent .imgContainer {
+    background: #e7eff3;
+    height: 70px;
+    width: 70px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #023047;
+    font-weight: 700;
+}
+
+/* Members */
+.modalComponent .members {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    margin-top: 15px;
+}
+
+.modalComponent .members span.member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modalComponent .members span.member > .memberImage {
+    max-height: 100px;
+    min-height: 100px;
+    max-width: 100px;
+    min-width: 100px;
+    border-radius: 500px;
+    background-color: #5c5c5c;
+    background-image: linear-gradient(90deg, rgba(91,91,91,1.00) 0%, rgba(112,112,112,1.00) 40%, rgba(91,91,91,1.00) 80%, rgba(91,91,91,1.00) 97%);
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: loadingShimmer;
+    animation-timing-function: linear;
+    background-color: #efefef;
+    background-image: linear-gradient(90deg, rgba(239,239,239,1.00) 0%, rgba(221,221,221,1.00) 40%, rgba(239,239,239,1.00) 80%, rgba(239,239,239,1.00) 97%);
+    background-repeat: no-repeat;
+    background-size: 50%;
+}
+
+@keyframes loadingShimmer {
+    0% {
+        background-position: -100% 0;
+    }
+    100% {
+        background-position: 200% 0;
     }
 }
+
+.modalComponent .members span.member .memberImage img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 500px;
+}
+
+.modalComponent .members span.member .memberName {
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 20px;
+    text-align: center;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* Number of lines to display */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.modalComponent .members span.member .memberRole {
+    color: grey;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* Media Queries */
+@media screen and (max-width: 800px) {
+    /* Add any specific adjustments for smaller screens if needed */
+}
+
+/* Media Queries */
+@media screen and (max-width: 800px) {
+    .orgGrid1 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .orgGrid1 {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+
+/* Media Queries */
+@media screen and (max-width: 800px) {
+    .orgGrid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: 
+            "first second"
+            "third fourth";
+    }
+
+    .orgGrid .president {
+        display: none;
+    }
+
+    .orgGrid #subordinate1 {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .orgGrid {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-areas: 
+            "first"
+            "second"
+            "third"
+            "fourth";
+    }
+}
+
 #scv {
     all: unset;
 }

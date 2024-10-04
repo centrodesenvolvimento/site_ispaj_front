@@ -30,10 +30,10 @@ const Director = () => {
                 <div className='messageContainer'>
 
                 <div className='info'>
-                    {name ? <div className='title'>Dr. {name}</div> : <Skeleton style={{background: '#e3e3e3', marginLeft: '5%', width: '50%'}} count={1}/>}
+                    {name ? <div className='title'>{name}</div> : <Skeleton style={{background: '#e3e3e3', marginLeft: '5%', width: '50%'}} count={1}/>}
                             {aboutContent ? <div className='message' dangerouslySetInnerHTML={{__html: aboutContent?.mensagemPr}}>
                             </div> : <Skeleton style={{background: '#e3e3e3', marginLeft: '5%', width: '90%'}} count={8}/>}
-                            {aboutContent ? <div style={{margin: 25}} 
+                            {aboutContent?.mensagemPr ? <div style={{margin: 25}} 
                             onClick={() => {
                                 navigate('/mensagem_do_presidente')
                                 localStorage.setItem('aboutContent', JSON.stringify(aboutContent))
@@ -41,8 +41,8 @@ const Director = () => {
                             }}className='serviceButton'>Saber Mais</div>: <Skeleton style={{height: 40, width: 100, margin: 20}}/>}
                 </div>
                 <div className='messageImageContainer'>
-                        {/* <img src={process.env.PUBLIC_URL + '/images/director.png'}/> */}
-                        {aboutContent && <img src={aboutContent?.imagemPr}/>}
+                        {/* <img loading="lazy"src={process.env.PUBLIC_URL + '/images/director.png'}/> */}
+                        {aboutContent && <img loading="lazy"src={aboutContent?.imagemPr}/>}
                            
                 </div>
                 

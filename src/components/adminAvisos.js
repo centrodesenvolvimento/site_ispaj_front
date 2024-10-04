@@ -75,13 +75,13 @@ const AdminAvisos = () => {
 
                     })
                     .then(res => {
-                        console.log('resss', res.data)
+                        //('resss', res.data)
                         setMessages(['Aviso adicionado!'])
                         window.location.reload()
 
                     })
                     .catch(err => {
-                        console.log('error', err.response.data.message)
+                        //('error', err.response.data.message)
                     })
                 }
                 reader.readAsDataURL(blob)
@@ -117,13 +117,13 @@ const AdminAvisos = () => {
     
                         })
                         .then(res => {
-                            console.log('resss', res.data)
+                            //('resss', res.data)
                             setMessages(['Alterações guardadas!'])
                             window.location.reload()
     
                         })
                         .catch(err => {
-                            console.log('error', err.response.data.message)
+                            //('error', err.response.data.message)
                         })
                     }
                     reader.readAsDataURL(blob)
@@ -141,13 +141,13 @@ const AdminAvisos = () => {
 
                 })
                 .then(res => {
-                    console.log('resss', res.data)
+                    //('resss', res.data)
                     setMessages(['Alterações guardadas!'])
                     window.location.reload()
 
                 })
                 .catch(err => {
-                    console.log('error', err.response.data.message)
+                    //('error', err.response.data.message)
                 })
 
             }
@@ -196,7 +196,7 @@ const AdminAvisos = () => {
                                         const reader = new FileReader()
                                         reader.onload = (event) => {
                                             setSelectedImage(event.target.result)
-                                            console.log('data', event.target.result)
+                                            //('data', event.target.result)
                                         }
                                         reader.readAsDataURL(file)
                                     }else {
@@ -204,7 +204,7 @@ const AdminAvisos = () => {
                                     }
                                 }}/>
                                 {/* <div className='selectedImage'>
-                                    <img src={selectedImage}/>
+                                    <img loading="lazy"src={selectedImage}/>
                                 </div> */}
                                 {selectedImage && <div style={{aspectRatio: '4/4'}}>
                                     <Cropper
@@ -296,7 +296,7 @@ const AdminAvisos = () => {
                                             
                                             <TableCell>
                                                 <div style={{width: 70, height: 40, borderRadius: 5, overflow: 'hidden'}}>
-                                                    <img style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/storage/images/${item?.info?.image}`}/>
+                                                    <img loading="lazy"style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/public/storage/images/${item?.info?.image}`}/>
                                                 </div>
                                             </TableCell>
                                             <TableCell><div className='revText'>{item.info.title}</div></TableCell>
@@ -343,7 +343,7 @@ const AdminAvisos = () => {
                                         const reader = new FileReader()
                                         reader.onload = (event) => {
                                             setSelectedImage(event.target.result)
-                                            console.log('data', event.target.result)
+                                            //('data', event.target.result)
                                         }
                                         reader.readAsDataURL(file)
                                     }else {
@@ -351,7 +351,7 @@ const AdminAvisos = () => {
                                     }
                                 }}/>
                                 {/* <div className='selectedImage'>
-                                    <img src={selectedImage}/>
+                                    <img loading="lazy"src={selectedImage}/>
                                 </div> */}
                                 {selectedImage ? <div style={{aspectRatio: '4/4'}}>
                                     <Cropper
@@ -366,7 +366,7 @@ const AdminAvisos = () => {
                                     />
                                 </div>:
                                 <div style={{aspectRatio: '4/4', overflow: 'hidden'}}>
-                                    <img style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/storage/images/${imagePreview}`}/>
+                                    <img loading="lazy"style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/public/storage/images/${imagePreview}`}/>
                                 </div> 
                                 }
                                 {/* <canvas

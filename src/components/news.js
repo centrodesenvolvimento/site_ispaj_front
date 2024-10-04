@@ -73,15 +73,15 @@ const News = () => {
                                         return item
                                     }
                                 }).map((post, index) => {
-                                    console.log(post)
+                                    //(post)
                                     return (
                                         <div key={index} className="newsBanner" style={{}}>
-                                            <img src={`${baseURL}/storage/images/${post.imagens[0]}`}/>
+                                            <img loading="lazy"src={`${baseURL}/public/storage/images/${post.imagens[0]}`}/>
                                             <div className="infoContainer">
                                                 <div className="glance">Em Destaque</div>
                                                 <div className='info'>
                                                     <div className='postDate'>{new Date(post.info.data).getDate()}/{new Date(post.info.data).getMonth() + 1}/{new Date(post.info.data).getFullYear()}</div>
-                                                    <div style={{marginBottom: 10}} className='postTitle'>{post.info.titulo}</div>
+                                                    <div style={{marginBottom: 10, textTransform: 'uppercase'}} className='postTitle'>{post.info.titulo}</div>
                                                     <div style={{}}className='valueButton' onClick={() => {
                                                         navigate(`/noticias/${post.id}`)
                                                     }}>Ler Mais</div>
@@ -95,6 +95,7 @@ const News = () => {
                                         return (
                                             <div key={index} className="newsBanner" style={{}}>
                                             {/* <Skeleton style={{background: '#e3e3e3', width: '100%', height: '100%'}}/> */}
+                                            <img loading="lazy"style={{opacity: 0}}/>
                                             <div className="infoContainer">
                                                 <div className="glance" style={{}}>Em Destaque</div>
                                                 

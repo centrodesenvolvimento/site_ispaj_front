@@ -73,7 +73,7 @@ const Impact = () => {
     <main>
       <article style="--index: 0">
         <div class="article__img">
-          <img src="https://picsum.photos/1920/1080?random=1" alt="" />
+          <img loading="lazy"src="https://picsum.photos/1920/1080?random=1" alt="" />
         </div>
         <div class="article__info">
           <h2>CSS Scroll Animations</h2>
@@ -83,7 +83,7 @@ const Impact = () => {
       </article>
       <article style="--index: 1">
         <div class="article__img">
-          <img src="https://picsum.photos/1920/1080?random=2" alt="" />
+          <img loading="lazy"src="https://picsum.photos/1920/1080?random=2" alt="" />
         </div>
         <div class="article__info">
           <h2>Animate on scroll</h2>
@@ -93,7 +93,7 @@ const Impact = () => {
       </article>
       <article style="--index: 2">
         <div class="article__img">
-          <img src="https://picsum.photos/1920/1080?random=3" alt="" />
+          <img loading="lazy"src="https://picsum.photos/1920/1080?random=3" alt="" />
         </div>
         <div class="article__info">
           <h2>Parallax Effects</h2>
@@ -103,7 +103,7 @@ const Impact = () => {
       </article>
       <article style="--index: 3">
         <div class="article__img">
-          <img src="https://picsum.photos/1920/1080?random=4" alt="" />
+          <img loading="lazy"src="https://picsum.photos/1920/1080?random=4" alt="" />
         </div>
         <div class="article__info">
           <h2>Drive Keyframes</h2>
@@ -113,7 +113,7 @@ const Impact = () => {
       </article>
       <article style="--index: 4">
         <div class="article__img">
-          <img src="https://picsum.photos/1920/1080?random=5" alt="" />
+          <img loading="lazy"src="https://picsum.photos/1920/1080?random=5" alt="" />
         </div>
         <div class="article__info">
           <h2>Extra Slides</h2>
@@ -123,7 +123,7 @@ const Impact = () => {
       </article>
       <article style="--index: 5">
         <div class="article__img">
-          <img src="https://picsum.photos/1920/1080?random=6" alt="" />
+          <img loading="lazy"src="https://picsum.photos/1920/1080?random=6" alt="" />
         </div>
         <div class="article__info">
           <h2>Resize Window</h2>
@@ -133,7 +133,7 @@ const Impact = () => {
       </article>
       <article style="--index: 6">
         <div class="article__img">
-          <img src="https://picsum.photos/1920/1080?random=7" alt="" />
+          <img loading="lazy"src="https://picsum.photos/1920/1080?random=7" alt="" />
         </div>
         <div class="article__info">
           <h2>Browser support</h2>
@@ -143,7 +143,7 @@ const Impact = () => {
       </article>
       <article style="--index: 7">
         <div class="article__img">
-          <img src="https://picsum.photos/1920/1080?random=8" alt="" />
+          <img loading="lazy"src="https://picsum.photos/1920/1080?random=8" alt="" />
         </div>
         <div class="article__info">
           <h2>Your idea</h2>
@@ -153,7 +153,7 @@ const Impact = () => {
       </article>
       <article style="--index: 8">
         <div class="article__img">
-          <img src="https://picsum.photos/1920/1080?random=9" alt="" />
+          <img loading="lazy"src="https://picsum.photos/1920/1080?random=9" alt="" />
         </div>
         <div class="article__info">
           <h2>Fork</h2>
@@ -163,7 +163,7 @@ const Impact = () => {
       </article>
       <article style="--index: 9">
         <div class="article__img">
-          <img src="https://picsum.photos/1920/1080?random=10" alt="" />
+          <img loading="lazy"src="https://picsum.photos/1920/1080?random=10" alt="" />
         </div>
         <div class="article__info">
           <h2>Heart</h2>

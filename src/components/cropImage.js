@@ -60,7 +60,7 @@ const createImage = (url) =>
     // As a blob
     return new Promise((resolve) => {
       canvas.toBlob((file) => {
-        console.log(file);
+        //(file);
         resolve(URL.createObjectURL(file));
       }, "image/jpeg");
     });

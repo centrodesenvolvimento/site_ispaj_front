@@ -19,7 +19,7 @@ const Principles = ({departments, setDepartments}) => {
                 {/* <div style={{display: 'flex', height: '100%'}}>
                     <section className='values'>
                         <section className='value'>
-                            <div className='imgContainer'><img src={process.env.PUBLIC_URL + '/images/service1.png'}/></div>
+                            <div className='imgContainer'><img loading="lazy"src={process.env.PUBLIC_URL + '/images/service1.png'}/></div>
                             <div className='valueInfo'>
                                 <div className='title'>Impacto na comunidade</div>
                                 <div className='description'> Investimos em Luanda em áreas como saúde, educação, crescimento econômico e artes.</div>
@@ -54,7 +54,7 @@ const Principles = ({departments, setDepartments}) => {
                                 <div className='description'>Dedicamo-nos a apoiar o desenvolvimento académico, pessoal e profissional dos nossos alunos para garantir o seu sucesso</div>
                          </section>
                         <section className='value'>
-                            <div className='imgContainer'><img src={process.env.PUBLIC_URL + '/images/expo.png'}/></div>
+                            <div className='imgContainer'><img loading="lazy"src={process.env.PUBLIC_URL + '/images/expo.png'}/></div>
                             <div className='valueInfo'>
                                 <div className='title'>Exposições Académicas</div>
                                 <div className='description'> Estamos constantemente envolvidos em Simpósios e Exposições Académicas, promovendo a colaboração e inovação em diversas áreas.</div>
@@ -155,6 +155,6 @@ export default Principles
                     </div>
                     
                     <div className='principleImageContainer'>
-                        <img src={process.env.PUBLIC_URL + '/images/class.png'}/>
+                        <img loading="lazy"src={process.env.PUBLIC_URL + '/images/class.png'}/>
                     </div>
                 </section> */}

@@ -45,7 +45,7 @@ const Services = ({departments, setDepartments}) => {
     // useEffect(() => {
     //     axios.get(`${baseURL}/api/departamentos`)
     //     .then(res => {
-    //         console.log('res', res.data)
+    //         //('res', res.data)
     //         setDepartments([...res.data])
     //     })
     // }, [])
@@ -54,7 +54,7 @@ const Services = ({departments, setDepartments}) => {
         <div className="servicesContainer" style={{marginTop: 50}}>
             <div className='servicesContainer1'>
                 <div className='servicesHeader'>
-                    <div className="title">Descubra nossa oferta formativa</div>
+                    <div className="title">Descubra as nossas ofertas formativas</div>
                     <div className='servicesControl'>
                         <svg onClick={() => scrollLeft()} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
                           <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
@@ -66,13 +66,13 @@ const Services = ({departments, setDepartments}) => {
                 </div>
                 
                 <div className='services' ref={scrollRef}>
-                    {departments?.[2]?.info?.video ?
+                    {departments?.[2]?.info?.titulo ?
                     departments.map((item, index) => {
-                        console.log('imagem', item?.info?.imagem)
+                        //('imagem', item?.info?.imagem)
                         return (
                             <section className='service' key={index} style={{
                             }}>
-                                    <div style={{width: '100%', overflow: 'hidden', borderTopLeftRadius: 15, borderTopRightRadius: 15}}><img className='serviceImage' src={`${baseURL}/storage/images/${item.info.imagem}`}/></div>
+                                    <div style={{width: '100%', overflow: 'hidden', borderTopLeftRadius: 15, borderTopRightRadius: 15}}><img loading="lazy"className='serviceImage' src={`${baseURL}/public/storage/images/${item.info.imagem}`}/></div>
                                     <div className='serviceInfo' style={{background: 'white'}}>
                                     <div className='serviceTitle'>
                                         {item.info.titulo}</div>
@@ -118,7 +118,7 @@ const Services = ({departments, setDepartments}) => {
 }
 export default Services
 {/* <section className='service'>
-                                    <div style={{width: '100%', overflow: 'hidden', borderTopLeftRadius: 15, borderTopRightRadius: 15}}><img className='serviceImage' src={service.source}/></div>
+                                    <div style={{width: '100%', overflow: 'hidden', borderTopLeftRadius: 15, borderTopRightRadius: 15}}><img loading="lazy"className='serviceImage' src={service.source}/></div>
                                     <div className='serviceInfo'>
                                     <div className='serviceTitle'>
                                         {service.name}</div>

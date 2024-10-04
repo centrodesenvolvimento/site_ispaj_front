@@ -8,7 +8,7 @@ const EventCont = ({item, navigatePost}) => {
 
     return (
         <div className="event">
-            <div className="imgContainer"><img src={item.info.imagem}/></div>
+            <div className="imgContainer"><img loading="lazy"src={item.info.imagem}/></div>
             <div className="info">
                 {item?.info?.mesmo_dia ? <div className="date">{new Date(item.info.iniDate).getDate()}/{new Date(item.info.iniDate).getMonth()+1}/{new Date(item.info.iniDate).getFullYear()} das {item?.info?.horario}</div> :  <div className="date">De {new Date(item.info.iniDate).getDate()}/{new Date(item.info.iniDate).getMonth()+1}/{new Date(item.info.iniDate).getFullYear()} à {new Date(item.info.finalDate).getDate()}/{new Date(item.info.finalDate).getMonth()+1}/{new Date(item.info.finalDate).getFullYear()}</div>}
                 <div className="title" onClick={()=> {
@@ -22,7 +22,7 @@ const EventCont = ({item, navigatePost}) => {
         }}>{item.info.titulo}</div>
                 <div className="location">
                 <span className='iconContainer'>
-                <img src={process.env.PUBLIC_URL + '/images/pin-map.png'}/>
+                <img loading="lazy"src={process.env.PUBLIC_URL + '/images/pin-map.png'}/>
                 </span>
                 {item?.info?.localizacao}
                 </div>

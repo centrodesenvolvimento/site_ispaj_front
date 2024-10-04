@@ -11,7 +11,7 @@ const Reviews = () => {
     useEffect(() => {
         const handleSize = () => {
             setSize(window.innerWidth)
-            console.log('changing', (window.innerWidth))
+            //('changing', (window.innerWidth))
         }
         window.addEventListener('resize', handleSize)
         return () => {
@@ -74,7 +74,7 @@ const Reviews = () => {
                     return item
                 }
             }))
-            console.log('test', revs)
+            //('test', revs)
 
 
     })
@@ -90,7 +90,7 @@ const Reviews = () => {
 
                     
                 }}>
-                    {reviews.length > 5 ? 
+                    {reviews.length > 1 ? 
                     reviews.slice(0, reviews.length/2).map((review, index) => {
                         return (
                             <div key={index} class="card" >
@@ -156,7 +156,7 @@ const Reviews = () => {
                     
                 }}>
                     <div style={{display: 'flex', flexDirection: 'row', alignItems: 'stretch', justifyContent: 'stretch', flex: 1, }}>
-                    {reviews.length > 5 ? 
+                    {reviews.length > 2 ? 
                     reviews.slice(reviews.length/2).map((review, index) => {
                         return (
                             <div key={index} class="card" >

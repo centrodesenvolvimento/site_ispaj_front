@@ -74,7 +74,7 @@ const wrapperVariants = {
             .then(res => {
                 let content = [...res.data][0]
                 if (content.emolumentos) {
-                    window.open(`${baseURL}/storage/pdfs/${content.emolumentos}`)
+                    window.open(`${baseURL}/public/storage/pdfs/${content.emolumentos}`)
 
                 }else {
                 }
@@ -85,7 +85,7 @@ const wrapperVariants = {
             .then(res => {
                 let content = [...res.data][0]
                 if (content.calendario) {
-                    window.open(`${baseURL}/storage/pdfs/${content.calendario}`)
+                    window.open(`${baseURL}/public/storage/pdfs/${content.calendario}`)
 
                 }else {
                 }
@@ -95,6 +95,8 @@ const wrapperVariants = {
           }else {
             !section.includes(text) && setSection(text)
           !section.includes(text) && localStorage.setItem('path', text)
+          setOpen(false)
+
           }
           
         }}
@@ -109,7 +111,7 @@ const wrapperVariants = {
     
     const [open, setOpen] = useState(false);
     useEffect(() => {
-      console.log('open', open)
+      //('open', open)
     }, [open])
     const menuRef = useRef(null)
     useEffect(() => {
@@ -170,7 +172,7 @@ const Admissions = () => {
       window.scrollTo(0, 0)
 
       
-    }, [])
+    }, [section])
     
     const [admissionsContents, setAdmissionsContents] = useState(null)
     useEffect(() => {
@@ -181,12 +183,10 @@ const Admissions = () => {
     }, [])
     const secondContainerRef = useRef(null)
     useEffect(()=> {
-      console.log('carlos')
         localStorage.getItem('path') && setSection(localStorage.getItem('path'))
         const adjustMargin = () => {
           if (section.includes('Sugestões')) {
               const outerContainerHeight = document.querySelector('.outerContainer')?.clientHeight || 0;
-              console.log('window', outerContainerHeight + 10);
 
               if (secondContainerRef.current) {
                   secondContainerRef.current.style.marginTop = `${outerContainerHeight + 10}px`;

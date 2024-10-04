@@ -27,7 +27,7 @@ const Footer = () => {
             setInfo([...res.data][0]?.info)
         })
         .catch(err => {
-            console.log('error', err.response.data.message)
+            //('error', err.response.data.message)
         })
 
         axios.get(`${baseURL}/api/departamentos`)
@@ -35,7 +35,7 @@ const Footer = () => {
             setDepartments([...res.data])
         })
         .catch(err => {
-            console.log('error', err.response.data.message)
+            //('error', err.response.data.message)
         })
     }, []) 
       
@@ -46,7 +46,7 @@ const Footer = () => {
                     <div className='footerLeft'>
                     <div>
                         <div className='imgCont'>
-                            <img src={process.env.PUBLIC_URL + '/images/logotrans.png'}/>
+                            <img loading="lazy"src={process.env.PUBLIC_URL + '/images/logotrans.png'}/>
                         </div>
                         <span>INSTITUTO SUPERIOR POLITÉCNICO ALVORECER DA JUVENTUDE</span>
                 </div>
@@ -93,8 +93,13 @@ const Footer = () => {
                             {departments?.map((item) => {
                                 return (
                                     <div style={{cursor: 'pointer'}} className='item' onClick={() => {
-                                        navigate('/cursos')
+                                        navigate('/cursos', {
+                                            state: {
+                                                ...item
+                                            }
+                                        })
                                         localStorage.setItem('path', `${item?.info?.titulo}`)
+                                        window.location.reload()
                                     }}>{item?.info?.titulo}</div>
                                 )
                             })

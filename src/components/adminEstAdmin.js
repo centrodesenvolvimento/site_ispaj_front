@@ -51,7 +51,7 @@ const AdminEstAdmin = () => {
             })
             .then(res => {
                 setMessages(['Editado com successo'])
-                console.log('res', res.data)
+                //('res', res.data)
                 window.location.reload()
             })
         })

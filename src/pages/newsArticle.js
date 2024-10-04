@@ -35,7 +35,7 @@ const NewsArticle = () => {
             
             setArticle({
               ...res.data,
-              imagens: [...res.data.imagens].map((item) => `${baseURL}/storage/images/${item}`)
+              imagens: [...res.data.imagens].map((item) => `${baseURL}/public/storage/images/${item}`)
             })
             const viewedArticles = JSON.parse(sessionStorage.getItem('viewedArticles')) || [];
             if (![...viewedArticles]?.includes(id)){
@@ -126,7 +126,8 @@ const NewsArticle = () => {
 
           newSlideItem?.classList.replace('disabled', 'show')
           
-          console.log('new', newIndex, 'old', oldIndex)}
+          // console.log('new', newIndex, 'old', oldIndex)
+        }
 
       }
 
@@ -138,7 +139,7 @@ const NewsArticle = () => {
           prevButton?.removeEventListener("click", onPrevClick);
           nextButton?.removeEventListener("click", onNextClick);
       };
-  }, []);
+  }, [])
     // useEffect(() => {
         
     //     var count = 0;
@@ -237,7 +238,7 @@ const NewsArticle = () => {
 
     }, [])
     return (
-        <div className="abtCont">
+        <div className="abtCont" style={{overflowX: 'hidden'}}>
             <Header />
             <div className='newsArticleContainer' ref={secondContainerRef} style={{marginTop: document.querySelector('.outerContainer')?.clientHeight + 25}}>
                 <div className='firstCont'>
@@ -249,7 +250,7 @@ const NewsArticle = () => {
                               navigate('/')
                           }}>Home</span> <span>{'>'}</span><span>Notícia</span>
             </div>
-            {article ? <div className='title'>{article?.info?.titulo}</div> : <div className='title'><Skeleton height={19} count={2}/></div>}            
+            {article ? <div className='title' style={{textTransform: 'uppercase'}}>{article?.info?.titulo}</div> : <div className='title'><Skeleton height={19} count={2}/></div>}            
             {article ? <div className='date'>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
   <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
@@ -302,7 +303,7 @@ const NewsArticle = () => {
                     <figure className='show' onClick={()=> {
                       openLightbox(index)
                     }}>
-                        <img src={item} alt="Imagem"/>
+                        <img loading="lazy"src={item} alt="Imagem"/>
                     </figure>
                 )
                 }else {
@@ -310,7 +311,7 @@ const NewsArticle = () => {
                     <figure className='disabled' onClick={()=> {
                       openLightbox(index)
                     }}>
-                        <img src={item} alt="Imagem"/>
+                        <img loading="lazy"src={item} alt="Imagem"/>
                     </figure>
                 )
                 }
@@ -386,7 +387,7 @@ const NewsArticle = () => {
                         return (
                           <div className='post' key={index}>
                       <div className='imgContainer' style={{overflow: 'hidden'}}>
-                        <img src={`${baseURL}/storage/images/${[...item.imagens][0]}`}/>
+                        <img loading="lazy"src={`${baseURL}/public/storage/images/${[...item.imagens][0]}`}/>
                       </div>
                       <div className='info' style={{}}>
                         <div className='postTitle'>{item.info.titulo}</div>

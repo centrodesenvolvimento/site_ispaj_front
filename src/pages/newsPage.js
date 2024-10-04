@@ -19,7 +19,6 @@ import Timings from "../components/timings"
 import HealthPage from "../components/healthPage"
 import SocialsPage from "../components/socialsPage"
 import EnginesPage from "../components/enginesPage"
-import '../css/health.css'
 import {
     Accordion,
     AccordionContent,
@@ -129,13 +128,13 @@ const NewsPage = () => {
     }, [])
     useEffect(() => {
         if (searched.length > 0){
-            console.log('changed', posts)
+            //('changed', posts)
             const lastPostIndex = currentPage * postPerPage
             const firstPostIndex = lastPostIndex - postPerPage
             const currentPosts = posts2.slice(firstPostIndex, lastPostIndex)
             setPosts1(currentPosts)
         }else {
-            console.log('changed', posts)
+            //('changed', posts)
             const lastPostIndex = currentPage * postPerPage
             const firstPostIndex = lastPostIndex - postPerPage
             const currentPosts = posts2.slice(firstPostIndex, lastPostIndex).filter((item) => item.id != posts[0]?.id && item.id != posts[1]?.id)
@@ -191,11 +190,11 @@ useEffect(() => {
     };
 })
     return (
-        <div className="abtCont">
+        <div className="abtCont" style={{}}>
             <Toaster />
             <Header />
             {/* <div className="" style={{marginTop: 0, background: '#eeeeee', aspectRatio: 4/1.5, width: '100%', maxHeight: 300}}>
-            <img style={{objectFit: 'cover', width: '100%', height: '100%'}} src={process.env.PUBLIC_URL + '/images/ispaj.png'}/></div> */}
+            <img loading="lazy"style={{objectFit: 'cover', width: '100%', height: '100%'}} src={process.env.PUBLIC_URL + '/images/ispaj.png'}/></div> */}
             <div className="aboutFirst" ref={secondContainerRef} style={{marginTop: document.querySelector('.outerContainer')?.clientHeight + 35, maxWidth: 1600}}>
               <div className="navigation">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-map-fill" viewBox="0 0 16 16">
@@ -251,7 +250,7 @@ useEffect(() => {
                                 if (!filter.includes('top')&& posts.length > 2){
                                     setFilter('top')
                                     let p = posts
-                                    console.log('zodf', posts2.sort((a, b) => b.info.views - a.info.views).map((item)=>item.info.views))
+                                    //('zodf', posts2.sort((a, b) => b.info.views - a.info.views).map((item)=>item.info.views))
                                     setPosts2(posts2.sort((a, b) => new Date(b?.info?.data) - new Date(a?.info?.data)).sort((a, b) => b.info.views - a.info.views)
                                 )
                                 setCurrentPage(1)
@@ -282,10 +281,10 @@ useEffect(() => {
                     
                     <div className="infoContainer">
                         <div className="glance">Em Destaquee</div>
-                        {posts.length > 2 && <img style={{opacity: 1}} src={`${baseURL}/storage/images/${posts[0]?.imagens[0]}`}/>}
+                        {posts.length > 2 && <img loading="lazy"style={{opacity: 1}} src={`${baseURL}/public/storage/images/${posts[0]?.imagens[0]}`}/>}
                         <div className='info'>
                             {posts.length > 2 && <div className='postDate'>{new Date(posts[0]?.info?.data).getDate()}/{new Date(posts[0]?.info?.data).getMonth() + 1}/{new Date(posts[0]?.info?.data).getFullYear()}</div>}
-                            {posts.length > 2 && <div style={{marginBottom: 10}} className='postTitle'>{posts[0]?.info?.titulo}</div>}
+                            {posts.length > 2 && <div style={{marginBottom: 10, textTransform: 'uppercase'}} className='postTitle'>{posts[0]?.info?.titulo}</div>}
                             <div onClick={() => {
                                 if (posts.length > 2){
                                     navigate(`/noticias/${posts[0]?.id}`)
@@ -295,7 +294,7 @@ useEffect(() => {
                     </div>
                     </div>
                     <div className="newsBanner">
-                    {posts.length > 2 && <img style={{opacity: 1}} src={`${baseURL}/storage/images/${posts[1]?.imagens[0]}`}/>}
+                    {posts.length > 2 && <img loading="lazy"style={{opacity: 1}} src={`${baseURL}/public/storage/images/${posts[1]?.imagens[0]}`}/>}
                     <div className="infoContainer">
                         <div className="glance">Em Destaque</div>
 
@@ -342,7 +341,7 @@ useEffect(() => {
                             
                             forcePage={currentPage-1}
                             pageRangeDisplayed={5}
-                            pageCount={posts1.slice(0, Math.ceil((posts1.length) /postPerPage)).map((item, index) => index + 1)}
+                            pageCount={posts1.slice(0, Math.ceil((posts1.length) /postPerPage)).map((item, index) => index + 1).length}
                             previousLabel="<"
                             renderOnZeroPageCount={null}
                             containerClassName={'pagination'}
@@ -360,12 +359,12 @@ useEffect(() => {
                         {posts1.map((post, index) => {
                             return (
                                 <div key={index} className="newsBanner1" style={{}}>
-                        <img src={`${baseURL}/storage/images/${[...post.imagens][0]}`}/>
+                        <img loading="lazy"src={`${baseURL}/public/storage/images/${[...post.imagens][0]}`}/>
                         <div className="infoContainer">
                             <div className="glance">Em Destaque</div>
                             <div className='info'>
                                 <div className='postDate'>{new Date(post?.info?.data).getDate()}/{new Date(post?.info?.data).getMonth() + 1}/{new Date(post?.info?.data).getFullYear()}</div>
-                                <div style={{marginBottom: 10}} className='postTitle'>{post?.info?.titulo}</div>
+                                <div style={{marginBottom: 10, textTransform: 'uppercase'}} className='postTitle'>{post?.info?.titulo}</div>
                                 <div style={{}}className='valueButton' onClick={() => {
                                     // navigate(`/noticias/${post.id}`)
                                     navigate(`/noticias/${post.id}`)
@@ -391,7 +390,7 @@ useEffect(() => {
                             
                             forcePage={currentPage-1}
                             pageRangeDisplayed={5}
-                            pageCount={posts1.slice(0, Math.ceil((posts1.length) /postPerPage)).map((item, index) => index + 1)}
+                            pageCount={posts1.slice(0, Math.ceil((posts1.length) /postPerPage)).map((item, index) => index + 1).length}
                             previousLabel="<"
                             renderOnZeroPageCount={null}
                             containerClassName={'pagination'}
@@ -423,7 +422,7 @@ useEffect(() => {
                             
                             forcePage={currentPage-1}
                             pageRangeDisplayed={5}
-                            pageCount={posts2.slice(0, Math.ceil((posts2.length -2) /postPerPage)).map((item, index) => index + 1)}
+                            pageCount={posts2.slice(0, Math.ceil((posts2.length -2) /postPerPage)).map((item, index) => index + 1).length}
                             previousLabel="<"
                             renderOnZeroPageCount={null}
                             containerClassName={'pagination'}
@@ -442,12 +441,12 @@ useEffect(() => {
                         posts1.map((post, index) => {
                             return (
                                 <div key={index} className="newsBanner1" style={{}}>
-                        <img src={`${baseURL}/storage/images/${[...post.imagens][0]}`}/>
+                        <img loading="lazy"src={`${baseURL}/public/storage/images/${[...post.imagens][0]}`}/>
                         <div className="infoContainer">
                             <div className="glance">Em Destaque</div>
                             <div className='info'>
                                 <div className='postDate'>{new Date(post?.info?.data).getDate()}/{new Date(post?.info?.data).getMonth() + 1}/{new Date(post?.info?.data).getFullYear()}</div>
-                                <div style={{marginBottom: 10}} className='postTitle'>{post?.info?.titulo}</div>
+                                <div style={{marginBottom: 10, textTransform: 'uppercase'}} className='postTitle'>{post?.info?.titulo}</div>
                                 <div style={{}}className='valueButton' onClick={() => {
                                     // navigate(`/noticias/${post.id}`)
                                     navigate(`/noticias/${post.id}`)
@@ -460,7 +459,7 @@ useEffect(() => {
                         : placeholder.concat(placeholder).map((post, index) => {
                             return (
                                 <div key={index} className="newsBanner1" style={{}}>
-                                            <img style={{opacity: 0}} />
+                                            <img loading="lazy"style={{opacity: 0}} />
                                             <div className="infoContainer" style={{background: 'white'}}>
                                                 <div className="glance">Em Destaque</div>
                                                 <div className='info'>
@@ -487,7 +486,7 @@ useEffect(() => {
                                 })
                             }}
                             pageRangeDisplayed={5}
-                            pageCount={posts2.slice(0, Math.ceil((posts2.length - 2)/postPerPage)).map((item, index) => index + 1)}
+                            pageCount={posts2.slice(0, Math.ceil((posts2.length - 2)/postPerPage)).map((item, index) => index + 1).length}
                             forcePage={currentPage-1}
 
                             previousLabel="<"

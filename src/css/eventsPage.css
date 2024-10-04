@@ -10,69 +10,54 @@
     display: flex;
     flex-direction: row;
     padding: 0 20px;
-    @media screen and (width < 1100px) {
-        flex-direction: column;
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-    @media screen and (width < 700px){
-        padding-top: 30px;
-    }
-    @media screen and (width < 440px) {
-        
-    }
+}
+.firstSection {
+    flex: 1;
+}
 
-    
-    > .firstSection {
-        flex: 1;
-        
-        > .search {
-            background-color: white;
-            display: flex;
-            flex-direction: row;
-            height: 45px;
-            align-items: center;
-            margin-bottom: 15px;
-            border: 1px solid #dfdfdf;
-            border-radius: 5px;
-            overflow: hidden;
-            > span {
-                background-color: #ebebeb;
-                padding: 10px;
-                cursor: pointer;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                &:hover {
-                    background-color: #ebebeb83;
-                }
-                
-            }
-            >input {
-                flex: 1;
-                height: 100%;
-                border: 0;
-                outline: none;
-                padding: 0 5px;
-            }
-        }
+.firstSection .search {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    height: 45px;
+    align-items: center;
+    margin-bottom: 15px;
+    border: 1px solid #dfdfdf;
+    border-radius: 5px;
+    overflow: hidden;
+}
 
-    }
-    > .secondSection {
-        flex: 3;
-    }
+.firstSection .search span {
+    background-color: #ebebeb;
+    padding: 10px;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.firstSection .search span:hover {
+    background-color: #ebebeb83;
+}
+
+.firstSection .search input {
+    flex: 1;
+    height: 100%;
+    border: 0;
+    outline: none;
+    padding: 0 5px;
+}
+
+.secondSection {
+    flex: 3;
 }
 .react-calendar {
     border: 0.5px solid #ebebeb;
     border-radius: 5px;
     overflow: hidden;
-    @media screen and (width < 440px) {
-
-    }
-
-    
 }
+
 .react-calendar__navigation {
     background-color: #ebebeb; /* Change to your desired color */
     padding: 10px;
@@ -80,41 +65,42 @@
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 5px;
-  }
-  
-  .react-calendar__navigation__label {
+}
+
+.react-calendar__navigation__label {
     font-size: 16px;
     color: grey;
     font-weight: bold;
-  }
-  .calendar-buttons {
+}
+
+.calendar-buttons {
     color: orange;
     transform: scale(1.5);
-  }
- 
-  .react-calendar__tile {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 60px;
-  background-color: white;
-  font-size: 15px;
+}
 
+.react-calendar__tile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    background-color: white;
+    font-size: 15px;
 }
 
 .react-calendar__tile--now {
-  font-weight: 700;
-  color: #f19d00;
+    font-weight: 700;
+    color: #f19d00;
 }
-
 
 .other-month {
-  background-color: #ebebeb;
-  color: black;
+    background-color: #ebebeb;
+    color: black;
 }
+
 .react-calendar__month-view__weekdays {
     background: white;
-  }
+}
+
 .react-calendar__month-view__weekdays__weekday {
     color: #333;
     padding: 10px 0;
@@ -124,21 +110,25 @@
     font-weight: bold;
     font-size: 14.5px;
     text-decoration: none;
-    
 }
+
 .highlighted-date,
-.react-calendar__tile--active, .highlighted-date {
+.react-calendar__tile--active,
+.highlighted-date {
     background-color: #f19d00;
     color: white;
 }
+
 .selected-month {
     background: #f19d00;
     color: white;
 }
+
 .selected-year {
     background: #f19d00;
     color: white;
 }
+
 .react-calendar__tile:hover {
     background-color: #ffb937;
     color: white;
@@ -146,237 +136,280 @@
 .secondSection {
     overflow-y: auto;
     box-sizing: border-box;
-    height: 100Vh;
+    height: 80vh; /* Height corrected to 80vh */
     display: flex;
     flex-direction: column;
     gap: 20px;
-    height: 80vh;
     position: relative;
     padding-bottom: 20px;
-    &::-webkit-scrollbar {
-        width: 10px;
-        
-        
+}
+
+.secondSection::-webkit-scrollbar {
+    width: 10px;
+}
+
+.secondSection::-webkit-scrollbar-thumb {
+    background-color: orange;
+    border-radius: 100px;
+    height: 10px;
+}
+
+.secondSection::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 100px;
+}
+
+.secondSection::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+.top {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #f19d00;
+    flex-wrap: wrap;
+}
+
+.top .section {
+    margin-right: 10px;
+    padding: 7px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    border: 1px solid #dadada;
+}
+
+.top .section:hover {
+    background-color: #ffb731;
+    color: white;
+}
+
+.top .section.selected-section {
+    background-color: #f19d00;
+    border: 0;
+    color: white;
+    font-weight: 500;
+}
+
+.top .section:hover {
+    background-color: #ffb731;
+    color: white;
+}
+
+.event {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(151, 151, 151, 0.308);
+}
+
+.event .imgContainer {
+    flex: 0.5;
+    background-color: #efefef;
+    background-image: linear-gradient(90deg, rgba(239,239,239,1.00) 0%, rgba(221,221,221,1.00) 40%, rgba(239,239,239,1.00) 80%, rgba(239,239,239,1.00) 97%);
+    background-repeat: no-repeat;
+    background-size: 50%;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: loadingShimmer;
+    animation-timing-function: linear;
+}
+
+@keyframes loadingShimmer {
+    0% {
+        background-position: -100% 0;
     }
-    &::-webkit-scrollbar-thumb {
-        background-color: orange;
-        border-radius: 100px;
-        height: 10px;
-        
+    100% {
+        background-position: 200% 0;
     }
-    &::-webkit-scrollbar-track {
-        background-color: #f1f1f1;
-        border-radius: 100px;
+}
+
+.event .imgContainer img {
+    aspect-ratio: 1/1;
+    max-width: 230px;
+    border-radius: 10px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    object-fit: cover;
+}
+
+.event .info::before {
+    position: absolute;
+    content: "";
+    border-top: solid 8px #ffa500;
+    max-width: 300px;
+    width: 100%;
+    min-width: 100px;
+    top: 0;
+    left: 0;
+    transition: 0.3s ease-in-out;
+}
+
+.event .info {
+    flex: 3;
+    padding: 20px 15px 10px;
+    font-size: 16px;
+    background-color: image; /* This might need to be updated */
+}
+
+.event .info:hover::before {
+    max-width: 100%;
+}
+
+.event .info .date {
+    color: grey;
+}
+
+.event .info .title {
+    font-weight: 700;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* Number of lines to display */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #023047;
+    text-decoration: underline;
+    transition: 0.1s ease-in-out;
+    cursor: pointer;
+}
+
+.event .info .title:hover {
+    color: #0082c4;
+}
+
+.event .info .location {
+    display: inline-flex;
+    margin-top: 20px;
+    gap: 15px;
+    align-items: center;
+    padding: 5px 10px;
+    border: 1px solid #d3d3d3;
+    border-radius: 50px;
+    border-style: dashed;
+    font-size: 15px;
+}
+
+.event .info .location .iconContainer {
+    background-color: #E3E6DD;
+    height: 50px;
+    width: 50px;
+    border-radius: 500px;
+    display: flex;
+    justify-content: center;
+}
+
+.event .info .location .iconContainer img {
+    width: 40px;
+    align-self: center;
+    height: 40px;
+}
+
+.subTitle {
+    font-size: 16px;
+    color: grey;
+    font-weight: 500;
+}
+
+.noResults {
+    margin-bottom: 20px;
+}
+@media screen and (max-width: 510px) {
+    .secondSection .event {
+        flex-direction: column;
+        position: relative;
     }
-    &::-webkit-scrollbar-hover {
-        background-color: #555;
+
+    .secondSection .event .imgContainer {
+        background-color: red;
+        flex: 100;
     }
-    @media screen and (width < 1100px) {
+
+    .secondSection .event .imgContainer img {
+        aspect-ratio: 4/2;
+        max-width: 100%;
+    }
+}
+
+.eventsAccordion .section {
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #dfdfdf;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.eventsAccordion .section .title {
+    font-weight: 500;
+    font-size: 15px;
+    margin: 0;
+}
+
+.eventsAccordion .audiences {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 1100px) {
+    .eventsAccordion .audiences {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+.eventsAccordion .audience {
+    color: rgb(92, 92, 92);
+    font-weight: 400;
+}
+
+.eventsAccordion .audience label {
+    font-size: 13.5px;
+    font-weight: 400;
+}
+
+/* Media queries go here if needed */
+@media screen and (max-width: 1100px) {
+    .secondSection {
         height: 100%;
     }
-
-    .top {
-        display: flex;
-        flex-direction: row;
-        border-bottom: 1px solid #f19d00;
-        flex-wrap: wrap;
-        > .section {
-            margin-right: 10px;
-            padding: 7px;
-            cursor: pointer;
-            transition: 0.2s ease-in-out;
-            border: 1px solid #dadada;
-            @media screen and (width > 440px) {
-                border-bottom: 0;
-
-            }
-            @media screen and (width < 1100px){
-                margin-top: 5px;
-            }
-            &:hover {
-                background-color: #ffb731;
-                color: white;
-            }
-        }
-        > .selected-section {
-            background-color: #f19d00;
-            border: 0;
-            color: white;
-            font-weight: 500;
-        }
-    }
-     .event {
-        display: flex;
-        flex-direction: row;
-        background-color: white;
-        box-shadow: 0px 0px 10px rgba(151, 151, 151, 0.308);
-        
-        > .imgContainer {
-            flex: 0.5;
-            background-color: #5c5c5c;
-            background-image: linear-gradient(90deg, rgba(91,91,91,1.00) 0%,rgba(112,112,112,1.00) 40%,rgba(91,91,91,1.00) 80%,rgba(91,91,91,1.00) 97%);
-            animation-duration: 1s;
-              animation-fill-mode: forwards;
-              animation-iteration-count: infinite;
-              animation-name: loadingShimmer;
-              animation-timing-function: linear;
-              background-color: #efefef;
-              background-image: linear-gradient(90deg, rgba(239,239,239,1.00) 0%,rgba(221,221,221,1.00) 40%,rgba(239,239,239,1.00) 80%,rgba(239,239,239,1.00) 97%);
-              background-repeat: no-repeat;
-              background-size: 50%;
-            @keyframes loadingShimmer {
-                0% {
-                  background-position: -100% 0;
-                }
-              
-                100% {
-                  background-position: 200% 0;
-                }
-              }
-            > img {
-                aspect-ratio: 1/1;
-                max-width: 230px;
-                border-radius: 10px;
-                border-top-right-radius: 0;
-                border-bottom-right-radius: 0;
-                object-fit: cover;
-                
-            }
-        }
-        
-        > .info::before {
-            position: absolute;
-            content: "";
-            border-top: solid 8px #ffa500;
-            max-width: 300px;
-            width: 100%;
-            min-width: 100px;
-            top: 0;
-            left: 0;
-            transition: 0.3s ease-in-out;
-        }
-        > .info {
-            flex: 3;
-            padding: 10px 0;
-            padding-right: 10px;
-            font-size: 16px;
-            padding-left: 15px;
-            padding-top: 20px;
-            background-color: image;
-            &:hover {
-                &::before {
-                    max-width: 100%;
-                }
-            }
-            .date {
-                color: grey;
-            }
-            .title {
-                font-weight: 700;
-                display: -webkit-box;
-                -webkit-box-orient: vertical;
-                -webkit-line-clamp: 2; /* Number of lines to display */
-                overflow: hidden;
-                text-overflow: ellipsis;
-                color: #023047;
-                text-decoration: underline;
-                transition: 0.1s ease-in-out;
-                cursor: pointer;
-                &:hover {
-                    color: #0082c4;
-                }
-            }
-            .location {
-                display: inline-flex;
-                margin-top: 20px;
-                gap: 15px;
-                align-items: center;
-                padding: 5px 10px;
-                border: 1px solid #d3d3d3;
-                border-radius: 50px;
-                border-style: dashed;
-                font-size: 15px;
-                .iconContainer {
-                    background-color: #E3E6DD;
-                    height: 50px;
-                    width: 50px;
-                    border-radius: 500px;
-                    display: flex;
-                    justify-content: center;
-                    
-            
-                    img {
-                        width: 40px;
-                        align-self: center;
-                        height: 40px
-                    }
-                }
-            }
-        }
-    }
-
-    .subTitle {
-        font-size: 16px;
-        color: grey;
-        font-weight: 500;
-    }
-    .noResults {
-        margin-bottom: 20px;
-    }
 }
 
-
-@media screen and (width < 510px) {
-    .secondSection {
-        .event {
-            flex-direction: column;
-            position: relative;            
-            
-            > .imgContainer {
-                background-color: red;
-                flex: 100;
-                > img {
-                    aspect-ratio: 4/2;
-                    max-width: 100%;
-                }
-            }
-            }
-    }
+@media screen and (max-width: 440px) {
+    /* Add styles for screens smaller than 440px */
 }
 
-.eventsAccordion {
-    .section {
-        padding: 10px;
-        background-color: white;
-        border: 1px solid #dfdfdf;
-        border-radius: 5px;
-        margin-bottom: 20px;
-        margin-top: 15px;
-        cursor: pointer;
-        .title {
-            font-weight: 500;
-            font-size: 15px;
-            margin: 0;
-        }
-    }
-    .audiences {
-        display: flex;
+/* Media queries go here if needed */
+@media screen and (max-width: 440px) {
+    /* Add styles for screens smaller than 440px */
+}
+
+/* Media queries go here if needed */
+@media screen and (max-width: 1100px) {
+    /* Add styles for screens smaller than 1100px */
+}
+
+@media screen and (max-width: 700px) {
+    /* Add styles for screens smaller than 700px */
+}
+
+@media screen and (max-width: 440px) {
+    /* Add styles for screens smaller than 440px */
+}
+
+@media screen and (max-width: 1100px) {
+    .eventsPageContainer {
         flex-direction: column;
-        gap: 10px;
-        margin-top: 10px;
-        @media screen and (width < 1100px) {
-            flex-direction: row;
-            flex-wrap: wrap;
-        }
-
-    }
-    .audience {
-        color: rgb(92, 92, 92);
-        font-weight: 400;
-
-        label {
-            font-size: 13.5px;
-            font-weight: 400;
-        }
+        padding-left: 15px;
+        padding-right: 15px;
     }
 }
+
+@media screen and (max-width: 700px) {
+    .eventsPageContainer {
+        padding-top: 30px;
+    }
+}
+

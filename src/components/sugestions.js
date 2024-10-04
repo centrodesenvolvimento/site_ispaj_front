@@ -87,11 +87,11 @@ const Sugestions = () => {
             <div className="container1" style={{width: '100%', height: '100%'}}>
                 <div className="sugestionsContainer" style={{maxWidth: '100%', margin: 0}}>
                     <section className="leftSide">
-                            <img src={process.env.PUBLIC_URL + '/images/post2.png'}/>
+                            <img loading="lazy"src={process.env.PUBLIC_URL + '/images/post2.png'}/>
                             <div className="info">
                                 <div className='logoContainer' >
                 
-                                    <img onClick={() => location.pathname != '/' && navigate('/')} alt='logo' className='logo' src={process.env.PUBLIC_URL + '/images/logotrans.png'}/>
+                                    <img loading="lazy"onClick={() => location.pathname != '/' && navigate('/')} alt='logo' className='logo' src={process.env.PUBLIC_URL + '/images/logotrans.png'}/>
                                     <div onClick={() => location.pathname != '/' && navigate('/')} className='logoTextCont'>
                                         <div className='logoText'>instituto superior politécnico alvorecer da juventude</div>
                                     </div>

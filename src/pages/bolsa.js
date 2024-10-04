@@ -46,7 +46,7 @@ const Bolsa = () => {
         // }else {
             
         }else {
-            console.log('doc', selectedDoc)
+            //('doc', selectedDoc)
             axios.post(`${baseURL}/api/send-email`, {
                 name: `Nome: ${name}; Email: ${email};Contacto: ${contacto}`,
                 email: 'ricardoyosai1610@gmail.com',
@@ -60,7 +60,7 @@ const Bolsa = () => {
                 },
             })
             .then(res => {
-                console.log('response', res.data)
+                //('response', res.data)
                 setName('')
                 setDateAdded(new Date())
                 setNacionalidade('')
@@ -116,11 +116,11 @@ const Bolsa = () => {
                 </div>
                 <div className="bolsasContainer" style={{maxWidth: '100%', margin: 0}}>
                     <section className="leftSide">
-                            <img src={process.env.PUBLIC_URL + '/images/lab.png'}/>
+                            <img loading="lazy"src={process.env.PUBLIC_URL + '/images/lab.png'}/>
                             <div className="info">
                                 <div className='logoContainer' >
                 
-                                    <img onClick={() => location.pathname != '/' && navigate('/')} alt='logo' className='logo' src={process.env.PUBLIC_URL + '/images/logotrans.png'}/>
+                                    <img loading="lazy"onClick={() => location.pathname != '/' && navigate('/')} alt='logo' className='logo' src={process.env.PUBLIC_URL + '/images/logotrans.png'}/>
                                     <div onClick={() => location.pathname != '/' && navigate('/')} className='logoTextCont'>
                                         <div className='logoText'>instituto superior politécnico alvorecer da juventude</div>
                                     </div>
@@ -212,7 +212,7 @@ const Bolsa = () => {
                                         //     const reader = new FileReader()
                                         //     reader.onload = (event) => {
                                         //         setSelectedImage(event.target.result)
-                                        //         console.log('data', event.target.result)
+                                        //         //('data', event.target.result)
                                         //     }
                                         //     reader.readAsDataURL(file)
                                         // }else {
@@ -221,7 +221,7 @@ const Bolsa = () => {
                                     }}/>
                                    {videoPreview &&
                                    <div className='selectedVideo'>
-                                    <video src={URL.createObjectURL(videoPreview)} loop muted controls />
+                                    <video loading="lazy"  src={URL.createObjectURL(videoPreview)} loop muted controls />
                                     </div>}
                                     */}
                                 </div>

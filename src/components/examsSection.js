@@ -9,55 +9,55 @@ const ExamsSection = ({admissionsContents}) =>  {
         {
             title: "Engenharia Recursos Naturais e Ambiente",
             description: "Aprovado 9/7/2015",
-            content: process.env.PUBLIC_URL + '/pdf/first.pdf',
+            // content: process.env.PUBLIC_URL + '/pdf/first.pdf',
             image: null
         },
         {
             title: "Arquitectura e Urbanismo, Engenharia Civil, Engenharia Industrial",
             description: "Aprovado 25/5/2015",
-            content: process.env.PUBLIC_URL + "/pdf/second.pdf",
+            // content: process.env.PUBLIC_URL + "/pdf/second.pdf",
             image: null
         },
         {
             title: "Sistemas Eléctricos, Engenharia Informática",
             description: "Aprovado 09/07/2015",
-            content: process.env.PUBLIC_URL + "/pdf/second.pdf",
+            // content: process.env.PUBLIC_URL + "/pdf/second.pdf",
             image: null
         },
         {
             title: "Análises Clínicas e Saúde Pública, Cardiopneumologia, Enfermagem",
             description: "Aprovado 8/6/2015",
-            content: process.env.PUBLIC_URL + "/pdf/third.pdf",
+            // content: process.env.PUBLIC_URL + "/pdf/third.pdf",
             image: null
         },
         {
             title: "Fisioterapia, Odontologia e Radiologia",
             description: "Aprovado 17/6/2015",
-            content: process.env.PUBLIC_URL + "/pdf/third.pdf",
+            // content: process.env.PUBLIC_URL + "/pdf/third.pdf",
             image: null
         },
         {
             title: "Psicologia",
             description: "Aprovado 9/7/2015",
-            content: process.env.PUBLIC_URL + "/pdf/fourth.pdf",
+            // content: process.env.PUBLIC_URL + "/pdf/fourth.pdf",
             image: null
         },
         {
             title: "Relações Internacionais",
             description: "Aprovado 9/7/2015",
-            content: process.env.PUBLIC_URL + "/pdf/fifth.pdf",
+            // content: process.env.PUBLIC_URL + "/pdf/fifth.pdf",
             image: null
         },
         {
             title: "Ciências Económicas e Gestão Estatística, Gestão de Informação",
             description: "Aprovado 8/6/2015",
-            content: process.env.PUBLIC_URL + "/pdf/sixth.pdf",
+            // content: process.env.PUBLIC_URL + "/pdf/sixth.pdf",
             image: null
         },
         
     ])
     useEffect(() => {
-        console.log('admissions', admissionsContents)
+        //('admissions', admissionsContents)
     }, [])
     return (
         <div className='sectionContainer'>
@@ -81,12 +81,12 @@ const ExamsSection = ({admissionsContents}) =>  {
                     return (
                         <div className='regContainer'>
                             <div>
-                            <div className='imgContainer'><img src={process.env.PUBLIC_URL + '/images/logoTrans.png'}/></div>
+                            <div className='imgContainer'><img loading="lazy"src={process.env.PUBLIC_URL + '/images/logotrans.png'}/></div>
                             </div>
                             <div className='description'>Aprovado {format(new Date(item.data), 'dd/MM/yyyy')}</div>
                             <div className='title'>{item.nome}</div>
                             <div onClick={() => {
-                                window.open(`${baseURL}/storage/pdfs/${item.documento}`, '_blank')
+                                window.open(`${baseURL}/public/storage/pdfs/${item.documento}`, '_blank')
                             }} className='regButton'>Ver PDF</div>
                         </div>
                     )
@@ -95,11 +95,13 @@ const ExamsSection = ({admissionsContents}) =>  {
                     return (
                         <div className='regContainer'>
                             <div>
-                            <div className='imgContainer'><img src={process.env.PUBLIC_URL + '/images/logoTrans.png'}/></div>
+                            <div className='imgContainer'><img loading="lazy"src={process.env.PUBLIC_URL + '/images/logotrans.png'}/></div>
                             </div>
                             <Skeleton className='description'/>
                             <Skeleton className='title'/>
-                            <Skeleton className='regButton' style={{margin: 'auto', alignSelf: 'center'}}/>
+                            <div style={{width: 100, margin: 'auto'}}>
+                                <Skeleton className='regButton' style={{margin: 'auto', alignSelf: 'center', width: 100}}/>
+                            </div>
                         </div>
                     )
                 })}

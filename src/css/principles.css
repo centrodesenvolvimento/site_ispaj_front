@@ -2,8 +2,8 @@
     display: block;
     overflow: auto;
     box-sizing: border-box;
-
 }
+
 .principlesContainer {
     width: 100%;
     box-sizing: border-box;
@@ -12,20 +12,12 @@
     background-color: transparent;
     padding: 0px 15px;
     padding-top: 80px;
-    /* background-image: linear-gradient(#ffffff9f, #ffffff9f), url('../images/Hexagon.svg'); */
     background-size: 200px;
     background-repeat: repeat;
-    @media screen and (width < 700px){
-        padding-top: 30px;
-    }
-    @media screen and (width < 440px) {
-        padding-left: 0;
-        padding-right: 0;
-    }
 }
+
 .principlesContainer1 {
     height: 100%;
-    
     align-items: center;
     padding: 5px 10px;
     max-width: 1600px;
@@ -34,32 +26,15 @@
     margin-right: auto;
     gap: 30px;
     box-sizing: border-box;
-    @media screen and (width < 440px) {
-        padding-left: 0;
-        padding-right: 0;
-    }
-
 }
+
 .principlesContainer1 > .title {
     font-size: 28px;
     font-weight: 500;
     position: relative;
     padding: 0 15px;
-    @media screen and (width < 900px) {
-        font-size: 26px;
-    }
-    @media screen and (width < 650px) {
-        font-size: 26px;
-    }
-    @media screen and (width < 600px) {
-        font-size: 24px;
-    }
-    @media screen and (width < 440px) {
-        padding: 0 15px;
+}
 
-    }
-    
-}
 .principlesContainer1 > .title::before {
     position: absolute;
     content: "";
@@ -69,34 +44,8 @@
     width: 100%;
     min-width: 100px;
     top: -10px;
- 
 }
-/* .principlesContainer1 > .title {
-    font-size: 28px;
-    font-weight: 500;
-    position: relative;
-    padding: 0 10px;
-    @media screen and (width < 900px) {
-        font-size: 30px;
-    }
-    @media screen and (width < 650px) {
-        font-size: 26px;
-    }
-    @media screen and (width < 600px) {
-        font-size: 25px;
-    }
-}
-.principlesContainer1 > .title::before {
-    position: absolute;
-    content: "";
-    border-top: solid 8px orange;
-    border-radius: 100px;
-    max-width: 300px;
-    width: 100%;
-    min-width: 100px;
-    top: -10px;
-    
-} */
+
 .principle {
     background-color: white;
     display: flex;
@@ -107,14 +56,8 @@
     border-radius: 10px;
     gap: 25px;
     margin: 0 10px;
-    @media screen and (width < 860px) {
-        flex-direction: column;
-        gap: 40px;
-    }
-    @media screen and (width < 460px) {
-        flex: 1;
-    }
 }
+
 .messageContainer {
     background-color: white;
     display: flex;
@@ -127,153 +70,125 @@
     margin: 0 10px;
     margin-top: 15px;
     height: 400px;
-    @media screen and (width < 860px) {
-        height: 100%;
+}
+
+.messageContainer  .serviceButton {
+    transition: 0.3s ease-in-out;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.messageContainer:hover img {
+    filter: brightness(0.5);
+    transform: scale(1.2);
+}
+
+.messageContainer:hover  .serviceButton {
+    color: orange;
+    background-color: white;
+    
+}
+
+.messageContainer  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    flex: 1;
+    padding: 0 0;
+    padding-top: 40px;
+    justify-content: space-around;
+}
+
+.messageContainer  .messageImageContainer {
+    flex: 1;
+    overflow: hidden;
+    background-color: #5c5c5c;
+    background-image: linear-gradient(90deg, rgba(91, 91, 91, 1.00) 0%, rgba(112, 112, 112, 1.00) 40%, rgba(91, 91, 91, 1.00) 80%, rgba(91, 91, 91, 1.00) 97%);
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: loadingShimmer;
+    animation-timing-function: linear;
+    background-color: #efefef;
+    background-image: linear-gradient(90deg, rgba(239, 239, 239, 1.00) 0%, rgba(221, 221, 221, 1.00) 40%, rgba(239, 239, 239, 1.00) 80%, rgba(239, 239, 239, 1.00) 97%);
+    background-repeat: repeat;
+    background-size: 50%;
+    height: 100%;
+}
+
+@keyframes loadingShimmer {
+    0% {
+        background-position: -100% 0;
     }
-    .serviceButton {
-        transition: 0.3s ease-in-out;
+    100% {
+        background-position: 200% 0;
     }
-    &:hover {
-        img {
-            filter: brightness(0.5);
-            transform: scale(1.2);
-        }
-        
-        .serviceButton {
-            background-color: orange;
-            color: white;
-        }
-    }
-    @media screen and (width < 860px) {
-        flex-direction: column-reverse;
-        gap: 40px;
-    }
-    @media screen and (width < 460px) {
-        flex: 1;
-    }
-    .info {
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-        flex: 1;
-        padding: 0px 0px;
-        
-        padding-top: 40px;
-        justify-content: space-around;
-        @media screen and (width < 860px) {
-            padding-top: 0px;
-            padding-bottom: 20px;
-        }
-        
-    }
-    .messageImageContainer {
-        flex: 1;
-        overflow: hidden;
-        background-color: #5c5c5c;
-            background-image: linear-gradient(90deg, rgba(91,91,91,1.00) 0%,rgba(112,112,112,1.00) 40%,rgba(91,91,91,1.00) 80%,rgba(91,91,91,1.00) 97%);
-            animation-duration: 1s;
-              animation-fill-mode: forwards;
-              animation-iteration-count: infinite;
-              animation-name: loadingShimmer;
-              animation-timing-function: linear;
-              background-color: #efefef;
-              background-image: linear-gradient(90deg, rgba(239,239,239,1.00) 0%,rgba(221,221,221,1.00) 40%,rgba(239,239,239,1.00) 80%,rgba(239,239,239,1.00) 97%);
-              background-repeat: no-repeat;
-              background-size: 50%;
-            @keyframes loadingShimmer {
-                0% {
-                  background-position: -100% 0;
-                }
-              
-                100% {
-                  background-position: 200% 0;
-                }
-              }
-        @media screen and (width < 860px) {
-            max-height: 300px;
-            height: 300px;
-        }
-        img {
-            transition: 0.5s ease-in-out;
-            @media screen and (width < 860px) {
-                max-height: 300px;
-                height: 100%;
-            }
-            max-height: 400px;
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-        }
-    }
-    .message {  
-        padding: 0 25px;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 8; /* Number of lines to display */
-        overflow: hidden;
-        text-overflow: ellipsis;
-        color: grey;
-        
-    }
-    .title {
-        padding: 0 25px;
-        font-size: 23px;
+}
+
+.messageContainer  .messageImageContainer img {
+    transition: 0.5s ease-in-out;
+}
+
+.messageContainer  .messageImageContainer img {
+    max-height: 400px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.messageContainer  .message {
+    padding: 0 25px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 8;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: grey;
+    height: calc(16px * 13 * 1.5);
+    display: block;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.messageContainer  .title {
+    padding: 0 25px;
+    font-size: 23px;
     font-weight: 500;
     position: relative;
     color: #5a5a5a;
     display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2; /* Number of lines to display */
-        overflow: hidden;
-        text-overflow: ellipsis;
-        padding-bottom: 20px;
-    @media screen and (width < 900px) {
-        font-size: 20px;
-    }
-    @media screen and (width < 650px) {
-        font-size: 20px;
-    }
-    @media screen and (width < 600px) {
-        font-size: 18px;
-    }
-    }
-    .title::before {
-        position: absolute;
-        content: "";
-        border-top: solid 8px orange;
-        border-radius: 100px;
-        max-width: 300px;
-        width: 80px;
-        min-width: 100px;
-        top: -10px;
-    }
-
-
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-bottom: 20px;
 }
+
+.messageContainer  .title::before {
+    position: absolute;
+    content: "";
+    border-top: solid 8px orange;
+    border-radius: 100px;
+    max-width: 300px;
+    width: 80px;
+    min-width: 100px;
+    top: -10px;
+}
+
 .principleInfo {
     display: flex;
     flex-direction: column;
     flex: 1.2;
     justify-content: space-around;
-    @media screen and (width < 860px) {
-        flex: 1;
-        padding-right: 25px;
-    }
 }
+
 .principleInfo > .title {
     font-size: 23px;
     font-weight: 500;
     position: relative;
     color: #5a5a5a;
-    @media screen and (width < 900px) {
-        font-size: 20px;
-    }
-    @media screen and (width < 650px) {
-        font-size: 20px;
-    }
-    @media screen and (width < 600px) {
-        font-size: 18px;
-    }
 }
 
 .principleInfo > .title::before {
@@ -286,27 +201,20 @@
     min-width: 100px;
     top: -10px;
 }
+
 .principleInfo > .title > span {
     font-size: 25px;
     font-weight: 800;
     position: relative;
     color: orange;
-    @media screen and (width < 900px) {
-        font-size: 20px;
-    }
-    @media screen and (width < 650px) {
-        font-size: 20px;
-    }
-    @media screen and (width < 600px) {
-        font-size: 18px;
-    }
 }
+
 .principleInfo > .description {
     color: grey;
     font-size: 17px;
     flex: 1;
-
 }
+
 .principleIcons {
     display: grid;
     grid-template-columns: repeat(2, 45%);
@@ -315,35 +223,34 @@
     align-items: center;
     justify-content: center;
     align-items: stretch;
-    position: relative;
-    
-    @media screen and (width < 460px) {
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-
-    }
 }
-.principleIcon, .value1 {
+
+.principleIcon,
+.value1 {
     display: flex;
     flex-direction: column;
     gap: 5px;
-    @media screen and (width < 460px) {
-    }
 }
-.principleIcon > svg, .value1 > svg {
+
+.principleIcon > svg,
+.value1 > svg {
     color: orange;
     width: 30px;
-    height: 30px
+    height: 30px;
 }
-.principleIcon > .title, .value1 > .title {
+
+.principleIcon > .title,
+.value1 > .title {
     font-size: 16px;
     font-weight: 500;
 }
-.principleIcon > .description, .value1 > .description {
+
+.principleIcon > .description,
+.value1 > .description {
     font-size: 14px;
     color: grey;
 }
+
 .principleImageContainer {
     height: 400px;
     overflow: hidden;
@@ -351,22 +258,15 @@
     border-bottom-left-radius: 15px;
     align-self: center;
     flex: 1;
-    @media screen and (width < 460px) {
-        flex: none;
-        height: 300px;
-    }
-    
 }
+
 .principleImageContainer > img {
     object-fit: cover;
     width: 100%;
     height: 100%;
     transition: 0.5s ease-in-out;
-    &:hover {
-        width: 120%;
-        height: 120%;
-    }
 }
+
 .principles {
     display: flex;
     flex-direction: row;
@@ -375,16 +275,8 @@
     align-self: center;
     margin: auto;
     gap: 2%;
-
-    @media screen and (width < 1130px) {
-        gap: 2%;
-    }
-    @media screen and (width < 770px) {
-        flex-direction: column;
-        gap: 20px;
-    }
-
 }
+
 .principleImages {
     width: 150px;
     margin: 0px 2%;
@@ -393,10 +285,8 @@
     justify-content: space-around;
     padding: 15px 20px;
     display: none;
-    @media screen and (width < 1130px) {
-        display: none;
-    }
 }
+
 .principleImages > span {
     width: 3px;
     height: 70px;
@@ -409,8 +299,8 @@
     width: 100%;
     transform: scale(1.5);
 }
+
 .principle1 {
-    /* width: 300px; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -422,15 +312,18 @@
     box-shadow: 0px 0px 10px rgba(151, 151, 151, 0.308);
     width: 100%;
 }
+
 .principle1:hover .principleButton {
     transition: 0.5s ease-in-out;
     background-color: orange;
     color: white;
 }
+
 .principle1:hover .principle1Info > .title::before {
     transition: 0.3s ease-in-out;
     width: 100%;
 }
+
 .principle1 > .imageContainer {
     width: 100%;
     height: 350px;
@@ -439,29 +332,14 @@
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     overflow: hidden;
-    @media screen and (width < 1220px) {
-        height: 300px
-    }
-    @media screen and (width < 850px) {
-        height: 200px
-    }
-    @media screen and (width < 770px) {
-        height: 300px;
-    }
-    @media screen and (width < 550px) {
-        height: 250px;
-    }
-    @media screen and (width < 450px) {
-        height: 200px;
-    }
-    
-    
 }
+
 .principle1 > .imageContainer > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
+
 .principle1Info {
     width: 100%;
     padding: 10px 20px;
@@ -472,16 +350,15 @@
     justify-content: space-between;
     flex: 1;
 }
+
 .principle1Info > .title {
     font-size: 18px;
     font-weight: 500;
     color: grey;
     position: relative;
     flex: 1;
-    @media screen and (width < 440px) {
-        font-size: 16px;
-    }
 }
+
 .principle1Info > .title::before {
     position: absolute;
     content: "";
@@ -490,13 +367,12 @@
     width: 80px;
     top: -10px;
 }
+
 .principle1Info > .description {
     color: grey;
     flex: 1;
-    @media screen and (width < 440px) {
-        font-size: 14px;
-    }
 }
+
 .principleButton {
     border: 2px orange solid;
     width: 100px;
@@ -506,11 +382,8 @@
     font-size: 15px;
     padding: 5px;
     box-sizing: border-box;
-    @media screen and (width < 440px) {
-        width: 80px;
-        font-size: 13px;
-    }
 }
+
 .values {
     width: 100%;
     display: grid;
@@ -525,170 +398,70 @@
     "first first second third fourth"
     "first first sixth fifth fifth"
     "eighth nineth seventh fifth fifth"; 
-    @media screen and (width < 440px) {
-        margin-left: 0;
-        margin-right: 0;
-        width: 100vw;
-        
-    }
-}
-@media screen and (width < 1170px) {
-    .values {
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-areas: 
-        
-        /* second third fourth sixth */
-        "first first second third"
-        "first first seventh fourth"
-        "eighth nineth fifth fifth"
-        "sixth sixth fifth fifth";
-        
-    }
-}
-@media screen and (width < 990px) {
-    .values {
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-areas: 
-        
-        /* second third seventh fourth */
-        "first first fifth fifth"
-        "first first fifth fifth"
-        "eighth nineth second third"
-        "sixth fourth seventh seventh";
-        
-    }
-}
-@media screen and (width < 920px) {
-    .values {
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-areas: 
-        "first first third"
-        "first first fourth"
-        "second seventh eighth"
-        "sixth fifth fifth"
-        "nineth fifth fifth"
-        /* "first first fifth fifth"
-        "first first fifth fifth"
-        "eighth eighth second second"
-        "nineth nineth third third"
-        "sixth sixth fourth fourth"
-        "seventh seventh seventh seventh" */
-        /* "eighth nineth second third"
-        "sixth fourth seventh seventh"; */
-        
-    }
-}
-@media screen and (width < 920px) {
-    .values {
-        gap: 10px;
-
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-areas: 
-        "first first third"
-        "first first fourth"
-        "second seventh eighth"
-        "sixth fifth fifth"
-        "nineth fifth fifth"
-        
-        
-    }
-}
-@media screen and (width < 680px) {
-    .values {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-areas: 
-        "first first"
-        "third fourth"
-        "second seventh"
-        "eighth sixth"
-        "fifth fifth"
-        "nineth nineth"
-        /* "first first third"
-        "first first fourth"
-        "second seventh eighth"
-        "sixth fifth fifth"
-        "nineth fifth fifth" */
-        
-        
-    }
-}
-@media screen and (width < 500px) {
-    .values {
-        grid-template-columns: repeat(1, 1fr);
-        grid-template-areas: 
-        "first"
-        "second"
-        "third"
-        "fourth"
-        "sixth"
-        "seventh"
-        "eighth"
-        "nineth"
-        "fifth"
-
-        /* "first first"
-        "third fourth"
-        "second seventh"
-        "eighth sixth"
-        "fifth fifth"
-        "nineth ." */
-    }
 }
 
 .values > section {
     border-radius: 10px;
 }
-.values section:nth-child(1){
+
+.values section:nth-child(1) {
     grid-area: first;
 }
-.values section:nth-child(2){
+
+.values section:nth-child(2) {
     grid-area: second;
 }
-.values section:nth-child(3){
+
+.values section:nth-child(3) {
     grid-area: third;
 }
-.values section:nth-child(4){
+
+.values section:nth-child(4) {
     grid-area: fourth;
 }
-.values section:nth-child(5){
+
+.values section:nth-child(5) {
     grid-area: fifth;
 }
-.values section:nth-child(6){
+
+.values section:nth-child(6) {
     grid-area: sixth;
 }
-.values section:nth-child(7){
+
+.values section:nth-child(7) {
     grid-area: seventh;
 }
-.values section:nth-child(8){
+
+.values section:nth-child(8) {
     grid-area: eighth;
 }
-.values section:nth-child(7){
+
+.values section:nth-child(7) {
     grid-area: nineth;
 }
-.value, .value1, .value2 {
+
+.value,
+.value1,
+.value2 {
     background-color: white;
     box-shadow: 0px 0px 10px rgba(151, 151, 151, 0.308);
 }
+
 .value {
     display: flex;
     flex-direction: column;
     gap: 0px;
-    @media screen and (width < 440px) {
-        margin: 0 10px;
-    }
-    
 }
+
 .value2 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
+
 .value1 {
     padding: 20px 15px;
     justify-content: space-between;
-    @media screen and (width < 440px) {
-        margin: 0 10px;
-    }
 }
 
 .value > .imgContainer {
@@ -700,41 +473,15 @@
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     overflow: hidden;
-    @media screen and (width < 1436px){
-        height: 250px;
-    }
-    @media screen and (width < 1231px){
-        height: 300px;
-    }
-    @media screen and (width < 1170px) {
-        height: 250px;
-    }
-    @media screen and (width < 920px) {
-        height: 260px;
-    }
-    @media screen and (width < 737px) {
-        height: 290px;
-    }
-    @media screen and (width < 550px) {
-        height: 230px;
-    }
-    @media screen and (width < 550px) {
-        height: 230px;
-    }
-    @media screen and (width < 440px) {
-        width: 100%;
-        border-radius: 5px;
-        height: 200px;
-    }
-    
-    
 }
+
 .value > .imgContainer > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: 0.5s ease-in-out;
 }
+
 .value2 > .imgContainer {
     flex: 1;
     background-color: orange;
@@ -744,19 +491,18 @@
     border-top-right-radius: 10px;
     overflow: hidden;
 }
+
 .value:hover > .imgContainer > img {
     transform: scale(1.05);
     filter: brightness(0.5);
 }
+
 .value2 > .imgContainer > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-.value2 > .info {
-    background-color: red;
-    flex: 1;
-}
+
 .valueInfo {
     width: 100%;
     padding: 10px 20px;
@@ -765,28 +511,20 @@
     padding-top: 20px;
     flex: 1;
     justify-content: space-around;
-    @media screen and (width < 1170px) {
-        gap: 12px
-    }
-
-
 }
+
 .valueInfo > .title {
     font-size: 16px;
     font-weight: 500;
     color: grey;
     position: relative;
-    @media screen and (width < 440px) {
-        font-size: 15px;
-    }
 }
+
 .valueInfo > .description {
     flex: 1;
     font-size: 14.5px;
-    @media screen and (width < 440px) {
-        font-size: 14px;
-    }
 }
+
 .valueInfo > .title::before {
     position: absolute;
     content: "";
@@ -796,49 +534,31 @@
     top: -10px;
     transition: 0.3s ease-in-out;
 }
+
 .value:hover > .valueInfo > .title::before {
     width: 100%;
+    
 }
-.principle1Info > .description {
-    color: grey;
-    flex: 1;
-    font-size: 14.5px;
-    @media screen and (width < 440px) {
-        font-size: 14px;
-    }
-}
+
 .valueButton {
     border: 2px orange solid;
     width: 100px;
     text-align: center;
     border-radius: 5px;
     color: orange;
-    font-size: 13px;
+    font-size: 15px;
     padding: 5px;
     box-sizing: border-box;
     margin-top: 5px;
     cursor: pointer;
     transition: 0.3s ease-in-out;
-
     position: relative;
-    overflow: hidden!important;
-    -webkit-transition: all .3s ease-in-out;
-    -moz-transition: all .3s ease-in-out;
-    -o-transition: all .3s ease-in-out;
-    transition: all .3s ease-in-out;
-    background: transparent!important;
-    z-index:10;
-    &:hover {
-        background: orange;
-        color: white;
-    }
-    @media screen and (width < 440px) {
-        width: 95px;
-        font-size: 12px;
-    }
+    overflow: hidden !important;
+    z-index: 10;
 }
-
-
+.valueButton:hover {
+    color: white;
+}
 
 .valueButton::before {
     content: '';
@@ -847,19 +567,14 @@
     display: block;
     background: #e69500;
     position: absolute;
-      -ms-transform: skewX(-20deg);
-    -webkit-transform: skewX(-20deg); 
-    transform: skewX(-20deg);   
+    transform: skewX(-20deg);
     left: -10%;
     opacity: 1;
     top: 0;
     z-index: -12;
-    -moz-transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
-  -o-transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
-  -webkit-transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
-  transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
-       box-shadow:2px 0px 14px rgba(0,0,0,.6);
-  } 
+    transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
+    box-shadow: 2px 0px 14px rgba(0, 0, 0, .6);
+}
 
 .valueButton::after {
     content: '';
@@ -868,30 +583,204 @@
     display: block;
     background: #001d6b;
     position: absolute;
-    -ms-transform: skewX(-20deg);
-    -webkit-transform: skewX(-20deg); 
-    transform: skewX(-20deg);   
+    transform: skewX(-20deg);
     left: -10%;
     opacity: 0;
     top: 0;
     z-index: -15;
-    -webkit-transition: all .94s cubic-bezier(.2,.95,.57,.99);
-    -moz-transition: all .4s cubic-bezier(.2,.95,.57,.99);
-    -o-transition: all .4s cubic-bezier(.2,.95,.57,.99);
-    transition: all .4s cubic-bezier(.2,.95,.57,.99);
-    box-shadow: 2px 0px 14px rgba(0,0,0,.6);
+    transition: all .4s cubic-bezier(.2, .95, .57, .99);
+    box-shadow: 2px 0px 14px rgba(0, 0, 0, .6);
 }
-.valueButton:hover::before{
-    opacity:1;
+
+.valueButton:hover::before {
+    opacity: 1;
     width: 116%;
 }
-.valueButton:hover::after{
-    opacity:1;
+
+.valueButton:hover::after {
+    opacity: 1;
     width: 120%;
 }
 
+/* Media Queries */
+@media screen and (max-width: 700px) {
+    .principlesContainer {
+        padding-top: 30px;
+    }
+}
 
+@media screen and (max-width: 440px) {
+    .principlesContainer,
+    .principlesContainer1 {
+        padding-left: 0;
+        padding-right: 0;
+    }
 
+    .messageContainer > .info {
+        padding-top: 0px;
+        padding-bottom: 20px;
+    }
 
+    .principle1Info > .title {
+        font-size: 16px;
+    }
 
+    .principle1Info > .description {
+        font-size: 14px;
+    }
 
+    .valueInfo > .title {
+        font-size: 15px;
+    }
+
+    .valueInfo > .description {
+        font-size: 14px;
+    }
+
+    .valueButton {
+        width: 100px;
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .principlesContainer1 > .title {
+        font-size: 26px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .principlesContainer1 > .title {
+        font-size: 26px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .principlesContainer1 > .title {
+        font-size: 24px;
+    }
+    .messageContainer > .title {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 860px) {
+    .principle {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .messageContainer {
+        height: 100%;
+        flex-direction: column-reverse;
+        gap: 40px;
+    }
+
+    .messageContainer .info {
+        padding-top: 0px;
+        padding-bottom: 20px;
+    }
+
+    .principleImageContainer {
+        max-height: 300px;
+        height: 300px;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .principle {
+        flex: 1;
+    }
+}
+
+@media screen and (max-width: 1130px) {
+    .values {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (max-width: 990px) {
+    .values {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-areas: 
+        "first first fifth fifth"
+        "first first fifth fifth"
+        "eighth nineth second third"
+        "sixth fourth seventh seventh";
+    }
+}
+
+@media screen and (max-width: 920px) {
+    .values {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas: 
+        "first first third"
+        "first first fourth"
+        "second seventh eighth"
+        "sixth fifth fifth"
+        "nineth fifth fifth";
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .values {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: 
+        "first first"
+        "third fourth"
+        "second seventh"
+        "eighth sixth"
+        "fifth fifth"
+        "nineth nineth";
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .values {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-areas: 
+        "first"
+        "second"
+        "third"
+        "fourth"
+        "sixth"
+        "seventh"
+        "eighth"
+        "nineth"
+        "fifth";
+    }
+}
+
+@media screen and (max-width: 1436px) {
+    .value > .imgContainer {
+        height: 250px;
+    }
+}
+
+@media screen and (max-width: 1231px) {
+    .value > .imgContainer {
+        height: 300px;
+    }
+}
+
+@media screen and (max-width: 920px) {
+    .value > .imgContainer {
+        height: 260px;
+    }
+}
+
+@media screen and (max-width: 737px) {
+    .value > .imgContainer {
+        height: 290px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .value > .imgContainer {
+        height: 230px;
+    }
+
+    .value2 > .imgContainer {
+        height: 200px;
+    }
+}

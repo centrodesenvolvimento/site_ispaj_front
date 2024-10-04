@@ -42,7 +42,7 @@ const Testimonials = ({departments, setDepartments}) => {
     }
     useEffect(() => {
         const interval = setInterval(() => {
-            console.log('index', activeIndex)
+            //('index', activeIndex)
             if (activeIndex == 2){
                 setActiveIndex(0)
             }else {
@@ -246,6 +246,9 @@ Trabalho em hospitais, clínicas, centros de saúde.`,
     const firstVid = useRef(null)
     const secondVid = useRef(null)
     const thirdVid = useRef(null)
+    useEffect(() => {
+        localStorage.getItem('path') && localStorage.removeItem('path')
+    }, [])
     return (
         <div className='testContainer'>
             <Swiper 
@@ -259,10 +262,10 @@ Trabalho em hospitais, clínicas, centros de saúde.`,
         loop
         slidesPerView={1}
         onChange={() => {
-            // console.log('changed', firstVid.current)
+            // //('changed', firstVid.current)
         }}
         onSlideChange={(e) => {
-            // console.log('changeddddd')
+            // //('changeddddd')
             setActiveIndex(e.realIndex)
         }}
         
@@ -280,13 +283,13 @@ Trabalho em hospitais, clínicas, centros de saúde.`,
         className="mySwiper1"
         style={{background: 'white'}}
       >
-        {departments?.[0]?.info?.video ? 
+        {departments?.[0]?.info?.descricao ? 
         [...departments].map((item, index) => {
             return (
                 <SwiperSlide className='swiperTest'>
         <section className='firstCont'>
             <div className='videoCont'>
-                {item?.info?.video && <video ref={firstVid} controls src={`${baseURL}/storage/videos/${item?.info?.video}`}/> }
+                {item?.info?.video && <video loading="lazy"  ref={firstVid} controls src={`${baseURL}/public/storage/videos/${item?.info?.video}`}/> }
             </div>
                 <div className='info'>
                     <div className='title'>Veja o que os estudantes de {item?.info?.titulo} dizem</div>
@@ -295,7 +298,7 @@ Trabalho em hospitais, clínicas, centros de saúde.`,
                             <span className='profileImageContainer' style={{textTransform: 'uppercase'}}>
                                 D{`${item?.info?.titulo}`.split(' ').map((chars) => {
                                     return chars[0]
-                                })}
+                                }).slice(0, 3)}
                             </span>
                             <span className='profileName'>Departamento de {item?.info?.titulo}</span>
                         </div>
@@ -326,7 +329,7 @@ Trabalho em hospitais, clínicas, centros de saúde.`,
                     return (
                         <div className='courseContainer'>
                             <div className='imgContainer'>
-                                {course?.imagem && <img src={`${baseURL}/storage/images/${course.imagem}`}/>}
+                                {course?.imagem && <img loading="lazy"src={`${baseURL}/public/storage/images/${course.imagem}`}/>}
                             </div>
                             <div className='title' onClick={() => {
                                             localStorage.setItem('path', item?.info?.titulo)
@@ -400,7 +403,7 @@ Trabalho em hospitais, clínicas, centros de saúde.`,
         {/* <SwiperSlide className='swiperTest'>
         <section className='firstCont'>
             {!departments?.[0]?.info?.video ? <div className='videoCont'>
-                <video controls src={process.env.PUBLIC_URL + 'videos/cantaIspaj.mp4'}/>
+                <video loading="lazy"  controls src={process.env.PUBLIC_URL + 'videos/cantaIspaj.mp4'}/>
             </div> :
             <Skeleton className='videoCont'/>}
                 <div className='info'>
@@ -435,7 +438,7 @@ Trabalho em hospitais, clínicas, centros de saúde.`,
                     return (
                         <div className='courseContainer'>
                             <div className='imgContainer'>
-                                <img src={item.image}/>
+                                <img loading="lazy"src={item.image}/>
                             </div>
                             <div className='title' onClick={() => {
                                             localStorage.setItem('path', 'Ciências de Saúde')
@@ -467,7 +470,7 @@ Trabalho em hospitais, clínicas, centros de saúde.`,
         <SwiperSlide className='swiperTest'>
         <section className='firstCont'>
             {!departments?.[0]?.info?.video ? <div className='videoCont'>
-                <video controls src={process.env.PUBLIC_URL + 'videos/cantaIspaj.mp4'}/>
+                <video loading="lazy"  controls src={process.env.PUBLIC_URL + 'videos/cantaIspaj.mp4'}/>
             </div> :
             <Skeleton className='videoCont'/>}
                 <div className='info'>
@@ -502,7 +505,7 @@ Trabalho em hospitais, clínicas, centros de saúde.`,
                     return (
                         <div className='courseContainer'>
                             <div className='imgContainer'>
-                                <img src={item.image}/>
+                                <img loading="lazy"src={item.image}/>
                             </div>
                             <div className='title' onClick={() => {
                                             localStorage.setItem('path', 'Ciências de Saúde')
@@ -554,11 +557,12 @@ Trabalho em hospitais, clínicas, centros de saúde.`,
   <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
 </svg></div> */}
         <div className='swiper-footer'>
-        <div className='servicesControl1'>
-                        <svg onClick={() => handlePrev()} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+        <div className='servicesControl1'  style={{display: 'flex', flexDirection: 'row'}}>
+                        <svg onClick={() => handlePrev()} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill servicesControlButton" viewBox="0 0 16 16">
                           <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
                         </svg>
-                        <svg onClick={() => handleNext()} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+                        
+                        <svg onClick={() => handleNext()} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle-fill servicesControlButton" viewBox="0 0 16 16">
                           <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
                         </svg>
         </div>

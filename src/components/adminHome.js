@@ -87,7 +87,7 @@ const AdminHome = () => {
     const [dateAdded, setDateAdded] = useState(new Date())
     const [test, setTest] = useState('')
     useEffect(() => {
-        console.log('message', prMessage)
+        //('message', prMessage)
     }, [prMessage])
     const saveVideo = () => {
         setLoad(true)
@@ -97,7 +97,7 @@ const AdminHome = () => {
             setErrors(['Selecione um vídeo!'])
             setLoad(false)
         }else {
-            // console.log('videoPreview', videoPreview)
+            // //('videoPreview', videoPreview)
             // const formData = new FormData()
             // formData.append('video-data', videoPreview)
             axios.post(`${baseURL}/api/editHomeContent/video/${1}`, {
@@ -110,12 +110,12 @@ const AdminHome = () => {
             })
             .then(res => {
                 setLoad(false)
-                console.log('resss', res.data)
+                //('resss', res.data)
                 setMessages(['Alterações salvas|'])
                 window.location.reload()
             })
             .catch(err => {
-                console.log('errrrr', err.response)
+                //('errrrr', err.response)
                 setLoad(false)
 
             })
@@ -126,7 +126,7 @@ const AdminHome = () => {
     const savePR = async () => {
         setErrors([])
         setMessages([])
-        if (prMessage.length == 0 || prMessage == '<p><br></p>' || profile == '<p><br></p>' || profile.length == 0){
+        if (prMessage?.length == 0 || prMessage == '<p><br></p>' || profile == '<p><br></p>' || profile?.length == 0){
             setErrors(['Preencha tudo por favor!'])
 
         }else if (prMessage == homeContent?.mensagemPr && !completedCrop && profile == homeContent?.perfilPr){
@@ -134,7 +134,7 @@ const AdminHome = () => {
             setErrors(['Nenhuma alteração feita!'])
 
         }else {
-            console.log(completedCrop)
+            //(completedCrop)
             if (completedCrop){
                 try {
                     const response = await fetch(completedCrop)
@@ -174,13 +174,13 @@ const AdminHome = () => {
 
                         })
                         .then(res => {
-                            console.log('resss', res.data)
+                            //('resss', res.data)
                             setMessages(['Alterações salvas|'])
                             window.location.reload()
 
                         })
                         .catch(err => {
-                            console.log('error', err.response.data.message)
+                            //('error', err.response.data.message)
                         })
                     }
                     reader.readAsDataURL(blob)
@@ -216,13 +216,13 @@ const AdminHome = () => {
                     
                 })
                 .then(res => {
-                    console.log('res', res.data)
+                    //('res', res.data)
                     setMessages(['Alterações salvas|'])
                     window.location.reload()
                     
                 })
                 .catch(err => {
-                    console.log('err', console.log(err))
+                    //('err', //(err))
                 })
             }
             
@@ -232,17 +232,18 @@ const AdminHome = () => {
     const addTest = () => {
         setErrors([])
         setMessages([])
-        if (testName.length == 0 || testVia.length == 0 || test.length == 0){
+        if (testName?.length == 0 || testVia?.length == 0 || test?.length == 0){
             setErrors(['Por favor preencha todos os campos!'])
         }
-        else if (testName.split(/\s(?=\S)/ig).length < 2) {
+        else if (testName.split(/\s(?=\S)/ig)?.length < 2) {
             setErrors(['Segundo nome necessário!'])
         }
-        else if (testName.split(/\s(?=\S)/ig).length > 2) {
+        else if (testName.split(/\s(?=\S)/ig)?.length > 2) {
             setErrors(['Só o primeiro e último nome são necessários!'])
         }else {
             axios.get(`${baseURL}/api/homeContents`)
             .then(res => {
+                //('homeContents', res.data[0])
                 let obj = [...res.data][0]
                 if ([...obj.testemunhos].length > 0){
                     axios.post(`${baseURL}/api/editHomeContent/testemunhos/${1}`, {
@@ -261,15 +262,15 @@ const AdminHome = () => {
                         ]
                     })
                     .then(res => {
-                        console.log('success')
+                        //('success')
                         setMessages(['Testemunho adicionado com sucesso.'])
                         window.location.reload()
                     })
                     .catch(err => {
-                        console.log('err', err.response.data.message)
+                        //('err', err.response.data.message)
                     })
                 }else {
-                    console.log('ok')
+                    //('ok')
                     axios.post(`${baseURL}/api/editHomeContent/testemunhos/${1}`, {
                         testemunhos: [
                             {
@@ -284,12 +285,12 @@ const AdminHome = () => {
                         ]
                     })
                     .then(res => {
-                        console.log('success')
+                        //('success')
                         setMessages(['Testemunho adicionado com sucesso.'])
                         window.location.reload()
                     })
                     .catch(err => {
-                        console.log('err', err.response.data.message)
+                        //('err', err.response.data.message)
                     })
                 }
                 
@@ -299,13 +300,13 @@ const AdminHome = () => {
     const editTest = (item) => {
         setErrors([])
         setMessages([])
-        if (testName.length == 0 || testVia.length == 0 || test.length == 0){
+        if (testName?.length == 0 || testVia?.length == 0 || test?.length == 0){
             setErrors(['Por favor preencha todos os campos!'])
         }
-        else if (testName.split(/\s(?=\S)/ig).length < 2) {
+        else if (testName.split(/\s(?=\S)/ig)?.length < 2) {
             setErrors(['Segundo nome necessário!'])
         }
-        else if (testName.split(/\s(?=\S)/ig).length > 2) {
+        else if (testName.split(/\s(?=\S)/ig)?.length > 2) {
             setErrors(['Só o primeiro e último nome são necessários!'])
         }else if (testName == item.nome && testVia == item.via && test == item.via && dateAdded == item.data && (item?.show == show)){
             setErrors(['Nenhuma alteração feita!'])
@@ -333,12 +334,12 @@ const AdminHome = () => {
                     testemunhos: newTest
                 })
                 .then(res => {
-                    console.log('success')
+                    //('success')
                     setMessages(['Testemunho editado com sucesso.'])
                     window.location.reload()
                 })
                 .catch(err => {
-                    console.log('err', err.response.data.message)
+                    //('err', err.response.data.message)
                 })
 
                 
@@ -398,7 +399,7 @@ const AdminHome = () => {
                                     //     const reader = new FileReader()
                                     //     reader.onload = (event) => {
                                     //         setSelectedImage(event.target.result)
-                                    //         console.log('data', event.target.result)
+                                    //         //('data', event.target.result)
                                     //     }
                                     //     reader.readAsDataURL(file)
                                     // }else {
@@ -407,7 +408,7 @@ const AdminHome = () => {
                                 }}/>
                                {videoPreview && 
                                <div className='selectedVideo'>
-                                <video src={URL.createObjectURL(videoPreview)} loop muted controls />
+                                <video loading="lazy"  src={URL.createObjectURL(videoPreview)} loop muted controls />
                                 </div>}
                             </div>
                             <div className="errors">
@@ -430,9 +431,9 @@ const AdminHome = () => {
                         </div>
                         {load && <div>Processando...</div>}
                                 <div className='buttons' style={{marginBottom: 50}}>
-                                    <div onClick={() => {
+                                    {!load && <div onClick={() => {
                                         saveVideo()
-                                    }} className='save'>Guardar</div>
+                                    }} className='save'>Guardar</div>}
 
                                 </div>
                                 {/* <div className='' dangerouslySetInnerHTML={{__html: prMessage}}>
@@ -444,7 +445,7 @@ const AdminHome = () => {
                         </Dialog>
                     </div>
                     <div className='videoCont'>
-                    {iniVideo && <video src={iniVideo} loop muted controls />}
+                    {iniVideo && <video loading="lazy"  src={iniVideo} loop muted controls />}
                     </div>
                 </section>
                 <section className='section' style={{}}>
@@ -473,7 +474,7 @@ const AdminHome = () => {
                                         const reader = new FileReader()
                                         reader.onload = (event) => {
                                             setSelectedImage(event.target.result)
-                                            console.log('data', event.target.result)
+                                            //('data', event.target.result)
                                         }
                                         reader.readAsDataURL(file)
                                     }else {
@@ -481,7 +482,7 @@ const AdminHome = () => {
                                     }
                                 }}/>
                                 {/* <div className='selectedImage'>
-                                    <img src={selectedImage}/>
+                                    <img loading="lazy"src={selectedImage}/>
                                 </div> */}
                                 {selectedImage && <div style={{aspectRatio: '4/2'}}>
                                     <Cropper
@@ -550,7 +551,7 @@ const AdminHome = () => {
                     </div>
                     <div style={{margin: 10, display: 'flex', gap: 10}}>
                         <div style={{width: '60%', background: '#ececec', borderRadius: 5, marginRight: 10, overflow: 'hidden', width: '100%', height: '100%', aspectRatio: '4/4', maxHeight: 350}}>
-                            {prImage && <img style={{width: '100%', height: '100%', objectFit: 'cover'}} src={prImage}/>}
+                            {prImage && <img loading="lazy"style={{width: '100%', height: '100%', objectFit: 'cover'}} src={prImage}/>}
                         </div>
                         <div className='textCont' dangerouslySetInnerHTML={{__html: homeContent?.mensagemPr}}>
                         </div>
@@ -586,7 +587,7 @@ const AdminHome = () => {
                                     <div className='form'>
                                         <div className='label'>Via</div>
                                         <Select value={testVia} onValueChange={(e) =>{
-                                            console.log(e)
+                                            //(e)
                                             setTestVia(e)
                                         }}>
                                             <SelectTrigger style={{outline: 'none', focus:'none'}}>
@@ -728,7 +729,7 @@ const AdminHome = () => {
                                     <div className='form'>
                                         <div className='label'>Via</div>
                                         <Select value={testVia} onValueChange={(e) =>{
-                                            console.log(e)
+                                            //(e)
                                             setTestVia(e)
                                         }}>
                                             <SelectTrigger style={{outline: 'none', focus:'none'}}>
@@ -837,11 +838,11 @@ const AdminHome = () => {
                     testemunhos: testemunhos.filter((t) => t.id != item.id)
                 })
                 .then(res => {
-                    console.log('success')
+                    //('success')
                     window.location.reload()
                 })
                 .catch(err => {
-                    console.log('err', err.response.data.message)
+                    //('err', err.response.data.message)
                 })
                 
     })

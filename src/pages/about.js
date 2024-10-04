@@ -79,7 +79,7 @@ const wrapperVariants = {
     
     const [open, setOpen] = useState(false);
     useEffect(() => {
-      console.log('open', open)
+      //('open', open)
     }, [open])
     const menuRef = useRef(null)
     useEffect(() => {
@@ -135,11 +135,9 @@ const About = () => {
     useEffect(() => {
       localStorage.getItem('path') && setSection(localStorage.getItem('path'))
       window.scrollTo(0, 0)
-    }, [])
+    }, [section])
     useEffect(() => {
       localStorage.getItem('path') && setSection(localStorage.getItem('path'))
-
-      
     })
     const [aboutContent, setAboutContent] = useState(null)
     useEffect(() => {

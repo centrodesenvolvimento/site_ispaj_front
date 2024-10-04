@@ -171,13 +171,13 @@ const AdminCalendar = () => {
 
                     })
                     .then(res => {
-                        console.log('resss', res.data)
+                        //('resss', res.data)
                         setMessages(['Alterações salvas|'])
                         window.location.reload()
 
                     })
                     .catch(err => {
-                        console.log('error', err.response.data.message)
+                        //('error', err.response.data.message)
                     })
                 }
                 reader.readAsDataURL(blob)
@@ -223,13 +223,13 @@ const AdminCalendar = () => {
     
                         })
                         .then(res => {
-                            console.log('resss', res.data)
+                            //('resss', res.data)
                             setMessages(['Alterações salvas|'])
                             window.location.reload()
     
                         })
                         .catch(err => {
-                            console.log('error', err.response.data.message)
+                            //('error', err.response.data.message)
                         })
                     }
                     reader.readAsDataURL(blob)
@@ -256,13 +256,13 @@ const AdminCalendar = () => {
 
                 })
                 .then(res => {
-                    console.log('resss', res.data)
+                    //('resss', res.data)
                     setMessages(['Alterações salvas|'])
                     window.location.reload()
 
                 })
                 .catch(err => {
-                    console.log('error', err.response.data.message)
+                    //('error', err.response.data.message)
                 })
 
             }
@@ -314,7 +314,7 @@ const AdminCalendar = () => {
                                         const reader = new FileReader()
                                         reader.onload = (event) => {
                                             setSelectedImage(event.target.result)
-                                            console.log('data', event.target.result)
+                                            //('data', event.target.result)
                                         }
                                         reader.readAsDataURL(file)
                                     }else {
@@ -322,7 +322,7 @@ const AdminCalendar = () => {
                                     }
                                 }}/>
                                 {/* <div className='selectedImage'>
-                                    <img src={selectedImage}/>
+                                    <img loading="lazy"src={selectedImage}/>
                                 </div> */}
                                 {selectedImage && <div style={{aspectRatio: '4/2'}}>
                                     <Cropper
@@ -533,7 +533,7 @@ const AdminCalendar = () => {
                                                                 </div>
                                             <div className='buttons' style={{marginBottom: 50}}>
                                             <div onClick={() => {
-                                                console.log(type)
+                                                //(type)
                                                 addEvent()
                                                 // editDocument(item)
                                             }} className='save'>Adicionar</div>
@@ -583,7 +583,7 @@ const AdminCalendar = () => {
                             setIframe(item.info.iframe)
                             setDateAdded(new Date(item.info.iniDate))
                             setFinalDate(new Date(item.info.finalDate))
-                            console.log('same', item.info.mesmo_dia == true)
+                            //('same', item.info.mesmo_dia == true)
                             setSameDay(item.info.mesmo_dia == true)
                             
                             setHours(`${item.info.horario}`.split(' - ')[0]?.trim())
@@ -620,7 +620,7 @@ const AdminCalendar = () => {
                                         const reader = new FileReader()
                                         reader.onload = (event) => {
                                             setSelectedImage(event.target.result)
-                                            console.log('data', event.target.result)
+                                            //('data', event.target.result)
                                         }
                                         reader.readAsDataURL(file)
                                     }else {
@@ -628,7 +628,7 @@ const AdminCalendar = () => {
                                     }
                                 }}/>
                                 {/* <div className='selectedImage'>
-                                    <img src={selectedImage}/>
+                                    <img loading="lazy"src={selectedImage}/>
                                 </div> */}
                                 {selectedImage ? <div style={{aspectRatio: '4/2'}}>
                                     <Cropper
@@ -643,7 +643,7 @@ const AdminCalendar = () => {
                                     />
                                 </div>:
                                 <div style={{aspectRatio: '4/2.8', overflow: 'hidden'}}>
-                                    <img style={{width: '100%', height: '100%', objectFit: 'cover'}} src={imagePreview}/>
+                                    <img loading="lazy"style={{width: '100%', height: '100%', objectFit: 'cover'}} src={imagePreview}/>
                                 </div> 
                                 }
                                 {/* <canvas
@@ -850,7 +850,7 @@ const AdminCalendar = () => {
                                                                 </div>
                                             <div className='buttons' style={{marginBottom: 50}}>
                                             <div onClick={() => {
-                                                console.log(type)
+                                                //(type)
                                                 editEvent(item.info, item.id)
                                                 // editDocument(item)
                                             }} className='save'>Guardar</div>

@@ -25,8 +25,10 @@ const AboutSection = ({aboutContent}) => {
                     <div className='description'>{aboutContent?.somos}</div>
                 </div>
                 <div className='imgContainer' style={{ aspectRatio: '3.8/2'}}>
-                    <video controls style={{width: '100%', height: '100%', objectFit: 'cover'}} autoPlay loop muted src={aboutContent?.video}/>
-                    <video style={{opacity: 0}} autoPlay loop muted src={process.env.PUBLIC_URL+'/images/homevid.mp4'}/>
+                
+                    <video loading="lazy"  controls style={{width: '100%', height: '100%', objectFit: 'cover'}} autoPlay loop muted src={aboutContent?.video}/>
+                    
+                    
                 </div>
             </section>
 
@@ -35,12 +37,12 @@ const AboutSection = ({aboutContent}) => {
                 <div className='preTitle'>Missão e Visão</div>
                 <section className='grid1'>
                 <section className='gridItem'>
-                <img src={process.env.PUBLIC_URL + '/images/target.png'}/>
+                <img loading="lazy"src={process.env.PUBLIC_URL + '/images/target.png'}/>
                     <div className='title'>Missão</div>
                     {aboutContent?.missao ? <div className='description'>{aboutContent?.missao}</div> : <Skeleton className='description' count={3}/>}
                     </section>  
                     <section className='gridItem'>
-                    <img src={process.env.PUBLIC_URL + '/images/vision.png'}/>
+                    <img loading="lazy"src={process.env.PUBLIC_URL + '/images/vision.png'}/>
                     <div className='title'>Visão</div>
                     {aboutContent?.visao ? <div className='description'>{aboutContent?.visao}</div> : <Skeleton className='description' count={3}/>}
                     </section>  

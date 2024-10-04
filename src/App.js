@@ -1,56 +1,55 @@
-import logo from './logo.svg';
 import './App.css';
-import Header from './components/header';
-import Services from './components/services';
-import Principles from './components/principles';
-import Reviews from './components/reviews';
-import News from './components/news';
-import Footer from './components/footer';
-import Globe from './components/globe';
-import { Route, Router, Routes, useLocation } from 'react-router-dom';
-import About from './pages/about';
-import Swiper from './components/swiper';
-import Events from './components/events';
-import EventsPage from './pages/eventsPage';
-import EventsPage1 from './pages/eventPage1.js'
-import Exams from './pages/exams.js';
-import Admissions from './pages/admissions.js';
-import Director from './components/director';
-import Courses from './pages/courses';
-import Message from './pages/message';
-import NewsPage from './pages/newsPage';
-import Login from './pages/login';
-import Admin from './pages/admin';
-import AdminCalendar from './components/adminCalendar';
-import NewsArticle from './pages/newsArticle';
-import Soon from './pages/soon';
-import Impact from './pages/impact';
+import './css/about.css'
+import './css/bolsas.css'
+import './css/dashboard.css'
+import './css/estatutos.css'
+import './css/estruturaAdmin.css'
+import './css/estruturaOrg.css'
+import './css/events.css'
+import './css/eventsPage.css'
+import './css/exams.css'
+import './css/faq.css'
+import './css/fees.css'
+import './css/footer.css'
+import './css/header.css'
+import './css/health.css'
+import './css/history.css'
+import './css/loadingScreen.css'
+import './css/login.css'
+import './css/news.css'
+import './css/newsArticle.css'
+import './css/newsPage.css'
+import './css/organisation.css'
+import './css/principles.css'
+import './css/reviews.css'
+import './css/services.css'
+import './css/soon.css'
+import './css/sugestions.css'
+import { Route, Routes } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { baseURL } from './api/api';
-import Bolsa from './pages/bolsa';
-import { AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogDescription, AlertDialogOverlay, AlertDialogTitle } from './@/components/ui/alert-dialog';
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogOverlay, DialogTitle } from './@/components/ui/dialog';
-import Admissions2 from './pages/admissions2';
+import LoadingScreen from './pages/loadingScreen';
+
+const Home = lazy(() => import('./pages/home'));
+const About = lazy(() => import('./pages/about'));
+const EventsPage = lazy(() => import('./pages/eventsPage'));
+const Admissions = lazy(() => import('./pages/admissions'));
+const Courses = lazy(() => import('./pages/courses'));
+const Message = lazy(() => import('./pages/message'));
+const NewsPage = lazy(() => import('./pages/newsPage'));
+const Login = lazy(() => import('./pages/login'));
+const Admin = lazy(() => import('./pages/admin'));
+const NewsArticle = lazy(() => import('./pages/newsArticle'));
+const Soon = lazy(() => import('./pages/soon'));
+const Impact = lazy(() => import('./pages/impact'));
+const Bolsa = lazy(() => import('./pages/bolsa'));
+const Admissions2 = lazy(() => import('./pages/admissions2'));
 
 function App() {
   const [departments, setDepartments] = useState([])
-  const [months, setMonths] = useState([
-    "Janeiro",
-    "Fevereiro",
-    "Março",
-    "Abril",
-    "Maio",
-    "Junho",
-    "Julho",
-    "Agosto",
-    "Setembro",
-    "Outubro",
-    "Novembro",
-    "Dezembro"
-])
-const [dialogOpen, setDialogOpen] = useState(true)
-const [avisos, setAvisos] = useState([])
+  
 const updateVisits = () => {
   // axios.get(`${baseURL}/api/info`)
   //     .then(res => {
@@ -84,7 +83,7 @@ const updateVisits = () => {
         
   //     })
 
-  console.log('running')
+  // //('running')
       const visitedOnce = (sessionStorage.getItem('visitedOnce')) || false
         if (!visitedOnce){
           axios.post(`${baseURL}/api/addMonthlyView`, {
@@ -94,7 +93,8 @@ const updateVisits = () => {
             sessionStorage.setItem('visitedOnce', true)
           })
           .catch(err => {
-            sessionStorage.setItem('visitedOnce', true)
+            //('visitedError', err)
+            // sessionStorage.setItem('visitedOnce', true)
           })
           sessionStorage.setItem('visitedOnce', true)
 
@@ -105,7 +105,7 @@ const updateVisits = () => {
       
       axios.get(`${baseURL}/api/departamentos`)
       .then(res => {
-          console.log('res', res.data)
+          //('res', res.data)
           setDepartments([...res.data])
       })
 
@@ -115,61 +115,41 @@ const updateVisits = () => {
   }, [])
   
   return (
-    <Routes>
-      <Route path='/' element={<div className="App" style={{display: 'flex', flexDirection: 'column'}}>
-          <Header />
-          <Swiper />
-          <Director />
-          <Services departments={departments}/>
-          {/* #F3F3F3 */}
-          <div style={{ marginBottom: -50}}>
-          <Principles departments={departments}/>
-          </div>
-          <div>
-            <News />
-          </div>
-          <Reviews />
-          <Events />
-          {/* <Globe /> */}
-          
-          <Footer />
-        </div>}/>
-        <Route path='/sobre' element={<About />}/>
-        <Route path='/eventos' element={<EventsPage />}/>        
-        <Route path='/eventos/event/:title' element={<EventsPage />} />
-        <Route path='/admissoes' element={<Admissions />} />
-        <Route path='/cursos' element={<Courses />} />
-        <Route path='/cursos/curso/:title' element={<Courses />} />
-        <Route path='/mensagem_do_presidente' element={<Message />} />
-        <Route path='/noticias' element={<NewsPage />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/admin' element={<Admin />} />
-        <Route path='/admin/home' element={<Admin />} />
-        <Route path='/admin/sobre/sobre' element={<Admin />} />
-        <Route path='/admin/sobre/estruturaOrg' element={<Admin />} />
-        <Route path='/admin/sobre/estruturaAdmin' element={<Admin />} />
-        <Route path='/admin/sobre/history' element={<Admin />} />
-        <Route path='/admin/sobre/organigrama' element={<Admin />} />
-        <Route path='/admin/sobre/estatutos' element={<Admin />} />
-        <Route path='/admin/departamentos' element={<Admin />} />
-        <Route path='/admin/departamentos/departamento' element={<Admin />} />
-        <Route path='/sugestoes_e_reclamacoes' element={<Admissions2 />} />
-        <Route path='/admin/calendario' element={<Admin />} />
-        <Route path='/admin/admissoes/emolumentos' element={<Admin />} />
-        <Route path='/admin/admissoes/calendario' element={<Admin />} />
-        <Route path='/admin/admissoes/exames' element={<Admin />} />
-        <Route path='/admin/admissoes/perguntas' element={<Admin />} />
-        <Route path='/admin/news' element={<Admin />} />
-        <Route path='/admin/avisos' element={<Admin />} />
-
-
-
-        <Route path='/soon' element={<Soon />} />
-        <Route path='/impact' element={<Impact />} />
-        <Route path='/noticias/:id' element={<NewsArticle />} />
-        <Route path='/colaboradores/bolsas' element={<Bolsa />} />
-
-    </Routes>
+    
+      <Routes>
+        <Route path='/' element={<Home departments={departments}/>}/>
+          <Route path='/sobre' element={<About />}/>
+          <Route path='/eventos' element={<EventsPage />}/>
+          <Route path='/eventos/event/:title' element={<EventsPage />} />
+          <Route path='/admissoes' element={<Admissions />} />
+          <Route path='/cursos' element={<Courses />} />
+          <Route path='/cursos/curso/:title' element={<Courses />} />
+          <Route path='/mensagem_do_presidente' element={<Message />} />
+          <Route path='/noticias' element={<NewsPage />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/admin' element={<Admin />} />
+          <Route path='/admin/home' element={<Admin />} />
+          <Route path='/admin/sobre/sobre' element={<Admin />} />
+          <Route path='/admin/sobre/estruturaOrg' element={<Admin />} />
+          <Route path='/admin/sobre/estruturaAdmin' element={<Admin />} />
+          <Route path='/admin/sobre/history' element={<Admin />} />
+          <Route path='/admin/sobre/organigrama' element={<Admin />} />
+          <Route path='/admin/sobre/estatutos' element={<Admin />} />
+          <Route path='/admin/departamentos' element={<Admin />} />
+          <Route path='/admin/departamentos/departamento' element={<Admin />} />
+          <Route path='/sugestoes_e_reclamacoes' element={<Admissions2 />} />
+          <Route path='/admin/calendario' element={<Admin />} />
+          <Route path='/admin/admissoes/emolumentos' element={<Admin />} />
+          <Route path='/admin/admissoes/calendario' element={<Admin />} />
+          <Route path='/admin/admissoes/exames' element={<Admin />} />
+          <Route path='/admin/admissoes/perguntas' element={<Admin />} />
+          <Route path='/admin/news' element={<Admin />} />
+          <Route path='/admin/avisos' element={<Admin />} />
+          <Route path='/soon' element={<Soon />} />
+          <Route path='/impact' element={<Impact />} />
+          <Route path='/noticias/:id' element={<NewsArticle />} />
+          <Route path='/colaboradores/bolsas' element={<Bolsa />} />
+      </Routes>
   );
 }
 
@@ -178,8 +158,8 @@ export default App;
 
 // in package.json
 // "scripts": {
-  //   "start": "react-scripts start",
-  //   "build": "react-scripts build",
-  //   "test": "react-scripts test",
-  //   "eject": "react-scripts eject"
-  // },
+//     "start": "react-scripts start",
+//     "build": "react-scripts build",
+//     "test": "react-scripts test",
+//     "eject": "react-scripts eject"
+//   },

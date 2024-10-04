@@ -164,41 +164,30 @@ const HealthPage = ({curso, departamentos}) => {
 
     ])
     const [course, setCourse] = useState(null)
-    useEffect(() => {
-        console.log('location', location?.state?.image)
-
-    }, [location.pathname])
+    
     const scrollDivRef = useRef(null)
     useEffect(() => {
         
         scrollDivRef.current && window.scrollTo({
-            top: scrollDivRef.current.getBoundingClientRect().top + window.scrollY - 120
+            top: scrollDivRef.current.getBoundingClientRect().top + window.scrollY - 180
         })
-    }, [location.pathname, scrollDivRef])
+    }, [location.pathname, scrollDivRef.current])
     useEffect(() => {
-        window.scrollTo(0, 0)
-        console.log('carlos', curso?.info.saidas)
-    }, [])
-    const [departaments, setDepartments] = useState([])
-    useEffect(() => {
-        axios.get(`${baseURL}/api/departamentos`)
-        .then(res => {
-            console.log('res', res.data)
-            setDepartments([...res.data])
-        })
+        !location.pathname.includes('curso/') && window.scrollTo(0, 0)
 
     }, [])
+    
     return (
         <div className='healthContainer'>
             <section className='firstContainer'>
                 <div className='section'>
                     <div className='player'>
                         <div className='videoContainer' style={{overflow: 'hidden'}}>
-                            {curso?.info?.video && <video style={{height: '100%', width: '100%', objectFit: 'cover'}} controls src={`${baseURL}/storage/videos/${curso.info.video}`}/>}
+                            {curso?.info?.video && <video loading="lazy"  style={{height: '100%', width: '100%', objectFit: 'cover'}} controls src={`${baseURL}/public/storage/videos/${curso.info.video}`}/>}
                         </div>
                         <div className='playerInfo'>
                             <div className='imgContainer'>CS</div>
-                            <div className='title'>Cursos de {curso?.info?.titulo}</div>
+                            <div className='title'>{curso?.info?.titulo}</div>
                         </div>
                         <div className='description'>{curso?.info?.descricao}</div>
                     </div>
@@ -231,7 +220,7 @@ const HealthPage = ({curso, departamentos}) => {
                         <AccordionContent>
                         <div className='recommendations'>
                         <div className='recom'>
-                                <div className='imageContainer'><img src={`${baseURL}/storage/images/${departamentos[2]?.info?.imagem}`}/></div>
+                                <div className='imageContainer'><img loading="lazy"src={`${baseURL}/public/storage/images/${departamentos[2]?.info?.imagem}`}/></div>
                                 <div className='info'>
                                     <div className='title'>{departamentos[2]?.info?.titulo}</div>
                                     <div onClick={() => {
@@ -246,7 +235,7 @@ const HealthPage = ({curso, departamentos}) => {
                                 </div>
                             </div>
                             <div className='recom'>
-                                <div className='imageContainer'><img src={`${baseURL}/storage/images/${departamentos[1]?.info?.imagem}`}/></div>
+                                <div className='imageContainer'><img loading="lazy"src={`${baseURL}/public/storage/images/${departamentos[1]?.info?.imagem}`}/></div>
                                 <div className='info'>
                                     <div className='title'>{departamentos[1]?.info?.titulo}</div>
                                     <div className='valueButton' onClick={() => {
@@ -274,7 +263,7 @@ const HealthPage = ({curso, departamentos}) => {
                     location.pathname.includes('curso/') && location.state ? 
                     <div className='aboutCourse' ref={scrollDivRef}>
                         <div className='imageContainer'>
-                            <img src={`${baseURL}/storage/images/${location.state.imagem}`}/>
+                            <img loading="lazy"src={`${baseURL}/public/storage/images/${location.state.imagem}`}/>
                         </div>
                         <div className='first'>
                             <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
@@ -336,7 +325,7 @@ const HealthPage = ({curso, departamentos}) => {
                             return (
                                 <div className='course'>
                                     <div className='imageContainer'>
-                                        <img src={`${baseURL}/storage/images/${item.imagem}`}/>
+                                        <img loading="lazy"src={`${baseURL}/public/storage/images/${item.imagem}`}/>
                                     </div>
                                     <div className='info'>
                                         <div className='title'>{item.titulo}
@@ -345,7 +334,7 @@ const HealthPage = ({curso, departamentos}) => {
                                             Duração: <span>{item.anos} ano{item.anos > 1 ? 's' : ''}</span>
                                         </div>
                                         <div className='learnMore' onClick={() => {
-                                            console.log(item)
+                                            //(item)
                                             navigate(`curso/${item.titulo}`, {
                                                 state: {
                                                     ...item

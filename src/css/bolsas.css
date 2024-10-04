@@ -13,65 +13,54 @@
     margin-top: 20px;
     margin-bottom: 20px;
     max-height: 800px;
-
-    @media screen and (width < 1000px) {
-        flex-direction: column-reverse;
-        gap: 50px;
-        max-height: 100%;
-    }
+}
 
 
-.leftSide {
+.bolsasContainer .leftSide {
     box-sizing: border-box;
-
     flex: 1;
     position: relative;
-    
-
-    > img {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        top: 0;
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-        filter: brightness(0.2);
-        @media screen and (width < 1000px) {
-            position: unset;
-            aspect-ratio: 4/2;
-        }
-    }
-    .info {
-        position: absolute;
-        bottom: 0;
-        top: 0;
-        left: 0;
-        right: 0;
-        color: white;
-        justify-content: space-between;
-        display: flex;
-        flex-direction: column;
-        padding: 30px;
-
-        .logoContainer {
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
-            align-items: center;
-            .logoText {
-                color: white;
-                margin: 0;
-            }
-        }
-        .bottomText {
-            font-size: 18px;
-            font-weight: 600;
-        }
-    }
 }
-.rightSide {
+
+.bolsasContainer .leftSide > img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    filter: brightness(0.2);
+}
+
+
+
+.bolsasContainer .leftSide .info {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: white;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.bolsasContainer .leftSide .info .logoContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.bolsasContainer .leftSide .info .logoContainer .logoText {
+    color: white;
+    margin: 0;
+}
+.bolsasContainer .rightSide {
     flex: 1;
     box-sizing: border-box;
     display: flex;
@@ -79,105 +68,152 @@
     justify-content: center;
     padding: 100px 0;
     overflow-y: scroll;
-    
-    @media screen and (width < 1000px) {
+}
+
+
+.bolsasContainer .info {
+    max-width: 350px;
+    width: 100%;
+    display: flex;
+    margin: 0 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    max-height: 800px;
+}
+
+
+/* Styles for .title */
+.bolsasContainer .title {
+    font-weight: 600;
+    font-size: 22px;
+    text-align: left;
+}
+
+/* Styles for .description */
+.bolsasContainer .description {
+    color: grey;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+/* Styles for .form */
+.bolsasContainer .form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* Styles for .label */
+.bolsasContainer .label {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+/* Styles for .loginInput */
+.bolsasContainer .loginInput {
+    border: 1px solid #e2e2e2f3;
+    border-radius: 5px;
+    height: 35px;
+    width: 100%;
+    outline: none;
+    padding: 5px;
+    font-size: 14px;
+}
+
+/* Styles for .imageInput3 */
+.bolsasContainer .imageInput3 {
+    color: transparent;
+}
+
+.bolsasContainer .imageInput3::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.bolsasContainer .imageInput3::before {
+    content: 'Seleccione um PDF';
+    color: black;
+    display: inline-block;
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.bolsasContainer .imageInput3:hover::before {
+    border-color: black;
+}
+
+.bolsasContainer .imageInput3:active {
+    outline: 0;
+}
+
+/* Styles for .loginButton */
+.bolsasContainer .loginButton {
+    margin-top: 20px;
+    background-color: rgba(235, 153, 1, 0.863);
+    width: 100px;
+    text-align: center;
+    color: white;
+    height: 33px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Styles for .errors */
+.bolsasContainer .errors {
+    color: #e70000;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+
+.bolsasContainer .leftSide .info .bottomText {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .bolsasContainer {
+        flex-direction: column-reverse;
+        gap: 50px;
+        max-height: 100%;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .bolsasContainer .leftSide > img {
+        position: unset;
+        aspect-ratio: 4/2;
+        height: 400px;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .bolsasContainer .rightSide {
         padding: 30px 0;
         padding-bottom: 15px;
         overflow: unset;
     }
-    .info {
-        max-width: 350px;
-        width: 100%;
-        display: flex;
-        margin: 0 20px;
-        flex-direction: column;
-        align-items: flex-start;
-        max-height: 800px;
-        @media screen and (width < 1000px) {
-            max-height: 100%;
-        }
-
-        /* background-color: #ffff004d; */
-    }
-    .title {
-        font-weight: 600;
-        font-size: 22px;
-        text-align: left;
-    }
-    .description {
-        color: grey;
-        font-size: 15px;
-        margin-bottom: 10px;
-    }
-    .form {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin-top: 20px;
-        width: 100%;
-    }
-    .label {
-        font-weight: 500;
-        font-size: 14px;
-    }
-    .loginInput {
-        border: 1px solid #e2e2e2f3;
-        border-radius: 5px;
-        height: 35px;
-        width: 100%;
-        outline: none;
-        padding: 5px;
-        font-size: 14px;
-
-    }
-    .imageInput3 {
-        color: transparent;
-      }
-      .imageInput3::-webkit-file-upload-button {
-        visibility: hidden;
-      }
-      .imageInput3::before {
-        content: 'Seleccione um PDF';
-        color: black;
-        display: inline-block;
-        border: 1px solid #999;
-        border-radius: 3px;
-        padding: 5px 8px;
-        outline: none;
-        white-space: nowrap;
-        -webkit-user-select: none;
-        cursor: pointer;
-        text-shadow: 1px 1px #fff;
-        font-weight: 500;
-        font-size: 13px;
-      }
-      .imageInput3:hover::before {
-        border-color: black;
-      }
-      .imageInput3:active {
-        outline: 0;
-      }
-    .loginButton {
-        margin-top: 20px;
-        background-color: rgba(235, 153, 1, 0.863);
-        width: 100px;
-        text-align: center;
-        color: white;
-        height: 33px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 5px;
-        font-size: 14px;
-        cursor: pointer;
-        
-    }
-    .errors {
-        color: #e70000;
-        margin-top: 15px;
-        font-size: 14px;
-    }
-    
-    
 }
+@media screen and (max-width: 1000px) {
+    .bolsasContainer .info {
+        max-height: 100%;
+    }
 }
+@media screen and (max-width: 1000px) {
+    .bolsasContainer .info {
+        max-height: 100%;
+    }
+}
+

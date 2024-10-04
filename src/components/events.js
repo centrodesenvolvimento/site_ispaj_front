@@ -65,7 +65,7 @@ const Events = () => {
             }} className='title'>Eventos</div>
 
             <section className='eventsContainer'>
-                {eventos && eventos.length > 3 ?
+                {eventos && eventos.length > 1 ?
                 eventos.filter((item) => {
                     if (item.info?.show == undefined){
                         return item
@@ -75,7 +75,7 @@ const Events = () => {
                 }).slice(0, 4).map((event, index) => {
                     return (
                         <div className='eventContainer'>
-                                <img src={event?.info?.imagem}/>
+                                <img loading="lazy"src={event?.info?.imagem}/>
                                 <div className='eventInfo'>
                                 <span className='eventTitle' onClick={()=> {
                                     navigate(`eventos/event/${event.id}`, {
@@ -90,7 +90,7 @@ const Events = () => {
 
                                 <div className='eventLocation'>
                                     <span className='iconContainer'>
-                                        <img src={process.env.PUBLIC_URL + '/images/pin-map.png'}/>
+                                        <img loading="lazy"src={process.env.PUBLIC_URL + '/images/pin-map.png'}/>
                                     </span>
                                     <span className='eventLocationInfo'>{event?.info?.localizacao}</span>
                                 </div>

@@ -136,18 +136,18 @@ A natureza multidisciplinar do curso está ajustada às exigências do mercado d
     ])
     const [course, setCourse] = useState(null)
     useEffect(() => {
-        console.log('location', location?.state?.image)
+        //('location', location?.state?.image)
 
     }, [location.pathname])
     const scrollDivRef = useRef(null)
     useEffect(() => {
         
         scrollDivRef.current && window.scrollTo({
-            top: scrollDivRef.current.getBoundingClientRect().top + window.scrollY - 120
+            top: scrollDivRef.current.getBoundingClientRect().top + window.scrollY - 180
         })
-    }, [location.pathname, scrollDivRef])
+    }, [location.pathname, scrollDivRef.current])
     useEffect(() => {
-        window.scrollTo(0, 0)
+        !location.pathname.includes('curso/') && window.scrollTo(0, 0)
 
     }, [])
     return (
@@ -156,11 +156,11 @@ A natureza multidisciplinar do curso está ajustada às exigências do mercado d
                 <div className='section'>
                     <div className='player'>
                         <div className='videoContainer' style={{overflow: 'hidden'}}>
-                            {curso?.info && <video src={`${baseURL}/storage/videos/${curso?.info?.video}`} style={{height: '100%', width: '100%', objectFit: 'cover'}} controls/>}
+                            {curso?.info && <video loading="lazy"  src={`${baseURL}/public/storage/videos/${curso?.info?.video}`} style={{height: '100%', width: '100%', objectFit: 'cover'}} controls/>}
                         </div>
                         <div className='playerInfo'>
                             <div className='imgContainer'>CSE</div>
-                            <div className='title'>Cursos de {curso?.info?.titulo}</div>
+                            <div className='title'>{curso?.info?.titulo}</div>
                         </div>
                         <div className='description'>{curso?.info?.descricao}</div>
                     </div>
@@ -185,7 +185,7 @@ A natureza multidisciplinar do curso está ajustada às exigências do mercado d
                         <AccordionContent>
                         <div className='recommendations'>
                         <div className='recom'>
-                                <div className='imageContainer'><img src={`${baseURL}/storage/images/${departamentos[2]?.info?.imagem}`}/></div>
+                                <div className='imageContainer'><img loading="lazy"src={`${baseURL}/public/storage/images/${departamentos[2]?.info?.imagem}`}/></div>
                                 <div className='info'>
                                     <div className='title'>{departamentos[2]?.info?.titulo}</div>
                                     <div className='valueButton' onClick={() => {
@@ -201,7 +201,7 @@ A natureza multidisciplinar do curso está ajustada às exigências do mercado d
                                 </div>
                             </div>
                             <div className='recom'>
-                                <div className='imageContainer'><img src={`${baseURL}/storage/images/${departamentos[0]?.info?.imagem}`}/></div>
+                                <div className='imageContainer'><img loading="lazy"src={`${baseURL}/public/storage/images/${departamentos[0]?.info?.imagem}`}/></div>
                                 <div className='info'>
                                     <div className='title'>{departamentos[0]?.info?.titulo}</div>
                                     <div className='valueButton' onClick={() => {
@@ -246,7 +246,7 @@ A natureza multidisciplinar do curso está ajustada às exigências do mercado d
                     location.pathname.includes('curso/') && location.state ? 
                     <div className='aboutCourse' ref={scrollDivRef}>
                         <div className='imageContainer'>
-                            <img src={`${baseURL}/storage/images/${location.state.imagem}`}/>
+                            <img loading="lazy"src={`${baseURL}/public/storage/images/${location.state.imagem}`}/>
                         </div>
                         <div className='first'>
                             <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
@@ -308,7 +308,7 @@ A natureza multidisciplinar do curso está ajustada às exigências do mercado d
                             return (
                                 <div className='course'>
                                     <div className='imageContainer'>
-                                        <img src={`${baseURL}/storage/images/${item.imagem}`}/>
+                                        <img loading="lazy"src={`${baseURL}/public/storage/images/${item.imagem}`}/>
                                     </div>
                                     <div className='info'>
                                         <div className='title'>{item.titulo}
@@ -317,7 +317,7 @@ A natureza multidisciplinar do curso está ajustada às exigências do mercado d
                                             Duração: <span>{item.anos} ano{item.anos > 1 ? 's' : ''}</span>
                                         </div>
                                         <div className='learnMore' onClick={() => {
-                                            console.log(item)
+                                            //(item)
                                             navigate(`curso/${item.titulo}`, {
                                                 state: {
                                                     ...item
