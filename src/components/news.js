@@ -66,13 +66,13 @@ const News = () => {
                             <section className='grid'>
                                 {posts.length >= 6 ?
 
-                                posts.slice(0, 6).filter((item) => {
+                                posts.filter((item) => {
                                     if (item.info?.show == undefined){
                                         return item
                                     }else if (item.info?.show == true){
                                         return item
                                     }
-                                }).map((post, index) => {
+                                }).slice(0, 6).map((post, index) => {
                                     //(post)
                                     return (
                                         <div key={index} className="newsBanner" style={{}}>
