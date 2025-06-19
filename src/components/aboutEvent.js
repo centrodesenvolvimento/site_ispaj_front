@@ -39,7 +39,6 @@ const AboutEvent = ({
       setIsOpen(true);
     };
     useEffect(() => {
-
         return () =>{
             localStorage.getItem('path') && localStorage.removeItem('path')
         }

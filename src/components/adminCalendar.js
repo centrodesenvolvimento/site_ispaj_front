@@ -606,6 +606,7 @@ const AdminCalendar = () => {
                             </DialogTrigger>
                             <DialogContent style={{width: '100%', maxWidth: 800, display: 'flex', flexDirection: 'column'}}>
                                 <DialogHeader>
+                                    
                                     <DialogTitle>Editar</DialogTitle>
                                     <DialogDescription>Editar Evento</DialogDescription>
 
@@ -643,7 +644,7 @@ const AdminCalendar = () => {
                                     />
                                 </div>:
                                 <div style={{aspectRatio: '4/2.8', overflow: 'hidden'}}>
-                                    <img loading="lazy"style={{width: '100%', height: '100%', objectFit: 'cover'}} src={imagePreview}/>
+                                    <img loading="lazy"style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/public/storage/images/${imagePreview}`}/>
                                 </div> 
                                 }
                                 {/* <canvas
