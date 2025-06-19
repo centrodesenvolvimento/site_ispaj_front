@@ -286,7 +286,7 @@ Trabalho em hospitais, clínicas, centros de saúde.`,
         {departments?.[0]?.info?.descricao ? 
         [...departments].map((item, index) => {
             return (
-                <SwiperSlide className='swiperTest'>
+                <SwiperSlide className='swiperTest' key={index}>
         <section className='firstCont'>
             <div className='videoCont'>
                 {item?.info?.video && <video loading="lazy"  ref={firstVid} controls src={`${baseURL}/public/storage/videos/${item?.info?.video}`}/> }
@@ -327,7 +327,7 @@ Trabalho em hospitais, clínicas, centros de saúde.`,
             <div className='courses'>
                 {[...item?.cursos].length >= 1 ? [...item?.cursos].slice(0, 3).map((course, index) => {
                     return (
-                        <div className='courseContainer'>
+                        <div className='courseContainer' key={index}>
                             <div className='imgContainer'>
                                 {course?.imagem && <img loading="lazy"src={`${baseURL}/public/storage/images/${course.imagem}`}/>}
                             </div>
@@ -346,7 +346,7 @@ Trabalho em hospitais, clínicas, centros de saúde.`,
                 }): 
                 health.map((item, index) => {
                     return (
-                        <div className='courseContainer'>
+                        <div className='courseContainer' key={index}>
                             <Skeleton className='imgContainer'/>
 
                             <Skeleton className='title' />
@@ -360,8 +360,8 @@ Trabalho em hospitais, clínicas, centros de saúde.`,
         </SwiperSlide>
             )
         })
-         :['.', '.', '.'].map((item)=> {
-            return <SwiperSlide className='swiperTest'>
+         :['.', '.', '.'].map((item, index)=> {
+            return <SwiperSlide className='swiperTest' key={index}>
             <section className='firstCont'>
                 {
                 <Skeleton className='videoCont'/>}
@@ -385,7 +385,7 @@ Trabalho em hospitais, clínicas, centros de saúde.`,
                 <div className='courses'>
                     {health.map((item, index) => {
                         return (
-                            <div className='courseContainer'>
+                            <div className='courseContainer' key={index}>
                                 <Skeleton className='imgContainer'/>
     
                                 <Skeleton className='title' />

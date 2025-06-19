@@ -21,6 +21,8 @@ import { Carousel } from 'react-responsive-carousel'
 import { Bounce, toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import styles from 'yet-another-react-lightbox/styles.css'
+import Skeleton from 'react-loading-skeleton'
+
 
 const containerVariants = {
     close: {
@@ -117,12 +119,20 @@ const Header = () => {
         }
     }, [])
     const [departments, setDepartments] = useState([])
+const [info, setInfo] = useState(null)
   useEffect(() => {
       axios.get(`${baseURL}/api/departamentos`)
       .then(res => {
         //   //('departamentos', res.data)
           setDepartments([...res.data])
       })
+      axios.get(`${baseURL}/api/info`)
+            .then(res => {
+              let content = [...res.data][0]
+              console.log('content', content)
+              setInfo([...res.data][0]?.info)
+              
+            })
   }, [])
   const preHeaderRef = useRef(null)
   const preHeaderRef1 = useRef(null)
@@ -464,7 +474,8 @@ const Header = () => {
                     </svg>
                             <div className='info'>
                                 <div className='paramTitle'>Contacto</div>
-                                <div className='description'>934550014/934551800</div>
+                                {info ? <div className='description'>{info?.numero}/{info?.numero2}</div>:
+                                <Skeleton className='description' style={{width: '100%'}} />}
                             </div>
                         </section>
                     <section className='param'>
@@ -473,7 +484,9 @@ const Header = () => {
                     </svg>
                             <div className='info'>
                                 <div className='paramTitle'>Email</div>
-                                <div className='description'>geral@ispaj.net</div>
+                                {info ? <div className='description'>{info?.email}</div>
+                                :
+                                <Skeleton className='description' />}
                             </div>
                         </section>
                     <section className='param' style={{cursor: 'pointer'}} onClick={() => {
@@ -485,7 +498,8 @@ const Header = () => {
                             </svg>
                             <div className='info'>
                                 <div className='paramTitle'>Localização</div>
-                                <div className='description'>Urbanização Nova Vida, rua 45</div>
+                                {info ? <div className='description'>{info?.localizacao}</div>: 
+                                <Skeleton className='description'/>}
                             </div>
                         </section>
                         
@@ -539,9 +553,11 @@ const Header = () => {
                        
                 
                 
-                        <div className='headerEnd' style={{display: 'none'}}>
-                            <div className='contfact' style={{display: 'none'}}>
-                                Inscrição Online
+                        <div className='headerEnd' >
+                            <div className='contact' onClick={() => {
+                                window.open('http://netpae.ispaj.net/')
+                            }}>
+                                Consulta e lançamento de notas
                             </div>
                         </div>
                         <Sheet open={open} style={{zIndex: 111000100101, outline: 'none', border: 'none'}}>
@@ -644,6 +660,13 @@ const Header = () => {
                                     navigate('/noticias')
                                 }, 500)
                             }} className={location.pathname.includes('/noticias') ? 'sideMenuItem2' : 'sideMenuItem'}><span>Notícias</span></div>
+
+                            <div onClick={() => {
+                                setOpen(false)
+                                setTimeout(() => {
+                                    window.open('http://netpae.ispaj.net/')
+                                }, 150)
+                            }} style={{textTransform: 'unset'}} className={location.pathname.includes('/noticias') ? 'sideMenuItem2' : 'sideMenuItem'}><span style={{textTransform: 'none'}}>Consulta e lançamento de notas</span></div>
                             <div>
                                 
                             </div>

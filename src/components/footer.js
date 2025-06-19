@@ -90,9 +90,9 @@ const Footer = () => {
                         {/* second column */}
                         <section className='column'>
                             <div className='title'>Ensino</div>
-                            {departments?.map((item) => {
+                            {departments?.map((item, index) => {
                                 return (
-                                    <div style={{cursor: 'pointer'}} className='item' onClick={() => {
+                                    <div key={index} style={{cursor: 'pointer'}} className='item' onClick={() => {
                                         navigate('/cursos', {
                                             state: {
                                                 ...item
@@ -132,7 +132,7 @@ const Footer = () => {
                         <section className='column'>
                             <div className='title'>Nos Contacte</div>
                             <div style={{cursor: 'pointer'}} className='item'><a style={{textDecoration: 'none'}} href={`mailto:${info?.email}`}>{info?.email}</a></div>
-                            <div className='item'>{info?.numero}</div>
+                            <div className='item'>{info?.numero}/{info?.numero2}</div>
                             <div className='item' onClick={() => {
                                 window.open('https://maps.app.goo.gl/nUDyQHvXJAktK6YD9')
                             }} style={{cursor: 'pointer', display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 10}}>Endereço <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-map" viewBox="0 0 16 16">
@@ -142,7 +142,7 @@ const Footer = () => {
                     </div>
                     <div className='footerGrid1'>
                         <div className='column' style={{textAlign: 'justify', textJustify: 'inter-word'}}>
-                        © 2024. O Instituto Superior Politécnico Alvorecer da Juventude. Todos os direitos reservados. O ISPAJ dedica-se à excelência académica e à inovação na educação. Estamos localizados em Luanda, Kilamba Kiaxi, Urbanização Nova Vida, rua 45. Para questões gerais, entre em contato conosco pelo telefone (+244) 934550014/934551800 ou envie um e-mail para geral@ispaj.net. Mantenha-se conectado connosco através de nossos canais de mídia social: Facebook, Instagram e Twitter.
+                        © 2024. O Instituto Superior Politécnico Alvorecer da Juventude. Todos os direitos reservados. O ISPAJ dedica-se à excelência académica e à inovação na educação. Estamos localizados em Luanda, Kilamba Kiaxi, Urbanização Nova Vida, rua 45. Para questões gerais, entre em contato conosco pelo telefone (+244) {info?.numero}/{info?.numero2} ou envie um e-mail para {info?.email}. Mantenha-se conectado connosco através de nossos canais de mídia social: Facebook, Instagram e Twitter.
                         </div>
                         <div className='column'>
                         <svg style={{cursor: 'pointer'}} onClick={() => {

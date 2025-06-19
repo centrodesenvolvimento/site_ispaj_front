@@ -17,6 +17,7 @@ import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails"
 import "yet-another-react-lightbox/plugins/thumbnails.css"
 import Zoom from "yet-another-react-lightbox/plugins/zoom"
 import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
+import { Helmet } from 'react-helmet'
 
 
 
@@ -237,8 +238,46 @@ const NewsArticle = () => {
       window.scrollTo(0, 0)
 
     }, [])
+    useEffect(()=> {
+      if (article) {
+      // Clean description by removing HTML tags and limiting length
+      const cleanDescription = article?.info?.descricao 
+        ? article?.info?.descricao.replace(/<[^>]*>/g, '').substring(0, 160)
+        : 'Leia esta notícia interessante';
+      
+      const metaTags = [
+        // Standard metadata
+        { name: 'description', content: cleanDescription },
+        
+        // Open Graph / Facebook
+        { property: 'og:type', content: 'article' },
+        { property: 'og:url', content: window.location.href },
+        { property: 'og:title', content: article?.info?.titulo || 'Notícia' },
+        { property: 'og:description', content: cleanDescription },
+        { property: 'og:image', content: article.imagens?.[0] || `https://ispaj.co.ao/images/logotrans.png` },
+        
+        
+      ];
+
+      metaTags.forEach(tag => {
+        const attribute = tag.property ? 'property' : 'name';
+        let element = document.querySelector(`meta[${attribute}="${tag[attribute]}"]`);
+        
+        if (!element) {
+          element = document.createElement('meta');
+          element.setAttribute(attribute, tag[attribute]);
+          document.head.appendChild(element);
+        }
+        element.setAttribute('content', tag.content);
+      });
+
+      document.title = article?.info?.titulo || 'Notícia';
+    }
+    }, [article]);
+
     return (
         <div className="abtCont" style={{overflowX: 'hidden'}}>
+          
             <Header />
             <div className='newsArticleContainer' ref={secondContainerRef} style={{marginTop: document.querySelector('.outerContainer')?.clientHeight + 25}}>
                 <div className='firstCont'>

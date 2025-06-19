@@ -140,7 +140,7 @@
 }
 
 /* Media Queries */
-@media screen and (max-width: 1180px) {
+@media screen and (max-width: 1409px) {
     .logoTextCont {
         max-width: 100%;
         flex: 1;
@@ -185,7 +185,7 @@
 }
 
 /* Media Queries */
-@media screen and (max-width: 1180px) {
+@media screen and (max-width: 1409px) {
     .menuItems {
         display: none;
     }
@@ -203,7 +203,7 @@
 }
 
 /* Media Queries */
-@media screen and (max-width: 1180px) {
+@media screen and (max-width: 1409px) {
     .menuItem {
         display: none;
     }
@@ -238,7 +238,7 @@
 }
 
 /* Media Queries */
-@media screen and (max-width: 1180px) {
+@media screen and (max-width: 1409px) {
     .menuItem1 {
         display: none;
     }
@@ -257,7 +257,7 @@
     min-width: 130px;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
+    font-size: 13px;
     align-self: center;
     text-align: center;
     color: #e69500;
@@ -333,7 +333,7 @@
 }
 
 /* Media Queries */
-@media screen and (max-width: 1180px) {
+@media screen and (max-width: 1409px) {
     .headerEnd {
         display: none;
     }
@@ -373,7 +373,7 @@
 }
 
 /* Media Queries */
-@media screen and (max-width: 1180px) {
+@media screen and (max-width: 1409px) {
     .bi-listCont {
         cursor: pointer;
         display: block;
@@ -389,7 +389,7 @@
 }
 
 /* Media Queries */
-@media screen and (max-width: 1180px) {
+@media screen and (max-width: 1409px) {
     .bi-listCont1 {
         cursor: pointer;
         display: block;
@@ -454,7 +454,7 @@ svg[class~='bi-brightness-high'] {
 }
 
 /* Media Queries */
-@media screen and (max-width: 1180px) {
+@media screen and (max-width: 1409px) {
     .sideMenu {
         display: block;
     }
@@ -847,7 +847,7 @@ svg[class~='bi-brightness-high'] {
     }
 }
 
-@media screen and (max-width: 1180px) {
+@media screen and (max-width: 1409px) {
     .logoTextCont {
         max-width: 100%;
         flex: 1;
@@ -1036,7 +1036,7 @@ svg[class~='bi-brightness-high'] {
     }
 }
 
-@media screen and (max-width: 1180px) {
+@media screen and (max-width: 1409px) {
     .logoTextCont {
         max-width: 100%;
         flex: 1;

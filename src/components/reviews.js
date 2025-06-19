@@ -132,7 +132,7 @@ const Reviews = () => {
                     :
                         placeholder.slice(0, 3).map((review, index) => {
                             return (
-                                <div class="card" >
+                                <div key={index} class="card" >
                     <div class="cardTop">
                         <div class="cardInfo">
                             <Skeleton style={{background: '#e3e3e3', margin: 0, padding: 0}} className='cardStars'/>
@@ -199,7 +199,7 @@ const Reviews = () => {
                     :
                         placeholder.slice(0, 3).map((review, index) => {
                             return (
-                                <div class="card" >
+                                <div key={index} class="card" >
                     <div class="cardTop">
                         <div class="cardInfo">
                             <Skeleton style={{background: '#e3e3e3', margin: 0, padding: 0}} className='cardStars'/>

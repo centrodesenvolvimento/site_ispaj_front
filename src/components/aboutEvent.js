@@ -12,6 +12,7 @@ import "yet-another-react-lightbox/styles.css"
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails"
 import "yet-another-react-lightbox/plugins/thumbnails.css"
 import Zoom from "yet-another-react-lightbox/plugins/zoom"
+import { baseURL } from '../api/api'
 const AboutEvent = ({
     item
 }) => {
@@ -75,7 +76,7 @@ const AboutEvent = ({
             <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707m0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707m-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707"/>
         </svg>Tela Cheia</div> : <Skeleton className='date1'/>}
             <div className='imgContainer' style={{overflow: 'hidden', borderRadius: 10}}>
-                {item?.info?.imagem && <img loading="lazy"src={item?.info?.imagem}/>}
+                {item?.info?.imagem && <img loading="lazy"src={`${baseURL}/public/storage/images/${item?.info?.imagem}`}/>}
             </div>
             {isOpen && (
         <Lightbox
@@ -90,7 +91,7 @@ const AboutEvent = ({
         plugins={[Counter, Fullscreen, Zoom]}
         open={isOpen}
         close={() => setIsOpen(false)}
-        slides={[{src: item?.info?.imagem}]}
+        slides={[{src: `${baseURL}/public/storage/images/${item?.info?.imagem}`}]}
       />
       )}
             <div className='eventAttrs'>

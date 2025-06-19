@@ -68,7 +68,7 @@ const EventsPage1 = () => {
             }
         }
     }
-    const [view, setView] = useState('month')
+    const [view, setView] = useState('decade')
     const [search, setSearch] = useState('')
     const [looked, setLooked] = useState(false)
     const look = () => {
