@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="favicon.ico" />
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" href="https://ispaj.co.ao/images/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="https://ispaj.co.ao/images/favicon.ico">
 
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -30,48 +30,65 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebSite",
+  "@type": "EducationalOrganization",
   "name": "ISPAJ - Instituto Superior Politécnico Alvorecer da Juventude",
-  "url": "https://ispaj.co.ao",  // Replace with your actual URL
-  "mainEntity": {
-    "@type": "ItemList",
-    "name": "Important Pages",
-    "itemListElement": [
-  {
-    "@type": "ListItem",
-    "position": 1,
-    "name": "Cursos",
-    "item": "https://ispaj.co.ao/cursos",
-    "description": "Explore a nossa variedade de cursos projetados para aprimorar suas habilidades e conhecimentos."
+  "url": "https://ispaj.co.ao",
+  "logo": "https://ispaj.co.ao/logotrans.png",
+  "description": "Instituição privada de ensino superior em Angola dedicada à excelência académica e inovação na educação",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Urbanização Nova Vida, rua 45",
+    "addressLocality": "Luanda",
+    "addressRegion": "Kilamba Kiaxi",
+    "addressCountry": "AO"
   },
-  {
-    "@type": "ListItem",
-    "position": 2,
-    "name": "Sobre",
-    "item": "https://ispaj.co.ao/sobre",
-    "description": "Saiba mais sobre nossa organização, missão e visão."
-  },
-  {
-    "@type": "ListItem",
-    "position": 3,
-    "name": "Notícias",
-    "item": "https://ispaj.co.ao/noticias",
-    "description": "Fique informado com as últimas notícias e anúncios da nossa comunidade."
-  },
-  {
-    "@type": "ListItem",
-    "position": 4,
-    "name": "Eventos",
-    "item": "https://ispaj.co.ao/eventos",
-    "description": "Encontre informações sobre eventos, workshops e conferências que estão por vir."
-  }
-]
+  "sameAs": [
+    "https://www.facebook.com/ispaj",
+    "https://www.instagram.com/ispaj_ao/"
+  ],
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://ispaj.co.ao/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
   }
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Cursos",
+      "item": "https://ispaj.co.ao/cursos"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Sobre",
+      "item": "https://ispaj.co.ao/sobre"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Notícias",
+      "item": "https://ispaj.co.ao/noticias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Eventos",
+      "item": "https://ispaj.co.ao/eventos"
+    }
+  ]
+}
+</script>
 
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logotrans.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -94,15 +111,6 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+   
   </body>
 </html>

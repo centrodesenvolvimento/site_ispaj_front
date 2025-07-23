@@ -353,7 +353,6 @@ const EventsPage = () => {
     useEffect(() => {
         //('idddd', location?.pathname.split('/event/')[1])
         
-        console.log('inside', prevLocationRef?.current?.pathname, location?.pathname, prevLocationRef?.current?.pathname !== location?.pathname)
       if (prevLocationRef?.current?.pathname !== location?.pathname && location?.pathname.includes('/event/')) {
         //('iddd', location?.pathname.split('/event/')[1])
         const viewedEvents = JSON.parse(sessionStorage.getItem('viewedEvents')) || [];

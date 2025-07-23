@@ -17,7 +17,7 @@ import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails"
 import "yet-another-react-lightbox/plugins/thumbnails.css"
 import Zoom from "yet-another-react-lightbox/plugins/zoom"
 import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 
 
 
@@ -277,7 +277,20 @@ const NewsArticle = () => {
 
     return (
         <div className="abtCont" style={{overflowX: 'hidden'}}>
-          
+          <Helmet>
+        <title>{article?.info?.titulo || 'Notícia'}</title>
+        {article && 
+          <>
+            <meta name="description" content={article?.info?.descricao.replace(/<[^>]*>/g, '').substring(0, 160)} />
+            <meta property="og:type" content="article" />
+            <meta property="og:url" content={window.location.href} />
+            <meta property="og:title" content={article?.info?.titulo || 'Notícia'} />
+            <meta property="og:description" content={article?.info?.descricao.replace(/<[^>]*>/g, '').substring(0, 160)} />
+            <meta property="og:image" content={article?.imagens?.[0] || `${baseURL}/default-news-image.jpg`} />
+           
+          </>
+        }
+      </Helmet>
             <Header />
             <div className='newsArticleContainer' ref={secondContainerRef} style={{marginTop: document.querySelector('.outerContainer')?.clientHeight + 25}}>
                 <div className='firstCont'>
