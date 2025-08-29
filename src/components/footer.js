@@ -142,7 +142,9 @@ const Footer = () => {
                     </div>
                     <div className='footerGrid1'>
                         <div className='column' style={{textAlign: 'justify', textJustify: 'inter-word'}}>
-                        © 2024. O Instituto Superior Politécnico Alvorecer da Juventude. Todos os direitos reservados. O ISPAJ dedica-se à excelência académica e à inovação na educação. Estamos localizados em Luanda, Kilamba Kiaxi, Urbanização Nova Vida, rua 45. Para questões gerais, entre em contato conosco pelo telefone (+244) {info?.numero}/{info?.numero2} ou envie um e-mail para {info?.email}. Mantenha-se conectado connosco através de nossos canais de mídia social: Facebook, Instagram e Twitter.
+                        © 2024. O Instituto Superior Politécnico Alvorecer da Juventude. Todos os direitos reservados. O <span onClick={() => {
+                            navigate('/login')
+                        }}>ISPAJ</span> dedica-se à excelência académica e à inovação na educação. Estamos localizados em Luanda, Kilamba Kiaxi, Urbanização Nova Vida, rua 45. Para questões gerais, entre em contato conosco pelo telefone (+244) {info?.numero}/{info?.numero2} ou envie um e-mail para {info?.email}. Mantenha-se conectado connosco através de nossos canais de mídia social: Facebook, Instagram e Twitter.
                         </div>
                         <div className='column'>
                         <svg style={{cursor: 'pointer'}} onClick={() => {
