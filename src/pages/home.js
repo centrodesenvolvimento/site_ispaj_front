@@ -16,8 +16,8 @@ const Home = ({departments}) => {
             <Director />
             <Services departments={departments}/>
             {/* #F3F3F3 */}
-            <div style={{ marginBottom: -50}}>
-            <Principles departments={departments}/>
+            <div style={{ marginBottom: -10}}>
+            {/* <Principles departments={departments}/> */}
             </div>
             <div>
               <News />
