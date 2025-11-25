@@ -75,7 +75,7 @@ const Events = () => {
                 }).slice(0, 4).map((event, index) => {
                     return (
                         <div key={index} className='eventContainer'>
-                                <img loading="lazy"src={`${baseURL}/public/storage/images/${event?.info?.imagem}`}/>
+                                <img loading="lazy"src={`${baseURL}/storage/images/${event?.info?.imagem}`}/>
                                 <div className='eventInfo'>
                                 <span className='eventTitle' onClick={()=> {
                                     navigate(`eventos/event/${event.id}`, {

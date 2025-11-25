@@ -36,7 +36,7 @@ const Home = lazy(() => import('./pages/home'));
 const About = lazy(() => import('./pages/about'));
 const EventsPage = lazy(() => import('./pages/eventsPage'));
 const Admissions = lazy(() => import('./pages/admissions'));
-const Courses = lazy(() => import('./pages/courses'));
+const Polos = lazy(() => import('./pages/polos'));
 const Message = lazy(() => import('./pages/message'));
 const NewsPage = lazy(() => import('./pages/newsPage'));
 const Login = lazy(() => import('./pages/login'));
@@ -122,8 +122,8 @@ const updateVisits = () => {
           <Route path='/eventos' element={<EventsPage />}/>
           <Route path='/eventos/event/:title' element={<EventsPage />} />
           <Route path='/admissoes' element={<Admissions />} />
-          <Route path='/cursos' element={<Courses />} />
-          <Route path='/cursos/curso/:title' element={<Courses />} />
+          <Route path='/polos' element={<Polos />} />
+          <Route path='/polos/polo/:title' element={<Polos />} />
           <Route path='/mensagem_do_presidente' element={<Message />} />
           <Route path='/noticias' element={<NewsPage />} />
           <Route path='/login' element={<Login />} />

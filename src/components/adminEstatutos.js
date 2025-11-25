@@ -357,7 +357,7 @@ const AdminEstatutos = () => {
                                             <embed className='orgChart' src={URL.createObjectURL(selectedDoc)} style={{width: '100%', aspectRatio: 2/1.5}} />
                                             </div>
                                             : preview ? <div style={{}}>
-                                            <embed className='orgChart' src={`${baseURL}/public/storage/pdfs/${preview}`} style={{width: '100%', aspectRatio: 2/1.5}} />
+                                            <embed className='orgChart' src={`${baseURL}/storage/pdfs/${preview}`} style={{width: '100%', aspectRatio: 2/1.5}} />
                                             </div> : <div></div>}
                                     
                                             {/* <input value={''} className='imageInput2' type='file' accept='video/*'  onChange={(e)=>{

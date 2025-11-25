@@ -208,11 +208,11 @@ const Admissions2 = () => {
                     
                     <div className="aboutSideMenu">
                         <div onClick={() => {
-                            !section.includes('Sobre o ISPAJ') && setSection('Sobre o ISPAJ')
+                            !section.includes('Sobre nós') && setSection('Sobre nós')
 
-                            !section.includes('Sobre o ISPAJ') && localStorage.setItem('path', 'Sobre o ISPAJ')
+                            !section.includes('Sobre nós') && localStorage.setItem('path', 'Sobre nós')
 
-                        }} className={section === 'Sobre o ISPAJ' ? 'aboutItem1' : "aboutItem"}>Sobre o ISPAJ</div>
+                        }} className={section === 'Sobre nós' ? 'aboutItem1' : "aboutItem"}>Sobre nós</div>
                         <div onClick={() => {
                             !section.includes('Estrutura Orgânica') && setSection('path', 'Estrutura Orgânica')
 

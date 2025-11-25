@@ -334,7 +334,7 @@ Trabalho em hospitais, clínicas, centros de saúde.`,
                             swiperRef.current?.autoplay?.start();
                           }}
                           controls
-                          src={`${baseURL}/public/storage/videos/${item?.info?.video}`}
+                          src={`${baseURL}/storage/videos/${item?.info?.video}`}
                         />
                       )}
                     </div>
@@ -389,7 +389,7 @@ Trabalho em hospitais, clínicas, centros de saúde.`,
                                   {course?.imagem && (
                                     <img
                                       loading="lazy"
-                                      src={`${baseURL}/public/storage/images/${course.imagem}`}
+                                      src={`${baseURL}/storage/images/${course.imagem}`}
                                     />
                                   )}
                                 </div>

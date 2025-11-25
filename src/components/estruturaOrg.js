@@ -176,7 +176,7 @@ Nesta conformidade, o ISPAJ assenta a sua organização interna na óptica de ad
                         }).filter((item) => item.presidente == 'true')[0] && 
                         <section className='president'>
                         <div className='cont'>
-                           <img loading="lazy"src={aboutContent?.orgaos_singulares && `${baseURL}/public/storage/images/${[...aboutContent.orgaos_singulares].filter((item) => {
+                           <img loading="lazy"src={aboutContent?.orgaos_singulares && `${baseURL}/storage/images/${[...aboutContent.orgaos_singulares].filter((item) => {
                             if (item.show == undefined){
                                 return item
                             }else if (item.show == true){
@@ -229,7 +229,7 @@ Nesta conformidade, o ISPAJ assenta a sua organização interna na óptica de ad
                                 return item
                             }
                         }).filter((item) => item.presidente == 'true').length > 0 && <div className='cont'>
-                          <img loading="lazy"src={aboutContent?.orgaos_singulares && `${baseURL}/public/storage/images/${[...aboutContent.orgaos_singulares].filter((item) => {
+                          <img loading="lazy"src={aboutContent?.orgaos_singulares && `${baseURL}/storage/images/${[...aboutContent.orgaos_singulares].filter((item) => {
                             if (item.show == undefined){
                                 return item
                             }else if (item.show == true){
@@ -304,7 +304,7 @@ Nesta conformidade, o ISPAJ assenta a sua organização interna na óptica de ad
                     return (
                       <span className='member' style={{minWidth: 120, maxWidth: 120}}>
                             <span className='memberImage'>
-                                <img loading="lazy"src={`${baseURL}/public/storage/images/${item?.imagem}`}/>
+                                <img loading="lazy"src={`${baseURL}/storage/images/${item?.imagem}`}/>
                             </span>
                             <div className='memberName'>{item?.nome}</div>
                             <div className='memberRole'>{item?.cargo}</div>
@@ -429,7 +429,7 @@ Nesta conformidade, o ISPAJ assenta a sua organização interna na óptica de ad
                     return (
                       <span className='member' style={{minWidth: 120, maxWidth: 120}}>
                             <span className='memberImage'>
-                                <img loading="lazy"src={`${baseURL}/public/storage/images/${item?.imagem}`}/>
+                                <img loading="lazy"src={`${baseURL}/storage/images/${item?.imagem}`}/>
                             </span>
                             <div className='memberName'>{item?.nome}</div>
                             <div className='memberRole'>{item?.cargo}</div>

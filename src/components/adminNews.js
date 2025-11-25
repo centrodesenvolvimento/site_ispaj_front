@@ -28,6 +28,7 @@ const AdminNews = () => {
     const [preview, setPreview] = useState(null)
     const [documents, setDocuments] = useState([])
     const [title, setTitle] = useState('')
+    const [polo, setPolo] = useState('Geral')
     const [description, setDescription] = useState('')
     const [selectedImage, setSelectedImage] = useState(null)
     const [imagePreview, setImagePreview] = useState(null)
@@ -65,6 +66,7 @@ const AdminNews = () => {
             axios.post(`${baseURL}/api/addNews`, {
                 images_data: imagesToSend,
                 titulo: title,
+                polo: polo,
                 descricao: description,
                 data: dateAdded
             })
@@ -95,6 +97,7 @@ const AdminNews = () => {
                     deletedImages: prevImagesPreviews,
                     newImages: imagesToSend,
                     titulo: title,
+                    polo: polo,
                     descricao: description,
                     data: dateAdded,
                     views: item.info.views,
@@ -114,6 +117,7 @@ const AdminNews = () => {
                     titulo: title,
                     descricao: description,
                     data: dateAdded,
+                    polo: polo,
                     views: item.info.views,
                     show: show
                 })
@@ -181,6 +185,7 @@ const AdminNews = () => {
                         <Dialog>
                             <DialogTrigger onClick={() =>{
                                 setDateAdded(new Date())
+                                setPolo('Geral')
                             }}>
                                 <Edit title='Adicionar'/>
                             </DialogTrigger>
@@ -197,6 +202,22 @@ const AdminNews = () => {
                                             <input value={title} onChange={(e) => {
                                                 setTitle(e.target.value)
                                             }} placeholder='Título da notícia...' className='loginInput'/>
+                                        </div>
+                                        <div className='form'>
+                                            <div className='label'>Polo</div>
+                                             <select className="loginInput" defaultValue={'Geral'} value={polo} onChange={(e) => {
+                                    console.log('changed', e.target.value)
+                                    setPolo(e.target.value)
+                                }}>
+                                    <option value={'Geral'}>Geral</option>
+                                    <option value={'Nova Vida'}>Nova Vida</option>
+                                    <option value={'Camama'}>Camama</option>
+                                    <option value={'Patriota'}>Patriota</option>
+                                    <option value={'Kinaxixi'}>Kinaxixi</option>
+                                    <option value={'Benguela'}>Benguela</option>
+                                    <option value={'Lobito'}>Lobito</option>
+                                    <option value={'Soyo'}>Soyo</option>
+                                </select>
                                         </div>
                                         <div className='form'>
                                         <div className='label'>Descrição</div>
@@ -343,7 +364,7 @@ const AdminNews = () => {
                                             <TableCell>{index + 1}</TableCell>
                                             <TableCell>
                                                 <div style={{width: 70, height: 40, borderRadius: 5, overflow: 'hidden'}}>
-                                                    <img loading="lazy"style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/public/storage/images/${[...item.imagens][0]}`}/>
+                                                    <img loading="lazy"style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/storage/images/${[...item.imagens][0]}`}/>
                                                 </div>
                                             </TableCell>
                                             <TableCell><div className='revText'>{item.info.titulo}</div></TableCell>
@@ -356,6 +377,9 @@ const AdminNews = () => {
                                                 <Dialog>
                             <DialogTrigger onClick={() =>{
                                 setTitle(item.info.titulo)
+                                console.log('item', item)
+                                setPolo(item?.polo||'Geral')
+
                                 setDescription(item.info.descricao)
                                 setPrevImagesPreviews(item.imagens)
                                 setDateAdded(new Date(item.info.data))
@@ -388,6 +412,23 @@ const AdminNews = () => {
                                             <input value={title} onChange={(e) => {
                                                 setTitle(e.target.value)
                                             }} placeholder='Título da notícia...' className='loginInput'/>
+                                        </div>
+                                        <div className='form'>
+                                            <div className='label'>Polo</div>
+                                             <select className="loginInput" defaultValue={'Geral'} value={polo} onChange={(e) => {
+                                    console.log('changed', e.target.value)
+                                                                        setPolo(e.target.value)
+
+                                }}>
+                                    <option value={'Geral'}>Geral</option>
+                                    <option value={'Nova Vida'}>Nova Vida</option>
+                                    <option value={'Camama'}>Camama</option>
+                                    <option value={'Patriota'}>Patriota</option>
+                                    <option value={'Kinaxixi'}>Kinaxixi</option>
+                                    <option value={'Benguela'}>Benguela</option>
+                                    <option value={'Lobito'}>Lobito</option>
+                                    <option value={'Soyo'}>Soyo</option>
+                                </select>
                                         </div>
                                         <div className='form'>
                                         <div className='label'>Descrição</div>
@@ -429,7 +470,7 @@ const AdminNews = () => {
                                                 }} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
   <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
                                                 </svg>
-                                                <img loading="lazy"src={`${baseURL}/public/storage/images/${item}`}/>
+                                                <img loading="lazy"src={`${baseURL}/storage/images/${item}`}/>
                                             </div>
                                         )
                                     })}

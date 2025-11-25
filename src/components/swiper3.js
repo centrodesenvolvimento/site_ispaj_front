@@ -100,7 +100,7 @@ const Swiper3 = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-        <div className='slideTextCont'>{activeIndex == 0 && <motion.div initial={{opacity: 0, x: 200}} animate={{opacity: 1, x: 0}} transition={{duration: 0.8}} className='slideText'>Aqui no ISPAJ somos ativos, envolvidos, engajados</motion.div>}</div>
+        <div className='slideTextCont'>{activeIndex == 0 && <motion.div initial={{opacity: 0, x: 200}} animate={{opacity: 1, x: 0}} transition={{duration: 0.8}} className='slideText'>Aqui no Grupo Pitruca somos ativos, envolvidos, engajados</motion.div>}</div>
 
           <img loading="lazy"src={process.env.PUBLIC_URL + '/images/join.png'} />
         </SwiperSlide>
@@ -111,9 +111,9 @@ const Swiper3 = () => {
 
         </SwiperSlide>
         <SwiperSlide>
-        <div className='slideTextCont'>{activeIndex == 2 && <motion.div initial={{opacity: 0, x: 200}} animate={{opacity: 1, x: 0}} transition={{duration: 0.8}} className='slideText'>Junte-se a nós. Junte-se ao ISPAJ</motion.div>}</div>
+        <div className='slideTextCont'>{activeIndex == 2 && <motion.div initial={{opacity: 0, x: 200}} animate={{opacity: 1, x: 0}} transition={{duration: 0.8}} className='slideText'>Junte-se a nós. Junte-se ao Pitruca</motion.div>}</div>
 
-          <img loading="lazy"src={process.env.PUBLIC_URL + '/images/join3.png'}  />
+          <img loading="lazy"src={process.env.PUBLIC_URL + '/images/pitrucas.svg'}  />
 
         </SwiperSlide>
         <div onClick={() => handlePrev()} className='button left'><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">

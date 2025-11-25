@@ -76,7 +76,7 @@ const News = () => {
                                     //(post)
                                     return (
                                         <div key={index} className="newsBanner" style={{}}>
-                                            <img loading="lazy"src={`${baseURL}/public/storage/images/${post.imagens[0]}`}/>
+                                            <img loading="lazy"src={`${baseURL}/storage/images/${post.imagens[0]}`}/>
                                             <div className="infoContainer">
                                                 <div className="glance">Em Destaque</div>
                                                 <div className='info'>

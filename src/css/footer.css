@@ -1,10 +1,30 @@
 .footerCont {
-    background-color: #023047;
+    background-color: #192938;
     padding: 20px;
     margin-top: 100px;
     padding-top: 50px;
     padding-bottom: 0px;
     z-index: 10;
+    
+}
+.footerCont {
+	/* width: 100vw;
+	height: 100vh; */
+	background: linear-gradient(334deg,#D19029, #6b97f7, #192938, #3F777C, #D19029);
+	background-size: 180% 180%;
+	animation: gradient-animation 6s ease infinite;
+}
+
+@keyframes gradient-animation {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 .footerCont1 {

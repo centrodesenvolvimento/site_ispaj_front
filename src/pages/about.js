@@ -13,6 +13,7 @@ import History from "../components/history"
 import Estatutos from "../components/estatutos"
 import { baseURL } from "../api/api"
 import axios from "axios"
+import Swiper1 from "../components/swiper1"
 
 const wrapperVariants = {
     open: {
@@ -116,19 +117,18 @@ const wrapperVariants = {
             className="aboutOptionsList"
           >
             
-            <Option setOpen={setOpen} section={section} setSection={setSection}text="Sobre o ISPAJ" />
-            <Option setOpen={setOpen} section={section} setSection={setSection} text="Estrutura Orgânica" />
+            <Option setOpen={setOpen} section={section} setSection={setSection}text="Sobre nós" />
             <Option setOpen={setOpen} section={section} setSection={setSection} text="Estrutura Administrativa" />
             <Option setOpen={setOpen} section={section} setSection={setSection} text="Historial" />
             <Option setOpen={setOpen} section={section} setSection={setSection} text="Organigrama Insitucional" />
-            <Option setOpen={setOpen} section={section} setSection={setSection} text="Estatutos e Regulamentos" />
+            {/* <Option setOpen={setOpen} section={section} setSection={setSection} text="Estatutos e Regulamentos" /> */}
           </motion.ul>
         </motion.div>
       </div>
     );
   };
 const About = () => {
-    const [section, setSection] = useState('Sobre o ISPAJ')
+    const [section, setSection] = useState('Sobre nós')
     const navigate = useNavigate()
     const location = useLocation()
 
@@ -149,7 +149,7 @@ const About = () => {
     return (
         <div className="abtCont">
             <Header />
-            <Swiper2 />
+            <Swiper1 />
             <div className="aboutFirst">
               <div className="navigation">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-map-fill" viewBox="0 0 16 16">

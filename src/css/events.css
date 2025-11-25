@@ -130,11 +130,11 @@
 }
 
 .eventsContainer .eventButton {
-    border: 2px orange solid;
+    border: 2px #005c8a solid;
     width: 100px;
     text-align: center;
     border-radius: 50px;
-    color: orange;
+    color: #005c8a;
     font-size: 14px;
     padding: 3px 5px;
     box-sizing: border-box;
@@ -161,11 +161,11 @@
     padding: 5px 5px;
     font-size: 16px;
     font-weight: 600;
-    color: #e69500;
+    color: #005c8a;
     border-radius: 7px;
     width: 100%;
     justify-content: center;
-    border: 2px solid #e69500;
+    border: 2px solid #005c8a;
     max-width: 250px;
     margin: auto;
     margin-top: 40px;
@@ -187,7 +187,7 @@
 }
 
 .seeMore:hover {
-    border: 2px solid #e69500;
+    border: 2px solid #005c8a;
     color: #ffffff!important;
 }
 
@@ -196,7 +196,7 @@
     content: '';
     width: 0%;
     height: 100%;
-    background: #e69500;
+    background: #001d6b;
     position: absolute;
     transform: skewX(-20deg);
     left: -10%;
@@ -212,7 +212,7 @@
     content: '';
     width: 0%;
     height: 100%;
-    background: #001d6b;
+    background: orange;
     position: absolute;
     transform: skewX(-20deg);
     left: -10%;

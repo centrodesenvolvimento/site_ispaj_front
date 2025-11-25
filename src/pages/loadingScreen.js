@@ -3,7 +3,7 @@ const LoadingScreen = () => {
     return (
         <div className="loadingContainer">
             <div class="text-container">
-                <h1>ispaj</h1>
+                <h1>pitruca</h1>
             </div>
         </div>
     )

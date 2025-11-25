@@ -11,7 +11,7 @@ const Organisation = ({aboutContent}) => {
               <div className='container'>
               <div className='info' style={{height: '100%'}}>
                       <div className='preTitle'>Organigrama Insitucional</div>
-                      <div className='title'>A estrutura organizacional do ISPAJ</div>
+                      <div className='title'>A estrutura organizacional do Grupo Pitruca</div>
                       <div className='description'>segue o organigrama abaixo, onde se destaca os diferentes departamentos, unidades administrativas e suas inter-relações:</div>
                   </div>
             </div>
@@ -20,12 +20,12 @@ const Organisation = ({aboutContent}) => {
           <div className='container1'>
             <div className='orgChartContainer' style={{background: '#e3e3e3', width: '100%', aspectRatio: 4/3, maxHeight: 600, overflow: 'hidden'}}>
               
-          {aboutContent?.organigrama &&  <embed src={`${baseURL}/public/storage/pdfs/${aboutContent?.organigrama}`} style={{width: '100%', aspectRatio: 4/3, maxHeight: 600}}  />}
+          {aboutContent?.organigrama &&  <embed src={`${baseURL}/storage/pdfs/${aboutContent?.organigrama}`} style={{width: '100%', aspectRatio: 4/3, maxHeight: 600}}  />}
             
             </div>
             {`${aboutContent?.organigrama}`.length > 8 && <div style={{display: 'flex', flexDirection: 'row'}}><div
             onClick={() => {
-              window.open(`${baseURL}/public/storage/pdfs/${aboutContent?.organigrama}`)
+              window.open(`${baseURL}/storage/pdfs/${aboutContent?.organigrama}`)
             }} className='seeMore'>Tela Cheia</div>
             {/* <a href={aboutContent?.organigrama} download={'OrganigramaISPAJ'} className='seeMore'>Baixar PDF</a> */}
             </div>}

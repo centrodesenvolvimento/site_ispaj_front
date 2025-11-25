@@ -61,7 +61,7 @@
         margin: 0 20px;
         gap: 10px;
         svg {
-            color: orange;
+            color: #005c8a;
             width: 20px;
             height: 20px;
             cursor: pointer;
@@ -81,7 +81,7 @@
         margin: 0 20px;
         
         svg {
-            color: orange;
+            color: #005c8a;
             width: 23px;
             height: 23px;
         }
@@ -209,7 +209,7 @@
     }
 }
 .menuItem:hover {
-    background-color: #ec9a00;
+    background-color: #005c8a;
     border-radius: 10px;
 }
 .menuItem:hover > span, .menuItem:hover > svg {
@@ -248,7 +248,7 @@
 }
 .contact {
     background-color: white;
-    border: 2px solid #e69500;
+    border: 2px solid #005c8a;
     padding: 5px 5px;
     border-radius: 5px;
     font-weight: 500;
@@ -260,7 +260,7 @@
     font-size: 13px;
     align-self: center;
     text-align: center;
-    color: #e69500;
+    color: #005c8a;
     
     position: relative;
     overflow: hidden!important;
@@ -274,7 +274,7 @@
 }
 
 .contact:hover{
-    border: 2px solid #e69500;
+    border: 2px solid #005c8a;
 	color: #ffffff!important;
 }
 .contact::before {
@@ -282,7 +282,7 @@
     width: 0%;
     height: 100%;
     display: block;
-    background: #e69500;
+    background: #005c8a;
     position: absolute;
 	  -ms-transform: skewX(-20deg);
     -webkit-transform: skewX(-20deg); 
@@ -303,7 +303,7 @@
     width: 0%;
     height: 100%;
     display: block;
-    background: #001d6b;
+    background: #005c8a;
     position: absolute;
 	-ms-transform: skewX(-20deg);
     -webkit-transform: skewX(-20deg); 
@@ -350,11 +350,11 @@
 .subItem {
     
     &:hover {
-        color: #ec9a00
+        color: #005c8a
     }
 }
 .subItem1 {
-    color: #ec9a00;
+    color: #005c8a;
     position: relative;
     padding-left: 10px;
 }
@@ -377,7 +377,7 @@
     .bi-listCont {
         cursor: pointer;
         display: block;
-        background-color: #ec9a00;
+        background-color: #005c8a;
         padding: 7.5px;
         border-radius: 7px;
         animation: disappear 0.3s ease-in-out;
@@ -513,7 +513,7 @@ svg[class~='bi-brightness-high'] {
 
     
     &:hover {
-        color: #ec9a00;
+        color: #005c8a;
     }
 }
 .sideMenuItem2 {
@@ -526,7 +526,7 @@ svg[class~='bi-brightness-high'] {
     justify-content: space-between;
     cursor: pointer;
     margin-left: 5px;
-    background-color: #ec9a00;
+    background-color: #005c8a;
     margin-right: 5px;
     color: white;
     border-radius: 5px
@@ -710,7 +710,7 @@ svg[class~='bi-brightness-high'] {
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    color: orange;
+    color: #0063c5;
 }
 
 /* Media Queries */
@@ -730,7 +730,7 @@ svg[class~='bi-brightness-high'] {
     width: 100%;
     height: 100%;
     stroke-width: 4px;
-    stroke: orange;
+    stroke: #0063c5;
     fill: none;
     stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
     stroke-dasharray: 125.6;
@@ -749,7 +749,7 @@ svg[class~='bi-brightness-high'] {
     z-index: 10;
     cursor: pointer;
     background-color: rgba(56, 56, 56, 0.808);
-    color: orange;
+    color: #0063c5;
     border: none;
     padding: 10px;
     border-radius: 10px;
@@ -819,7 +819,7 @@ svg[class~='bi-brightness-high'] {
     .bi-listCont {
         display: block;
         cursor: pointer;
-        background-color: #ec9a00;
+        background-color: #005c8a;
         padding: 7.5px;
         border-radius: 7px;
         animation: disappear 0.3s ease-in-out;
@@ -872,7 +872,7 @@ svg[class~='bi-brightness-high'] {
     .bi-listCont {
         display: block;
         cursor: pointer;
-        background-color: #ec9a00;
+        background-color: #005c8a;
         padding: 7.5px;
         border-radius: 7px;
         animation: disappear 0.3s ease-in-out;
@@ -1008,7 +1008,7 @@ svg[class~='bi-brightness-high'] {
     .bi-listCont {
         display: block;
         cursor: pointer;
-        background-color: #ec9a00;
+        background-color: #005c8a;
         padding: 7.5px;
         border-radius: 7px;
         animation: disappear 0.3s ease-in-out;
@@ -1061,7 +1061,7 @@ svg[class~='bi-brightness-high'] {
     .bi-listCont {
         display: block;
         cursor: pointer;
-        background-color: #ec9a00;
+        background-color: #005c8a;
         padding: 7.5px;
         border-radius: 7px;
         animation: disappear 0.3s ease-in-out;

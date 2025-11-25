@@ -72,7 +72,7 @@ const Services = ({departments, setDepartments}) => {
                         return (
                             <section className='service' key={index} style={{
                             }}>
-                                    <div style={{width: '100%', overflow: 'hidden', borderTopLeftRadius: 15, borderTopRightRadius: 15}}><img loading="lazy"className='serviceImage' src={`${baseURL}/public/storage/images/${item.info.imagem}`}/></div>
+                                    <div style={{width: '100%', overflow: 'hidden', borderTopLeftRadius: 15, borderTopRightRadius: 15}}><img loading="lazy"className='serviceImage' src={`${baseURL}/storage/images/${item.info.imagem}`}/></div>
                                     <div className='serviceInfo' style={{background: 'white'}}>
                                     <div className='serviceTitle'>
                                         {item.info.titulo}</div>

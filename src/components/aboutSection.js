@@ -21,7 +21,7 @@ const AboutSection = ({aboutContent}) => {
             <section className='container'>
                 <div className='info'>
                     <div className='preTitle'>Quem Somos?</div>
-                    <div className='title'>Instituto Superior Politécnico Alvorecer da Juventude</div>
+                    <div className='title'>Grupo Colégios Pitruca</div>
                     <div className='description'>{aboutContent?.somos}</div>
                 </div>
                 <div className='imgContainer' style={{ aspectRatio: '3.8/2'}}>

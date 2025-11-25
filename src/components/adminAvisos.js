@@ -296,7 +296,7 @@ const AdminAvisos = () => {
                                             
                                             <TableCell>
                                                 <div style={{width: 70, height: 40, borderRadius: 5, overflow: 'hidden'}}>
-                                                    <img loading="lazy"style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/public/storage/images/${item?.info?.image}`}/>
+                                                    <img loading="lazy"style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/storage/images/${item?.info?.image}`}/>
                                                 </div>
                                             </TableCell>
                                             <TableCell><div className='revText'>{item.info.title}</div></TableCell>
@@ -366,7 +366,7 @@ const AdminAvisos = () => {
                                     />
                                 </div>:
                                 <div style={{aspectRatio: '4/4', overflow: 'hidden'}}>
-                                    <img loading="lazy"style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/public/storage/images/${imagePreview}`}/>
+                                    <img loading="lazy"style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/storage/images/${imagePreview}`}/>
                                 </div> 
                                 }
                                 {/* <canvas

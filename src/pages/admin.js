@@ -275,7 +275,7 @@ const Admin = () => {
                 
                     <img onClick={() => location.pathname != '/' && navigate('/')} alt='logo' className='logo' src={process.env.PUBLIC_URL + '/images/logotrans.png'}/>
                     <div onClick={() => location.pathname != '/' && navigate('/')} className='logoTextCont'>
-                        <div className='logoText'>instituto superior politécnico alvorecer da juventude</div>
+                        <div className='logoText'>grupo colégios pitruca</div>
                     </div>
                     </div>
                     {/*  */}

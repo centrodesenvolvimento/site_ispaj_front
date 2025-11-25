@@ -19,49 +19,85 @@ const Reviews = () => {
         }
     }, [])
     const [placeholder, setPlaceholder] = useState([
-        {
-            id: 0,
-            name: 'Juliana Mendes',
-            date: Date.now(),
-            review: 'Estudar na ISPAJ foi uma experiência transformadora! Os professores são extremamente dedicados e o ambiente é acolhedor. Recomendo a todos!',
-            via: 'Facebook',
-        },
-        {
-            id: 1,
-            name: 'Carlos Silva',
-            date: Date.now(),
-            review: 'A infraestrutura da ISPAJ é excelente, com laboratórios bem equipados e bibliotecas atualizadas. Adoro estudar aqui.',
-            via: 'Instagram',
-        },
-        {
-            id: 2,
-            name: 'Ana Pereira',
-            date: Date.now(),
-            review: 'Os cursos oferecidos pela ISPAJ são bem completos e abrangentes. Sinto que estou realmente me preparando para o mercado de trabalho.',
-            via: 'Facebook',
-        },
-        {
-            id: 3,
-            name: 'Rita Fernandes',
-            date: Date.now(),
-            review: 'O ISPAJ tem um ambiente acadêmico muito saudável e colaborativo. Fiz grandes amizades e estou muito feliz com a minha evolução acadêmica.',
-            via: 'Instagram',
-        },
-        {
-            id: 4,
-            name: 'João Costa',
-            date: Date.now(),
-            review: 'Os eventos e palestras oferecidos pela ISPAJ são incríveis! Sempre temos a chance de aprender com profissionais renomados de diversas áreas.',
-            via: 'Facebook',
-        },
-        {
-            id: 5,
-            name: 'Beatriz Santos',
-            date: Date.now(),
-            review: 'Eu recomendo o ispaj, como uma solucao para os pais confiarem os seus maiores tesouros.A coordenação do curso é muito organizada e sempre disponível para resolver qualquer questão. Me sinto muito bem amparada na ISPAJ.',
-            via: 'Instagram',
-        },
-    ])
+    {
+        id: 0,
+        name: 'Maria João',
+        date: Date.now(),
+        review: 'Estudar no Colégio Pitruca Camama foi uma experiência transformadora! A dedicação dos professores e o ambiente acolhedor fazem toda a diferença. Recomendo a todos!',
+        via: 'Facebook',
+    },
+    {
+        id: 1,
+        name: 'Joana Almeida',
+        date: Date.now(),
+        review: 'A infraestrutura do Colégio Pitruca Nova Vida é excelente, com laboratórios modernos e bibliotecas bem equipadas. Sinto que meu filho está preparado para um futuro brilhante.',
+        via: 'Instagram',
+    },
+    {
+        id: 2,
+        name: 'Pedro Nascimento',
+        date: Date.now(),
+        review: 'O Colégio Pitruca Camama oferece cursos e atividades inovadoras. Meu filho está sendo preparado para liderar e inovar no futuro.',
+        via: 'Facebook',
+    },
+    {
+        id: 3,
+        name: 'Sofia Lopes',
+        date: Date.now(),
+        review: 'No Pitruca Camama Patriota, promovem um ambiente acadêmico saudável e colaborativo. Fiz grandes amizades e estou confiante na minha evolução como cidadão crítico e criativo.',
+        via: 'Instagram',
+    },
+    {
+        id: 4,
+        name: 'Ricardo Mendez',
+        date: Date.now(),
+        review: 'Os eventos e palestras nos Colégios Pitruca Benguela são incríveis! Sempre aprendemos com profissionais renomados e estamos inspirados a fazer a diferença.',
+        via: 'Facebook',
+    },
+    {
+        id: 5,
+        name: 'Luís Almeida',
+        date: Date.now(),
+        review: 'Recomendo o Colégio Pitruca Benguela para os pais que querem confiar na formação de seus filhos. A coordenação é organizada e comprometida com o desenvolvimento de cada estudante.',
+        via: 'Instagram',
+    },
+    // Avaliações de pais
+    {
+        id: 6,
+        name: 'Ana Pereira',
+        date: Date.now(),
+        review: 'Desde que meu filho começou no Colégio Pitruca Nova Vida, notei uma grande evolução em seu comportamento e aprendizado. A dedicação da equipe é admirável.',
+        via: 'Facebook',
+    },
+    {
+        id: 7,
+        name: 'Carlos Silva',
+        date: Date.now(),
+        review: 'A segurança, o cuidado e a qualidade do ensino no Colégio Pitruca Camama me deixam tranquila. Minha filha adora ir para a escola todos os dias.',
+        via: 'Instagram',
+    },
+    {
+        id: 8,
+        name: 'Beatriz Santos',
+        date: Date.now(),
+        review: 'Confiamos no Colégio Pitruca Benguela por sua reputação e pelos valores sólidos que ensinam. Nosso filho está crescendo como um cidadão responsável e criativo.',
+        via: 'Facebook',
+    },
+    {
+        id: 9,
+        name: 'Sofia Ramos',
+        date: Date.now(),
+        review: 'A atenção individualizada e o ambiente estimulante no Colégio Pitruca Camama fazem dele a melhor escolha para a educação do nosso filho. Ele está muito feliz!',
+        via: 'Instagram',
+    },
+    {
+        id: 10,
+        name: 'Miguel Ramos',
+        date: Date.now(),
+        review: 'Ver o desenvolvimento da nossa filha no Colégio Pitruca Nova Vida nos dá muita confiança. Uma educação de excelência com valores que fazem a diferença.',
+        via: 'Facebook',
+    },
+])
     const [reviews, setReviews] = useState([])
     useEffect(() => {
         axios.get(`${baseURL}/api/homeContents`)

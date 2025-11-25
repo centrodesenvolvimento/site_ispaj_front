@@ -5,16 +5,19 @@ import Reviews from '../components/reviews';
 import News from '../components/news';
 import Footer from '../components/footer';
 import Globe from '../components/globe';
-import Swiper from '../components/swiper';
+// import Swiper from '../components/swiper';
 import Events from '../components/events';
-import Director from '../components/director';
+// import Director from '../components/director';
+import Swiper1 from '../components/swiper1';
+import Polos from '../components/polos';
 const Home = ({departments}) => {
     return (
         <div className="App" style={{display: 'flex', flexDirection: 'column'}}>
             <Header />
-            <Swiper />
-            <Director />
-            <Services departments={departments}/>
+            {/* <Swiper /> */}
+            <Swiper1 />
+            {/* <Director /> */}
+            <Polos departments={departments}/>
             {/* #F3F3F3 */}
             <div style={{ marginBottom: -10}}>
             {/* <Principles departments={departments}/> */}
@@ -24,6 +27,8 @@ const Home = ({departments}) => {
             </div>
             <Reviews />
             <Events />
+            {/* <Services departments={departments}/> */}
+
             {/* <Globe /> */}
       
             <Footer />
