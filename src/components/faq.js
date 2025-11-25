@@ -186,7 +186,7 @@ const [faqs, setFaqs] = useState([
             <div className='container'>
             <div className='info' style={{height: '100%'}}>
                 <div className='preTitle' style={{color: 'black'}}>Perguntas Frequentes</div>
-                <div className='preTitle' style={{fontWeight: '400', marginTop: 10, fontSize: 15}}>Obrigado pelo seu interesse no <span style={{fontWeight: '700', color: 'orange'}}>ISPAJ</span>! Esperamos ser o mais úteis possível, por isso recolhemos muitas "Perguntas Frequentes" (também conhecidas como "FAQs") juntamente com as respostas correspondentes para fornecer informações adicionais para ajudá-lo.</div>
+                <div className='preTitle' style={{fontWeight: '400', marginTop: 10, fontSize: 15}}>Obrigado pelo seu interesse no <span style={{fontWeight: '700', color: 'orange'}}>Grupo Colégios Pitruca</span>! Esperamos ser o mais úteis possível, por isso recolhemos muitas "Perguntas Frequentes" (também conhecidas como "FAQs") juntamente com as respostas correspondentes para fornecer informações adicionais para ajudá-lo.</div>
             </div>
 
             {/*  */}

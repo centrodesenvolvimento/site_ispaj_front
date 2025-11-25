@@ -172,7 +172,7 @@ const AdminOrg = () => {
                         </Dialog>
                     </div>
                     <div style={{width: '100%', aspectRatio: 2/1.5, background: '#d3d3d3'}}>
-                    {preview && <embed className='orgChart' src={`${baseURL}/public/storage/pdfs/${preview}`} style={{width: '100%', height: '100%'}} />
+                    {preview && <embed className='orgChart' src={`${baseURL}/storage/pdfs/${preview}`} style={{width: '100%', height: '100%'}} />
                     }
                     </div>
                 </section>

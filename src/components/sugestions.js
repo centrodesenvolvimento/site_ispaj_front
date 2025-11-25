@@ -15,6 +15,7 @@ const Sugestions = () => {
     const [contacto, setContacto] = useState('')
     const [assunto, setAssunto] = useState('')
     const [mensagem, setMensagem] = useState('')
+    const [polo, setPolo] = useState('Geral')
     const [load, setLoad] = useState(false)
     
     const send = () => {
@@ -44,8 +45,8 @@ const Sugestions = () => {
             axios.post(`${baseURL}/api/send-email`, {
                 name: `Nome: ${name}; Email: ${email};Contacto: ${contacto}`,
                 email: 'ricardoyosai1610@gmail.com',
-                title: assunto,
-                body: mensagem,
+                title: 'Pitrucas Website: ' + assunto,
+                body: `Polo: ${polo}\n\n${mensagem}`,
                 fromEmail: email
             })
             .then(res => {
@@ -81,24 +82,25 @@ const Sugestions = () => {
             secondContainerRef.current.style.marginTop = document.querySelector('.outerContainer')?.clientHeight
         }
     })
+    
     return (
         <div style={{display: 'flex', height: '100%', justifyContent: 'center', alignItems: 'center', }}>
             <Toaster/>
             <div className="container1" style={{width: '100%', height: '100%'}}>
                 <div className="sugestionsContainer" style={{maxWidth: '100%', margin: 0}}>
                     <section className="leftSide">
-                            <img loading="lazy"src={process.env.PUBLIC_URL + '/images/post2.png'}/>
+                            <img loading="lazy"src={process.env.PUBLIC_URL + '/images/pitrucas1.svg'}/>
                             <div className="info">
                                 <div className='logoContainer' >
                 
                                     <img loading="lazy"onClick={() => location.pathname != '/' && navigate('/')} alt='logo' className='logo' src={process.env.PUBLIC_URL + '/images/logotrans.png'}/>
                                     <div onClick={() => location.pathname != '/' && navigate('/')} className='logoTextCont'>
-                                        <div className='logoText'>instituto superior politécnico alvorecer da juventude</div>
+                                        <div className='logoText'>grupo colégios pitruca</div>
                                     </div>
                             {/*  */}
                                 </div>
                                 <div className="bottom">
-                                    <div className="bottomText">"Existimos para formar profissionais de excelência"</div>
+                                    <div className="bottomText" style={{fontSize: 15}}>"Formamos líderes do amanhã com base em valores sólidos, qualidade educacional e inovação pedagógica."</div>
                                 </div>
                             </div>
                     </section>
@@ -125,6 +127,22 @@ const Sugestions = () => {
                                 }}/>
                             </div>
                             <div className="form">
+                                <div className="label">Polo</div>
+                                <select className="loginInput" defaultValue={'Geral'} value={polo} onChange={(e) => {
+                                    console.log('changed', e.target.value)
+                                    setPolo(e.target.value)
+                                }}>
+                                    <option value={'Geral'}>Geral</option>
+                                    <option value={'Nova Vida'}>Nova Vida</option>
+                                    <option value={'Camama'}>Camama</option>
+                                    <option value={'Patriota'}>Patriota</option>
+                                    <option value={'Kinaxixi'}>Kinaxixi</option>
+                                    <option value={'Benguela'}>Benguela</option>
+                                    <option value={'Lobito'}>Lobito</option>
+                                    <option value={'Soyo'}>Soyo</option>
+                                </select>
+                            </div>
+                            <div className="form">
                                 <div className="label">Assunto</div>
                                 <input value={assunto} placeholder="Assunto..." className="loginInput"onChange={(e) => {
                                     setAssunto(e.target.value)
@@ -139,7 +157,7 @@ const Sugestions = () => {
                             <div className="errors">
                                 {errors.length > 0 && errors.map((item, index) => {
                                     return (
-                                        <div className="error" key={index}>
+                                        <div className="error" key={index} style={{color: 'red', fontSize: 15, marginBottom: 5,}}>
                                             {item}
                                         </div>
                                     )

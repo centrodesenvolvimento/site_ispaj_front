@@ -156,7 +156,7 @@ A natureza multidisciplinar do curso está ajustada às exigências do mercado d
                 <div className='section'>
                     <div className='player'>
                         <div className='videoContainer' style={{overflow: 'hidden'}}>
-                            {curso?.info && <video loading="lazy"  src={`${baseURL}/public/storage/videos/${curso?.info?.video}`} style={{height: '100%', width: '100%', objectFit: 'cover'}} controls/>}
+                            {curso?.info && <video loading="lazy"  src={`${baseURL}/storage/videos/${curso?.info?.video}`} style={{height: '100%', width: '100%', objectFit: 'cover'}} controls/>}
                         </div>
                         <div className='playerInfo'>
                             <div className='imgContainer'>CSE</div>
@@ -185,7 +185,7 @@ A natureza multidisciplinar do curso está ajustada às exigências do mercado d
                         <AccordionContent>
                         <div className='recommendations'>
                         <div className='recom'>
-                                <div className='imageContainer'><img loading="lazy"src={`${baseURL}/public/storage/images/${departamentos[2]?.info?.imagem}`}/></div>
+                                <div className='imageContainer'><img loading="lazy"src={`${baseURL}/storage/images/${departamentos[2]?.info?.imagem}`}/></div>
                                 <div className='info'>
                                     <div className='title'>{departamentos[2]?.info?.titulo}</div>
                                     <div className='valueButton' onClick={() => {
@@ -201,7 +201,7 @@ A natureza multidisciplinar do curso está ajustada às exigências do mercado d
                                 </div>
                             </div>
                             <div className='recom'>
-                                <div className='imageContainer'><img loading="lazy"src={`${baseURL}/public/storage/images/${departamentos[0]?.info?.imagem}`}/></div>
+                                <div className='imageContainer'><img loading="lazy"src={`${baseURL}/storage/images/${departamentos[0]?.info?.imagem}`}/></div>
                                 <div className='info'>
                                     <div className='title'>{departamentos[0]?.info?.titulo}</div>
                                     <div className='valueButton' onClick={() => {
@@ -246,7 +246,7 @@ A natureza multidisciplinar do curso está ajustada às exigências do mercado d
                     location.pathname.includes('curso/') && location.state ? 
                     <div className='aboutCourse' ref={scrollDivRef}>
                         <div className='imageContainer'>
-                            <img loading="lazy"src={`${baseURL}/public/storage/images/${location.state.imagem}`}/>
+                            <img loading="lazy"src={`${baseURL}/storage/images/${location.state.imagem}`}/>
                         </div>
                         <div className='first'>
                             <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
@@ -308,7 +308,7 @@ A natureza multidisciplinar do curso está ajustada às exigências do mercado d
                             return (
                                 <div className='course'>
                                     <div className='imageContainer'>
-                                        <img loading="lazy"src={`${baseURL}/public/storage/images/${item.imagem}`}/>
+                                        <img loading="lazy"src={`${baseURL}/storage/images/${item.imagem}`}/>
                                     </div>
                                     <div className='info'>
                                         <div className='title'>{item.titulo}

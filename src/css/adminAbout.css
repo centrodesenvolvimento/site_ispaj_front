@@ -100,7 +100,7 @@
             .info > .title::before {
                 position: absolute;
                 content: "";
-                border-top: solid 8px #ffa500;
+                border-top: solid 8px #005c8a;
                 border-radius: 100px;
                 max-width: 300px;
                 width: 100%;

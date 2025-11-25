@@ -68,7 +68,7 @@ const History = ({aboutContent}) => {
             <div className='info' style={{height: '100%'}}>
                 <div className='preTitle'>Historial</div>
                 <div className='title'>Nossa Trajetória</div>
-                <div className='description'>Conheça a história e evolução da nossa instituição desde a sua fundação até os dias actuais:</div>
+                <div className='description'>Conheça a história e evolução do nosso grupo desde a sua fundação até os dias actuais:</div>
             </div>
 
             {/*  */}

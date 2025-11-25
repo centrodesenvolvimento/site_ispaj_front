@@ -43,18 +43,18 @@ const Login = () => {
         <div style={{display: 'flex', height: '100vh', justifyContent: 'center', alignItems: 'center'}}>
             <div className="loginContainer">
                 <section className="leftSide">
-                        <img loading="lazy"src={process.env.PUBLIC_URL + '/images/ispajview.png'}/>
+                        <img loading="lazy"src={process.env.PUBLIC_URL + '/images/pitrucas.svg'}/>
                         <div className="info">
                             <div className='logoContainer' >
             
                                 <img loading="lazy"onClick={() => location.pathname != '/' && navigate('/')} alt='logo' className='logo' src={process.env.PUBLIC_URL + '/images/logotrans.png'}/>
                                 <div onClick={() => location.pathname != '/' && navigate('/')} className='logoTextCont'>
-                                    <div className='logoText'>instituto superior politécnico alvorecer da juventude</div>
+                                    <div className='logoText'>grupo colégios pitruca</div>
                                 </div>
                         {/*  */}
                             </div>
                             <div className="bottom">
-                                <div className="bottomText">"Existimos para formar profissionais de excelência"</div>
+                                <div className="bottomText" style={{fontSize: 15}}>"Formamos líderes do amanhã com base em valores sólidos, qualidade educacional e inovação pedagógica."</div>
                             </div>
                         </div>
                 </section>

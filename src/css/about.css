@@ -66,7 +66,7 @@
     cursor: pointer;
 }
 .navigation > span:last-child {
-    color: rgb(202, 131, 0);
+    color: #005c8a;
     cursor: default;
 }
 .aboutSideMenu {
@@ -238,7 +238,7 @@
 .sectionContainer > .container > .info > .title::before {
     position: absolute;
     content: "";
-    border-top: solid 8px #ffa500;
+    border-top: solid 8px #005c8a;
     border-radius: 100px;
     max-width: 300px;
     width: 100%;
@@ -342,11 +342,11 @@
     align-items: center;
     gap: 10px;
     padding: 5px 10px;
-    color: #e69500;
+    color: #005C8A;
     border-radius: 5px;
     width: 100%;
     justify-content: center;
-    border: 2px solid #e69500;
+    border: 2px solid #005C8A;
     font-size: 14px;
 }
 
@@ -373,7 +373,7 @@
     padding: 10px 15px;
     margin: 10px;
     border-radius: 5px;
-    background-color: #e69500;
+    background-color: #005C8A;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;

@@ -542,7 +542,7 @@ image: process.env.PUBLIC_URL + '/images/cardiology.png'
                   return (
                     <div className='news'>
                       <div className='imageContainer'>
-                        <img loading="lazy"src={`${baseURL}/public/storage/images/${[...item.imagens][0]}`}/>
+                        <img loading="lazy"src={`${baseURL}/storage/images/${[...item.imagens][0]}`}/>
                       </div>
                       <div className='info'>
                         <div className='views'>{item?.info?.views} visualizações</div>
@@ -589,7 +589,7 @@ image: process.env.PUBLIC_URL + '/images/cardiology.png'
                   return (
                     <div className='news'>
                       <div className='imageContainer'>
-                        <img loading="lazy"src={`${baseURL}/public/storage/images/${JSON.parse(item?.info)?.info?.imagem}`}/>
+                        <img loading="lazy"src={`${baseURL}/storage/images/${JSON.parse(item?.info)?.info?.imagem}`}/>
                       </div>
                       <div className='info'>
                         <div className='views'>{item?.views_count} visualizações</div>

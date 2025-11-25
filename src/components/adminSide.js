@@ -59,7 +59,7 @@ const AdminSide = () => {
                 <AccordionContent>
                   <div onClick={() => {
                     navigate('/admin/sobre/sobre')
-                  }} className={location.pathname.includes('admin/sobre/sobre') ? 'option3' :'option2'}>Sobre o ISPAJ</div>
+                  }} className={location.pathname.includes('admin/sobre/sobre') ? 'option3' :'option2'}>Sobre nós</div>
                   <div className={location.pathname.includes('admin/sobre/estruturaOrg') ? 'option3' :'option2'} onClick={() => {
                     navigate('/admin/sobre/estruturaOrg')
                   }}>Estrutura Orgánica</div>

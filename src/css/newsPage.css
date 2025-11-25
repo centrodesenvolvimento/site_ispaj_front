@@ -37,7 +37,7 @@
 }
 
 .aboutCourse .tabs div[class~='tab1'] {
-    background-color: orange;
+    background-color: #007cb9;
     color: white;
     font-weight: 500;
 }
@@ -187,8 +187,8 @@
 
 .aboutCourse .newsBanner .infoContainer .glance {
     margin: 10px;
-    border: 1px solid orange;
-    background-color: orange;
+    border: 1px solid #007cb9;
+    background-color: #007cb9;
     width: 130px;
     text-align: center;
     justify-content: center;
@@ -225,7 +225,7 @@
 .aboutCourse .newsBanner .infoContainer .info .postTitle::before {
     position: absolute;
     content: "";
-    border-top: solid 6px orange;
+    border-top: solid 6px #007cb9;
     border-radius: 5px;
     max-width: 300px;
     width: 100%;
@@ -345,7 +345,7 @@
 .aboutCourse .postGrid .newsBanner1 .infoContainer .info .postTitle::before {
     position: absolute;
     content: "";
-    border-top: solid 6px orange;
+    border-top: solid 6px #007cb9;
     border-radius: 5px;
     max-width: 300px;
     width: 100%;
@@ -394,7 +394,7 @@
   .active .page-link {
     font-weight: bold;
     color: white;
-    background-color: orange;
+    background-color: #007cb9;
     height: 100%;
     width: 100%;
     display: flex;

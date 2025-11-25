@@ -183,7 +183,7 @@ const HealthPage = ({curso, departamentos}) => {
                 <div className='section'>
                     <div className='player'>
                         <div className='videoContainer' style={{overflow: 'hidden'}}>
-                            {curso?.info?.video && <video loading="lazy"  style={{height: '100%', width: '100%', objectFit: 'cover'}} controls src={`${baseURL}/public/storage/videos/${curso.info.video}`}/>}
+                            {curso?.info?.video && <video loading="lazy"  style={{height: '100%', width: '100%', objectFit: 'cover'}} controls src={`${baseURL}/storage/videos/${curso.info.video}`}/>}
                         </div>
                         <div className='playerInfo'>
                             <div className='imgContainer'>CS</div>
@@ -220,7 +220,7 @@ const HealthPage = ({curso, departamentos}) => {
                         <AccordionContent>
                         <div className='recommendations'>
                         <div className='recom'>
-                                <div className='imageContainer'><img loading="lazy"src={`${baseURL}/public/storage/images/${departamentos[2]?.info?.imagem}`}/></div>
+                                <div className='imageContainer'><img loading="lazy"src={`${baseURL}/storage/images/${departamentos[2]?.info?.imagem}`}/></div>
                                 <div className='info'>
                                     <div className='title'>{departamentos[2]?.info?.titulo}</div>
                                     <div onClick={() => {
@@ -235,7 +235,7 @@ const HealthPage = ({curso, departamentos}) => {
                                 </div>
                             </div>
                             <div className='recom'>
-                                <div className='imageContainer'><img loading="lazy"src={`${baseURL}/public/storage/images/${departamentos[1]?.info?.imagem}`}/></div>
+                                <div className='imageContainer'><img loading="lazy"src={`${baseURL}/storage/images/${departamentos[1]?.info?.imagem}`}/></div>
                                 <div className='info'>
                                     <div className='title'>{departamentos[1]?.info?.titulo}</div>
                                     <div className='valueButton' onClick={() => {
@@ -263,7 +263,7 @@ const HealthPage = ({curso, departamentos}) => {
                     location.pathname.includes('curso/') && location.state ? 
                     <div className='aboutCourse' ref={scrollDivRef}>
                         <div className='imageContainer'>
-                            <img loading="lazy"src={`${baseURL}/public/storage/images/${location.state.imagem}`}/>
+                            <img loading="lazy"src={`${baseURL}/storage/images/${location.state.imagem}`}/>
                         </div>
                         <div className='first'>
                             <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
@@ -325,7 +325,7 @@ const HealthPage = ({curso, departamentos}) => {
                             return (
                                 <div className='course'>
                                     <div className='imageContainer'>
-                                        <img loading="lazy"src={`${baseURL}/public/storage/images/${item.imagem}`}/>
+                                        <img loading="lazy"src={`${baseURL}/storage/images/${item.imagem}`}/>
                                     </div>
                                     <div className='info'>
                                         <div className='title'>{item.titulo}

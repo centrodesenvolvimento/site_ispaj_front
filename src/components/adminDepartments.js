@@ -265,7 +265,7 @@ const AdminDepartments = () => {
                                     }}
                                     /> */}
                                     {!completedCrop && imagePreview && <div style={{aspectRatio: '4/3', background: '#d3d3d3', borderRadius: 5, overflow: 'hidden'}}>
-                                        <img loading="lazy"style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/public/storage/images/${imagePreview}`}/>
+                                        <img loading="lazy"style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/storage/images/${imagePreview}`}/>
                                     </div>}
                                     </div>
                                     <div className='form'>
@@ -348,7 +348,7 @@ const AdminDepartments = () => {
                             
                         </div>
                         <div className="videoCont">
-                            {departments[0]?.info?.video && <video loading="lazy"  style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/public/storage/videos/${departments[0]?.info?.video}`} loop muted controls />}
+                            {departments[0]?.info?.video && <video loading="lazy"  style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/storage/videos/${departments[0]?.info?.video}`} loop muted controls />}
                         </div>
                     </div>
                 </section>
@@ -426,7 +426,7 @@ const AdminDepartments = () => {
                                     }}
                                     /> */}
                                     {!completedCrop && imagePreview && <div style={{aspectRatio: '4/3', background: '#d3d3d3', borderRadius: 5, overflow: 'hidden'}}>
-                                        <img loading="lazy"style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/public/storage/images/${imagePreview}`}/>
+                                        <img loading="lazy"style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/storage/images/${imagePreview}`}/>
                                     </div>}
                                     </div>
                                     <div className='form'>
@@ -511,7 +511,7 @@ const AdminDepartments = () => {
                             
                         </div>
                         <div className="videoCont">
-                        {departments[1]?.info?.video && <video loading="lazy"  style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/public/storage/videos/${departments[1]?.info?.video}`} loop muted controls />}
+                        {departments[1]?.info?.video && <video loading="lazy"  style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/storage/videos/${departments[1]?.info?.video}`} loop muted controls />}
                         </div>
                     </div>
                 </section>
@@ -588,7 +588,7 @@ const AdminDepartments = () => {
                                     }}
                                     /> */}
                                     {!completedCrop && imagePreview && <div style={{aspectRatio: '4/3', background: '#d3d3d3', borderRadius: 5, overflow: 'hidden'}}>
-                                        <img loading="lazy"style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/public/storage/images/${imagePreview}`}/>
+                                        <img loading="lazy"style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/storage/images/${imagePreview}`}/>
                                     </div>}
                                     </div>
                                     <div className='form'>
@@ -671,7 +671,7 @@ const AdminDepartments = () => {
                         <div className="basicInfo">{departments[2]?.info?.descricao}
                         </div>
                         <div className="videoCont">
-                        {departments[2]?.info?.video && <video loading="lazy"  style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/public/storage/videos/${departments[2]?.info?.video}`} loop muted controls />}
+                        {departments[2]?.info?.video && <video loading="lazy"  style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/storage/videos/${departments[2]?.info?.video}`} loop muted controls />}
                         </div>
                     </div>
                 </section>

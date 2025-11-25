@@ -138,7 +138,7 @@ const Estatutos = ({aboutContent}) =>  {
                             <div className='description'>Aprovado {format(new Date(item.data), 'dd/MM/yyyy')}</div>
                             <div className='title' style={{textTransform: 'uppercase'}}>{item.titulo}</div>
                             <div onClick={() => {
-                                window.open(`${baseURL}/public/storage/pdfs/${item.documento}`, '_blank')
+                                window.open(`${baseURL}/storage/pdfs/${item.documento}`, '_blank')
                             }} className='regButton'>Ver PDF</div>
                         </div>
                     )

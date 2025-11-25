@@ -7,7 +7,7 @@ const EstruturaAdmin = ({aboutContent}) => {
             <div className='container'>
                 <div className='info' style={{height: '100%'}}>
                     <div className='preTitle'>Estrutura Administrativa</div>
-                    <div className='title'>A nossa instituição</div>
+                    <div className='title'>O nosso grupo</div>
                     <div className='description'>dispõe do seguinte pessoal docente e não docente para o seu funcionamento regular:</div>
                 </div>
 

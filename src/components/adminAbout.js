@@ -238,7 +238,7 @@ const AdminAbout = () => {
     }, [])
     return (
         <div className="dashboardContainer" id='adminAbout' >
-            <div className="title">Sobre o ISPAJ</div>
+            <div className="title">Sobre nós</div>
             <div className='first'>
             <section className='section' style={{}}>
                     <div className='header'>
@@ -318,7 +318,7 @@ const AdminAbout = () => {
                     <section className='adminAboutContainer'>
                 <div className='info'>
                     <div className='preTitle'>Quem Somos?</div>
-                    <div className='title'>Instituto Superior Politécnico Alvorecer da Juventude</div>
+                    <div className='title'>Grupo Colégios Pitruca</div>
                     <div className='description'>{aboutContent?.somos}</div>
                 </div>
                 <div className='imgContainer'>

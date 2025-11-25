@@ -644,7 +644,7 @@ const AdminCalendar = () => {
                                     />
                                 </div>:
                                 <div style={{aspectRatio: '4/2.8', overflow: 'hidden'}}>
-                                    <img loading="lazy"style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/public/storage/images/${imagePreview}`}/>
+                                    <img loading="lazy"style={{width: '100%', height: '100%', objectFit: 'cover'}} src={`${baseURL}/storage/images/${imagePreview}`}/>
                                 </div> 
                                 }
                                 {/* <canvas

@@ -38,7 +38,7 @@
 .principlesContainer1 > .title::before {
     position: absolute;
     content: "";
-    border-top: solid 8px orange;
+    border-top: solid 8px #005c8a;
     border-radius: 100px;
     max-width: 300px;
     width: 100%;
@@ -86,7 +86,7 @@
 }
 
 .messageContainer:hover  .serviceButton {
-    color: orange;
+    color: #005c8a;
     background-color: white;
     
 }
@@ -169,7 +169,7 @@
 .messageContainer  .title::before {
     position: absolute;
     content: "";
-    border-top: solid 8px orange;
+    border-top: solid 8px #005c8a;
     border-radius: 100px;
     max-width: 300px;
     width: 80px;
@@ -194,7 +194,7 @@
 .principleInfo > .title::before {
     position: absolute;
     content: "";
-    border-top: solid 8px orange;
+    border-top: solid 8px #005c8a;
     border-radius: 100px;
     max-width: 300px;
     width: 80px;
@@ -206,7 +206,7 @@
     font-size: 25px;
     font-weight: 800;
     position: relative;
-    color: orange;
+    color: #005c8a;
 }
 
 .principleInfo > .description {
@@ -234,7 +234,7 @@
 
 .principleIcon > svg,
 .value1 > svg {
-    color: orange;
+    color: #005c8a;
     width: 30px;
     height: 30px;
 }
@@ -290,7 +290,7 @@
 .principleImages > span {
     width: 3px;
     height: 70px;
-    background-color: orange;
+    background-color: #005c8a;
     align-self: center;
     border-radius: 100px;
 }
@@ -315,7 +315,7 @@
 
 .principle1:hover .principleButton {
     transition: 0.5s ease-in-out;
-    background-color: orange;
+    background-color: #005c8a;
     color: white;
 }
 
@@ -362,7 +362,7 @@
 .principle1Info > .title::before {
     position: absolute;
     content: "";
-    border-top: solid 8px orange;
+    border-top: solid 8px #005c8a;
     border-radius: 100px;
     width: 80px;
     top: -10px;
@@ -374,11 +374,11 @@
 }
 
 .principleButton {
-    border: 2px orange solid;
+    border: 2px #005c8a solid;
     width: 100px;
     text-align: center;
     border-radius: 5px;
-    color: orange;
+    color: #005c8a;
     font-size: 15px;
     padding: 5px;
     box-sizing: border-box;
@@ -467,7 +467,7 @@
 .value > .imgContainer {
     width: 100%;
     height: 220px;
-    background-color: orange;
+    background-color: #005c8a;
     object-fit: cover;
     margin-bottom: 10px;
     border-top-left-radius: 10px;
@@ -484,7 +484,7 @@
 
 .value2 > .imgContainer {
     flex: 1;
-    background-color: orange;
+    background-color: #005c8a;
     object-fit: cover;
     margin-bottom: 10px;
     border-top-left-radius: 10px;
@@ -528,7 +528,7 @@
 .valueInfo > .title::before {
     position: absolute;
     content: "";
-    border-top: solid 5px orange;
+    border-top: solid 5px #005c8a;
     border-radius: 100px;
     width: 80px;
     top: -10px;
@@ -541,11 +541,11 @@
 }
 
 .valueButton {
-    border: 2px orange solid;
+    border: 2px #005c8a solid;
     width: 100px;
     text-align: center;
     border-radius: 5px;
-    color: orange;
+    color: #005c8a;
     font-size: 15px;
     padding: 5px;
     box-sizing: border-box;
@@ -565,7 +565,7 @@
     width: 0%;
     height: 100%;
     display: block;
-    background: #e69500;
+    background: #001d6b;
     position: absolute;
     transform: skewX(-20deg);
     left: -10%;
@@ -581,7 +581,7 @@
     width: 0%;
     height: 100%;
     display: block;
-    background: #001d6b;
+    background: orange;
     position: absolute;
     transform: skewX(-20deg);
     left: -10%;

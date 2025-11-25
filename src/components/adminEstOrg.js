@@ -678,7 +678,7 @@ const AdminEstOrg = () => {
                                         onZoomChange={setZoom}
                                         />
                                     </div> : <div style={{aspectRatio: '4/2'}}>
-                                        <img loading="lazy"style={{width: '100%', height: '100%', objectFit: 'cover', aspectRatio: '4/2'}} src={`${baseURL}/public/storage/images/${item.imagem}`}/>
+                                        <img loading="lazy"style={{width: '100%', height: '100%', objectFit: 'cover', aspectRatio: '4/2'}} src={`${baseURL}/storage/images/${item.imagem}`}/>
                                         </div>}
                                     {/* <canvas
                                     ref={previewCanvasRef}
@@ -895,7 +895,7 @@ const AdminEstOrg = () => {
                     return (
                       <span className='member' style={{minWidth: 120, maxWidth: 120, display: 'flex', flexDirection: 'column', justifyContent: ''}}>
                             <span className='memberImage'>
-                                <img loading="lazy"src={`${baseURL}/public/storage/images/${it.imagem}`}/>
+                                <img loading="lazy"src={`${baseURL}/storage/images/${it.imagem}`}/>
                             </span>
                             <div className='memberName'>{it.nome}</div>
                             <AlertDialog>
@@ -1343,7 +1343,7 @@ const AdminEstOrg = () => {
                     return (
                       <span className='member' style={{minWidth: 120, maxWidth: 120, display: 'flex', flexDirection: 'column', justifyContent: ''}}>
                             <span className='memberImage'>
-                                <img loading="lazy"src={`${baseURL}/public/storage/images/${it.imagem}`}/>
+                                <img loading="lazy"src={`${baseURL}/storage/images/${it.imagem}`}/>
                             </span>
                             <div className='memberName'>{it.nome}</div>
                             <AlertDialog>

@@ -281,7 +281,7 @@ useEffect(() => {
                     
                     <div className="infoContainer">
                         <div className="glance">Em Destaquee</div>
-                        {posts.length > 2 && <img loading="lazy"style={{opacity: 1}} src={`${baseURL}/public/storage/images/${posts[0]?.imagens[0]}`}/>}
+                        {posts.length > 2 && <img loading="lazy"style={{opacity: 1}} src={`${baseURL}/storage/images/${posts[0]?.imagens[0]}`}/>}
                         <div className='info'>
                             {posts.length > 2 && <div className='postDate'>{new Date(posts[0]?.info?.data).getDate()}/{new Date(posts[0]?.info?.data).getMonth() + 1}/{new Date(posts[0]?.info?.data).getFullYear()}</div>}
                             {posts.length > 2 && <div style={{marginBottom: 10, textTransform: 'uppercase'}} className='postTitle'>{posts[0]?.info?.titulo}</div>}
@@ -294,7 +294,7 @@ useEffect(() => {
                     </div>
                     </div>
                     <div className="newsBanner">
-                    {posts.length > 2 && <img loading="lazy"style={{opacity: 1}} src={`${baseURL}/public/storage/images/${posts[1]?.imagens[0]}`}/>}
+                    {posts.length > 2 && <img loading="lazy"style={{opacity: 1}} src={`${baseURL}/storage/images/${posts[1]?.imagens[0]}`}/>}
                     <div className="infoContainer">
                         <div className="glance">Em Destaque</div>
 
@@ -359,7 +359,7 @@ useEffect(() => {
                         {posts1.map((post, index) => {
                             return (
                                 <div key={index} className="newsBanner1" style={{}}>
-                        <img loading="lazy"src={`${baseURL}/public/storage/images/${[...post.imagens][0]}`}/>
+                        <img loading="lazy"src={`${baseURL}/storage/images/${[...post.imagens][0]}`}/>
                         <div className="infoContainer">
                             <div className="glance">Em Destaque</div>
                             <div className='info'>
@@ -441,7 +441,7 @@ useEffect(() => {
                         posts1.map((post, index) => {
                             return (
                                 <div key={index} className="newsBanner1" style={{}}>
-                        <img loading="lazy"src={`${baseURL}/public/storage/images/${[...post.imagens][0]}`}/>
+                        <img loading="lazy"src={`${baseURL}/storage/images/${[...post.imagens][0]}`}/>
                         <div className="infoContainer">
                             <div className="glance">Em Destaque</div>
                             <div className='info'>
