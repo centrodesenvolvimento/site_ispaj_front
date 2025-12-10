@@ -415,7 +415,7 @@ Cada unidade dos Pitruca é equipada com infraestrutura moderna, ambientes acolh
                   `${location?.state?.name}`
                     .toLocaleLowerCase()
                     ?.split(" ")
-                    ?.slice(1) + "@colegiospitruca.co.ao"
+                    ?.slice(1) + "@pitruca.edu.ao"
                 ).replace(",", "")}
               </span>
               {/* <div className='apply' onClick={() => {

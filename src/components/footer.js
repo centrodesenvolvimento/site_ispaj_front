@@ -339,8 +339,8 @@ const Footer = () => {
                         </section> */}
                         <section className='column'>
                             <div className='title'>Nos Contacte</div>
-                            {/* <div style={{cursor: 'pointer'}} className='item'><a style={{textDecoration: 'none'}} href={`mailto:${info?.email}`}>{info?.email}</a></div> */}
-                            <div style={{cursor: 'pointer'}} className='item'><a style={{textDecoration: 'none'}}>{'geral@colegiospitruca.co.ao'}</a></div>
+                            <div style={{cursor: 'pointer'}} className='item'><a style={{textDecoration: 'none'}} href={`mailto:${info?.email}`}>{info?.email}</a></div>
+                            {/* <div style={{cursor: 'pointer'}} className='item'><a style={{textDecoration: 'none'}}>{'geral@colegiospitruca.co.ao'}</a></div> */}
 
                             <div className='item'>{info?.numero}/{info?.numero2}</div>
                             <div className='item' onClick={() => {
@@ -354,7 +354,7 @@ const Footer = () => {
                         <div className='column' style={{textAlign: 'justify', textJustify: 'inter-word'}}>
                         © 2024. Grupo Colégios Pitruca - Educação de Excelência. Todos os direitos reservados. Os <span onClick={() => {
                             navigate('/login')
-                        }}>Colégios Pitruca</span> são referência em educação de qualidade em Angola, com mais de 15 anos a formar cidadãos críticos, criativos e responsáveis.Para questões gerais, entre em contato conosco pelo telefone (+244) {false ? info?.numero: '938 997 849'}/{false && info?.numero2} ou envie um e-mail para {false ? info?.email : 'geral@colegiospitruca.co.ao'}. Mantenha-se conectado connosco através de nossos canais de mídia social: Facebook, Instagram e Twitter.
+                        }}>Colégios Pitruca</span> são referência em educação de qualidade em Angola, com mais de 15 anos a formar cidadãos críticos, criativos e responsáveis.Para questões gerais, entre em contato conosco pelo telefone (+244) {false ? info?.numero: '938 997 849'}/{false && info?.numero2} ou envie um e-mail para {info?.email ? info?.email : ''}. Mantenha-se conectado connosco através de nossos canais de mídia social: Facebook, Instagram e Twitter.
                         </div>
                         <div className='column'>
                         <svg style={{cursor: 'pointer'}} onClick={() => {
