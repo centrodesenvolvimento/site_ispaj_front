@@ -54,6 +54,13 @@
 .grid .newsBanners .newsBanner:nth-child(2) {
     flex: 1;
 }
+
+.grid .newsBanner:nth-child(1) .valueButton,
+.grid .newsBanner:nth-child(2) .valueButton {
+    color: #0076b1 !important;
+    border-color: #0076b1 !important;
+
+}
 .grid .newsBanner:nth-child(1),
 .grid .newsBanner:nth-child(2) {
     position: relative;

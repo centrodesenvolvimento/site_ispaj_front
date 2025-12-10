@@ -51,6 +51,7 @@ const NewsArticle = () => {
                   sessionStorage.setItem('viewedArticles', JSON.stringify(viewedArticles));
                 })
                 .catch(err => {
+                  console.log('error', err)
                 })
             }
           })

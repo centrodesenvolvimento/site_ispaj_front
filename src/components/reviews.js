@@ -119,7 +119,7 @@ const Reviews = () => {
     return (
         <div className="principlesContainer">
             <div className='principlesContainer1'>
-                <div className='title'>O que as pessoas dizem sobre o ISPAJ</div>
+                <div className='title'>O que as pessoas dizem sobre nós</div>
                 <Marquee speed={50} gradient gradientWidth={size > 500 ? size / 200 * 20 : 50} gradientColor='white' pauseOnClick pauseOnHover style={{
                     display: 'flex',
                     justifyContent: 'stretch',
